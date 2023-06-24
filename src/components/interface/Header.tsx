@@ -5,8 +5,10 @@ import { handleNavigate } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { IoMenu } from "react-icons/io5";
 
 const Header = () => {
+  const [isOpen, setOpen] = useState(false);
   const [path, setPath] = useState<string>("");
 
   useEffect(() => {
@@ -25,41 +27,65 @@ const Header = () => {
         damping: 30, // Determines the strength of the spring
         stiffness: 250, // Determines the speed of the spring
       }}
-      className="h-14 fixed top-0 inset-x-0 bg-header backdrop-blur-[10px] flex flex-row justify-end items-center px-10 z-10"
+      className={`${
+        isOpen ? "h-screen" : "h-14"
+      } md:h-14 fixed top-0 inset-x-0 bg-header backdrop-blur-[18px] md:backdrop-blur-[10px] flex flex-col md:flex-row justify-start md:justify-end items-center px-6 md:px-10 py-3 z-10`}
     >
-      <div className="flex flex-row items-center md:gap-x-8 lg:gap-x-12">
-        {links.map((link) => {
-          const isActive = link.path === path;
-          return (
-            <div
-              key={link.name}
-              className="relative flex flex-col items-center"
-            >
-              <Link
-                href={link.path}
-                className="font-sans text-white text-sm lg:text-base"
-                scroll={false}
-                onClick={() => handleNavigate(link.path, setPath)}
+      <button
+        type="button"
+        className="md:hidden w-12 h-8 flex flex-col justify-center items-center bg-primary200 rounded-md self-end"
+        title="Open Menu"
+        onClick={() => setOpen(!isOpen)}
+      >
+        <IoMenu size={20} className="text-primary" />
+      </button>
+
+      <div
+        className={`${
+          isOpen ? "flex-1 md:flex-none flex flex-col justify-center self-stretch" : "hidden"
+        } md:block`}
+        onClick={() => setOpen(false)}
+      >
+        <div className="flex flex-col md:flex-row items-center md:gap-x-8 lg:gap-x-12 gap-y-4">
+          {links.map((link) => {
+            const isActive = link.path === path;
+            return (
+              <div
+                key={link.name}
+                className="relative flex flex-col items-center"
               >
-                {link.name}
-              </Link>
-              <AnimatePresence initial={false} mode="wait">
-                {isActive ? (
-                  <motion.div
-                    layoutId="indicator"
-                    className="w-6 h-0.5 rounded-full bg-primary shadow-primary absolute -bottom-0.5"
-                  />
-                ) : null}
-              </AnimatePresence>
-            </div>
-          );
-        })}
-        <button
-          type="button"
-          className="px-4 py-1 h-8 font-sans text-white text-sm rounded-md bg-primary shadow-primary"
-        >
-          Resume
-        </button>
+                <Link
+                  href={link.path}
+                  className="font-sans text-white text-base"
+                  scroll={false}
+                  onClick={() =>
+                    handleNavigate(link.path, (path) => {
+                      setOpen(false);
+                      setPath(path);
+                    })
+                  }
+                >
+                  {link.name}
+                </Link>
+                <AnimatePresence initial={false} mode="wait">
+                  {isActive ? (
+                    <motion.div
+                      // to prevent layout animation in mobile devices
+                      layoutId={isOpen ? "" : "indicator"}
+                      className="w-6 h-0.5 rounded-full bg-primary shadow-primary absolute -bottom-0.5"
+                    />
+                  ) : null}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+          <button
+            type="button"
+            className="px-4 py-1 h-8 font-sans text-white text-sm rounded-md bg-primary shadow-primary"
+          >
+            Resume
+          </button>
+        </div>
       </div>
     </motion.div>
   );
