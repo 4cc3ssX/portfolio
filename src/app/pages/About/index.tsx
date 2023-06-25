@@ -17,7 +17,7 @@ export default function About({ description, skills, want_to_try }: Props) {
 
   return (
     <div id="about" className="snap-start flex pt-14 h-screen">
-      <div className="flex-1 flex flex-col justify-start md:justify-center items-center">
+      <div className="flex-1 flex flex-col justify-start sm:justify-center items-center">
         <motion.div
           initial={{ x: 100, opacity: 0.4 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -26,7 +26,7 @@ export default function About({ description, skills, want_to_try }: Props) {
             damping: 25,
             stiffness: 300,
           }}
-          className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-3/4 lg:w-7/12 h-auto md:h-3/4 px-6"
+          className="flex-1 sm:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-3/4 lg:w-7/12 h-auto md:h-3/4 px-6"
         >
           <div className="flex flex-row items-center gap-2">
             <div>
@@ -38,13 +38,13 @@ export default function About({ description, skills, want_to_try }: Props) {
           </div>
           <div>
             <p
-              className="font-sans text-base leading-7 md:leading-8 whitespace-pre-line hyphens-auto"
+              className="font-sans text-base leading-7 sm:leading-8 whitespace-pre-line hyphens-auto"
               dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
             />
           </div>
           <div className="mt-1 flex flex-col justify-start gap-2">
             <div>
-              <p className="font-sans font-medium text-lg md:text-xl">
+              <p className="font-sans font-medium text-lg sm:text-xl">
                 Things that I used to.
               </p>
             </div>
@@ -65,7 +65,7 @@ export default function About({ description, skills, want_to_try }: Props) {
           </div>
           <div className="flex flex-col justify-start gap-2">
             <div>
-              <p className="font-sans font-medium text-lg md:text-xl">
+              <p className="font-sans font-medium text-lg sm:text-xl">
                 Things I&apos;d love to try.
               </p>
             </div>

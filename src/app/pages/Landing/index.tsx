@@ -44,7 +44,7 @@ const Landing = ({ name, nickname, message }: Props) => {
           <div>
             <p className="font-sans text-base leading-8">{message}</p>
           </div>
-          <div>
+          <div className="mt-6 sm:mt-0">
             <button
               type="button"
               className="px-6 py-2 font-sans text-white text-base rounded-md bg-secondary shadow-none transition-shadow ease-in-out duration-500 hover:shadow-secondary"

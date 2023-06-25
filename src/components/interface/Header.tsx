@@ -80,7 +80,7 @@ const Header = ({ resume_link }: Props) => {
               >
                 <Link
                   href={link.path}
-                  className="font-sans text-white text-base"
+                  className="font-sans font-normal text-white text-xl sm:text-base"
                   scroll={false}
                   onClick={() => onClickLink(link)}
                 >
@@ -98,9 +98,10 @@ const Header = ({ resume_link }: Props) => {
               </div>
             );
           })}
+          <div className="block sm:hidden w-2/3 h-px bg-bar rounded-full" />
           <button
             type="button"
-            className="px-4 py-1 h-8 font-sans text-white text-sm rounded-md bg-primary shadow-primary"
+            className="px-5 py-1.5 font-sans text-white text-base sm:text-sm rounded-md bg-primary shadow-primary"
             onClick={() => openURL(resume_link, true)}
           >
             Resume
