@@ -2,30 +2,17 @@
 
 import { Email, Github, Linkedin } from "@/components/icons";
 import { IMe } from "@/types";
-import { AnimatePresence, Variants, motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import Link from "next/link";
 
 interface Props extends IMe {}
-
-const emailVariants: Variants = {
-  enter: {
-    opacity: 1,
-    y: 0,
-  },
-  exit: {
-    opacity: 0,
-    y: 40,
-    transition: {
-      duration: 0.2,
-    },
-  },
-};
 
 export default function ContactLinks({ github, linkedin, email, name }: Props) {
   return (
     <motion.div
       initial={{ y: 100 }}
-      animate={{ y: 0 }}
+      animate={{ y: 30 }}
+      whileHover={{ y: 0 }}
       transition={{
         type: "spring",
         damping: 25, // Determines the strength of the spring

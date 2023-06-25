@@ -17,16 +17,16 @@ export default function About({ description, skills, want_to_try }: Props) {
 
   return (
     <div id="about" className="snap-start flex pt-14 h-screen">
-      <div className="flex flex-1 flex-col justify-center items-center">
+      <div className="flex-1 flex flex-col justify-start md:justify-center items-center">
         <motion.div
-          initial={{ scale: 0.4, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
+          initial={{ x: 100, opacity: 0.4 }}
+          whileInView={{ x: 0, opacity: 1 }}
           transition={{
             type: "spring",
             damping: 25,
             stiffness: 300,
           }}
-          className="flex flex-col gap-y-3 w-full sm:w-3/4 md:w-3/4 lg:w-7/12 h-full md:h-3/4 px-6"
+          className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-3/4 lg:w-7/12 h-auto md:h-3/4 px-6"
         >
           <div className="flex flex-row items-center gap-2">
             <div>

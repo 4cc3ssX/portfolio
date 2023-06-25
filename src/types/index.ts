@@ -10,6 +10,7 @@ export interface IMe {
   github: string;
   linkedin: string;
   message: string;
+  resume_link: string;
 }
 
 export interface IAboutMe {

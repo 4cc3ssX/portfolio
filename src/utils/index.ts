@@ -7,3 +7,11 @@ export const handleNavigate = (
     callback(path);
   }
 };
+
+export const openURL = (url: string, external?: boolean) => {
+  if (external) {
+    window.open(url, "_blank");
+  } else {
+    window.location.href = url;
+  }
+};

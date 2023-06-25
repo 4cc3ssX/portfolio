@@ -1,14 +1,16 @@
 "use client";
 
 import { links } from "@/data";
-import { INavLink } from "@/types";
-import { handleNavigate } from "@/utils";
+import { IMe, INavLink } from "@/types";
+import { handleNavigate, openURL } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
-const Header = () => {
+interface Props extends IMe {}
+
+const Header = ({ resume_link }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const [path, setPath] = useState<string>("");
 
@@ -41,15 +43,21 @@ const Header = () => {
     >
       <button
         type="button"
-        className="md:hidden w-12 h-8 flex flex-col justify-center items-center bg-primary200 active:bg-primary rounded-md self-end"
+        className="md:hidden w-12 h-8 flex flex-col justify-center items-center bg-primary active:bg-primary200 rounded-md self-end"
         title="Open Menu"
         onClick={() => setOpen(!isOpen)}
       >
         <AnimatePresence initial={false} mode="wait">
           {isOpen ? (
-            <IoCloseOutline size={20} className="text-primary active:text-white" />
+            <IoCloseOutline
+              size={20}
+              className="text-white active:text-primary"
+            />
           ) : (
-            <IoMenuOutline size={20} className="text-primary active:text-white" />
+            <IoMenuOutline
+              size={20}
+              className="text-white active:text-primary"
+            />
           )}
         </AnimatePresence>
       </button>
@@ -93,6 +101,7 @@ const Header = () => {
           <button
             type="button"
             className="px-4 py-1 h-8 font-sans text-white text-sm rounded-md bg-primary shadow-primary"
+            onClick={() => openURL(resume_link, true)}
           >
             Resume
           </button>

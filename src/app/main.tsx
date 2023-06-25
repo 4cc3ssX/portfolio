@@ -25,7 +25,7 @@ interface Props {
 export default function Main({ data, about, experience, contact }: Props) {
   return (
     <main className={poppins.variable}>
-      <Header />
+      <Header {...data} />
       <ContactLinks {...data} />
       <div className="w-screen h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
         {/* Landing */}
