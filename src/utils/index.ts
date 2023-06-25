@@ -1,6 +1,6 @@
 export const handleNavigate = (
   path: string,
-  callback?: (path: string) => void
+  callback?: (_path: string) => void
 ) => {
   window.location.href = path;
   if (callback) {

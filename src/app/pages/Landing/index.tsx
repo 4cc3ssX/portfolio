@@ -34,7 +34,7 @@ const Landing = ({ name, nickname, message }: Props, ref: Ref<any>) => {
               initial={{ x: 20 }}
               animate={{ x: 0 }}
               transition={{ delay: 0.5 }}
-              className="font-sans text-xs md:text-sm"
+              className="font-sans text-sm"
             >
               Hi there! I&apos;m
             </motion.p>
@@ -43,27 +43,27 @@ const Landing = ({ name, nickname, message }: Props, ref: Ref<any>) => {
                 initial={{ x: 15 }}
                 animate={{ x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="font-sans font-medium text-2xl md:text-3xl"
+                className="font-sans font-medium text-3xl"
               >
                 {name}{" "}
-                <span className="font-sans text-color text-xs md:text-sm">
+                <span className="font-sans text-color text-sm">
                   /
                 </span>
-                <span className="font-sans text-primary text-xs md:text-sm pl-2">
+                <span className="font-sans text-primary text-sm pl-2">
                   {nickname}
                 </span>
               </motion.p>
             </div>
           </div>
           <div>
-            <p className="font-sans text-sm md:text-base leading-8">
+            <p className="font-sans text-base leading-8">
               {message}
             </p>
           </div>
           <div>
             <button
               type="button"
-              className="px-6 py-2 font-sans text-white text-sm md:text-base rounded-md bg-secondary shadow-none transition-shadow ease-in-out duration-500 hover:shadow-secondary"
+              className="px-6 py-2 font-sans text-white text-base rounded-md bg-secondary shadow-none transition-shadow ease-in-out duration-500 hover:shadow-secondary"
               onClick={() => handleNavigate(links.at(0)?.path as string)}
             >
               Let&apos;s Started 👋🏻

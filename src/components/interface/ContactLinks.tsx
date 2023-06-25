@@ -4,10 +4,9 @@ import { Email, Github, Linkedin } from "@/components/icons";
 import { IMe } from "@/types";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 interface Props extends IMe {
-  isLandingInView: boolean;
+  isInView: boolean
 }
 
 const emailVariants: Variants = {
@@ -24,24 +23,12 @@ const emailVariants: Variants = {
   },
 };
 
-export default function ContactLinks({
-  github,
-  linkedin,
-  email,
-  name,
-  isLandingInView: isInView = true,
-}: Props) {
-  const [isReady, setIsReady] = useState(false);
+export default function ContactLinks({ github, linkedin, email, name, isInView = true }: Props) {
 
-  useEffect(() => {
-    // wait for `isInView` state change
-    setTimeout(() => {
-      setIsReady(true);
-    }, 100);
-  }, []);
+
   return (
     <motion.div
-      initial={{ y: 200 }}
+      initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{
         type: "spring",
@@ -51,7 +38,7 @@ export default function ContactLinks({
       className="fixed bottom-0 right-6 md:right-12 flex flex-col justify-end items-center gap-y-2 z-10"
     >
       <AnimatePresence initial={false} mode="wait">
-        {isReady && !isInView ? (
+        {!isInView ? (
           <motion.div
             initial="exit"
             animate="enter"

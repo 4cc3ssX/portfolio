@@ -9,7 +9,6 @@ import { sanitizeHTML } from "@/lib";
 interface Props extends IAboutMe {}
 
 export default function About({ description, skills, want_to_try }: Props) {
-
   const sanitizedHTML = useMemo(
     () => sanitizeHTML(description),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,7 +17,7 @@ export default function About({ description, skills, want_to_try }: Props) {
 
   return (
     <div id="about" className="snap-start flex pt-14 h-screen">
-      <div className="flex flex-1 flex-col justify-start md:justify-center items-center">
+      <div className="flex flex-1 flex-col justify-center items-center">
         <motion.div
           initial={{ scale: 0.4, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
@@ -31,7 +30,7 @@ export default function About({ description, skills, want_to_try }: Props) {
         >
           <div className="flex flex-row items-center gap-2">
             <div>
-              <p className="font-sans font-medium text-xl md:text-2xl">
+              <p className="font-sans font-medium text-2xl">
                 About Me
               </p>
             </div>
@@ -39,7 +38,7 @@ export default function About({ description, skills, want_to_try }: Props) {
           </div>
           <div>
             <p
-              className="font-sans text-sm md:text-base leading-7 md:leading-8 whitespace-pre-line hyphens-auto"
+              className="font-sans text-base leading-7 md:leading-8 whitespace-pre-line hyphens-auto"
               dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
             />
           </div>
@@ -56,7 +55,7 @@ export default function About({ description, skills, want_to_try }: Props) {
                     key={skill}
                     className="px-4 py-1 bg-primary50 border border-primary200 rounded-md"
                   >
-                    <p className="font-sans text-xs md:text-sm text-primary">
+                    <p className="font-sans text-sm text-primary">
                       {skill}
                     </p>
                   </div>
@@ -77,7 +76,7 @@ export default function About({ description, skills, want_to_try }: Props) {
                     key={wantToTry}
                     className="px-4 py-1 bg-secondary rounded-md"
                   >
-                    <p className="font-sans text-xs md:text-sm text-white">
+                    <p className="font-sans text-sm text-white">
                       {wantToTry}
                     </p>
                   </div>

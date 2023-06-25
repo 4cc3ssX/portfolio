@@ -1,15 +1,23 @@
 "use client";
 
 import { links } from "@/data";
+import { INavLink } from "@/types";
 import { handleNavigate } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { IoMenu } from "react-icons/io5";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
   const [path, setPath] = useState<string>("");
+
+  const onClickLink = (link: INavLink) => {
+    handleNavigate(link.path, (path) => {
+      setOpen(false);
+      setPath(path);
+    });
+  };
 
   useEffect(() => {
     const initialPath = "/" + window.location.hash;
@@ -29,20 +37,28 @@ const Header = () => {
       }}
       className={`${
         isOpen ? "h-screen" : "h-14"
-      } md:h-14 fixed top-0 inset-x-0 bg-header backdrop-blur-[18px] md:backdrop-blur-[10px] flex flex-col md:flex-row justify-start md:justify-end items-center px-6 md:px-10 py-3 z-10`}
+      } md:h-14 fixed top-0 inset-x-0 bg-header backdrop-blur-[18px] md:backdrop-blur-[10px] flex flex-col md:flex-row justify-start md:justify-end items-center px-6 md:px-10 py-3 z-10 transition-all duration-200 ease-out`}
     >
       <button
         type="button"
-        className="md:hidden w-12 h-8 flex flex-col justify-center items-center bg-primary200 rounded-md self-end"
+        className="md:hidden w-12 h-8 flex flex-col justify-center items-center bg-primary200 active:bg-primary rounded-md self-end"
         title="Open Menu"
         onClick={() => setOpen(!isOpen)}
       >
-        <IoMenu size={20} className="text-primary" />
+        <AnimatePresence initial={false} mode="wait">
+          {isOpen ? (
+            <IoCloseOutline size={20} className="text-primary active:text-white" />
+          ) : (
+            <IoMenuOutline size={20} className="text-primary active:text-white" />
+          )}
+        </AnimatePresence>
       </button>
 
       <div
         className={`${
-          isOpen ? "flex-1 md:flex-none flex flex-col justify-center self-stretch" : "hidden"
+          isOpen
+            ? "flex-1 md:flex-none flex flex-col justify-center self-stretch"
+            : "hidden"
         } md:block`}
         onClick={() => setOpen(false)}
       >
@@ -58,12 +74,7 @@ const Header = () => {
                   href={link.path}
                   className="font-sans text-white text-base"
                   scroll={false}
-                  onClick={() =>
-                    handleNavigate(link.path, (path) => {
-                      setOpen(false);
-                      setPath(path);
-                    })
-                  }
+                  onClick={() => onClickLink(link)}
                 >
                   {link.name}
                 </Link>

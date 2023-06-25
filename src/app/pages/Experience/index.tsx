@@ -4,7 +4,6 @@ import { IExperience } from "@/types";
 import dayjs from "dayjs";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState } from "react";
-import { IoChevronDown } from "react-icons/io5";
 
 interface Props {
   data: IExperience[];

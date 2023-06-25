@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import sanitizeHtml, { IOptions } from "sanitize-html";
 
 export const textTags = [

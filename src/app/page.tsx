@@ -1,14 +1,5 @@
-import { Poppins } from "next/font/google";
 import { getAbout, getContact, getData, getExperience } from "@/services/data";
-
-import Main from "./components/main";
-
-const poppins = Poppins({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  style: "normal",
-  variable: "--font-Poppins",
-});
+import Main from "./main";
 
 export default async function Home() {
   const data = await getData();
@@ -17,15 +8,8 @@ export default async function Home() {
   const contact = await getContact();
 
   return (
-    <main className={poppins.variable}>
-      <Main
-        data={data}
-        about={about}
-        experience={experience}
-        contact={contact}
-      />
-    </main>
+    <Main data={data} about={about} experience={experience} contact={contact} />
   );
 }
 
-// export const revalidate = 60;
+export const revalidate = 60;
