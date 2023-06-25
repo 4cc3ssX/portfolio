@@ -40,7 +40,7 @@ module.exports = {
       },
       borderColor: {
         primary200: "rgba(var(--primary-color), 0.2)",
-        primary400: "rgba(var(--primary-color), 0.4)",
+        primary500: "rgba(var(--primary-color), 0.5)",
       },
     },
   },
