@@ -2,7 +2,7 @@
 
 import { Email, Github, Linkedin } from "@/components/icons";
 import { IMe } from "@/types";
-import { Variants, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface Props extends IMe {}
