@@ -43,7 +43,7 @@ export default function Experience({ data }: Props) {
         >
           <div className="flex flex-row items-center gap-2">
             <div>
-              <p className="font-sans font-medium text-xl md:text-2xl">
+              <p className="font-sans font-medium text-xl sm:text-2xl">
                 Experience
               </p>
             </div>
@@ -68,18 +68,18 @@ export default function Experience({ data }: Props) {
                         />
                       ) : null}
                     </AnimatePresence>
-                    <p className="font-sans text-base text-center md:text-left line-clamp-1">
+                    <p className="font-sans text-base text-center sm:text-left line-clamp-1">
                       {data.company_name}
                     </p>
                   </div>
                 );
               })}
             </div>
-            <div className="mt-10 md:mt-0 flex-1">
+            <div className="mt-5 md:mt-0 flex-1">
               {activeExperience ? (
                 <div className="px-0 md:px-4 flex flex-col gap-2">
                   <div>
-                    <p className="font-sans text-lg md:text-xl">
+                    <p className="font-sans text-lg sm:text-xl">
                       {activeExperience?.title}
                     </p>
                     <p className="font-sans text-sm text-hint">

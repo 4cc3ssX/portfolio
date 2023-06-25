@@ -27,7 +27,7 @@ export default function Main({ data, about, experience, contact }: Props) {
     <main className={poppins.variable}>
       <Header {...data} />
       <ContactLinks {...data} />
-      <div className="w-screen h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
+      <div className="w-screen h-screen overflow-x-hidden overflow-y-scroll scroll-smooth snap-y snap-mandatory">
         {/* Landing */}
         <Landing {...data} />
         {/* About */}

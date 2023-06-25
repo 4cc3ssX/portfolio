@@ -54,7 +54,7 @@ export default function Contact({ message, data }: Props) {
           <div className="h-72 flex flex-col justify-center items-center">
             <button
               type="button"
-              className="w-40 h-10 font-sans text-sm md:text-base rounded-md hover:bg-primary border border-primary500 text-primary hover:text-white"
+              className="w-40 h-10 font-sans text-sm sm:text-base rounded-md hover:bg-primary border border-primary500 text-primary hover:text-white"
               title={data.email}
               onClick={sayHi}
             >
