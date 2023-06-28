@@ -4,12 +4,13 @@
 
 :root {
   --foreground-color: 240, 240, 240;
-  --background-color: 60, 60, 60;
+  --background-color: 27, 22, 43;
 
   --primary-color: 255, 129, 121;
   --secondary-color: 94, 54, 255;
   --hint-color: 173, 173, 173;
-  --bar-color: 77, 77, 77;
+  --bar-color: 53, 44, 82;
+  --card-color: 106, 106, 106;
 }
 
 * {

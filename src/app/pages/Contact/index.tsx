@@ -20,11 +20,11 @@ export default function Contact({ message, data }: Props) {
   return (
     <div
       id="contact"
-      className="relative snap-start flex pt-14 w-screen h-screen"
+      className="relative flex pt-14 min-h-screen"
     >
       <div className="absolute left-0 right-0 bottom-8">
         <p className="font-sans text-xs text-hint text-center">
-          Designed & Built by {data.nickname}
+          Designed & Built by <span className="font-medium">{data.nickname}</span>
         </p>
       </div>
       <div className="flex flex-1 flex-col justify-center items-center">
@@ -51,7 +51,7 @@ export default function Contact({ message, data }: Props) {
               {message}
             </p>
           </div>
-          <div className="h-72 flex flex-col justify-center items-center">
+          <div className="h-44 flex flex-col justify-center items-center">
             <button
               type="button"
               className="w-40 h-10 font-sans text-sm sm:text-base rounded-md hover:bg-primary border border-primary500 text-primary hover:text-white"
