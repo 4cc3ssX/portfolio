@@ -2,7 +2,6 @@
 
 import { IProject } from "@/types";
 import { motion } from "framer-motion";
-import "@splidejs/react-splide/css";
 import Image from "next/image";
 import Link from "next/link";
 import { BsBoxArrowUpRight } from "react-icons/bs";
