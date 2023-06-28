@@ -7,7 +7,7 @@ const Linkedin = (props: SVGProps<SVGSVGElement>) => (
     width={20}
     height={20}
     viewBox="0 0 24 24"
-    fill="#828282"
+    fill="#847ba6"
     {...props}
   >
     <g data-name="Layer 2">

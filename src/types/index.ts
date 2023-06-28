@@ -28,6 +28,24 @@ export interface IExperience {
   responsibilities: string[];
 }
 
+export interface IProject
+  extends Omit<IExperience, "responsibilities" | "company_name"> {
+  image: {
+    url: string;
+    blurhash_url: string;
+  };
+  link: string;
+  tint_color: string;
+  description: string;
+  tags: ITag[];
+}
+
+export interface ITag {
+  title: string;
+  background_color: string;
+  text_color: string;
+}
+
 export interface IContact {
   message: string;
 }

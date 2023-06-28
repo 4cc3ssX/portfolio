@@ -9,7 +9,7 @@ interface Props extends IMe {}
 
 const Landing = ({ name, nickname, message }: Props) => {
   return (
-    <div id="landing" className="snap-start relative flex pt-14 h-screen">
+    <div id="landing" className="relative flex pt-14 h-screen">
       <div className="absolute inset-0 bg-main bg-cover sm:bg-contain bg-no-repeat -z-10" />
       <div className="flex flex-1 flex-col justify-center items-center">
         <motion.div

@@ -1,3 +1,4 @@
+
 import "./globals.css";
 
 export const metadata = {
@@ -12,6 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="manifest.json" />
+
       <body>{children}</body>
     </html>
   );
