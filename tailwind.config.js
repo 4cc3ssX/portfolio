@@ -25,9 +25,6 @@ module.exports = {
 
         hint: "rgba(var(--hint-color), 1)",
         bar: "rgba(var(--bar-color), 1)",
-
-        card: "rgba(var(--card-color), 1)",
-        card800: "rgba(var(--card-color), 0.8)",
       },
       backgroundImage: {
         main: "url('/assets/svg/background-vector.svg')",

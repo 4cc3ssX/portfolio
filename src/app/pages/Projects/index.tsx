@@ -31,13 +31,20 @@ export default function Projects({ data }: Props) {
           }}
           className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-3/4 lg:w-7/12 px-6"
         >
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-col gap-y-1">
+            <div className="flex flex-row items-center gap-2">
+              <div>
+                <p className="font-sans font-medium text-xl sm:text-2xl">
+                  Projects I&apos;ve developed
+                </p>
+              </div>
+              <div className="w-4 h-1 rounded-full bg-primary shadow-primary" />
+            </div>
             <div>
-              <p className="font-sans font-medium text-xl sm:text-2xl">
-                Projects I&apos;ve developed
+              <p className="font-sans text-sm text-hint">
+                Internal-use and private projects are ignored.
               </p>
             </div>
-            <div className="w-4 h-1 rounded-full bg-primary shadow-primary" />
           </div>
           <div className="flex-1 mt-6">
             <div className="flex flex-col gap-10 sm:gap-6">
@@ -47,7 +54,7 @@ export default function Projects({ data }: Props) {
                     key={`project-${project.title}`}
                     className="relative h-full px-4 py-2 flex flex-col sm:flex-row gap-10"
                   >
-                    <div className="absolute -top-2 right-3 sm:inset-auto sm:relative flex-none group w-14 h-14 -z-10">
+                    <div className="absolute -top-2 right-3 sm:inset-auto sm:relative flex-none group w-14 h-14 -z-10 sm:z-10">
                       <div className="absolute -top-2.5 -left-3 -rotate-6 group-hover:-rotate-1 group-hover:-left-1 group-hover:-top-1 transition-all duration-300 w-14 h-14 bg-white/20 rounded-xl" />
                       <div className="absolute -bottom-2.5 -right-3 rotate-6 group-hover:rotate-1 group-hover:-right-1 group-hover:-bottom-1 transition-all duration-300 w-14 h-14 bg-white/20 rounded-xl" />
                       <Image
@@ -59,7 +66,7 @@ export default function Projects({ data }: Props) {
                         blurDataURL={project.image.blurhash_url}
                         className="rounded-xl"
                         style={{
-                          objectFit: 'cover',
+                          objectFit: "cover",
                           filter: `drop-shadow(0 0 10px ${project.tint_color})`,
                         }}
                       />

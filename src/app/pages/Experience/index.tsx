@@ -49,7 +49,7 @@ export default function Experience({ data }: Props) {
             </div>
             <div className="w-4 h-1 rounded-full bg-primary shadow-primary" />
           </div>
-          <div className="flex-1 flex flex-col md:flex-row items-start">
+          <div className="mt-2 flex-1 flex flex-col md:flex-row items-start">
             <div className="relative flex flex-row md:flex-col justify-center md:justify-start items-start flex-wrap">
               <div className="hidden md:block absolute left-0 inset-y-0 w-0.5 h-full bg-bar -z-10" />
               {sortedData.map((data) => {
