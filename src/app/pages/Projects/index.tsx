@@ -83,7 +83,7 @@ export default function Projects({ data }: Props) {
                               {project.title}
                             </Link>
                           </div>
-                          <button onClick={() => openURL(project.link)}>
+                          <button title={`Visit - ${project.title}`} onClick={() => openURL(project.link)}>
                             <BsBoxArrowUpRight />
                           </button>
                         </div>
