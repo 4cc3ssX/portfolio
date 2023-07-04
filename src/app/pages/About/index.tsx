@@ -3,12 +3,18 @@
 import { motion } from "framer-motion";
 
 import { IAboutMe } from "@/types";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { sanitizeHTML } from "@/lib";
 
 interface Props extends IAboutMe {}
 
 export default function About({ description, skills, want_to_try }: Props) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const sanitizedHTML = useMemo(
     () => sanitizeHTML(description),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,17 +36,17 @@ export default function About({ description, skills, want_to_try }: Props) {
         >
           <div className="flex flex-row items-center gap-2">
             <div>
-              <p className="font-sans font-medium text-2xl">
-                About Me
-              </p>
+              <p className="font-sans font-medium text-2xl">About Me</p>
             </div>
             <div className="w-4 h-1 rounded-full bg-primary shadow-primary" />
           </div>
           <div>
-            <p
-              className="font-sans text-base leading-7 sm:leading-8 whitespace-pre-line hyphens-auto"
-              dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
-            />
+            {isClient && (
+              <p
+                className="font-sans text-base leading-7 sm:leading-8 whitespace-pre-line hyphens-auto"
+                dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
+              />
+            )}
           </div>
           <div className="mt-1 flex flex-col justify-start gap-2">
             <div>
@@ -55,15 +61,13 @@ export default function About({ description, skills, want_to_try }: Props) {
                     key={skill}
                     className="px-4 py-1 bg-primary50 border border-primary200 rounded-md"
                   >
-                    <p className="font-sans text-sm text-primary">
-                      {skill}
-                    </p>
+                    <p className="font-sans text-sm text-primary">{skill}</p>
                   </div>
                 );
               })}
             </div>
           </div>
-          <div className="flex flex-col justify-start gap-2">
+          <div className="mt-1 flex flex-col justify-start gap-2">
             <div>
               <p className="font-sans font-medium text-lg sm:text-xl">
                 Things I&apos;d love to try.
@@ -76,9 +80,7 @@ export default function About({ description, skills, want_to_try }: Props) {
                     key={wantToTry}
                     className="px-4 py-1 bg-secondary rounded-md"
                   >
-                    <p className="font-sans text-sm text-white">
-                      {wantToTry}
-                    </p>
+                    <p className="font-sans text-sm text-white">{wantToTry}</p>
                   </div>
                 );
               })}

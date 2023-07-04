@@ -41,13 +41,20 @@ export default function Experience({ data }: Props) {
           }}
           className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-3/4 lg:w-7/12 h-auto md:min-h-[75%] px-6"
         >
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-col gap-y-1">
+            <div className="flex flex-row items-center gap-2">
+              <div>
+                <p className="font-sans font-medium text-xl sm:text-2xl">
+                  Experience
+                </p>
+              </div>
+              <div className="w-4 h-1 rounded-full bg-primary shadow-primary" />
+            </div>
             <div>
-              <p className="font-sans font-medium text-xl sm:text-2xl">
-                Experience
+              <p className="font-sans text-sm text-hint">
+                Experiences with non-profit organizations are excluded.
               </p>
             </div>
-            <div className="w-4 h-1 rounded-full bg-primary shadow-primary" />
           </div>
           <div className="mt-2 flex-1 flex flex-col md:flex-row items-start">
             <div className="relative flex flex-row md:flex-col justify-center md:justify-start items-start flex-wrap">
