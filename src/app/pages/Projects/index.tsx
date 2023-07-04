@@ -2,11 +2,6 @@
 
 import { IProject } from "@/types";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { BsBoxArrowUpRight } from "react-icons/bs";
-import { openURL } from "@/utils";
-import dayjs from "dayjs";
 import { useMemo } from "react";
 import { ProjectCard } from "./components";
 
