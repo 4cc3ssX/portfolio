@@ -8,7 +8,7 @@ export const handleNavigate = (
   }
 };
 
-export const openURL = (url: string, external?: boolean) => {
+export const openURL = (url: string, external: boolean = false) => {
   if (external) {
     window.open(url, "_blank");
   } else {

@@ -45,7 +45,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             </div>
             <button
               title={`Visit - ${project.title}`}
-              onClick={() => openURL(project.link)}
+              onClick={() => openURL(project.link, true)}
             >
               <BsBoxArrowUpRight />
             </button>

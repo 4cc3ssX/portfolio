@@ -14,17 +14,16 @@ export default function Contact({ message, data }: Props) {
     openURL(
       `mailto:${data.email}?subject=${encodeURIComponent(
         "Collaboration Opportunity: Let's Create Something Amazing!"
-      )}`
+      )}`,
+      true
     );
   }, [data.email]);
   return (
-    <div
-      id="contact"
-      className="relative flex pt-14 min-h-screen"
-    >
+    <div id="contact" className="relative flex pt-14 min-h-screen">
       <div className="absolute left-0 right-0 bottom-8">
         <p className="font-sans text-xs text-hint text-center">
-          Designed & Built by <span className="font-medium">{data.nickname}</span>
+          Designed & Built by{" "}
+          <span className="font-medium">{data.nickname}</span>
         </p>
       </div>
       <div className="flex flex-1 flex-col justify-center items-center">
