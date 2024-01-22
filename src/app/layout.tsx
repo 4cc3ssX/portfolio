@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -17,7 +18,10 @@ export default function RootLayout({
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="manifest" href="manifest.webmanifest" />
 
-      <body>{children}</body>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
