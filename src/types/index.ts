@@ -1,8 +1,3 @@
-export interface INavLink {
-  name: string;
-  path: string;
-}
-
 export interface IMe {
   name: string;
   nickname: string;
