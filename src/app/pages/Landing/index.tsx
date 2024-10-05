@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { IMe } from "@/types";
 import { handleNavigate } from "@/utils";
-import { links } from "@/data";
+import { links } from "@/data/nav-links";
 
 interface Props extends IMe {}
 

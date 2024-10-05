@@ -1,6 +1,9 @@
-import { INavLink } from "@/types";
+export interface INavLink {
+  name: string;
+  path: string;
+}
 
-export const links: INavLink[] = [
+export const navLinks: INavLink[] = [
   {
     name: "About",
     path: "/#about",

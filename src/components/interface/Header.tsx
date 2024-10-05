@@ -1,6 +1,6 @@
 "use client";
 
-import { links } from "@/data";
+import { links } from "@/data/nav-links";
 import { IMe, INavLink } from "@/types";
 import { handleNavigate, openURL } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
