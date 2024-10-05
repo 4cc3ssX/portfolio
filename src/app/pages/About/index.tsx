@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { IAboutMe } from "@/types";
 import { useEffect, useMemo, useState } from "react";
-import { sanitizeHTML } from "@/lib";
+import { sanitizeHTML } from "@/helpers/sanitize-html";
 
 interface Props extends IAboutMe {}
 
