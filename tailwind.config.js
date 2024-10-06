@@ -2,6 +2,7 @@ const { fontFamily, colors } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -14,35 +15,56 @@ module.exports = {
     extend: {
       colors: {
         ...colors,
-        background: "rgba(var(--background-color), 1)",
-        color: "rgba(var(--foreground-color), 1)",
-
-        primary: "rgba(var(--primary-color), 1)",
-        primary50: "rgba(var(--primary-color), 0.05)",
-        primary200: "rgba(var(--primary-color), 0.2)",
-
-        secondary: "rgba(var(--secondary-color), 1)",
-
-        hint: "rgba(var(--hint-color), 1)",
-        bar: "rgba(var(--bar-color), 1)",
+        background: "hsl(var(--background))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
+        },
       },
-      backgroundImage: {
-        main: "url('/assets/svg/background-vector.svg')",
-        header:
-          "linear-gradient(180deg, rgba(60, 60, 60, 0.15) 0%, rgba(60, 60, 60, 0) 100%)",
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         sans: ["var(--font-Poppins)", ...fontFamily.sans],
       },
-      boxShadow: {
-        primary: "0 0 10px rgba(var(--primary-color), 0.4)",
-        secondary: "0 0 10px rgba(var(--secondary-color), 0.2)",
-      },
-      borderColor: {
-        primary200: "rgba(var(--primary-color), 0.2)",
-        primary500: "rgba(var(--primary-color), 0.5)",
-      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
