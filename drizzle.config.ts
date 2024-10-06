@@ -1,14 +1,16 @@
-import { config } from "dotenv";
+import { dbConfigs } from "@/shared/configs/db";
 import { defineConfig } from "drizzle-kit";
 
-config({ path: ".env.local" });
-
 export default defineConfig({
-  schema: "./src/shared/db/schema",
+  schema: "./src/shared/db/schema/*",
   out: "./supabase/migrations",
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL!,
+    host: dbConfigs.getHost(),
+    port: dbConfigs.getPort(),
+    user: dbConfigs.getUser(),
+    password: dbConfigs.getPassword(),
+    database: dbConfigs.getName(),
   },
   migrations: {
     prefix: "supabase",
