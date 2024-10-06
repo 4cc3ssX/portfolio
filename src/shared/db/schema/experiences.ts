@@ -7,13 +7,13 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { companiesTable } from "./companies";
+import { companies, CompanySelect, CompanyWithLink } from "./companies";
 
-export const experiencesTable = pgTable("experiences", {
+export const experiences = pgTable("experiences", {
   id: serial("id").primaryKey(),
   companyId: integer("company_id")
     .notNull()
-    .references(() => companiesTable.id, {
+    .references(() => companies.id, {
       onUpdate: "cascade",
       onDelete: "restrict",
     }),
@@ -27,4 +27,7 @@ export const experiencesTable = pgTable("experiences", {
     .$onUpdate(() => new Date()),
 });
 
-export type ExperienceSelect = typeof experiencesTable.$inferSelect;
+export type ExperienceSelect = typeof experiences.$inferSelect;
+export type ExperienceWithCompany = Omit<ExperienceSelect, "companyId"> & {
+  company: CompanyWithLink;
+};

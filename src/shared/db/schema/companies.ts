@@ -1,12 +1,12 @@
 import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
-import { linksTable } from "./links";
+import { links } from "./links";
 
-export const companiesTable = pgTable("companies", {
+export const companies = pgTable("companies", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   linkId: integer("link_id")
     .notNull()
-    .references(() => linksTable.id, {
+    .references(() => links.id, {
       onUpdate: "cascade",
       onDelete: "cascade",
     }),
@@ -16,4 +16,7 @@ export const companiesTable = pgTable("companies", {
     .$onUpdate(() => new Date()),
 });
 
-export type CompanySelect = typeof companiesTable.$inferSelect;
+export type CompanySelect = typeof companies.$inferSelect;
+export type CompanyWithLink = Omit<CompanySelect, "linkId"> & {
+  uri: string | null;
+};

@@ -1,12 +1,28 @@
-import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
-import { usersTable } from "./users";
+import {
+  integer,
+  pgEnum,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+} from "drizzle-orm/pg-core";
+import { users } from "./users";
+import { enumToPgEnum } from "@/utils/pg";
 
-export const linksTable = pgTable("links", {
+export enum LinkType {
+  SOCIAL = "social",
+  PROJECT = "project",
+  EXTERNAL = "external",
+}
+
+const typeEnum = pgEnum("type", enumToPgEnum(LinkType));
+
+export const links = pgTable("links", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  type: text("type").notNull(),
+  type: typeEnum("type").default(LinkType.EXTERNAL),
   uri: text("uri").notNull(),
-  userId: integer("user_id").references(() => usersTable.id, {
+  userId: integer("user_id").references(() => users.id, {
     onDelete: "cascade",
   }),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -15,4 +31,4 @@ export const linksTable = pgTable("links", {
     .$onUpdate(() => new Date()),
 });
 
-export type LinkSelect = typeof linksTable.$inferSelect;
+export type LinkSelect = typeof links.$inferSelect;

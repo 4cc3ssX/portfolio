@@ -1,6 +1,6 @@
 import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
-export const tagsTable = pgTable("tags", {
+export const tags = pgTable("tags", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -9,4 +9,4 @@ export const tagsTable = pgTable("tags", {
     .$onUpdate(() => new Date()),
 });
 
-export type TagSelect = typeof tagsTable.$inferSelect;
+export type TagSelect = typeof tags.$inferSelect;

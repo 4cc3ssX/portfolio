@@ -1,6 +1,7 @@
 import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { LinkSelect } from "./links";
 
-export const usersTable = pgTable("users", {
+export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   nickname: text("nickname").notNull(),
@@ -12,4 +13,7 @@ export const usersTable = pgTable("users", {
     .$onUpdate(() => new Date()),
 });
 
-export type UserSelect = typeof usersTable.$inferSelect;
+export type UserSelect = typeof users.$inferSelect;
+export type UserWithLinks = UserSelect & {
+  links: LinkSelect[];
+};

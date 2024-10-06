@@ -1,18 +1,18 @@
 import { integer, pgTable, serial, timestamp } from "drizzle-orm/pg-core";
-import { projectsTable } from "./projects";
-import { tagsTable } from "./tags";
+import { projects } from "./projects";
+import { tags } from "./tags";
 
-export const projectTagsTable = pgTable("project_tags", {
+export const projectTags = pgTable("project_tags", {
   id: serial("id").primaryKey(),
   projectId: integer("project_id")
     .notNull()
-    .references(() => projectsTable.id, {
+    .references(() => projects.id, {
       onUpdate: "cascade",
       onDelete: "cascade",
     }),
   tagId: integer("tag_id")
     .notNull()
-    .references(() => tagsTable.id, {
+    .references(() => tags.id, {
       onUpdate: "cascade",
       onDelete: "cascade",
     }),
