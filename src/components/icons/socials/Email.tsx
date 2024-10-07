@@ -7,7 +7,7 @@ const Email = (props: SVGProps<SVGSVGElement>) => (
     width={18}
     height={18}
     viewBox="0 0 24 24"
-    fill="#847ba6"
+    fill="hsl(var(--primary))"
     {...props}
   >
     <g data-name="Layer 2">

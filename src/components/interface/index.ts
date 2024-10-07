@@ -1,4 +1,3 @@
-import Header from "./Header";
-import ContactLinks from "./ContactLinks";
-
-export { Header, ContactLinks };
+export * from "./header";
+export * from "./contact-links";
+export * from "./theme-provider";

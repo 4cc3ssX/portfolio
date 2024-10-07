@@ -62,7 +62,7 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-quicksand)", ...fontFamily.sans],
+        sans: [...fontFamily.sans],
       },
     },
   },

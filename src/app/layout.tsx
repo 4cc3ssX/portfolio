@@ -3,19 +3,13 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
-import { Quicksand } from "next/font/google";
+import { Header, ThemeProvider } from "@/components/interface";
+import Loading from "../components/interface/loading";
 
 export const metadata = {
   title: "Ryam",
   description: "A Software Engineer",
 };
-
-const quicksand = Quicksand({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  style: "normal",
-  variable: "--font-quicksand",
-});
 
 export default function RootLayout({
   children,
@@ -23,16 +17,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="manifest" href="manifest.webmanifest" />
 
-      <body className={quicksand.variable}>
-        {children}
-        <Toaster />
-        <SpeedInsights />
-        <Analytics />
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Toaster />
+          <SpeedInsights />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );
