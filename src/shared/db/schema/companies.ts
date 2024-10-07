@@ -1,8 +1,13 @@
 import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 import { links } from "./links";
+import { images, ImageSelect } from "./images";
 
 export const companies = pgTable("companies", {
   id: serial("id").primaryKey(),
+  imageId: integer("image_id").references(() => images.id, {
+    onUpdate: "cascade",
+    onDelete: "restrict",
+  }),
   name: text("name").notNull(),
   linkId: integer("link_id")
     .notNull()
@@ -17,6 +22,10 @@ export const companies = pgTable("companies", {
 });
 
 export type CompanySelect = typeof companies.$inferSelect;
-export type CompanyWithLink = Omit<CompanySelect, "linkId"> & {
+export type CompanyWithImageAndLink = Omit<
+  CompanySelect,
+  "linkId" | "imageId"
+> & {
+  image: ImageSelect;
   uri: string | null;
 };

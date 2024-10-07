@@ -7,7 +7,7 @@ import {
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { companies, CompanySelect, CompanyWithLink } from "./companies";
+import { companies, CompanyWithImageAndLink } from "./companies";
 
 export const experiences = pgTable("experiences", {
   id: serial("id").primaryKey(),
@@ -29,5 +29,5 @@ export const experiences = pgTable("experiences", {
 
 export type ExperienceSelect = typeof experiences.$inferSelect;
 export type ExperienceWithCompany = Omit<ExperienceSelect, "companyId"> & {
-  company: CompanyWithLink;
+  company: CompanyWithImageAndLink;
 };

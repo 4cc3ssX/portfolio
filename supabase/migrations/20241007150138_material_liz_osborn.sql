@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS "companies" (
 	"id" serial PRIMARY KEY NOT NULL,
+	"image_id" integer,
 	"name" text NOT NULL,
 	"link_id" integer NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
@@ -17,11 +18,19 @@ CREATE TABLE IF NOT EXISTS "experiences" (
 	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "tags" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
 	"nickname" text NOT NULL,
 	"email" text NOT NULL,
+	"slogan" text NOT NULL,
 	"message" text NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
@@ -30,7 +39,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 CREATE TABLE IF NOT EXISTS "links" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
-	"type" text NOT NULL,
+	"type" "type" DEFAULT 'external',
 	"uri" text NOT NULL,
 	"user_id" integer,
 	"created_at" timestamp DEFAULT now() NOT NULL,
@@ -46,13 +55,6 @@ CREATE TABLE IF NOT EXISTS "projects" (
 	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "tags" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"name" text NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp NOT NULL
-);
---> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "project_tags" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"project_id" integer NOT NULL,
@@ -60,6 +62,12 @@ CREATE TABLE IF NOT EXISTS "project_tags" (
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "companies" ADD CONSTRAINT "companies_image_id_tags_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."tags"("id") ON DELETE restrict ON UPDATE cascade;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "companies" ADD CONSTRAINT "companies_link_id_links_id_fk" FOREIGN KEY ("link_id") REFERENCES "public"."links"("id") ON DELETE cascade ON UPDATE cascade;

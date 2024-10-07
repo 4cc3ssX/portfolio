@@ -6,6 +6,7 @@ export const users = pgTable("users", {
   name: text("name").notNull(),
   nickname: text("nickname").notNull(),
   email: text("email").notNull(),
+  slogan: text("slogan").notNull(),
   message: text("message").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at")
@@ -15,5 +16,5 @@ export const users = pgTable("users", {
 
 export type UserSelect = typeof users.$inferSelect;
 export type UserWithLinks = UserSelect & {
-  links: LinkSelect[];
+  links: Omit<LinkSelect, "userId">[];
 };

@@ -1,5 +1,6 @@
 import { companies } from "./companies";
 import { experiences } from "./experiences";
+import { images } from "./images";
 import { links } from "./links";
 import { projects } from "./projects";
 import { tags } from "./tags";
@@ -12,6 +13,7 @@ export const schema = {
   tags,
   experiences,
   companies,
+  images,
 };
 
 export * from "./users";
@@ -21,3 +23,4 @@ export * from "./tags";
 export * from "./project-tags";
 export * from "./experiences";
 export * from "./companies";
+export * from "./images";
