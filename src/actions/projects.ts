@@ -1,22 +1,28 @@
 import { db } from "@/shared/db";
-import { links, projects, projectTags, tags } from "@/shared/db/schema";
+import {
+  links,
+  projects,
+  projectTags,
+  ProjectWithLinkAndTags,
+  tags,
+} from "@/shared/db/schema";
 import { desc, eq, sql } from "drizzle-orm";
 
-export const getProjects = async () => {
+export const getProjects = async (): Promise<ProjectWithLinkAndTags[]> => {
   const result = await db
     .select({
       id: projects.id,
       name: projects.name,
       description: projects.description,
       link: links.uri,
-      tags: sql<string[]>`array_agg(${tags.name})`.as("tags"),
+      tags: sql<string[]>`ARRAY_AGG(${tags.name})`.as("tags"),
       createdAt: projects.createdAt,
       updatedAt: projects.updatedAt,
     })
     .from(projects)
+    .innerJoin(links, eq(links.id, projects.linkId))
     .leftJoin(projectTags, eq(projectTags.projectId, projects.id))
     .leftJoin(tags, eq(tags.id, projectTags.tagId))
-    .leftJoin(links, eq(links.id, projects.linkId))
     .groupBy(projects.id, links.uri)
     .orderBy(desc(projects.createdAt));
 

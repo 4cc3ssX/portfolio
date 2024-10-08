@@ -8,12 +8,12 @@ import {
 } from "drizzle-orm/pg-core";
 import { users } from "./users";
 
-export const images = pgTable("tags", {
+export const images = pgTable("images", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   uri: text("uri").notNull(),
-  thumbnailUri: text("thumbnail_uri"),
-  blurHash: text("blur_hash"),
+  thumbnailUri: text("thumbnail_uri").notNull(),
+  blurHash: text("blur_hash").notNull(),
   metadata: json("metadata"),
   userId: integer("user_id").references(() => users.id, {
     onUpdate: "cascade",
