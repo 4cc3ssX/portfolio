@@ -3,11 +3,20 @@
 import { INavLink, navLinks } from "@/data/nav-links";
 import { UserWithLinks } from "@/shared/db/schema";
 import { handleNavigate } from "@/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, delay, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
+import { Button } from "../ui/button";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
-export const Header = () => {
+interface Props {
+  data: UserWithLinks;
+}
+
+export const Header = ({ data }: Props) => {
+  const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
+
   const [isOpen, setOpen] = useState(false);
   const [path, setPath] = useState<string>("");
 
@@ -29,7 +38,11 @@ export const Header = () => {
   return (
     <motion.div
       initial={{ y: -64, top: 0, opacity: 0 }}
-      animate={{ y: 0, top: 12, opacity: 1 }}
+      animate={{
+        y: 0,
+        top: isSmallDevice ? 0 : 12,
+        opacity: 1,
+      }}
       transition={{
         duration: 0.5,
         ease: "easeIn",
@@ -50,9 +63,29 @@ export const Header = () => {
           delay: 0.8,
         }}
         className={`${
-          isOpen ? "h-screen" : "h-12"
-        } md:h-10 border border-muted rounded-full bg-background/50 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-center items-center px-4 md:px-10 py-3 transition-all duration-200 ease-out`}
+          isOpen ? "h-dvh" : "h-12"
+        } w-full md:w-auto md:h-10 md:border md:border-muted md:rounded-full bg-background/50 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-center items-center px-4 md:px-10 py-3 transition-all duration-200 ease-out`}
       >
+        <Button
+          variant="ghost"
+          className="md:hidden self-end"
+          title="Open Menu"
+          onClick={() => setOpen(!isOpen)}
+        >
+          <AnimatePresence initial={false} mode="wait">
+            {isOpen ? (
+              <IoCloseOutline
+                size={20}
+                className="text-white active:text-primary"
+              />
+            ) : (
+              <IoMenuOutline
+                size={20}
+                className="text-white active:text-primary"
+              />
+            )}
+          </AnimatePresence>
+        </Button>
         <div
           className={`${
             isOpen
@@ -71,7 +104,7 @@ export const Header = () => {
                 >
                   <Link
                     href={link.path}
-                    className="font-normal text-white text-xl sm:text-sm"
+                    className="font-normal text-white text-lg sm:text-sm"
                     scroll={false}
                     onClick={() => onClickLink(link)}
                   >

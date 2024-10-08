@@ -4,9 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Loading() {
   return (
-    <div
-      className="w-screen h-screen flex flex-col justify-center items-center font-sans"
-    >
+    <div className="w-screen h-dvh flex flex-col justify-center items-center font-sans">
       <div className="flex flex-col items-center gap-2">
         <motion.p
           className="text-base"
@@ -22,7 +20,7 @@ export default function Loading() {
         >
           Getting ready...
         </motion.p>
-        <div className="relative w-48 h-0.5 rounded-ful bg-secondary-foreground overflow-hidden">
+        <div className="relative w-48 h-0.5 rounded-ful bg-secondary overflow-hidden">
           <motion.div
             className="absolute inset-y-0 left-0 right-0 bg-foreground rounded-full"
             initial={{
