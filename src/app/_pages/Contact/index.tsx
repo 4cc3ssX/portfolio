@@ -44,7 +44,7 @@ export default function Contact({ user }: Props) {
                 What&apos;s Next?
               </p>
             </div>
-            <div className="w-12 h-1 rounded-full bg-primary shadow-primary" />
+            <div className="w-10 h-0.5 rounded-full bg-blue-500 shadow-lg shadow-blue-500" />
           </div>
           <div className="flex-none flex flex-col items-center">
             <p className="text-base leading-8 tracking-wide hyphens-auto text-center">
