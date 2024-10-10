@@ -18,8 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="icon" href="/images/favicon.ico" sizes="any" />
+      <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
       <link rel="manifest" href="manifest.webmanifest" />
 
       <body>
