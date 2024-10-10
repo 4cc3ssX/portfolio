@@ -1,9 +1,8 @@
 "use client";
 
 import { INavLink, navLinks } from "@/data/nav-links";
-import { UserWithLinks } from "@/shared/db/schema";
 import { handleNavigate } from "@/utils";
-import { AnimatePresence, delay, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
