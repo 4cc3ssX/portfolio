@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1728313298195,
-      "tag": "20241007150138_material_liz_osborn",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1728314583400,
-      "tag": "20241007152303_violet_valkyrie",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1728551793629,
-      "tag": "20241010091633_complex_phantom_reporter",
+      "when": 1728553761501,
+      "tag": "20241010094921_dry_karma",
       "breakpoints": true
     }
   ]

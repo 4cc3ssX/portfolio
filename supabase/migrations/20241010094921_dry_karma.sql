@@ -11,16 +11,21 @@ CREATE TABLE IF NOT EXISTS "experiences" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"company_id" integer NOT NULL,
 	"position" text NOT NULL,
-	"start_at" date NOT NULL,
-	"end_at" date DEFAULT now(),
+	"started_at" date NOT NULL,
+	"ended_at" date DEFAULT now(),
 	"is_active" boolean DEFAULT false,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE IF NOT EXISTS "tags" (
+CREATE TABLE IF NOT EXISTS "images" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
+	"uri" text NOT NULL,
+	"thumbnail_uri" text NOT NULL,
+	"blur_hash" text NOT NULL,
+	"metadata" json,
+	"user_id" integer,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
@@ -51,6 +56,16 @@ CREATE TABLE IF NOT EXISTS "projects" (
 	"name" text NOT NULL,
 	"description" text NOT NULL,
 	"link_id" integer NOT NULL,
+	"is_active" boolean NOT NULL,
+	"started_at" timestamp NOT NULL,
+	"ended_at" timestamp,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "tags" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
@@ -64,7 +79,7 @@ CREATE TABLE IF NOT EXISTS "project_tags" (
 );
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "companies" ADD CONSTRAINT "companies_image_id_tags_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."tags"("id") ON DELETE restrict ON UPDATE cascade;
+ ALTER TABLE "companies" ADD CONSTRAINT "companies_image_id_images_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."images"("id") ON DELETE restrict ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -77,6 +92,12 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "experiences" ADD CONSTRAINT "experiences_company_id_companies_id_fk" FOREIGN KEY ("company_id") REFERENCES "public"."companies"("id") ON DELETE restrict ON UPDATE cascade;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "images" ADD CONSTRAINT "images_user_id_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
