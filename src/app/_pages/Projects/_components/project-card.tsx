@@ -11,7 +11,6 @@ export interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
-  console.log(project);
   return (
     <ParallaxCard onClick={() => openURL(project.link, true)}>
       <div className="flex flex-col gap-y-2 rounded-xl bg-gradient-to-br from-secondary to-background px-5 py-4">
