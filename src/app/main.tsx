@@ -21,19 +21,17 @@ interface Props {
 export default function Main({ me, experiences, projects }: Props) {
   return (
     <main className="font-sans">
-      <Header data={me} />
-      {/* <ContactLinks data={me} /> */}
-      <div className="w-screen h-screen overflow-x-hidden overflow-y-scroll scroll-smooth">
-        {/* Landing */}
+      <ContactLinks data={me} />
+      <div className="w-screen h-dvh overflow-x-hidden overflow-y-scroll scroll-smooth">
         <Landing data={me} />
-        {/* About */}
-        {/* <About {...about} /> */}
-        {/* Experience */}
+
+        <About data={me} />
+
         <Experience data={experiences} />
-        {/* Projects */}
+
         <Projects data={projects} />
-        {/* Contact */}
-        {/* <Contact {...contact} data={intro} /> */}
+
+        <Contact user={me} />
       </div>
     </main>
   );

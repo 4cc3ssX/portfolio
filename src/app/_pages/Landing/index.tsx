@@ -32,8 +32,8 @@ const Landing = ({ data }: Props) => {
             <p className="text-sm md:text-base">Hi, I&apos;m {data.nickname}!</p>
             <p className="font-bold text-4xl md:text-5xl">{data.slogan}</p>
             <p className="text-sm md:text-base">
-              I'm a full-stack software engineer based in{" "}
-              <span className="underline cursor-pointer">Bangkok</span>, who
+              I&apos;m a full-stack software engineer based in{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">Bangkok</span>, who
               loves at breaking things, building cutting-edge, accessible and
               well-optimized apps.
             </p>
