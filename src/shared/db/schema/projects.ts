@@ -1,5 +1,5 @@
-import { integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
-import { links, LinkSelect } from "./links";
+import { boolean, date, integer, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { links } from "./links";
 
 export const projects = pgTable("projects", {
   id: serial("id").primaryKey(),
@@ -11,6 +11,9 @@ export const projects = pgTable("projects", {
       onUpdate: "cascade",
       onDelete: "cascade",
     }),
+  isActive: boolean("is_active").notNull(),
+  startedAt: date("started_at").notNull(),
+  endedAt: date("ended_at"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at")
     .notNull()
