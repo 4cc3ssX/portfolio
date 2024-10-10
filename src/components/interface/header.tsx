@@ -6,13 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { Menu, X } from "lucide-react";
+import { useSmallDevice } from "@/shared/hooks/use-small-device";
 
 interface Props {}
 
 export const Header = ({}: Props) => {
-  const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
+  const isSmallDevice = useSmallDevice();
 
   const [isOpen, setOpen] = useState(false);
   const [path, setPath] = useState<string>("");

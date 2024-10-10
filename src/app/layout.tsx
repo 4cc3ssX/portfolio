@@ -4,7 +4,6 @@ import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 import { Header, ThemeProvider } from "@/components/interface";
-import Loading from "../components/interface/loading";
 
 export const metadata = {
   title: "Ryam",
