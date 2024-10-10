@@ -10,11 +10,9 @@ import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-interface Props {
-  data: UserWithLinks;
-}
+interface Props {}
 
-export const Header = ({ data }: Props) => {
+export const Header = ({}: Props) => {
   const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
 
   const [isOpen, setOpen] = useState(false);
