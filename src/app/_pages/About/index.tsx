@@ -26,17 +26,45 @@ export default function About({ data }: Props) {
           </div>
           <div>
             <p className="text-base whitespace-pre-line hyphens-auto">
-              Hi, I&apos;m Ryam! I&apos;m an experienced web and mobile app
-              developer specializing in React, React Native, Typescript, and
-              Javascript. I have a passion for crafting high-performance apps
-              that solve real-world problems and provide a delightful user
-              experience.
-              
-              With years of experience under my belt, I&apos;m
-              confident in my ability to bring your ideas to life. And, as
-              someone with a keen eye for design, I also have a strong interest
-              in UI/UX, ensuring that every app I create is both functional and
-              visually appealing.
+              I&apos;m Ryam, an experienced web and mobile app developer with
+              expertise across the full stack. I specialize in building
+              high-performance applications using technologies like{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                React
+              </span>
+              ,{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                React Native
+              </span>
+              , and{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                TypeScript
+              </span>{" "}
+              for the frontend, while leveraging{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                NestJS
+              </span>
+              ,{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                MongoDB
+              </span>
+              , and event-driven architectures for the backend. My skill set
+              also includes working with real-time communication through{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                Socket.io
+              </span>
+              , managing queues with{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                BullMQ
+              </span>{" "}
+              and{" "}
+              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
+                Kafka
+              </span>
+              , and handling large-scale systems with a focus on scalability,
+              efficiency, and seamless user experiences. I&apos;m passionate
+              about creating solutions that not only meet technical requirements
+              but also deliver exceptional user satisfaction.
             </p>
           </div>
         </motion.div>
