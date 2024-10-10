@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMemo } from "react";
 import { ProjectCard } from "./_components";
 import { ProjectWithLinkAndTags } from "@/shared/db/schema";
 

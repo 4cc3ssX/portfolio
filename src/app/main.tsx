@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, ContactLinks } from "@/components/interface";
+import { ContactLinks } from "@/components/interface";
 import About from "./_pages/About";
 import Contact from "./_pages/Contact";
 import Experience from "./_pages/Experience";
