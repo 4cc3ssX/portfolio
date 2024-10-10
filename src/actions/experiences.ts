@@ -3,6 +3,7 @@ import {
   companies,
   CompanyWithImageAndLink,
   experiences,
+  ExperienceWithCompany,
   images,
   links,
 } from "@/shared/db/schema";
@@ -26,14 +27,14 @@ const populateCompany = sql<CompanyWithImageAndLink>`JSONB_BUILD_OBJECT(
     'updated_at', ${companies.updatedAt}
 )`;
 
-export const getExperiences = async () => {
+export const getExperiences = async (): Promise<ExperienceWithCompany[]> => {
   const result = await db
     .select({
       id: experiences.id,
       company: populateCompany.as("company"),
       position: experiences.position,
-      startAt: experiences.startAt,
-      endAt: experiences.endAt,
+      startedAt: experiences.startedAt,
+      endedAt: experiences.endedAt,
       isActive: experiences.isActive,
       createdAt: experiences.createdAt,
       updatedAt: experiences.updatedAt,
@@ -42,13 +43,8 @@ export const getExperiences = async () => {
     .leftJoin(companies, eq(experiences.companyId, companies.id))
     .leftJoin(links, eq(companies.linkId, links.id))
     .leftJoin(images, eq(companies.imageId, images.id))
-    .groupBy(
-      experiences.id,
-      companies.id,
-      images.id,
-      links.uri
-    )
-    .orderBy(desc(experiences.startAt));
+    .groupBy(experiences.id, companies.id, images.id, links.uri)
+    .orderBy(desc(experiences.startedAt));
 
   return result;
 };

@@ -45,7 +45,7 @@ export const ExperienceCard = ({ experience }: ExperienceCardProps) => {
       </div>
       <div className="flex flex-row items-center justify-start gap-2">
         <p className="text-sm text-muted-foreground text-left">
-          {dayjs(experience.startAt).format("MMM YYYY")}
+          {dayjs(experience.startedAt).format("MMM YYYY")}
           {" - "}
           <span
             className={`${
@@ -54,7 +54,7 @@ export const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           >
             {experience.isActive
               ? "Present"
-              : dayjs(experience.endAt).format("MMM YYYY")}
+              : dayjs(experience.endedAt).format("MMM YYYY")}
           </span>
         </p>
       </div>

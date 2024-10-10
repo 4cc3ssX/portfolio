@@ -1,9 +1,8 @@
 "use client";
 
+import React from "react";
 import { ExperienceWithCompany } from "@/shared/db/schema";
-import dayjs from "dayjs";
-import { motion, AnimatePresence } from "framer-motion";
-import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { ExperienceCard } from "./_components/experience-card";
 
 interface Props {
