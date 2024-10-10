@@ -1,51 +1,37 @@
 "use client";
-import { Poppins } from "next/font/google";
 
 import { Header, ContactLinks } from "@/components/interface";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Experience from "./pages/Experience";
-import Landing from "./pages/Landing";
-import { IAboutMe, IContact, IExperience, IMe, IProject } from "@/types";
-import Projects from "./pages/Projects";
-
-const poppins = Poppins({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  style: "normal",
-  variable: "--font-Poppins",
-});
+import About from "./_pages/About";
+import Contact from "./_pages/Contact";
+import Experience from "./_pages/Experience";
+import Landing from "./_pages/Landing";
+import Projects from "./_pages/Projects";
+import {
+  ExperienceWithCompany,
+  ProjectWithLinkAndTags,
+  UserWithLinks,
+} from "@/shared/db/schema";
 
 interface Props {
-  intro: IMe;
-  about: IAboutMe;
-  experience: IExperience[];
-  projects: IProject[];
-  contact: IContact;
+  me: UserWithLinks;
+  experiences: ExperienceWithCompany[];
+  projects: ProjectWithLinkAndTags[];
 }
 
-export default function Main({
-  intro,
-  about,
-  experience,
-  projects,
-  contact,
-}: Props) {
+export default function Main({ me, experiences, projects }: Props) {
   return (
-    <main className={poppins.variable}>
-      <Header {...intro} />
-      <ContactLinks {...intro} />
-      <div className="w-screen h-screen overflow-x-hidden overflow-y-scroll scroll-smooth">
-        {/* Landing */}
-        <Landing {...intro} />
-        {/* About */}
-        <About {...about} />
-        {/* Experience */}
-        <Experience data={experience} />
-        {/* Projects */}
+    <main className="font-sans">
+      <ContactLinks data={me} />
+      <div className="w-screen h-dvh overflow-x-hidden overflow-y-scroll scroll-smooth">
+        <Landing data={me} />
+
+        <About data={me} />
+
+        <Experience data={experiences} />
+
         <Projects data={projects} />
-        {/* Contact */}
-        <Contact {...contact} data={intro} />
+
+        <Contact user={me} />
       </div>
     </main>
   );

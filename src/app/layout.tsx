@@ -1,7 +1,10 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
+import { Header, ThemeProvider } from "@/components/interface";
+import Loading from "../components/interface/loading";
 
 export const metadata = {
   title: "Ryam",
@@ -14,15 +17,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <html lang="en" suppressHydrationWarning>
+      <link rel="icon" href="/images/favicon.ico" sizes="any" />
+      <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
       <link rel="manifest" href="manifest.webmanifest" />
 
       <body>
-        {children}
-        <SpeedInsights />
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Toaster />
+          <SpeedInsights />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,4 +1,8 @@
-import Header from "./Header";
-import ContactLinks from "./ContactLinks";
+export * from "./header";
+export * from "./contact-links";
+export * from "./theme-provider";
+export * from "./parallax-card";
+export * from "./chip";
+export * from "./globe";
 
-export { Header, ContactLinks };
+export { default as Globe } from "./globe";

@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1728553761501,
+      "tag": "20241010094921_dry_karma",
+      "breakpoints": true
+    }
+  ]
+}
