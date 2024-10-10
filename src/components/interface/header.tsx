@@ -5,9 +5,9 @@ import { handleNavigate } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
 import { Button } from "../ui/button";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { Menu, X } from "lucide-react";
 
 interface Props {}
 
@@ -61,25 +61,19 @@ export const Header = ({}: Props) => {
         }}
         className={`${
           isOpen ? "h-dvh" : "h-12"
-        } w-full md:w-auto md:h-10 md:border md:border-muted md:rounded-full bg-background/50 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-center items-center px-4 md:px-10 py-3 transition-all duration-200 ease-out`}
+        } w-full relative md:w-auto md:h-10 md:border md:border-muted md:rounded-full bg-background/50 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-center items-center px-4 md:px-10 py-3 transition-all duration-200 ease-out`}
       >
         <Button
           variant="ghost"
-          className="md:hidden self-end"
+          className="md:hidden absolute top-1.5 right-4 self-center"
           title="Open Menu"
           onClick={() => setOpen(!isOpen)}
         >
-          <AnimatePresence initial={false} mode="wait">
+          <AnimatePresence initial={false} mode="sync">
             {isOpen ? (
-              <IoCloseOutline
-                size={20}
-                className="text-white active:text-primary"
-              />
+              <X size={20} className="text-white active:text-primary" />
             ) : (
-              <IoMenuOutline
-                size={20}
-                className="text-white active:text-primary"
-              />
+              <Menu size={20} className="text-white active:text-primary" />
             )}
           </AnimatePresence>
         </Button>

@@ -1,9 +1,9 @@
 import { ExperienceWithCompany } from "@/shared/db/schema";
 import { openURL } from "@/utils";
 import dayjs from "dayjs";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { BsBoxArrowUpRight } from "react-icons/bs";
 
 export interface ExperienceCardProps {
   experience: ExperienceWithCompany;
@@ -37,7 +37,7 @@ export const ExperienceCard = ({ experience }: ExperienceCardProps) => {
               title={`${experience.company.name}`}
               onClick={() => openURL(experience.company.uri!, true)}
             >
-              <BsBoxArrowUpRight />
+              <ExternalLink size={18} />
             </button>
           ) : null}
         </div>
