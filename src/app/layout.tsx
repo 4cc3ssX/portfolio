@@ -31,9 +31,17 @@ export default function RootLayout({
         >
           <Header />
           {children}
-          <Toaster />
           <SpeedInsights />
           <Analytics />
+          <Toaster
+            toastOptions={{
+              className:
+                "bg-background/50 backdrop-blur-lg md:backdrop-blur-sm",
+            }}
+            position="bottom-center"
+            duration={5000}
+            richColors
+          />
         </ThemeProvider>
       </body>
     </html>

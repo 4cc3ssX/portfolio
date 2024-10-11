@@ -11,6 +11,9 @@ import {
   ProjectWithLinkAndTags,
   UserWithLinks,
 } from "@/shared/db/schema";
+import { useEffect } from "react";
+import { toast } from "sonner";
+import { handleNavigate } from "@/utils";
 
 interface Props {
   me: UserWithLinks;
@@ -18,7 +21,33 @@ interface Props {
   projects: ProjectWithLinkAndTags[];
 }
 
+const INTRODUCTION_TIMEOUT = 8000; // 8s
+const INTRODUCTION_DURATION = 20000; // 20s
+
 export default function Main({ me, experiences, projects }: Props) {
+  const introduce = () => {
+    toast("Let's Connect", {
+      id: "intro-message",
+      description:
+        "Ready to chat? Reach out and let's bring your ideas to life!",
+      action: {
+        label: "Let's talk",
+        onClick: () => handleNavigate("#contact"),
+      },
+      duration: INTRODUCTION_DURATION,
+    });
+  };
+
+  useEffect(() => {
+    const introTimeout = setTimeout(() => {
+      introduce();
+    }, INTRODUCTION_TIMEOUT);
+
+    return () => {
+      introTimeout && clearTimeout(introTimeout);
+    };
+  }, []);
+
   return (
     <main className="font-sans">
       <ContactLinks data={me} />

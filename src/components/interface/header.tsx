@@ -18,16 +18,16 @@ export const Header = ({}: Props) => {
   const [path, setPath] = useState<string>("");
 
   const onClickLink = (link: INavLink) => {
-    handleNavigate(link.path, (path) => {
-      setOpen(false);
-      setPath(path);
-    });
+    handleNavigate(link.path);
+    setOpen(false);
+    setPath(path);
   };
 
   useEffect(() => {
     const initialPath = "/" + window.location.hash;
     if (initialPath !== "/") {
-      handleNavigate(initialPath, setPath);
+      handleNavigate(initialPath);
+      setPath(initialPath);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

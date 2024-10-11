@@ -75,7 +75,7 @@ export const ParallaxCard = ({
       onClick={onClick}
     >
       <div
-        className={`absolute inset-0 rounded-xl bg-gradient-to-br from-neutral-600/70 to-background -z-10 ${backgroundClassName}`}
+        className={`absolute inset-0 rounded-xl bg-gradient-to-br from-neutral-600/70 to-background to-50% -z-10 ${backgroundClassName}`}
       />
       {children}
       <motion.div

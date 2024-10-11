@@ -22,7 +22,7 @@ export default function Projects({ data }: Props) {
           className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 px-6"
         >
           <div className="flex flex-col gap-y-1">
-            <p className="font-medium text-xl sm:text-2xl">Projects</p>
+            <p className="font-medium text-2xl sm:text-3xl">Projects</p>
             <p className="text-sm text-hint">
               Internal-use and private projects are ignored.
             </p>
