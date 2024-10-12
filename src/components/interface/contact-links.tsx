@@ -1,19 +1,15 @@
 "use client";
 
-import { Email, Github, Linkedin } from "@/components/icons";
 import { LinkType, UserWithLinks } from "@/shared/db/schema";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Fragment } from "react";
+import { Icon, IconName } from "../svgs";
+import { Mail } from "lucide-react";
 
 interface Props {
   data: UserWithLinks;
 }
-
-const icons = {
-  linkedin: Linkedin,
-  github: Github,
-};
 
 export function ContactLinks({ data }: Props) {
   const socials = data.links.filter((link) => link.type === LinkType.SOCIAL);
@@ -34,16 +30,10 @@ export function ContactLinks({ data }: Props) {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500"></span>
         </div>
-        <Email />
+        <Mail className="size-4" />
       </Link>
       <div className="w-0.5 h-1.5 rounded-full bg-muted" />
       {socials.map((link, index) => {
-        const Icon = icons[link.name.toLowerCase() as keyof typeof icons];
-
-        if (!Icon) {
-          return null;
-        }
-
         return (
           <Fragment key={link.id}>
             <Link
@@ -52,7 +42,10 @@ export function ContactLinks({ data }: Props) {
               target="_blank"
               title={link.name}
             >
-              <Icon />
+              <Icon
+                name={link.name.toLowerCase() as IconName}
+                className="size-4 fill-white"
+              />
             </Link>
             {index !== socials.length - 1 && (
               <div className="w-0.5 h-1.5 rounded-full bg-muted" />
