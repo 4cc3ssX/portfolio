@@ -3,14 +3,18 @@
 import { motion } from "framer-motion";
 
 import { UserWithLinks } from "@/shared/db/schema";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "@/components/interface";
+import { useNavigation } from "@/shared/hooks/use-navigation";
 
 interface Props {
   data: UserWithLinks;
 }
 
 export default function About({ data }: Props) {
+  const { navigate } = useNavigation();
   return (
-    <div id="about" className="flex pt-14 min-h-dvh">
+    <div id="about" className="relative flex pt-14 min-h-dvh">
       <div className="flex-1 flex flex-col justify-start sm:justify-center items-center">
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
@@ -22,10 +26,10 @@ export default function About({ data }: Props) {
           className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 h-auto md:min-h-[75%] px-6"
         >
           <div className="flex flex-col gap-y-1">
-            <p className="font-medium text-2xl sm:text-3xl">About</p>
+            <h1 className="font-medium text-2xl sm:text-3xl">About</h1>
           </div>
-          <div>
-            <p className="text-xl whitespace-pre-line hyphens-auto">
+          <div className="flex flex-col gap-5">
+            <p className="text-lg whitespace-pre-line hyphens-auto">
               I&apos;m Ryam, an experienced web and mobile app developer with
               expertise across the full stack. I specialize in building
               high-performance applications using technologies like{" "}
@@ -46,6 +50,16 @@ export default function About({ data }: Props) {
           </div>
         </motion.div>
       </div>
+      <motion.div className="absolute inset-x-0 bottom-20 flex flex-col items-center justify-center z-50">
+        <Button
+          variant="outline"
+          size="icon"
+          className="size-12 bg-background/50 backdrop-blur-lg md:backdrop-blur-sm rounded-full"
+          onClick={() => navigate("experience")}
+        >
+          <ArrowDown />
+        </Button>
+      </motion.div>
     </div>
   );
 }
