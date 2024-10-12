@@ -29,28 +29,37 @@ export default function About({ data }: Props) {
             <h1 className="font-medium text-2xl sm:text-3xl">About</h1>
           </div>
           <div className="flex flex-col gap-5">
-            <p className="text-lg whitespace-pre-line hyphens-auto">
-              I&apos;m Ryam, an experienced web and mobile app developer with
-              expertise across the full stack. I specialize in building
-              high-performance applications using technologies like{" "}
-              <span className="text-blue-500">React</span>,{" "}
+            <p className="text-md whitespace-pre-line hyphens-auto">
+              I&apos;m Ryam, a full-stack web and mobile app developer with a
+              passion for building scalable, high-performance applications. I
+              specialize in <span className="text-blue-500">React</span>,{" "}
               <span className="text-blue-500">React Native</span>, and{" "}
-              <span className="text-blue-500">TypeScript</span> for the
-              frontend, while leveraging{" "}
-              <span className="text-blue-500">NestJS</span>,{" "}
+              <span className="text-blue-500">TypeScript</span> on the frontend,
+              delivering responsive, user-friendly interfaces. On the backend, I
+              leverage <span className="text-blue-500">NestJS</span>,{" "}
               <span className="text-blue-500">MongoDB</span>, and event-driven
-              architectures for the backend. My skill set also includes working
-              with real-time communication through{" "}
-              <span className="text-blue-500">Socket.io</span>, managing queues
-              with <span className="text-blue-500">BullMQ</span> and{" "}
-              <span className="text-blue-500">Kafka</span>, and handling
-              large-scale systems with a focus on scalability, efficiency, and
-              seamless user experiences.
+              architectures to create systems optimized for real-time
+              communication and high efficiency. My experience extends to
+              integrating <span className="text-blue-500">Socket.io</span> for
+              real-time interactions and managing complex queues using{" "}
+              <span className="text-blue-500">BullMQ</span> and{" "}
+              <span className="text-blue-500">Kafka</span> to handle demanding
+              workflows.
+            </p>
+            <p className="text-md whitespace-pre-line hyphens-auto">
+              In addition to my technical expertise, I focus on creating
+              seamless user experiences while ensuring scalability and
+              reliability in large-scale systems. I&apos;m adept at optimizing
+              application performance and handling data-intensive processes,
+              making sure the systems I build are robust and future-proof.
+              Whether it&apos;s mobile or web, frontend or backend, I&apos;m
+              always eager to push the boundaries of technology and create
+              solutions that truly make an impact.
             </p>
           </div>
         </motion.div>
       </div>
-      <motion.div className="absolute inset-x-0 bottom-20 flex flex-col items-center justify-center z-50">
+      <motion.div className="absolute inset-x-0 bottom-20 flex flex-col items-center justify-center z-10">
         <Button
           variant="outline"
           size="icon"
