@@ -1,5 +1,17 @@
 
 
+## [2.1.1](https://github.com/4cc3ssX/portfolio/compare/2.1.0...2.1.1) (2024-10-12)
+
+
+### 🐛 Bug Fixes
+
+* scale size + hover opacity ([027a37d](https://github.com/4cc3ssX/portfolio/commit/027a37d739e97c082fe5601e82b9678fc92c9cad))
+
+
+### 🧹 Chore
+
+* minor changes ([16317c8](https://github.com/4cc3ssX/portfolio/commit/16317c866f1172d436ec0d5e501c0ce941a92cab))
+
 ## [2.1.0](https://github.com/4cc3ssX/portfolio/compare/2.0.0...2.1.0) (2024-10-12)
 
 
