@@ -24,10 +24,12 @@ export default function Skills({ data }: Props) {
         >
           <p className="font-medium text-2xl sm:text-3xl">Skills</p>
 
-          <div className="mt-2 flex-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {data.map((skill) => (
+          <div className="mt-2 flex-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {data.map((skill, index, items) => (
               <SkillCard
                 key={`skill-${skill.tag.name}-${skill.id}`}
+                index={index}
+                total={items.length}
                 skill={skill}
               />
             ))}
