@@ -9,22 +9,26 @@ import Projects from "./_pages/Projects";
 import {
   ExperienceWithCompany,
   ProjectWithLinkAndTags,
+  TagSelect,
   UserWithLinks,
 } from "@/shared/db/schema";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { useNavigation } from "@/shared/hooks/use-navigation";
+import Skills from "./_pages/Skills";
+import { SkillWithTag } from "@/shared/db/schema/skills";
 
 interface Props {
   me: UserWithLinks;
   experiences: ExperienceWithCompany[];
   projects: ProjectWithLinkAndTags[];
+  skills: SkillWithTag[];
 }
 
 const INTRODUCTION_TIMEOUT = 8000; // 8s
 const INTRODUCTION_DURATION = 20000; // 20s
 
-export default function Main({ me, experiences, projects }: Props) {
+export default function Main({ me, experiences, projects, skills }: Props) {
   const { navigate } = useNavigation();
 
   const introduce = () => {
@@ -62,6 +66,8 @@ export default function Main({ me, experiences, projects }: Props) {
         <Experience data={experiences} />
 
         <Projects data={projects} />
+
+        <Skills data={skills} />
 
         <Contact user={me} />
       </div>
