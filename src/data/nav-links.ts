@@ -17,7 +17,7 @@ export const navLinks: INavLink[] = [
     path: "/#projects",
   },
   {
-    name: "Contact",
-    path: "/#contact",
+    name: "Skills",
+    path: "/#skills",
   },
 ];
