@@ -1,5 +1,17 @@
 
 
+## [2.2.2](https://github.com/4cc3ssX/portfolio/compare/2.2.1...2.2.2) (2024-10-12)
+
+
+### 🐛 Bug Fixes
+
+* minor changes ([59bc91a](https://github.com/4cc3ssX/portfolio/commit/59bc91a0e296e2423543ae432d3e2afa63b9165d))
+
+
+### 🧹 Chore
+
+* remove console statement on production ([9435d15](https://github.com/4cc3ssX/portfolio/commit/9435d15a19ad7c6d8490c2429c9754700d60998e))
+
 ## [2.2.1](https://github.com/4cc3ssX/portfolio/compare/2.2.0...2.2.1) (2024-10-12)
 
 
