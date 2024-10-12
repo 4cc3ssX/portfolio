@@ -1,5 +1,24 @@
 
 
+## [2.1.0](https://github.com/4cc3ssX/portfolio/compare/2.0.0...2.1.0) (2024-10-12)
+
+
+### 🚀 Features
+
+* about next indicator ([1ce3b94](https://github.com/4cc3ssX/portfolio/commit/1ce3b9498c81935af82be8927413f617f8c07803))
+* experience card ui changes ([4adcc28](https://github.com/4cc3ssX/portfolio/commit/4adcc286f83a5b6732d34a55066e9db5380b95ad))
+
+
+### 🐛 Bug Fixes
+
+* build issues ([6b70b3a](https://github.com/4cc3ssX/portfolio/commit/6b70b3ae807c19c1b141b057e14ee87ca612b0cb))
+* header sizes + minor changes ([8ee8720](https://github.com/4cc3ssX/portfolio/commit/8ee8720f88e848b31eeee8b91c0e3007de731be3))
+
+
+### 📦 Refactor
+
+* minor changes ([a128e3f](https://github.com/4cc3ssX/portfolio/commit/a128e3f36ec05cfe8bb00244858794260986f6d7))
+
 ## [2.0.0](https://github.com/4cc3ssX/portfolio/compare/1.0.0...2.0.0) (2024-10-10)
 
 
