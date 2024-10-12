@@ -8,7 +8,6 @@ import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { useSmallDevice } from "@/shared/hooks/use-small-device";
 import { useNavigation } from "@/shared/hooks/use-navigation";
-import { useParams } from "next/navigation";
 
 interface Props {}
 
