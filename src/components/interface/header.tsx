@@ -1,13 +1,14 @@
 "use client";
 
 import { INavLink, navLinks } from "@/data/nav-links";
-import { handleNavigate } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { useSmallDevice } from "@/shared/hooks/use-small-device";
+import { useNavigation } from "@/shared/hooks/use-navigation";
+import { useParams } from "next/navigation";
 
 interface Props {}
 
@@ -15,19 +16,17 @@ export const Header = ({}: Props) => {
   const isSmallDevice = useSmallDevice();
 
   const [isOpen, setOpen] = useState(false);
-  const [path, setPath] = useState<string>("");
+  const { path, navigate } = useNavigation();
 
   const onClickLink = (link: INavLink) => {
-    handleNavigate(link.path, (path) => {
-      setOpen(false);
-      setPath(path);
-    });
+    navigate(link.path);
+    setOpen(false);
   };
 
   useEffect(() => {
     const initialPath = "/" + window.location.hash;
     if (initialPath !== "/") {
-      handleNavigate(initialPath, setPath);
+      navigate(initialPath);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -40,7 +40,7 @@ export default function Contact({ user }: Props) {
         >
           <div className="flex flex-col items-center gap-1.5">
             <div>
-              <p className="font-medium text-center text-xl sm:text-2xl">
+              <p className="font-medium text-center text-2xl sm:text-3xl">
                 What&apos;s Next?
               </p>
             </div>

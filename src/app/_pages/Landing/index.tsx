@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { handleNavigate, openURL } from "@/utils";
+import { openURL } from "@/utils";
 import { UserWithLinks } from "@/shared/db/schema";
 import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { GlobeRef } from "@/components/interface";
+import { useNavigation } from "@/shared/hooks/use-navigation";
 
 const Globe = dynamic(() => import("@/components/interface/globe"), {
   ssr: false,
@@ -19,6 +20,7 @@ interface Props {
 const BANGKOK_LOCATION: [number, number] = [13.7525, 100.494167];
 
 const Landing = ({ data }: Props) => {
+  const { navigate } = useNavigation();
   const globeRef = useRef<GlobeRef>(null);
   const resumeLink = data.links.find((link) => link.name.match(/resume/i));
 
@@ -64,10 +66,7 @@ const Landing = ({ data }: Props) => {
             </p>
           </div>
           <div className="mt-6 sm:mt-1 flex flex-row gap-x-2">
-            <Button
-              className="rounded-full"
-              onClick={() => handleNavigate("#about")}
-            >
+            <Button className="rounded-full" onClick={() => navigate("about")}>
               Let&apos;s Get Started 👋🏻
             </Button>
             {resumeLink ? (

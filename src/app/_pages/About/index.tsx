@@ -3,14 +3,18 @@
 import { motion } from "framer-motion";
 
 import { UserWithLinks } from "@/shared/db/schema";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "@/components/interface";
+import { useNavigation } from "@/shared/hooks/use-navigation";
 
 interface Props {
   data: UserWithLinks;
 }
 
 export default function About({ data }: Props) {
+  const { navigate } = useNavigation();
   return (
-    <div id="about" className="flex pt-14 min-h-dvh">
+    <div id="about" className="relative flex pt-14 min-h-dvh">
       <div className="flex-1 flex flex-col justify-start sm:justify-center items-center">
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
@@ -22,53 +26,40 @@ export default function About({ data }: Props) {
           className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 h-auto md:min-h-[75%] px-6"
         >
           <div className="flex flex-col gap-y-1">
-            <p className="font-medium text-xl sm:text-2xl">About</p>
+            <h1 className="font-medium text-2xl sm:text-3xl">About</h1>
           </div>
-          <div>
-            <p className="text-base whitespace-pre-line hyphens-auto">
+          <div className="flex flex-col gap-5">
+            <p className="text-lg whitespace-pre-line hyphens-auto">
               I&apos;m Ryam, an experienced web and mobile app developer with
               expertise across the full stack. I specialize in building
               high-performance applications using technologies like{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                React
-              </span>
-              ,{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                React Native
-              </span>
-              , and{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                TypeScript
-              </span>{" "}
-              for the frontend, while leveraging{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                NestJS
-              </span>
-              ,{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                MongoDB
-              </span>
-              , and event-driven architectures for the backend. My skill set
-              also includes working with real-time communication through{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                Socket.io
-              </span>
-              , managing queues with{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                BullMQ
-              </span>{" "}
-              and{" "}
-              <span className="text-blue-500 cursor-pointer after:content-['_↗']">
-                Kafka
-              </span>
-              , and handling large-scale systems with a focus on scalability,
-              efficiency, and seamless user experiences. I&apos;m passionate
-              about creating solutions that not only meet technical requirements
-              but also deliver exceptional user satisfaction.
+              <span className="text-blue-500">React</span>,{" "}
+              <span className="text-blue-500">React Native</span>, and{" "}
+              <span className="text-blue-500">TypeScript</span> for the
+              frontend, while leveraging{" "}
+              <span className="text-blue-500">NestJS</span>,{" "}
+              <span className="text-blue-500">MongoDB</span>, and event-driven
+              architectures for the backend. My skill set also includes working
+              with real-time communication through{" "}
+              <span className="text-blue-500">Socket.io</span>, managing queues
+              with <span className="text-blue-500">BullMQ</span> and{" "}
+              <span className="text-blue-500">Kafka</span>, and handling
+              large-scale systems with a focus on scalability, efficiency, and
+              seamless user experiences.
             </p>
           </div>
         </motion.div>
       </div>
+      <motion.div className="absolute inset-x-0 bottom-20 flex flex-col items-center justify-center z-50">
+        <Button
+          variant="outline"
+          size="icon"
+          className="size-12 bg-background/50 backdrop-blur-lg md:backdrop-blur-sm rounded-full"
+          onClick={() => navigate("experience")}
+        >
+          <ArrowDown />
+        </Button>
+      </motion.div>
     </div>
   );
 }
