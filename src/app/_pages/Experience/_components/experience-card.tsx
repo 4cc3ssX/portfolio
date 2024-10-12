@@ -19,9 +19,13 @@ export const ExperienceCard = ({
   experience,
 }: ExperienceCardProps) => {
   const opacity = 1 - index / (total * 2);
-  const scale = 1 - index / (total * 5);
+  const scale = 1 - index / (total * 8);
   return (
-    <motion.div style={{ opacity, scale }} className="relative p-px">
+    <motion.div
+      whileHover={{ opacity: 1 }}
+      style={{ opacity, scale }}
+      className="relative p-px"
+    >
       {experience.isActive && (
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
       )}
