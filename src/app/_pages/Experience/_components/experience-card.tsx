@@ -22,7 +22,7 @@ export const ExperienceCard = ({
   const scale = 1 - index / (total * 8);
   return (
     <motion.div
-      whileHover={{ opacity: 1 }}
+      whileHover={{ opacity: 1, scale: index > 0 ? scale + 0.02 : undefined }}
       style={{ opacity, scale }}
       className="relative p-px"
     >
