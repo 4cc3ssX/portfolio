@@ -26,8 +26,8 @@ export default function Experience({ data }: Props) {
             <p className="font-medium text-2xl sm:text-3xl">Experience</p>
           </div>
           <div className="mt-2 flex-1 flex flex-col gap-2">
-            {data.map((experience) => (
-              <ExperienceCard key={experience.id} experience={experience} />
+            {data.map((experience, index, items) => (
+              <ExperienceCard key={experience.id} index={index} total={items.length} experience={experience} />
             ))}
           </div>
         </motion.div>
