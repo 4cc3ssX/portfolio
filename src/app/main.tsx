@@ -13,7 +13,7 @@ import {
 } from "@/shared/db/schema";
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { handleNavigate } from "@/utils";
+import { useNavigation } from "@/shared/hooks/use-navigation";
 
 interface Props {
   me: UserWithLinks;
@@ -25,6 +25,8 @@ const INTRODUCTION_TIMEOUT = 8000; // 8s
 const INTRODUCTION_DURATION = 20000; // 20s
 
 export default function Main({ me, experiences, projects }: Props) {
+  const { navigate } = useNavigation();
+
   const introduce = () => {
     toast("Let's Connect", {
       id: "intro-message",
@@ -32,7 +34,7 @@ export default function Main({ me, experiences, projects }: Props) {
         "Ready to chat? Reach out and let's bring your ideas to life!",
       action: {
         label: "Let's talk",
-        onClick: () => handleNavigate("#contact"),
+        onClick: () => navigate("contact"),
       },
       duration: INTRODUCTION_DURATION,
     });
@@ -46,6 +48,7 @@ export default function Main({ me, experiences, projects }: Props) {
     return () => {
       introTimeout && clearTimeout(introTimeout);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
