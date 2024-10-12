@@ -1,5 +1,20 @@
 
 
+## [2.2.0](https://github.com/4cc3ssX/portfolio/compare/2.1.1...2.2.0) (2024-10-12)
+
+
+### 🚀 Features
+
+* skill section + minor changes ([c915c9f](https://github.com/4cc3ssX/portfolio/commit/c915c9fa8de1ce10429e53187ac01f3ed2af38b2))
+* skills section ([3ff9b44](https://github.com/4cc3ssX/portfolio/commit/3ff9b44d4997ac69209525eb913643e8b13629af))
+
+
+### 🧹 Chore
+
+* added svgr + svg icons ([0b877ee](https://github.com/4cc3ssX/portfolio/commit/0b877ee8f5f2dd99a92c0a0771b5c3d91a773bc3))
+* minor changes ([41c8fa8](https://github.com/4cc3ssX/portfolio/commit/41c8fa8d49065d2f1cd45ec45feabf84a08e926b))
+* svg icons ([1a3cf1b](https://github.com/4cc3ssX/portfolio/commit/1a3cf1be3dd882de8a000c78413d8e5b8f8c99d5))
+
 ## [2.1.1](https://github.com/4cc3ssX/portfolio/compare/2.1.0...2.1.1) (2024-10-12)
 
 
