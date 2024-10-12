@@ -78,7 +78,7 @@ export const ExperienceCard = ({
           </p>
           <div className="w-2 h-px bg-muted-foreground" />
           <p
-            className={`text-xs md:text-sm${
+            className={`text-xs md:text-sm ${
               experience.isActive ? "text-primary" : "text-muted-foreground"
             } text-right`}
           >

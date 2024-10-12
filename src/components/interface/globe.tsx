@@ -101,6 +101,7 @@ const Globe = ({
     return () => {
       globe.destroy();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useImperativeHandle(globeRef, () => ({
