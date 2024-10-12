@@ -1,5 +1,17 @@
 
 
+## [2.2.1](https://github.com/4cc3ssX/portfolio/compare/2.2.0...2.2.1) (2024-10-12)
+
+
+### 🐛 Bug Fixes
+
+* experience card endedAt color ([403bbd6](https://github.com/4cc3ssX/portfolio/commit/403bbd6c5371cbda3538706247590c4dee9e139a))
+
+
+### 📦 Refactor
+
+* minor changes ([287f5c9](https://github.com/4cc3ssX/portfolio/commit/287f5c97b673f953cf778a0dc6a86c61f3768715))
+
 ## [2.2.0](https://github.com/4cc3ssX/portfolio/compare/2.1.1...2.2.0) (2024-10-12)
 
 
