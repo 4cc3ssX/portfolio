@@ -11,7 +11,7 @@ interface Props {
 export default function Projects({ data }: Props) {
   return (
     <div id="projects" className="flex pt-14 min-h-dvh">
-      <div className="flex-1 flex flex-col justify-start items-center">
+      <div className="flex-1 flex flex-col justify-start md:justify-center items-center">
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
           whileInView={{ y: 0, opacity: 1, filter: "blur(0)" }}
