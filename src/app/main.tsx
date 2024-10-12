@@ -9,7 +9,6 @@ import Projects from "./_pages/Projects";
 import {
   ExperienceWithCompany,
   ProjectWithLinkAndTags,
-  TagSelect,
   UserWithLinks,
 } from "@/shared/db/schema";
 import { useEffect } from "react";
