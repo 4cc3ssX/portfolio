@@ -1,5 +1,7 @@
 
 
+## [2.3.2](https://github.com/4cc3ssX/portfolio/compare/v2.3.1...v2.3.2) (2024-10-13)
+
 ## [2.3.1](https://github.com/4cc3ssX/portfolio/compare/2.3.0...v2.3.1) (2024-10-13)
 
 
