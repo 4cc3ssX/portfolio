@@ -1,5 +1,18 @@
 
 
+## [2.3.0](https://github.com/4cc3ssX/portfolio/compare/2.2.2...2.3.0) (2024-10-13)
+
+
+### 🚀 Features
+
+* added octokit and server only ([e4202a0](https://github.com/4cc3ssX/portfolio/commit/e4202a02d101c23b0fc3ee1d6d6152cec7ad8d81))
+* github data in project card ([dfcad2f](https://github.com/4cc3ssX/portfolio/commit/dfcad2fbd29184949e82a7235b266d8a086cc0a1))
+
+
+### 📦 Refactor
+
+* minor changes ([71fe8db](https://github.com/4cc3ssX/portfolio/commit/71fe8dbc22d86e867210854f8178581b1ed261df))
+
 ## [2.2.2](https://github.com/4cc3ssX/portfolio/compare/2.2.1...2.2.2) (2024-10-12)
 
 
