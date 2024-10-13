@@ -1,5 +1,13 @@
 
 
+## [2.3.3](https://github.com/4cc3ssX/portfolio/compare/v2.3.2...v2.3.3) (2024-10-13)
+
+
+### 🧹 Chore
+
+* update github release name ([556776e](https://github.com/4cc3ssX/portfolio/commit/556776ef4cb7a4f0097b84cda08a085045003413))
+* update release it config for build ([8c84fce](https://github.com/4cc3ssX/portfolio/commit/8c84fcef66b7ebf6ba47aa7325aa3e24c8eac646))
+
 ## [2.3.2](https://github.com/4cc3ssX/portfolio/compare/v2.3.1...v2.3.2) (2024-10-13)
 
 ## [2.3.1](https://github.com/4cc3ssX/portfolio/compare/2.3.0...v2.3.1) (2024-10-13)
