@@ -1,13 +1,11 @@
-"use client";
-
+import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 import { Chip, ParallaxCard } from "@/components/interface";
-import { ProjectWithLinkAndTags } from "@/shared/db/schema";
 import { openURL } from "@/utils";
 import dayjs from "dayjs";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, GitFork, Star } from "lucide-react";
 
 export interface ProjectCardProps {
-  project: ProjectWithLinkAndTags;
+  project: ProjectWithLinkAndTagsWithGithubData;
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
@@ -38,7 +36,23 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <p className="text-sm md:text-base whitespace-pre-line hyphens-auto">
           {project.description}
         </p>
-        <div className="mt-2 flex flex-row items-center flex-wrap gap-x-2 gap-y-1.5">
+        {project.github ? (
+          <div className="my-1 flex flex-row items-center gap-x-2">
+            <div className="flex flex-row items-center gap-x-1">
+              <Star size={18} className="text-muted-foreground" />
+              <p className="text-sm text-muted-foreground">
+                {project.github.stargazers_count}
+              </p>
+            </div>
+            <div className="flex flex-row items-center gap-x-1">
+              <GitFork size={18} className="text-muted-foreground" />
+              <p className="text-sm text-muted-foreground">
+                {project.github.forks_count}
+              </p>
+            </div>
+          </div>
+        ) : null}
+        <div className="mt-1 flex flex-row items-center flex-wrap gap-x-2 gap-y-1.5">
           {project.tags.map((tag, index) => {
             return (
               <Chip
