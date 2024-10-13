@@ -1,5 +1,12 @@
 
 
+## [2.3.7](https://github.com/4cc3ssX/portfolio/compare/v2.3.6...v2.3.7) (2024-10-13)
+
+
+### 🐛 Bug Fixes
+
+* minor responsive designs ([8354fa6](https://github.com/4cc3ssX/portfolio/commit/8354fa6e396360952204cb4ac9808b4e018a82f6))
+
 ## [2.3.6](https://github.com/4cc3ssX/portfolio/compare/v2.3.5...v2.3.6) (2024-10-13)
 
 
