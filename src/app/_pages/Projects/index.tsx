@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ProjectCard } from "./_components";
-import { ProjectWithLinkAndTags } from "@/shared/db/schema";
+import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 
 interface Props {
-  data: ProjectWithLinkAndTags[];
+  data: ProjectWithLinkAndTagsWithGithubData[];
 }
 
 export default function Projects({ data }: Props) {

@@ -1,3 +1,4 @@
+import { extractRepoAndOwner } from "@/lib/github";
 import { db } from "@/shared/db";
 import {
   links,
@@ -6,9 +7,38 @@ import {
   ProjectWithLinkAndTags,
   tags,
 } from "@/shared/db/schema";
+import { getRepositoryInfo } from "@/shared/github/actions";
 import { desc, eq, sql } from "drizzle-orm";
+import { Endpoints } from "@octokit/types";
 
-export const getProjects = async (): Promise<ProjectWithLinkAndTags[]> => {
+export interface ProjectWithLinkAndTagsWithGithubData
+  extends ProjectWithLinkAndTags {
+  github: Endpoints["GET /repos/{owner}/{repo}"]["response"]["data"] | null;
+}
+
+async function getGithubData(
+  project: ProjectWithLinkAndTags
+): Promise<ProjectWithLinkAndTagsWithGithubData> {
+  const repoInfo = extractRepoAndOwner(project.link);
+
+  if (!repoInfo?.owner || !repoInfo.repo) {
+    return {
+      ...project,
+      github: null,
+    };
+  }
+
+  const data = await getRepositoryInfo(repoInfo.owner, repoInfo.repo);
+
+  return {
+    ...project,
+    github: data,
+  };
+}
+
+export const getProjects = async (): Promise<
+  ProjectWithLinkAndTagsWithGithubData[]
+> => {
   const result = await db
     .select({
       id: projects.id,
@@ -29,5 +59,11 @@ export const getProjects = async (): Promise<ProjectWithLinkAndTags[]> => {
     .groupBy(projects.id, links.id)
     .orderBy(desc(projects.startedAt));
 
-  return result;
+  const data = await Promise.all(
+    result.map(async (project) => {
+      return getGithubData(project);
+    })
+  );
+
+  return data;
 };
