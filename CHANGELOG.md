@@ -1,5 +1,22 @@
 
 
+## [2.3.4](https://github.com/4cc3ssX/portfolio/compare/v2.3.3...v2.3.4) (2024-10-13)
+
+
+### 🐛 Bug Fixes
+
+* globe grab delta intensity ([8b18e4e](https://github.com/4cc3ssX/portfolio/commit/8b18e4e15a94c6eaa1073a3486252cd23ca6cc08))
+* toast onClick navigation ([b7c2f35](https://github.com/4cc3ssX/portfolio/commit/b7c2f3560734b31025427a4c057688c4d47cea75))
+
+
+### 🛠 Build System
+
+* add bun installation step ([9a96628](https://github.com/4cc3ssX/portfolio/commit/9a96628785bd5908ddf898ab62d2399fe1eaf746))
+* added bun to github actions ([a0e0e26](https://github.com/4cc3ssX/portfolio/commit/a0e0e261eedb842c06fdcc0ae81d54a2cf20fdcd))
+* github action for manual deployment ([633c667](https://github.com/4cc3ssX/portfolio/commit/633c6675fab537b8176d6db7e245301ae090e34f))
+* minor changes ([437c662](https://github.com/4cc3ssX/portfolio/commit/437c66257be8d1c755da91d2b33cf5ecbf029f3e))
+* minor changes ([f138956](https://github.com/4cc3ssX/portfolio/commit/f138956e37ec9a0bb95c18594a6f488f79ee7f5a))
+
 ## [2.3.3](https://github.com/4cc3ssX/portfolio/compare/v2.3.2...v2.3.3) (2024-10-13)
 
 
