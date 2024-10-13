@@ -18,7 +18,7 @@ export const ExperienceCard = ({
   total,
   experience,
 }: ExperienceCardProps) => {
-  const opacity = 1 - index / (total * 2);
+  const opacity = 1 - index / (total * 1.5);
   const scale = 1 - index / (total * 8);
   return (
     <motion.div
