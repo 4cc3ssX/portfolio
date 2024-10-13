@@ -6,7 +6,7 @@ import React from "react";
 
 export interface ParallaxCardProps {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   backgroundClassName?: string;
   perspective?: number;
