@@ -10,7 +10,7 @@ on:
   workflow_dispatch: # This enables manual triggers from the GitHub Actions UI
 jobs:
   Deploy-Production:
-    environment: production
+    environment: Production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
