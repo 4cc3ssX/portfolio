@@ -12,7 +12,7 @@ interface Props {
 export default function Experience({ data }: Props) {
   return (
     <div id="experience" className="flex pt-14 min-h-dvh">
-      <div className="flex-1 flex flex-col justify-start md:justify-center items-center">
+      <div className="flex-1 flex flex-col justify-center items-center">
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
           whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
@@ -25,7 +25,7 @@ export default function Experience({ data }: Props) {
           <div className="flex flex-col gap-y-1">
             <p className="font-medium text-2xl sm:text-3xl">Experience</p>
           </div>
-          <div className="mt-2 flex-1 flex flex-col gap-2">
+          <div className="mt-2 flex flex-col gap-2">
             {data.map((experience, index, items) => (
               <ExperienceCard key={experience.id} index={index} total={items.length} experience={experience} />
             ))}
