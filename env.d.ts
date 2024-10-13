@@ -6,6 +6,8 @@ declare global {
       DATABASE_USER: string;
       DATABASE_PASSWORD: string;
       DATABASE_NAME: string;
+
+      GITHUB_TOKEN: string;
     }
   }
 }
