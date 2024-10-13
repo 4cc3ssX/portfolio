@@ -12,7 +12,7 @@ export interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <ParallaxCard onClick={() => openURL(project.link, true)}>
-      <div className="flex flex-col gap-y-2 rounded-xl bg-gradient-to-br from-secondary to-background px-5 py-4">
+      <div className="flex flex-col gap-y-2 rounded-xl bg-gradient-to-br from-secondary to-background px-4 py-3.5 md:px-5 md:py-4">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
           <div className="flex-1 flex flex-row items-center gap-x-2">
             <Link
@@ -43,7 +43,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {project.description}
         </p>
         {project.github ? (
-          <div className="my-1 flex flex-row items-center gap-x-2">
+          <div className="my-0.5 flex flex-row items-center gap-x-2">
             <div className="flex flex-row items-center gap-x-1">
               <Star size={18} className="text-muted-foreground" />
               <p className="text-sm text-muted-foreground">

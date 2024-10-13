@@ -44,7 +44,7 @@ const Landing = ({ data }: Props) => {
             opacity: 1,
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex flex-col gap-y-4 w-full md:w-4/6 lg:w-7/12 px-6 will-change-auto"
+          className="flex flex-col gap-y-4 w-full md:w-4/6 lg:w-7/12 px-5 md:px-6"
         >
           <div className="flex flex-col gap-y-3">
             <p className="text-sm md:text-base">

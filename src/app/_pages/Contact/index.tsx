@@ -36,7 +36,7 @@ export default function Contact({ user }: Props) {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="flex-1 flex flex-col gap-y-3 w-full sm:w-3/4 lg:w-7/12 px-6 justify-center"
+          className="flex-1 flex flex-col justify-center gap-y-3 w-full sm:w-3/4 lg:w-7/12 px-5 md:px-6"
         >
           <div className="flex flex-col items-center gap-1.5">
             <div>

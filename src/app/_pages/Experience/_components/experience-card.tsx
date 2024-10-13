@@ -31,7 +31,7 @@ export const ExperienceCard = ({
       )}
       <div
         className={cn(
-          "flex flex-row items-center gap-x-3 px-3 py-1.5 md:px-4 md:py-2.5",
+          "flex flex-row items-center gap-x-3 px-4 py-2 md:px-4 md:py-2.5",
           experience.isActive &&
             "bg-gradient-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl"
         )}
@@ -47,7 +47,7 @@ export const ExperienceCard = ({
           />
         </div>
         <div className="flex-[2] flex flex-col gap-y-0.5">
-          <div className="flex flex-row items-center gap-x-2">
+          <div className="flex flex-row items-center gap-x-1.5">
             {experience.company.uri ? (
               <Link
                 href={experience.company.uri ?? "#"}

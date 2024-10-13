@@ -23,13 +23,13 @@ export default function About({ data }: Props) {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 h-auto md:min-h-[75%] px-6"
+          className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 h-auto md:min-h-[75%] px-5 md:px-6"
         >
           <div className="flex flex-col gap-y-1">
             <h1 className="font-medium text-2xl sm:text-3xl">About</h1>
           </div>
           <div className="flex flex-col gap-5">
-            <p className="text-md whitespace-pre-line hyphens-auto">
+            <p className="text-md whitespace-pre-line hyphens-auto text-justify">
               I&apos;m Ryam, a full-stack web and mobile app developer with a
               passion for building scalable, high-performance applications. I
               specialize in <span className="text-blue-500">React</span>,{" "}
@@ -46,7 +46,7 @@ export default function About({ data }: Props) {
               <span className="text-blue-500">Kafka</span> to handle demanding
               workflows.
             </p>
-            <p className="text-md whitespace-pre-line hyphens-auto">
+            <p className="text-md whitespace-pre-line hyphens-auto text-justify">
               In addition to my technical expertise, I focus on creating
               seamless user experiences while ensuring scalability and
               reliability in large-scale systems. I&apos;m adept at optimizing
@@ -59,7 +59,7 @@ export default function About({ data }: Props) {
           </div>
         </motion.div>
       </div>
-      <motion.div className="absolute inset-x-0 -bottom-10 md:bottom-10 flex flex-col items-center justify-center z-10">
+      <motion.div className="absolute inset-x-0 -bottom-5 md:bottom-10 flex flex-col items-center justify-center z-10">
         <Button
           variant="outline"
           size="icon"

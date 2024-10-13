@@ -20,7 +20,7 @@ export default function Skills({ data }: Props) {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 px-6"
+          className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 px-5 md:px-6"
         >
           <p className="font-medium text-2xl sm:text-3xl">Skills</p>
 
