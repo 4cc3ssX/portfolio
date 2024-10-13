@@ -1,5 +1,21 @@
 
 
+## [2.3.5](https://github.com/4cc3ssX/portfolio/compare/v2.3.4...v2.3.5) (2024-10-13)
+
+
+### 🚀 Features
+
+* add accessibility for screen readers ([f9ed6ff](https://github.com/4cc3ssX/portfolio/commit/f9ed6ffefe1ecef1303dc537626964836018d4b9))
+
+
+### 🐛 Bug Fixes
+
+* add extra opacity ratio to project card ([ecf9577](https://github.com/4cc3ssX/portfolio/commit/ecf95775d8e0bd788d4d5f27a6d25dd085c5ae40))
+* experience section layout ([8986285](https://github.com/4cc3ssX/portfolio/commit/89862850fc26927176d37ccc6fa33118f15873f3))
+* link with environment ([9d023ad](https://github.com/4cc3ssX/portfolio/commit/9d023ad646a938e47399a43461d0ad170362c452))
+* mobile class for about arrow down ([70d18a1](https://github.com/4cc3ssX/portfolio/commit/70d18a151a86267f123e92d62c1f1c6f7ac292fd))
+* skill icon color alpha ([e1cfeba](https://github.com/4cc3ssX/portfolio/commit/e1cfeba7ffec1e6f71ec5a9bf512cc7b62fb1eb0))
+
 ## [2.3.4](https://github.com/4cc3ssX/portfolio/compare/v2.3.3...v2.3.4) (2024-10-13)
 
 
