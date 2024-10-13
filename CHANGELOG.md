@@ -1,5 +1,25 @@
 
 
+## [2.3.6](https://github.com/4cc3ssX/portfolio/compare/v2.3.5...v2.3.6) (2024-10-13)
+
+
+### 🚀 Features
+
+* loading page ([0882ca2](https://github.com/4cc3ssX/portfolio/commit/0882ca2f0592bd40c0e8690ead38576afa72198c))
+* not found page ([bb43825](https://github.com/4cc3ssX/portfolio/commit/bb43825f7e594506c875ee062e3c9f4165eba8b2))
+
+
+### 🐛 Bug Fixes
+
+* globe canvas filter background ([c46a526](https://github.com/4cc3ssX/portfolio/commit/c46a526de2720e2646019c60eff0e17878b3d4be))
+* update sitemap config ([84dc360](https://github.com/4cc3ssX/portfolio/commit/84dc36039be805bb70e53e602017c78f57ffdc67))
+
+
+### 🧹 Chore
+
+* minor changes ([9dddfb4](https://github.com/4cc3ssX/portfolio/commit/9dddfb4cbbe41d152a2de19a36a9424e756448fd))
+* minor changes ([91529f6](https://github.com/4cc3ssX/portfolio/commit/91529f6a9688c8cf303d2921da31aac8211d8382))
+
 ## [2.3.5](https://github.com/4cc3ssX/portfolio/compare/v2.3.4...v2.3.5) (2024-10-13)
 
 
