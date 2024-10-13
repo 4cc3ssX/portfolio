@@ -59,7 +59,7 @@ export default function About({ data }: Props) {
           </div>
         </motion.div>
       </div>
-      <motion.div className="absolute inset-x-0 bottom-20 flex flex-col items-center justify-center z-10">
+      <motion.div className="absolute inset-x-0 -bottom-10 md:bottom-10 flex flex-col items-center justify-center z-10">
         <Button
           variant="outline"
           size="icon"
@@ -67,6 +67,7 @@ export default function About({ data }: Props) {
           onClick={() => navigate("experience")}
         >
           <ArrowDown />
+          <span className="sr-only">Navigate to experience</span>
         </Button>
       </motion.div>
     </div>
