@@ -45,7 +45,7 @@ export const Header = ({}: Props) => {
           delay: 0.8,
         },
       }}
-      className={`fixed inset-x-0 flex flex-col items-center justify-center z-50`}
+      className={`fixed inset-x-0 flex flex-col items-center justify-center z-40`}
     >
       <motion.div
         initial={{ borderColor: "transparent" }}

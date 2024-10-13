@@ -11,7 +11,12 @@ export default async function Home() {
   const skills = await getSkills();
 
   return (
-    <Main me={me} projects={projects} experiences={experiences} skills={skills} />
+    <Main
+      me={me}
+      projects={projects}
+      experiences={experiences}
+      skills={skills}
+    />
   );
 }
 
