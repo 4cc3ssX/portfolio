@@ -173,17 +173,17 @@ const Globe = ({
       onPointerOut={onPointerOut}
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, filter: "blur(8px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
       transition={{
         duration: 0.5,
         ease: "easeInOut",
       }}
       className={cn(
-        "bg-background cursor-grab w-full aspect-square",
+        "cursor-grab w-full aspect-square",
         className
       )}
-      style={{ width, height }}
+      style={{ background: "transparent", width, height }}
     />
   );
 };
