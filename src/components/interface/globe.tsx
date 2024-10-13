@@ -153,7 +153,7 @@ const Globe = ({
     const delta = e.clientX - pointerInteracting.current;
     pointerInteractionMovement.current = delta;
 
-    motionValue.set(delta / 200);
+    motionValue.set(delta / 250);
   };
 
   const onTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {

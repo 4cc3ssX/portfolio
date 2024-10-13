@@ -17,7 +17,7 @@ interface Props {
   data: UserWithLinks;
 }
 
-const BANGKOK_LOCATION: [number, number] = [13.7525, 100.494167];
+const BANGKOK_LOCATION: [number, number] = [13.7563, 100.5018];
 
 const Landing = ({ data }: Props) => {
   const { navigate } = useNavigation();
@@ -56,7 +56,7 @@ const Landing = ({ data }: Props) => {
               <span
                 className="text-blue-500 cursor-pointer after:content-['_↗']"
                 onClick={() =>
-                  globeRef.current?.locateToPosition(...BANGKOK_LOCATION)
+                  globeRef.current?.locateToPosition(BANGKOK_LOCATION[0], BANGKOK_LOCATION[1])
                 }
               >
                 Bangkok
