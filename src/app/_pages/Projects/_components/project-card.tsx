@@ -3,6 +3,7 @@ import { Chip, ParallaxCard } from "@/components/interface";
 import { openURL } from "@/utils";
 import dayjs from "dayjs";
 import { ExternalLink, GitFork, Star } from "lucide-react";
+import Link from "next/link";
 
 export interface ProjectCardProps {
   project: ProjectWithLinkAndTagsWithGithubData;
@@ -14,9 +15,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <div className="flex flex-col gap-y-2 rounded-xl bg-gradient-to-br from-secondary to-background px-5 py-4">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
           <div className="flex-1 flex flex-row items-center gap-x-2">
-            <p className="font-medium text-xl hover:underline underline-offset-2">
+            <Link
+              href={project.link}
+              target="_blank"
+              className="font-medium text-xl hover:underline underline-offset-2"
+            >
               {project.name}
-            </p>
+              <span className="sr-only">Open {project.name} in new tab</span>
+            </Link>
             <ExternalLink size={18} />
           </div>
           <p className="text-sm text-muted-foreground text-left">

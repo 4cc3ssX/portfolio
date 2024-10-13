@@ -31,6 +31,7 @@ export function ContactLinks({ data }: Props) {
           <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500"></span>
         </div>
         <Mail className="size-4" />
+        <span className="sr-only">Send email to {data.email}</span>
       </Link>
       <div className="w-0.5 h-1.5 rounded-full bg-muted" />
       {socials.map((link, index) => {
@@ -46,6 +47,7 @@ export function ContactLinks({ data }: Props) {
                 name={link.name.toLowerCase() as IconName}
                 className="size-4 fill-white"
               />
+              <span className="sr-only">Open {link.name} in new tab</span>
             </Link>
             {index !== socials.length - 1 && (
               <div className="w-0.5 h-1.5 rounded-full bg-muted" />

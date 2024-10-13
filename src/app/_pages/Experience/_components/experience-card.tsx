@@ -55,6 +55,7 @@ export const ExperienceCard = ({
                 className="font-medium text-lg hover:underline underline-offset-2"
               >
                 {experience.company.name}
+                <span className="sr-only">Open {experience.company.name} in new tab</span>
               </Link>
             ) : (
               <p className="font-medium text-lg cursor-not-allowed">

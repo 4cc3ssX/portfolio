@@ -74,6 +74,7 @@ export const Header = ({}: Props) => {
               <Menu size={20} className="text-white active:text-primary" />
             )}
           </AnimatePresence>
+          <span className="sr-only">${isOpen ? "Close" : "Open"} menu</span>
         </Button>
         <div
           className={`${
@@ -98,6 +99,7 @@ export const Header = ({}: Props) => {
                     onClick={() => onClickLink(link)}
                   >
                     {link.name}
+                    <span className="sr-only">Navigate to {link.name}</span>
                   </Link>
                   <AnimatePresence initial={false} mode="wait">
                     {isActive ? (

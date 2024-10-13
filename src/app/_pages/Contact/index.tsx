@@ -62,6 +62,7 @@ export default function Contact({ user }: Props) {
               onClick={sayHi}
             >
               Say Hi!
+              <span className="sr-only">Send email to {user.email}</span>
             </Button>
           </div>
         </motion.div>
