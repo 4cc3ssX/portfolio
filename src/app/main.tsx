@@ -34,7 +34,7 @@ export default function Main({ me, experiences, projects, skills }: Props) {
         "Ready to chat? Reach out and let's bring your ideas to life!",
       action: {
         label: "Let's talk",
-        onClick: () => navigate("contact"),
+        onClick: () => navigate("#contact"),
       },
       duration: INTRODUCTION_DURATION,
     });
