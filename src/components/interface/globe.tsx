@@ -29,7 +29,6 @@ const Globe = ({
   height = 500,
   markerColor = [59, 130, 246],
   className,
-  onInteraction,
 }: GlobeProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
