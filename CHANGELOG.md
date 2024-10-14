@@ -1,5 +1,19 @@
 
 
+## [2.4.0](https://github.com/4cc3ssX/portfolio/compare/v2.3.7...v2.4.0) (2024-10-14)
+
+
+### 🚀 Features
+
+* add firebase for analytics ([a1f0d3c](https://github.com/4cc3ssX/portfolio/commit/a1f0d3caa5820f33960b493a3c4cd31ba7ba5dbc))
+* firebase analytics impl ([ce1bf96](https://github.com/4cc3ssX/portfolio/commit/ce1bf966875f8362ddf84104df873a56e14071f7))
+* setup firebase analytics ([314adaf](https://github.com/4cc3ssX/portfolio/commit/314adafbad4b3be9f4abccd4456b47ee59af0770))
+
+
+### 🐛 Bug Fixes
+
+* about arrow down bottom inset ([c38938f](https://github.com/4cc3ssX/portfolio/commit/c38938fa7a6fd0b4b4eba33b6fdbae09742b78ba))
+
 ## [2.3.7](https://github.com/4cc3ssX/portfolio/compare/v2.3.6...v2.3.7) (2024-10-13)
 
 
