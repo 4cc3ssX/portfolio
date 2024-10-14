@@ -1,5 +1,5 @@
 import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
-import { LinkSelect } from "./links";
+import { LinkSelect, LinkWithoutUser } from "./links";
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -16,5 +16,5 @@ export const users = pgTable("users", {
 
 export type UserSelect = typeof users.$inferSelect;
 export type UserWithLinks = UserSelect & {
-  links: Omit<LinkSelect, "userId">[];
+  links: LinkWithoutUser[];
 };

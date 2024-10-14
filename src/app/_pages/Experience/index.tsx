@@ -4,12 +4,23 @@ import React from "react";
 import { ExperienceWithCompany } from "@/shared/db/schema";
 import { motion } from "framer-motion";
 import { ExperienceCard } from "./_components/experience-card";
+import { openURL } from "@/utils";
+import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 
 interface Props {
   data: ExperienceWithCompany[];
 }
 
 export default function Experience({ data }: Props) {
+  const handleExperienceClick = (experience: ExperienceWithCompany) => {
+    if (experience.company.uri) {
+      openURL(experience.company.uri, true);
+    }
+    sendEvent(AnalyticsEvent.EXPERIENCE_CLICK, {
+      name: experience.company.name,
+    });
+  };
+
   return (
     <div id="experience" className="flex pt-14 min-h-dvh">
       <div className="flex-1 flex flex-col justify-center items-center">
@@ -27,7 +38,13 @@ export default function Experience({ data }: Props) {
           </div>
           <div className="mt-2 flex flex-col gap-2">
             {data.map((experience, index, items) => (
-              <ExperienceCard key={experience.id} index={index} total={items.length} experience={experience} />
+              <ExperienceCard
+                key={experience.id}
+                index={index}
+                total={items.length}
+                experience={experience}
+                onClick={handleExperienceClick}
+              />
             ))}
           </div>
         </motion.div>

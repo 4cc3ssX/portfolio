@@ -1,17 +1,17 @@
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 import { Chip, ParallaxCard } from "@/components/interface";
-import { openURL } from "@/utils";
 import dayjs from "dayjs";
 import { ExternalLink, GitFork, Star } from "lucide-react";
 import Link from "next/link";
 
 export interface ProjectCardProps {
   project: ProjectWithLinkAndTagsWithGithubData;
+  onClick: (project: ProjectWithLinkAndTagsWithGithubData) => void;
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   return (
-    <ParallaxCard onClick={() => openURL(project.link, true)}>
+    <ParallaxCard onClick={() => onClick(project)}>
       <div className="flex flex-col gap-y-2 rounded-xl bg-gradient-to-br from-secondary to-background px-4 py-3.5 md:px-5 md:py-4">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
           <div className="flex-1 flex flex-row items-center gap-x-2">

@@ -1,5 +1,6 @@
 export enum AnalyticsEvent {
   // General
+  PAGE_VIEW = "page_view",
   SAY_HI = "say_hi",
   LETS_TALK = "lets_talk",
 
@@ -12,9 +13,6 @@ export enum AnalyticsEvent {
   DOWNLOAD_RESUME = "download_resume",
   GLOBE_INTERACTION = "globe_interaction",
   LOCATE_POSITION = "locate_position",
-
-  // About
-  ABOUT_MORE = "about_more",
 
   // Experience
   EXPERIENCE_CLICK = "experience_click",

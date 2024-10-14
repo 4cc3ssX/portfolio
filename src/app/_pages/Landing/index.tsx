@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { useRef } from "react";
 import { GlobeRef } from "@/components/interface";
 import { useNavigation } from "@/shared/hooks/use-navigation";
+import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 
 const Globe = dynamic(() => import("@/components/interface/globe"), {
   ssr: false,
@@ -17,18 +18,35 @@ interface Props {
   data: UserWithLinks;
 }
 
-const BANGKOK_LOCATION: [number, number] = [13.7563, 100.5018];
+const LOCATE_POSITION: [number, number] = [13.7563, 100.5018];
 
 const Landing = ({ data }: Props) => {
   const { navigate } = useNavigation();
   const globeRef = useRef<GlobeRef>(null);
   const resumeLink = data.links.find((link) => link.name.match(/resume/i));
 
+  const handleLetsGetStarted = () => {
+    navigate("about");
+
+    sendEvent(AnalyticsEvent.LETS_GET_STARTED);
+  };
+
+  const handleDownloadResume = (link: string) => {
+    sendEvent(AnalyticsEvent.DOWNLOAD_RESUME);
+    openURL(link, true);
+  };
+
+  const handleLocatePosition = () => {
+    sendEvent(AnalyticsEvent.LOCATE_POSITION);
+
+    globeRef.current?.locateToPosition(LOCATE_POSITION[0], LOCATE_POSITION[1]);
+  };
+
   return (
     <div id="landing" className="relative flex pt-14 min-h-dvh">
       <Globe
         globeRef={globeRef}
-        markers={[{ location: BANGKOK_LOCATION, size: 0.08 }]}
+        markers={[{ location: LOCATE_POSITION, size: 0.08 }]}
         className="absolute top-10 lg:top-20 -right-1/2 md:-right-1/4 lg:right-0"
       />
       <div className="flex flex-1 flex-col justify-center items-center">
@@ -55,9 +73,7 @@ const Landing = ({ data }: Props) => {
               I&apos;m a full-stack software engineer based in{" "}
               <span
                 className="text-blue-500 cursor-pointer after:content-['_↗']"
-                onClick={() =>
-                  globeRef.current?.locateToPosition(BANGKOK_LOCATION[0], BANGKOK_LOCATION[1])
-                }
+                onClick={handleLocatePosition}
               >
                 Bangkok
               </span>
@@ -66,13 +82,13 @@ const Landing = ({ data }: Props) => {
             </p>
           </div>
           <div className="mt-6 sm:mt-1 flex flex-row gap-x-2">
-            <Button className="rounded-full" onClick={() => navigate("about")}>
+            <Button className="rounded-full" onClick={handleLetsGetStarted}>
               Let&apos;s Get Started 👋🏻
             </Button>
             {resumeLink ? (
               <Button
                 variant="link"
-                onClick={() => openURL(resumeLink.uri, true)}
+                onClick={() => handleDownloadResume(resumeLink.uri)}
               >
                 Download Resume
               </Button>

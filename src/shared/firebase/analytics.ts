@@ -1,17 +1,21 @@
-import { CustomEventName, logEvent } from "firebase/analytics";
+import { logEvent } from "firebase/analytics";
 import { analytics } from "./init";
 
-export const sendEvent = <T extends string>(
-  eventName: CustomEventName<T>,
-  params: Record<string, string> = {}
+export const sendEvent = <D extends Record<string, any>>(
+  eventName: string,
+  params?: D
 ) => {
   if (!analytics) {
-    console.warn("Analytics is not initialized");
+    console.warn("[ Analytics ] Not initialized yet");
     return;
   }
 
-  if (process.env.NODE_ENV === "development") {
-    console.log("Analytics event:", eventName, params);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(
+      `[ Analytics ] Event Name: ${eventName} - Params: ${JSON.stringify(
+        params
+      )}`
+    );
     return;
   }
 
