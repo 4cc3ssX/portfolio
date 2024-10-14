@@ -29,6 +29,7 @@ const Globe = ({
   height = 500,
   markerColor = [59, 130, 246],
   className,
+  onInteraction,
 }: GlobeProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
@@ -179,10 +180,7 @@ const Globe = ({
         duration: 0.5,
         ease: "easeInOut",
       }}
-      className={cn(
-        "cursor-grab w-full aspect-square",
-        className
-      )}
+      className={cn("cursor-grab w-full aspect-square", className)}
       style={{ background: "transparent", width, height }}
     />
   );

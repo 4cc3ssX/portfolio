@@ -59,7 +59,7 @@ export default function About({ data }: Props) {
           </div>
         </motion.div>
       </div>
-      <motion.div className="absolute inset-x-0 -bottom-5 md:bottom-10 flex flex-col items-center justify-center z-10">
+      <motion.div className="absolute inset-x-0 bottom-0 md:bottom-10 flex flex-col items-center justify-center z-10">
         <Button
           variant="outline"
           size="icon"

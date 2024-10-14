@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { useSmallDevice } from "@/shared/hooks/use-small-device";
 import { useNavigation } from "@/shared/hooks/use-navigation";
+import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 
 interface Props {}
 
@@ -20,6 +21,10 @@ export const Header = ({}: Props) => {
   const onClickLink = (link: INavLink) => {
     navigate(link.path);
     setOpen(false);
+
+    sendEvent(AnalyticsEvent.PAGE_VIEW, {
+      name: link.name,
+    });
   };
 
   useEffect(() => {

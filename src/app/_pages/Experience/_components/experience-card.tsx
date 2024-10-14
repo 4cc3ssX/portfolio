@@ -11,12 +11,14 @@ export interface ExperienceCardProps {
   index: number;
   total: number;
   experience: ExperienceWithCompany;
+  onClick: (experience: ExperienceWithCompany) => void;
 }
 
 export const ExperienceCard = ({
   index,
   total,
   experience,
+  onClick,
 }: ExperienceCardProps) => {
   const opacity = 1 - index / (total * 1.5);
   const scale = 1 - index / (total * 8);
@@ -25,6 +27,7 @@ export const ExperienceCard = ({
       whileHover={{ opacity: 1, scale: index > 0 ? scale + 0.02 : undefined }}
       style={{ opacity, scale }}
       className="relative p-px"
+      onClick={() => onClick(experience)}
     >
       {experience.isActive && (
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
@@ -55,7 +58,9 @@ export const ExperienceCard = ({
                 className="font-medium text-lg hover:underline underline-offset-2"
               >
                 {experience.company.name}
-                <span className="sr-only">Open {experience.company.name} in new tab</span>
+                <span className="sr-only">
+                  Open {experience.company.name} in new tab
+                </span>
               </Link>
             ) : (
               <p className="font-medium text-lg cursor-not-allowed">

@@ -3,18 +3,29 @@
 import { motion } from "framer-motion";
 import { ProjectCard } from "./_components";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
+import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
+import { openURL } from "@/utils";
 
 interface Props {
   data: ProjectWithLinkAndTagsWithGithubData[];
 }
 
 export default function Projects({ data }: Props) {
+  const handleProjectClick = (
+    project: ProjectWithLinkAndTagsWithGithubData
+  ) => {
+    openURL(project.link, true);
+
+    sendEvent(AnalyticsEvent.PROJECT_CLICK, {
+      name: project.name,
+    });
+  };
   return (
     <div id="projects" className="flex pt-14 min-h-dvh">
       <div className="flex-1 flex flex-col justify-start md:justify-center items-center">
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
-          whileInView={{ y: 0, opacity: 1, filter: "blur(0)" }}
+          whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{
             duration: 0.6,
             ease: "easeInOut",
@@ -33,6 +44,7 @@ export default function Projects({ data }: Props) {
                 <ProjectCard
                   key={`project-${project.name}-${index}`}
                   project={project}
+                  onClick={handleProjectClick}
                 />
               );
             })}

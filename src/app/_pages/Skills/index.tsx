@@ -15,7 +15,7 @@ export default function Skills({ data }: Props) {
       <div className="flex-1 flex flex-col justify-center items-center">
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
-          whileInView={{ y: 0, opacity: 1, filter: "blur(0)" }}
+          whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           transition={{
             duration: 0.6,
             ease: "easeInOut",

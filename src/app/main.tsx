@@ -13,6 +13,7 @@ import { useNavigation } from "@/shared/hooks/use-navigation";
 import Skills from "./_pages/Skills";
 import { SkillWithTag } from "@/shared/db/schema/skills";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
+import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 
 interface Props {
   me: UserWithLinks;
@@ -34,7 +35,11 @@ export default function Main({ me, experiences, projects, skills }: Props) {
         "Ready to chat? Reach out and let's bring your ideas to life!",
       action: {
         label: "Let's talk",
-        onClick: () => navigate("#contact"),
+        onClick: () => {
+          navigate("#contact");
+
+          sendEvent(AnalyticsEvent.LETS_TALK);
+        },
       },
       duration: INTRODUCTION_DURATION,
     });

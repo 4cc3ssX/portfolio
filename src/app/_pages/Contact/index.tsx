@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { UserWithLinks } from "@/shared/db/schema";
+import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { openURL } from "@/utils";
 import { motion } from "framer-motion";
 import { useCallback } from "react";
@@ -11,18 +12,20 @@ interface Props {
 }
 
 export default function Contact({ user }: Props) {
-  const sayHi = useCallback(() => {
+  const sayHi = () => {
     openURL(
       `mailto:${user.email}?subject=${encodeURIComponent(
         "Collaboration Opportunity: Let's Create Something Amazing!"
       )}`,
       true
     );
-  }, [user.email]);
+
+    sendEvent(AnalyticsEvent.SAY_HI);
+  };
 
   return (
     <div id="contact" className="relative flex pt-14 min-h-dvh">
-      <div className="absolute left-0 right-0 bottom-8">
+      <div className="absolute left-0 right-0 bottom-5">
         <p className="text-xs text-hint text-center">
           Designed & Built by{" "}
           <span className="font-medium">{user.nickname} 🚀</span>
@@ -62,7 +65,6 @@ export default function Contact({ user }: Props) {
               onClick={sayHi}
             >
               Say Hi!
-              <span className="sr-only">Send email to {user.email}</span>
             </Button>
           </div>
         </motion.div>
