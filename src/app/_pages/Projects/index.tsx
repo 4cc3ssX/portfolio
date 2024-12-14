@@ -26,6 +26,7 @@ export default function Projects({ data }: Props) {
         <motion.div
           initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
           whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.6,
             ease: "easeInOut",

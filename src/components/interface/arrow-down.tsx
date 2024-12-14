@@ -20,6 +20,7 @@ export const ArrowDown = () => {
         d="M8 18L12 22L16 18"
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       />
       <motion.path
