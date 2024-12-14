@@ -1,5 +1,12 @@
 
 
+## [2.4.2](https://github.com/4cc3ssX/portfolio/compare/v2.4.1...v2.4.2) (2024-12-14)
+
+
+### 🐛 Bug Fixes
+
+* drizzle config changes ([c8bdaf2](https://github.com/4cc3ssX/portfolio/commit/c8bdaf2230c0a164a6143f17000578b9e3946ca4))
+
 ## [2.4.1](https://github.com/4cc3ssX/portfolio/compare/v2.4.0...v2.4.1) (2024-12-14)
 
 
