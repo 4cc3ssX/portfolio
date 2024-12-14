@@ -1,5 +1,25 @@
 
 
+## [2.4.1](https://github.com/4cc3ssX/portfolio/compare/v2.4.0...v2.4.1) (2024-12-14)
+
+
+### 🐛 Bug Fixes
+
+* minor changes ([54f0187](https://github.com/4cc3ssX/portfolio/commit/54f0187a27743eac654bc64bfb53cadbcd4f8431))
+* reduced abstractions + minor changes ([28489fe](https://github.com/4cc3ssX/portfolio/commit/28489fe7a9f17562f37bddc27f3f278cc5073a68))
+
+
+### 🧹 Chore
+
+* commit lint + lint-staged setup ([38305b6](https://github.com/4cc3ssX/portfolio/commit/38305b6c0a215fe085f8b056b7e6465a47a30557))
+* minor changes ([19c5077](https://github.com/4cc3ssX/portfolio/commit/19c5077fc74aa5c60680905b2f40373552daab9d))
+* nextjs version upgrade ([d1b49c3](https://github.com/4cc3ssX/portfolio/commit/d1b49c3b4cabce155616d93a70c5c12d45dc59b1))
+
+
+### 🏎 Performance
+
+* motion optimization with viewport once ([de8ef2d](https://github.com/4cc3ssX/portfolio/commit/de8ef2dd90a6805df7c27f3e1e11e6ddf8bff282))
+
 ## [2.4.0](https://github.com/4cc3ssX/portfolio/compare/v2.3.7...v2.4.0) (2024-10-14)
 
 
