@@ -1,90 +1,65 @@
 import "server-only";
 import "./env";
 
+export interface DatabaseConfig {
+  host: string;
+  port: number;
+  user: string;
+  password: string;
+  name: string;
+}
+
 export class DatabaseConfigs {
-  static instance: DatabaseConfigs;
+  host: string = process.env.DATABASE_HOST;
+  port: number = parseInt(process.env.DATABASE_PORT || "5432");
+  user: string = process.env.DATABASE_USER;
+  password: string = process.env.DATABASE_PASSWORD;
+  name: string = process.env.DATABASE_NAME;
 
-  private DATABASE_HOST = process.env.DATABASE_HOST;
-  private DATABASE_PORT = parseInt(process.env.DATABASE_PORT, 10) || 5432;
-  private DATABASE_USER = process.env.DATABASE_USER;
-  private DATABASE_PASSWORD = process.env.DATABASE_PASSWORD;
-  private DATABASE_NAME = process.env.DATABASE_NAME;
-
-  private constructor() {}
-
-  public static getInstance() {
-    if (!DatabaseConfigs.instance) {
-      DatabaseConfigs.instance = new DatabaseConfigs();
+  constructor({
+    host,
+    port,
+    user,
+    password,
+    name,
+  }: Partial<DatabaseConfig> = {}) {
+    if (host) {
+      this.host = host;
     }
 
-    return DatabaseConfigs.instance;
+    if (port) {
+      this.port = port;
+    }
+
+    if (user) {
+      this.user = user;
+    }
+
+    if (password) {
+      this.password = password;
+    }
+
+    if (name) {
+      this.name = name;
+    }
   }
 
-  setHost(host: string) {
-    this.DATABASE_HOST = host;
-
-    return DatabaseConfigs.instance;
-  }
-
-  setPort(port: number) {
-    this.DATABASE_PORT = port;
-
-    return DatabaseConfigs.instance;
-  }
-
-  setUser(user: string) {
-    this.DATABASE_USER = user;
-
-    return DatabaseConfigs.instance;
-  }
-
-  setPassword(password: string) {
-    this.DATABASE_PASSWORD = password;
-
-    return DatabaseConfigs.instance;
-  }
-
-  setName(name: string) {
-    this.DATABASE_NAME = name;
-
-    return DatabaseConfigs.instance;
-  }
-
-  getHost() {
-    return this.DATABASE_HOST;
-  }
-
-  getPort() {
-    return this.DATABASE_PORT;
-  }
-
-  getUser() {
-    return this.DATABASE_USER;
-  }
-
-  getPassword() {
-    return this.DATABASE_PASSWORD;
-  }
-
-  getName() {
-    return this.DATABASE_NAME;
-  }
-
-  toString() {
+  connectionString(protocol: string = "postgresql") {
     if (
-      !this.DATABASE_HOST ||
-      !this.DATABASE_PORT ||
-      !this.DATABASE_USER ||
-      !this.DATABASE_PASSWORD ||
-      !this.DATABASE_NAME
+      !protocol ||
+      !this.host ||
+      !this.port ||
+      !this.user ||
+      !this.password ||
+      !this.name
     ) {
       throw new Error("Database configuration is not set");
     }
 
-    const connectionString = `postgresql://${this.DATABASE_USER}:${this.DATABASE_PASSWORD}@${this.DATABASE_HOST}:${this.DATABASE_PORT}/${this.DATABASE_NAME}`;
+    const connectionString = `${protocol}://${this.user}:${this.password}@${this.host}:${this.port}/${this.name}`;
 
     return connectionString;
   }
 }
 
-export const dbConfigs = DatabaseConfigs.getInstance();
+export const dbConfigs = new DatabaseConfigs();

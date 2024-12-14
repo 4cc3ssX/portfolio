@@ -6,11 +6,11 @@ import { dbConfigs } from "@/shared/configs/db";
 
 // Disable prefetch as it is not supported for "Transaction" pool mode
 export const client = postgres({
-  host: dbConfigs.getHost(),
-  port: dbConfigs.getPort(),
-  user: dbConfigs.getUser(),
-  password: dbConfigs.getPassword(),
-  database: dbConfigs.getName(),
+  host: dbConfigs.host,
+  port: dbConfigs.port,
+  user: dbConfigs.user,
+  password: dbConfigs.password,
+  database: dbConfigs.name,
 
   prepare: false,
 });

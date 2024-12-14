@@ -14,6 +14,7 @@ import Skills from "./_pages/Skills";
 import { SkillWithTag } from "@/shared/db/schema/skills";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
+import { INTRODUCTION_DURATION, INTRODUCTION_TIMEOUT } from "@/constants/toast";
 
 interface Props {
   me: UserWithLinks;
@@ -21,9 +22,6 @@ interface Props {
   projects: ProjectWithLinkAndTagsWithGithubData[];
   skills: SkillWithTag[];
 }
-
-const INTRODUCTION_TIMEOUT = 8000; // 8s
-const INTRODUCTION_DURATION = 20000; // 20s
 
 export default function Main({ me, experiences, projects, skills }: Props) {
   const { navigate } = useNavigation();
