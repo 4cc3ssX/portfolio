@@ -6,11 +6,11 @@ export default defineConfig({
   out: "./supabase/migrations",
   dialect: "postgresql",
   dbCredentials: {
-    host: dbConfigs.getHost(),
-    port: dbConfigs.getPort(),
-    user: dbConfigs.getUser(),
-    password: dbConfigs.getPassword(),
-    database: dbConfigs.getName(),
+    host: dbConfigs.host,
+    port: dbConfigs.port,
+    user: dbConfigs.user,
+    password: dbConfigs.password,
+    database: dbConfigs.name,
   },
   migrations: {
     prefix: "supabase",

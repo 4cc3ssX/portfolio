@@ -31,7 +31,7 @@
     "cobe": "^0.6.3",
     "dayjs": "^1.11.8",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.33.0",
+    "drizzle-orm": "^0.38.2",
     "eslint": "^9.17.0",
     "firebase": "^10.14.1",
     "framer-motion": "^11.14.4",
