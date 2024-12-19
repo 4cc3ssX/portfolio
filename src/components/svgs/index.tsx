@@ -1,6 +1,6 @@
 "use client";
 
-import { IconName, icons } from "./constants";
+import { IconName, icons } from "./icons";
 
 export interface IconProps {
   name: IconName;
@@ -11,11 +11,11 @@ export const Icon = ({ name, ...rest }: IconProps) => {
   const IconComponent = icons[name];
 
   if (!IconComponent) {
-    console.error(`Icon ${name} not found`);
+    console.debug(`Icon ${name} not found`);
     return null;
   }
 
   return <IconComponent {...rest} />;
 };
 
-export * from "./constants";
+export * from "./icons";

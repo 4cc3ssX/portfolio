@@ -18,7 +18,15 @@ const nextConfig = {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: ["@svgr/webpack"],
+        use: [
+          {
+            loader: "@svgr/webpack",
+            options: {
+              typescript: true,
+              ext: "tsx",
+            },
+          },
+        ],
       }
     );
 
@@ -47,6 +55,27 @@ const nextConfig = {
     // Remove console logs only in production, excluding error logs
     removeConsole:
       process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
+  experimental: {
+    turbo: {
+      treeShaking: true,
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+      resolveExtensions: [
+        ".mdx",
+        ".tsx",
+        ".ts",
+        ".jsx",
+        ".js",
+        ".mjs",
+        ".json",
+        ".svg",
+      ],
+    },
   },
 };
 
