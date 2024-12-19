@@ -1,24 +1,36 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ExperienceWithCompany } from "@/shared/db/schema";
 import { motion } from "framer-motion";
 import { ExperienceCard } from "./_components/experience-card";
-import { openURL } from "@/utils";
+
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
+import { ExperienceModal } from "./_components/experience-modal";
 
 interface Props {
   data: ExperienceWithCompany[];
 }
 
 export default function Experience({ data }: Props) {
-  const handleExperienceClick = (experience: ExperienceWithCompany) => {
-    if (experience.company.uri) {
-      openURL(experience.company.uri, true);
-    }
+  const [isOpen, setIsOpen] = useState(false);
+  const [experience, setExperience] = useState<ExperienceWithCompany>();
+
+  const handleOnClick = (experience: ExperienceWithCompany) => {
     sendEvent(AnalyticsEvent.EXPERIENCE_CLICK, {
       name: experience.company.name,
     });
+
+    setExperience(experience);
+    setIsOpen(true);
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+
+    if (!open) {
+      setExperience(undefined);
+    }
   };
 
   return (
@@ -43,13 +55,23 @@ export default function Experience({ data }: Props) {
                 key={experience.id}
                 index={index}
                 total={items.length}
-                experience={experience}
-                onClick={handleExperienceClick}
+                active={experience.isActive}
+                company={experience.company}
+                position={experience.position}
+                start={experience.startedAt}
+                end={experience.endedAt}
+                className="px-4 md:px-4 py-2 md:py-2.5"
+                onClick={() => handleOnClick(experience)}
               />
             ))}
           </div>
         </motion.div>
       </div>
+      <ExperienceModal
+        isOpen={isOpen}
+        onOpenChange={handleOpenChange}
+        experience={experience}
+      />
     </div>
   );
 }

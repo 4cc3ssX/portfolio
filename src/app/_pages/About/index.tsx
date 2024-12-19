@@ -30,8 +30,8 @@ export default function About({ data }: Props) {
             <h1 className="font-medium text-2xl sm:text-3xl">About</h1>
           </div>
           <div className="flex flex-col gap-5">
-            <p className="text-md whitespace-pre-line hyphens-auto text-justify">
-              I&apos;m Ryam, a full-stack web and mobile app developer with a
+            <p className="first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left text-md whitespace-pre-line hyphens-auto text-justify">
+              Ryam, a full-stack web and mobile app developer with a
               passion for building scalable, high-performance applications. I
               specialize in <span className="text-blue-500">React</span>,{" "}
               <span className="text-blue-500">React Native</span>, and{" "}

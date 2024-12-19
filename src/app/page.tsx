@@ -4,6 +4,8 @@ import { getProjects } from "@/actions/projects";
 import { getExperiences } from "@/actions/experiences";
 import { getSkills } from "@/actions/skills";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const me = await getMe();
   const projects = await getProjects();
@@ -19,5 +21,3 @@ export default async function Home() {
     />
   );
 }
-
-export const revalidate = 60;

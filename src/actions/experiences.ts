@@ -33,6 +33,7 @@ export const getExperiences = async (): Promise<ExperienceWithCompany[]> => {
       id: experiences.id,
       company: populateCompany.as("company"),
       position: experiences.position,
+      description: experiences.description,
       startedAt: experiences.startedAt,
       endedAt: experiences.endedAt,
       isActive: experiences.isActive,

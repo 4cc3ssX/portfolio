@@ -1,49 +1,77 @@
 import { cn } from "@/lib/utils";
-import { ExperienceWithCompany } from "@/shared/db/schema";
+import { CompanyWithImageAndLink } from "@/shared/db/schema";
 import { openURL } from "@/utils";
 import dayjs from "dayjs";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { isNil } from "lodash-es";
 
-export interface ExperienceCardProps {
-  index: number;
-  total: number;
-  experience: ExperienceWithCompany;
-  onClick: (experience: ExperienceWithCompany) => void;
+export interface ExperienceCardProps
+  extends React.ComponentProps<typeof motion.div> {
+  index?: number;
+  total?: number;
+  active: boolean;
+  company: CompanyWithImageAndLink;
+  position: string;
+  start: string;
+  end: string | null;
+  className?: string;
 }
 
 export const ExperienceCard = ({
   index,
   total,
-  experience,
-  onClick,
+  active,
+  company,
+  position,
+  start,
+  end,
+  className,
+  ...rest
 }: ExperienceCardProps) => {
-  const opacity = 1 - index / (total * 1.5);
-  const scale = 1 - index / (total * 8);
+  const isValidValues = !isNil(index) && !isNil(total);
+
+  const opacity = isValidValues ? 1 - index / (total * 1.5) : 1;
+  const scale = isValidValues ? 1 - index / (total * 10) : 1;
   return (
     <motion.div
-      whileHover={{ opacity: 1, scale: index > 0 ? scale + 0.02 : undefined }}
+      layout
+      layoutId={`experience-${company.id}`}
+      exit={{ opacity: 0 }}
+      transition={{
+        default: { ease: "linear" },
+        layout: {
+          duration: 0.3,
+          ease: "easeInOut",
+        },
+      }}
+      whileHover={{
+        opacity: 1,
+        scale: index && index > 0 ? scale + 0.02 : 1,
+      }}
       style={{ opacity, scale }}
-      className="relative p-px"
-      onClick={() => onClick(experience)}
+      className="relative p-px cursor-pointer"
+      {...rest}
     >
-      {experience.isActive && (
+      {isValidValues && active ? (
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
-      )}
+      ) : null}
       <div
         className={cn(
-          "flex flex-row items-center gap-x-3 px-4 py-2 md:px-4 md:py-2.5",
-          experience.isActive &&
+          "flex flex-row items-center gap-x-3",
+          className,
+          isValidValues &&
+            active &&
             "bg-gradient-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl"
         )}
       >
         <div className="hidden md:block border border-muted rounded-full p-0.5">
           <Image
-            placeholder={experience.company.image.blurHash as any}
-            src={experience.company.image.uri}
-            alt={`${experience.company.name} logo`}
+            placeholder={company.image.blurHash as any}
+            src={company.image.uri}
+            alt={`${company.name} logo`}
             width={32}
             height={32}
             className="object-center rounded-full"
@@ -51,46 +79,42 @@ export const ExperienceCard = ({
         </div>
         <div className="flex-[2] flex flex-col gap-y-0.5">
           <div className="flex flex-row items-center gap-x-1.5">
-            {experience.company.uri ? (
+            {company.uri ? (
               <Link
-                href={experience.company.uri ?? "#"}
+                href={company.uri ?? "#"}
                 target="_blank"
                 className="font-medium text-lg hover:underline underline-offset-2"
               >
-                {experience.company.name}
-                <span className="sr-only">
-                  Open {experience.company.name} in new tab
-                </span>
+                {company.name}
+                <span className="sr-only">Open {company.name} in new tab</span>
               </Link>
             ) : (
               <p className="font-medium text-lg cursor-not-allowed">
-                {experience.company.name}
+                {company.name}
               </p>
             )}
-            {experience.company.uri ? (
+            {company.uri ? (
               <button
-                title={`${experience.company.name}`}
-                onClick={() => openURL(experience.company.uri!, true)}
+                title={`${company.name}`}
+                onClick={() => openURL(company.uri!, true)}
               >
                 <ExternalLink size={18} />
               </button>
             ) : null}
           </div>
-          <p className="text-sm text-muted-foreground">{experience.position}</p>
+          <p className="text-sm text-muted-foreground">{position}</p>
         </div>
         <div className="flex flex-row items-center justify-end flex-wrap gap-1.5">
           <p className="text-xs md:text-sm text-muted-foreground text-left">
-            {dayjs(experience.startedAt).format("MMM YYYY")}
+            {dayjs(start).format("MMM YYYY")}
           </p>
-          <div className="w-2 h-px bg-muted-foreground" />
+          <span className="w-2 h-px bg-muted-foreground" />
           <p
             className={`text-xs md:text-sm ${
-              experience.isActive ? "text-primary" : "text-muted-foreground"
+              active ? "text-primary" : "text-muted-foreground"
             } text-right`}
           >
-            {experience.isActive
-              ? "Present"
-              : dayjs(experience.endedAt).format("MMM YYYY")}
+            {active && !end ? "Present" : dayjs(end).format("MMM YYYY")}
           </p>
         </div>
       </div>

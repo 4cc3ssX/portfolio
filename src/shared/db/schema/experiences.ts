@@ -18,9 +18,10 @@ export const experiences = pgTable("experiences", {
       onDelete: "restrict",
     }),
   position: text("position").notNull(),
+  description: text("description").array().notNull(),
   startedAt: date("started_at").notNull(),
   endedAt: date("ended_at").defaultNow(),
-  isActive: boolean("is_active").default(false),
+  isActive: boolean("is_active").notNull().default(false),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at")
     .notNull()

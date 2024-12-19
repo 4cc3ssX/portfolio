@@ -1,4 +1,3 @@
-import "server-only";
 import "./env";
 
 export interface DatabaseConfig {
