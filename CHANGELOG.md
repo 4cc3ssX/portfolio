@@ -1,5 +1,20 @@
 
 
+## [2.4.3](https://github.com/4cc3ssX/portfolio/compare/v2.4.2...v2.4.3) (2024-12-19)
+
+
+### 🚀 Features
+
+* experience card modal ([90d066f](https://github.com/4cc3ssX/portfolio/commit/90d066fc570893245419b81ac6b39bfcc51c2711))
+
+
+### 🐛 Bug Fixes
+
+* check if build succeed before merging ([517b47c](https://github.com/4cc3ssX/portfolio/commit/517b47c3cd2cb0d76188681f1d8bd5f64757e90c))
+* icon component log level ([5a2085a](https://github.com/4cc3ssX/portfolio/commit/5a2085a0082af99f1cd4e8f985b021e3db27bbaf))
+* minor changes ([49b3196](https://github.com/4cc3ssX/portfolio/commit/49b3196fa6420f387583ac6bfc50be7735116c58))
+* shadcn version upgrade + turbopack ([2c342c8](https://github.com/4cc3ssX/portfolio/commit/2c342c845d8cdacd61e5adb42f6aa6c487595bdf))
+
 ## [2.4.2](https://github.com/4cc3ssX/portfolio/compare/v2.4.1...v2.4.2) (2024-12-14)
 
 
