@@ -15,6 +15,7 @@ import { SkillWithTag } from "@/shared/db/schema/skills";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { INTRODUCTION_DURATION, INTRODUCTION_TIMEOUT } from "@/constants/toast";
+import { Particles } from "@/components/ui/particles";
 
 interface Props {
   me: UserWithLinks;
@@ -57,6 +58,13 @@ export default function Main({ me, experiences, projects, skills }: Props) {
   return (
     <main className="font-sans">
       <ContactLinks data={me} />
+      <Particles
+        className="absolute inset-0"
+        quantity={100}
+        ease={80}
+        size={0.2}
+        refresh
+      />
       <div className="w-screen h-dvh overflow-x-hidden overflow-y-scroll scroll-smooth">
         <Landing data={me} />
 
