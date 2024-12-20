@@ -1,5 +1,20 @@
 
 
+## [2.4.4](https://github.com/4cc3ssX/portfolio/compare/v2.4.3...v2.4.4) (2024-12-20)
+
+
+### 🚀 Features
+
+* blur fade effect on landing page ([e23022c](https://github.com/4cc3ssX/portfolio/commit/e23022c7db9d02cb936d67279ad59c3f09ba8590))
+* particles background ([e60eee2](https://github.com/4cc3ssX/portfolio/commit/e60eee2eccc417172e0d5859db6d0c8c8364a928))
+* text gradient scroll component ([bf3be09](https://github.com/4cc3ssX/portfolio/commit/bf3be0919c723dfebe09c35c2491711a044f336c))
+
+
+### 🐛 Bug Fixes
+
+* header shown delay ([1b1201f](https://github.com/4cc3ssX/portfolio/commit/1b1201f384a64c0f5f458c89881eafeb9acaed3b))
+* minor changes ([b5ff906](https://github.com/4cc3ssX/portfolio/commit/b5ff906a06353e23d967c5d38826466b2c9649a2))
+
 ## [2.4.3](https://github.com/4cc3ssX/portfolio/compare/v2.4.2...v2.4.3) (2024-12-19)
 
 
