@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { GlobeRef } from "@/components/interface";
 import { useNavigation } from "@/shared/hooks/use-navigation";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
+import { BlurFade } from "@/components/ui/blur-fade";
 
 const Globe = dynamic(() => import("@/components/interface/globe"), {
   ssr: false,
@@ -65,21 +66,27 @@ const Landing = ({ data }: Props) => {
           className="flex flex-col gap-y-4 w-full md:w-4/6 lg:w-7/12 px-5 md:px-6"
         >
           <div className="flex flex-col gap-y-3">
-            <p className="text-sm md:text-base">
-              Hi, I&apos;m {data.nickname}!
-            </p>
-            <p className="font-bold text-4xl md:text-5xl">{data.slogan}</p>
-            <p className="text-sm md:text-base">
-              I&apos;m a full-stack software engineer based in{" "}
-              <span
-                className="text-blue-500 cursor-pointer after:content-['_↗']"
-                onClick={handleLocatePosition}
-              >
-                Bangkok
-              </span>
-              , who loves at breaking things, building cutting-edge, accessible
-              and well-optimized apps.
-            </p>
+            <BlurFade delay={0.25} inView>
+              <p className="text-sm md:text-base">
+                Hi, I&apos;m {data.nickname}!
+              </p>
+            </BlurFade>
+            <BlurFade delay={0.25 * 2} inView>
+              <p className="font-bold text-4xl md:text-5xl">{data.slogan}</p>
+            </BlurFade>
+            <BlurFade delay={0.25 * 3} inView>
+              <p className="text-sm md:text-base">
+                I&apos;m a full-stack software engineer based in{" "}
+                <span
+                  className="text-blue-500 cursor-pointer after:content-['_↗']"
+                  onClick={handleLocatePosition}
+                >
+                  Bangkok
+                </span>
+                , who loves at breaking things, building cutting-edge,
+                accessible and well-optimized apps.
+              </p>
+            </BlurFade>
           </div>
           <div className="mt-6 sm:mt-1 flex flex-row gap-x-2">
             <Button className="rounded-full" onClick={handleLetsGetStarted}>
