@@ -34,15 +34,20 @@ export const ExperienceModal = ({
           <ExperienceCard
             active={experience.isActive}
             company={experience.company}
-            position={experience.position}
             start={experience.startedAt}
             end={experience.endedAt}
             className=""
           />
         ) : null}
-        <ul role="list" className="list-inside list-disc marker:text-blue-500 space-y-1">
+        <ul
+          role="list"
+          className="list-inside list-disc marker:text-blue-500 space-y-1"
+        >
           {experience?.description.map((description, index) => (
-            <li key={`${experience.company.name}-description-${index}`} className="text-foreground text-left">
+            <li
+              key={`${experience.company.name}-description-${index}`}
+              className="text-foreground text-left"
+            >
               {description}
             </li>
           ))}

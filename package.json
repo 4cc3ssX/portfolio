@@ -35,7 +35,7 @@
     "drizzle-orm": "^0.38.2",
     "eslint": "^9.17.0",
     "firebase": "^10.14.1",
-    "framer-motion": "^11.14.4",
+    "framer-motion": "^11.15.0",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.468.0",
     "next": "15.1.0",

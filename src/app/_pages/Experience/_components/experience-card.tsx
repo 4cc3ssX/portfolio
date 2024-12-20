@@ -14,7 +14,7 @@ export interface ExperienceCardProps
   total?: number;
   active: boolean;
   company: CompanyWithImageAndLink;
-  position: string;
+  position?: string;
   start: string;
   end: string | null;
   className?: string;
@@ -102,7 +102,9 @@ export const ExperienceCard = ({
               </button>
             ) : null}
           </div>
-          <p className="text-sm text-muted-foreground">{position}</p>
+          {position ? (
+            <p className="text-sm text-muted-foreground">{position}</p>
+          ) : null}
         </div>
         <div className="flex flex-row items-center justify-end flex-wrap gap-1.5">
           <p className="text-xs md:text-sm text-muted-foreground text-left">
