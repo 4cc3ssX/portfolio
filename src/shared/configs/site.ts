@@ -1,6 +1,6 @@
 export const configs = {
   url:
     process.env.NODE_ENV === "production"
-      ? `https://ryam.me`
+      ? `https://ryamjs.dev`
       : `http://localhost:3000`,
 };
