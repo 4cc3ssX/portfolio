@@ -1,5 +1,13 @@
 
 
+## [2.4.5](https://github.com/4cc3ssX/portfolio/compare/v2.4.4...v2.4.5) (2025-03-05)
+
+
+### 🐛 Bug Fixes
+
+* minor changes ([ab98a6e](https://github.com/4cc3ssX/portfolio/commit/ab98a6ecf66914b4a1b49a43f36d8527c6c12054))
+* site domain update ([f19ff52](https://github.com/4cc3ssX/portfolio/commit/f19ff5221e6f32f33ab0a6d50313e278b5c9188b))
+
 ## [2.4.4](https://github.com/4cc3ssX/portfolio/compare/v2.4.3...v2.4.4) (2024-12-20)
 
 
