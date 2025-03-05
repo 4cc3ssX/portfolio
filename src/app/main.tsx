@@ -9,13 +9,13 @@ import Projects from "./_pages/Projects";
 import { ExperienceWithCompany, UserWithLinks } from "@/shared/db/schema";
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { useNavigation } from "@/shared/hooks/use-navigation";
 import Skills from "./_pages/Skills";
 import { SkillWithTag } from "@/shared/db/schema/skills";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { INTRODUCTION_DURATION, INTRODUCTION_TIMEOUT } from "@/constants/toast";
 import { Particles } from "@/components/ui/particles";
+import { openURL } from "@/utils";
 
 interface Props {
   me: UserWithLinks;
@@ -25,9 +25,9 @@ interface Props {
 }
 
 export default function Main({ me, experiences, projects, skills }: Props) {
-  const { navigate } = useNavigation();
-
   const introduce = () => {
+    const calLink = me.links.find((link) => link.name.match(/^cal/i));
+
     toast("Let's Connect", {
       id: "intro-message",
       description:
@@ -35,7 +35,9 @@ export default function Main({ me, experiences, projects, skills }: Props) {
       action: {
         label: "Let's talk",
         onClick: () => {
-          navigate("#contact");
+          if (calLink) {
+            openURL(calLink.uri, true);
+          }
 
           sendEvent(AnalyticsEvent.LETS_TALK);
         },

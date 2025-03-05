@@ -1,7 +1,7 @@
 import { db } from "@/shared/db";
-import { links, LinkType, LinkWithoutUser } from "@/shared/db/schema";
+import { links, LinkWithoutUser } from "@/shared/db/schema";
 import { users, UserWithLinks } from "@/shared/db/schema/users";
-import { and, eq, ilike, or, sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 const populateLinks = sql<LinkWithoutUser[]>`ARRAY_AGG(
   JSONB_BUILD_OBJECT(
@@ -28,13 +28,7 @@ export const getMe = async (): Promise<UserWithLinks> => {
       updatedAt: users.updatedAt,
     })
     .from(users)
-    .leftJoin(
-      links,
-      and(
-        eq(links.userId, users.id),
-        or(eq(links.type, LinkType.SOCIAL), ilike(links.name, "resume"))
-      )
-    )
+    .leftJoin(links, eq(links.userId, users.id))
     .groupBy(users.id)
     .limit(1)
     .orderBy();
