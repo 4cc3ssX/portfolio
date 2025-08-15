@@ -1,4 +1,8 @@
+# Changelog
 
+## <small>2.4.6 (2025-08-15)</small>
+
+* refactor: tailwind v4 + version upgrades ([f1e019b](https://github.com/4cc3ssX/portfolio/commit/f1e019b))
 
 ## [2.4.5](https://github.com/4cc3ssX/portfolio/compare/v2.4.4...v2.4.5) (2025-03-05)
 
