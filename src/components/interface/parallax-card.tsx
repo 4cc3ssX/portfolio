@@ -25,7 +25,7 @@ export const ParallaxCard = ({
   gradientSize = 200,
   rotationSensitivity = 80,
   transitionDuration = 0.2,
-  gradientColor = "hsl(var(--secondary) / 50%)",
+  gradientColor = "color-mix(in srgb, var(--secondary) 50%, transparent)",
 }: ParallaxCardProps) => {
   const motionRotateX = useMotionValue(0);
   const motionRotateY = useMotionValue(0);
@@ -75,7 +75,7 @@ export const ParallaxCard = ({
       onClick={onClick}
     >
       <div
-        className={`absolute inset-0 rounded-xl bg-gradient-to-br from-neutral-600/70 to-background to-50% -z-10 ${backgroundClassName}`}
+        className={`absolute inset-0 rounded-xl bg-linear-to-br from-neutral-600/70 to-background to-50% -z-10 ${backgroundClassName}`}
       />
       {children}
       <motion.div

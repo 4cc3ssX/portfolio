@@ -56,7 +56,7 @@ export const Header = ({}: Props) => {
       <motion.div
         initial={{ borderColor: "transparent" }}
         animate={{
-          borderColor: "hsl(var(--border))",
+          borderColor: "var(--border)",
         }}
         transition={{
           duration: 0.5,

@@ -18,12 +18,12 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
       whileHover={{ opacity: 1, scale: 1.05 }}
       className="relative h-24 px-px"
     >
-      <div className="absolute -inset-0 bg-gradient-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
+      <div className="absolute -inset-0 bg-linear-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
       <Icon
         name={skill.tag.term as IconName}
         className="absolute bottom-2 right-2 size-6 z-10 fill-secondary/80"
       />
-      <div className="w-full h-full flex flex-col justify-between gap-y-4 p-4 bg-gradient-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl">
+      <div className="w-full h-full flex flex-col justify-between gap-y-4 p-4 bg-linear-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl">
         <p className="text-sm text-primary">{skill.tag.name}</p>
         <div className="flex flex-row items-center gap-x-1">
           {Array(skill.max)

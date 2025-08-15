@@ -12,7 +12,7 @@ export interface ProjectCardProps {
 const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   return (
     <ParallaxCard onClick={() => onClick(project)}>
-      <div className="flex flex-col gap-y-2 rounded-xl bg-gradient-to-br from-secondary to-background px-4 py-3.5 md:px-5 md:py-4">
+      <div className="flex flex-col gap-y-2 rounded-xl bg-linear-to-br from-secondary to-background px-4 py-3.5 md:px-5 md:py-4">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-3">
           <div className="flex-1 flex flex-row items-center gap-x-2">
             <Link

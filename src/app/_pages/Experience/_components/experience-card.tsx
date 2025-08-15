@@ -56,7 +56,7 @@ export const ExperienceCard = ({
       {...rest}
     >
       {isValidValues && active ? (
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
+        <div className="absolute inset-0 bg-linear-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
       ) : null}
       <div
         className={cn(
@@ -64,7 +64,7 @@ export const ExperienceCard = ({
           className,
           isValidValues &&
             active &&
-            "bg-gradient-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl"
+            "bg-linear-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl"
         )}
       >
         <div className="hidden md:block border border-muted rounded-full p-0.5">
@@ -77,7 +77,7 @@ export const ExperienceCard = ({
             className="object-center rounded-full"
           />
         </div>
-        <div className="flex-[2] flex flex-col gap-y-0.5">
+        <div className="flex-2 flex flex-col gap-y-0.5">
           <div className="flex flex-row items-center gap-x-1.5">
             {company.uri ? (
               <Link
