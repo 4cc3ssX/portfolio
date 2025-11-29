@@ -1,13 +1,13 @@
 {
   "name": "portfolio",
-  "version": "2.4.6",
+  "version": "2.5.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "release": "release-it",
+    "release": "dotenv-cli release-it --",
     "drizzle:gen": "drizzle-kit generate",
     "drizzle:migrate": "NODE_ENV=development drizzle-kit migrate",
     "drizzle:pull": "NODE_ENV=development drizzle-kit pull",
