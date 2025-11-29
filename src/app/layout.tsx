@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import { configs } from "@/shared/configs/site";
 
 import "./globals.css";
-import { Header, ThemeProvider } from "@/components/interface";
+import { ThemeProvider } from "@/components/interface";
 
 export const metadata: Metadata = {
   metadataBase: new URL(configs.url),
@@ -45,7 +45,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <head>
+        <link rel="preconnect" href="https://vercel.live" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+      </head>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -53,10 +57,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Header />
           {children}
-          <SpeedInsights />
-          <Analytics />
           <Toaster
             toastOptions={{
               className:
@@ -67,6 +68,8 @@ export default function RootLayout({
             richColors
           />
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

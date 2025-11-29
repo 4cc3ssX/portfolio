@@ -45,10 +45,9 @@ export const Header = ({}: Props) => {
       }}
       transition={{
         duration: 0.5,
-        delay: 1.5,
         ease: "easeIn",
         top: {
-          delay: 2.5,
+          delay: 1,
         },
       }}
       className={`fixed inset-x-0 flex flex-col items-center justify-center z-40`}

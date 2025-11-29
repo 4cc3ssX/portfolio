@@ -50,6 +50,9 @@ const nextConfig = {
     removeConsole:
       process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
   },
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   turbopack: {
     rules: {
       "*.svg": {

@@ -1,5 +1,5 @@
 import { getMe } from "@/actions/users";
-import Main from "./main";
+import Main from "./_components/main";
 import { getProjects } from "@/actions/projects";
 import { getExperiences } from "@/actions/experiences";
 import { getSkills } from "@/actions/skills";
