@@ -1,27 +1,28 @@
 import unusedImports from "eslint-plugin-unused-imports";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
-
-export default [
-    ...compat.extends("plugin:@next/next/recommended", "next/core-web-vitals"),
-    {
-        plugins: {
-            "unused-imports": unusedImports,
-        },
-
-        rules: {
-            "no-unused-vars": "off",
-            "unused-imports/no-unused-imports": "warn",
-        },
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+  {
+    plugins: {
+      "unused-imports": unusedImports,
     },
-];
+  },
+  {
+    rules: {
+      "no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "warn",
+    },
+  },
+]);
+
+export default eslintConfig;
