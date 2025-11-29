@@ -54,7 +54,7 @@ export const Header = ({}: Props) => {
       className={`fixed inset-x-0 flex flex-col items-center justify-center z-40`}
     >
       <motion.div
-        initial={{ borderColor: "transparent" }}
+        initial={{ borderColor: "hsl(0 0% 0%)" }}
         animate={{
           borderColor: "var(--border)",
         }}
@@ -69,6 +69,7 @@ export const Header = ({}: Props) => {
       >
         <Button
           variant="ghost"
+          size="icon"
           className="md:hidden absolute top-1.5 right-4 self-center"
           title="Open Menu"
           onClick={() => setOpen(!isOpen)}
@@ -100,7 +101,7 @@ export const Header = ({}: Props) => {
                 >
                   <Link
                     href={link.path}
-                    className="font-normal text-white text-lg sm:text-sm"
+                    className="font-normal text-white text-xl sm:text-sm"
                     scroll={false}
                     onClick={() => onClickLink(link)}
                   >

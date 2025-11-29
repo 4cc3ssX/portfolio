@@ -35,7 +35,7 @@ export function ContactLinks({ data }: Props) {
         damping: 25,
         stiffness: 300,
       }}
-      className="fixed bottom-0 right-6 md:right-12 flex flex-col justify-end items-center gap-y-2 z-10"
+      className="fixed bottom-0 right-4 sm:right-6 md:right-12 flex flex-col justify-end items-center gap-y-2 z-10"
     >
       <Link
         href={`mailto:${data.email}`}

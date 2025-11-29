@@ -48,7 +48,7 @@ const Landing = ({ data }: Props) => {
       <Globe
         globeRef={globeRef}
         markers={[{ location: LOCATE_POSITION, size: 0.08 }]}
-        className="absolute top-10 lg:top-20 -right-1/2 md:-right-1/4 lg:right-0"
+        className="hidden md:block absolute top-10 lg:top-20 -right-1/2 md:-right-1/4 lg:right-0"
       />
       <div className="flex flex-1 flex-col justify-center items-center">
         <motion.div
@@ -63,7 +63,7 @@ const Landing = ({ data }: Props) => {
             opacity: 1,
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="flex flex-col gap-y-4 w-full md:w-4/6 lg:w-7/12 px-5 md:px-6"
+          className="flex flex-col gap-y-4 w-full md:w-4/6 lg:w-7/12 px-5 sm:px-6"
         >
           <div className="flex flex-col gap-y-3">
             <BlurFade delay={0.25} inView>
@@ -72,23 +72,25 @@ const Landing = ({ data }: Props) => {
               </p>
             </BlurFade>
             <BlurFade delay={0.25 * 2} inView>
-              <p className="font-bold text-4xl md:text-5xl">{data.slogan}</p>
+              <p className="font-bold text-4xl md:text-5xl">
+                Building scalable systems that drive real-world impact.
+              </p>
             </BlurFade>
             <BlurFade delay={0.25 * 3} inView>
               <p className="text-sm md:text-base">
-                I&apos;m a full-stack software engineer based in{" "}
+                A full-stack software engineer based in{" "}
                 <span
                   className="text-blue-500 cursor-pointer after:content-['_↗']"
                   onClick={handleLocatePosition}
                 >
                   Bangkok
                 </span>
-                , who loves at breaking things, building cutting-edge,
-                accessible and well-optimized apps.
+                , specializing in building scalable, event-driven systems with
+                modern technologies and clean architecture.
               </p>
             </BlurFade>
           </div>
-          <div className="mt-6 sm:mt-1 flex flex-row gap-x-2">
+          <div className="mt-4 sm:mt-1 flex flex-row items-center flex-wrap gap-3 sm:gap-2">
             <Button className="rounded-full" onClick={handleLetsGetStarted}>
               Let&apos;s Get Started 👋🏻
             </Button>

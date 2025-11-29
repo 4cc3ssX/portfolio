@@ -8,7 +8,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ExperienceWithCompany } from "@/shared/db/schema";
-import { ExperienceCard } from "./experience-card";
 
 export interface Props {
   isOpen: boolean;
@@ -25,30 +24,22 @@ export const ExperienceModal = ({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Experience</DialogTitle>
+          <DialogTitle>{experience?.position}</DialogTitle>
           <DialogDescription className="hidden md:block">
-            {experience?.position} at {experience?.company.name}
+            at {experience?.company.name}
           </DialogDescription>
         </DialogHeader>
-        {experience ? (
-          <ExperienceCard
-            active={experience.isActive}
-            company={experience.company}
-            start={experience.startedAt}
-            end={experience.endedAt}
-            className=""
-          />
-        ) : null}
-        <ul
-          role="list"
-          className="list-inside list-disc marker:text-blue-500 space-y-1"
-        >
+        <ul role="list" className="space-y-3">
           {experience?.description.map((description, index) => (
             <li
               key={`${experience.company.name}-description-${index}`}
-              className="text-foreground text-left"
+              className="flex items-start gap-3 text-foreground text-left"
             >
-              {description}
+              <span
+                className="mt-2 min-w-3 h-1 rounded-sm bg-blue-500"
+                aria-hidden="true"
+              />
+              <span>{description}</span>
             </li>
           ))}
         </ul>

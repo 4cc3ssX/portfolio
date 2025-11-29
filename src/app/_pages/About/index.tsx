@@ -30,32 +30,34 @@ export default function About({ data }: Props) {
             <h1 className="font-medium text-2xl sm:text-3xl">About</h1>
           </div>
           <div className="flex flex-col gap-5">
-            <p className="first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left text-md whitespace-pre-line hyphens-auto text-justify">
-              Ryam, a full-stack web and mobile app developer with a
-              passion for building scalable, high-performance applications. I
-              specialize in <span className="text-blue-500">React</span>,{" "}
-              <span className="text-blue-500">React Native</span>, and{" "}
-              <span className="text-blue-500">TypeScript</span> on the frontend,
-              delivering responsive, user-friendly interfaces. On the backend, I
-              leverage <span className="text-blue-500">NestJS</span>,{" "}
-              <span className="text-blue-500">MongoDB</span>, and event-driven
-              architectures to create systems optimized for real-time
-              communication and high efficiency. My experience extends to
-              integrating <span className="text-blue-500">Socket.io</span> for
-              real-time interactions and managing complex queues using{" "}
-              <span className="text-blue-500">BullMQ</span> and{" "}
-              <span className="text-blue-500">Kafka</span> to handle demanding
-              workflows.
+            <p className="first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left text-md whitespace-pre-line hyphens-auto text-justify">
+              Ryam is a dynamic software engineer with{" "}
+              <span className="text-blue-500">5 years of experience</span>{" "}
+              building scalable, event-driven systems. Specializing in{" "}
+              <span className="text-blue-500">NestJS</span>,{" "}
+              <span className="text-blue-500">Next.js</span>,{" "}
+              <span className="text-blue-500">MongoDB</span>, and{" "}
+              <span className="text-blue-500">AWS</span>, he excels at breaking
+              down complex challenges and delivering clean, reliable, and
+              high-impact solutions. His expertise extends to architecting
+              distributed workflows with message brokers like{" "}
+              <span className="text-blue-500">Kafka</span> and{" "}
+              <span className="text-blue-500">BullMQ</span>, and automating
+              processes with <span className="text-blue-500">n8n</span> to boost
+              system efficiency and resilience.
             </p>
             <p className="text-md whitespace-pre-line hyphens-auto text-justify">
-              In addition to my technical expertise, I focus on creating
-              seamless user experiences while ensuring scalability and
-              reliability in large-scale systems. I&apos;m adept at optimizing
-              application performance and handling data-intensive processes,
-              making sure the systems I build are robust and future-proof.
-              Whether it&apos;s mobile or web, frontend or backend, I&apos;m
-              always eager to push the boundaries of technology and create
-              solutions that truly make an impact.
+              With proven success leading backend migrations and optimizing
+              performance for high-traffic applications, Ryam ships seamless web
+              and mobile experiences using{" "}
+              <span className="text-blue-500">React</span>,{" "}
+              <span className="text-blue-500">React Native</span>, and{" "}
+              <span className="text-blue-500">TypeScript</span>. As an active
+              open-source contributor, he&apos;s passionate about clean
+              architecture, exceptional user experience, and modern full-stack
+              engineering. Collaborative, adaptable, and driven by solving real
+              problems with precision and innovation, Ryam continues to push the
+              boundaries of what&apos;s possible in software engineering.
             </p>
           </div>
         </motion.div>

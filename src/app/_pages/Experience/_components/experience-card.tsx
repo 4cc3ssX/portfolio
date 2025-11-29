@@ -34,7 +34,7 @@ export const ExperienceCard = ({
   const isValidValues = !isNil(index) && !isNil(total);
 
   const opacity = isValidValues ? 1 - index / (total * 1.5) : 1;
-  const scale = isValidValues ? 1 - index / (total * 10) : 1;
+  const scale = isValidValues ? 1 - index / (total * 16) : 1;
   return (
     <motion.div
       layout
