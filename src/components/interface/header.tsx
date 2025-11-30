@@ -77,7 +77,10 @@ export const Header = ({}: Props) => {
               onClick={() => onClickLink({ name: "Home", path: "/" })}
               className="flex items-center"
             >
-              <Icon name="logo" className="size-8 sm:size-7 text-primary rounded-md" />
+              <Icon
+                name="logo"
+                className="size-8 sm:size-7 text-primary rounded-md"
+              />
               <span className="sr-only">Go to home</span>
             </Link>
 
@@ -106,7 +109,7 @@ export const Header = ({}: Props) => {
             } md:block`}
             onClick={() => setOpen(false)}
           >
-            <div className="flex flex-col md:flex-row items-center px-4 gap-4 sm:gap-3">
+            <div className="flex flex-col md:flex-row items-center px-4 gap-4 sm:gap-5">
               {navLinks.map((link, index) => {
                 const isActive = link.path === path;
                 return (
@@ -124,9 +127,6 @@ export const Header = ({}: Props) => {
                         <span className="sr-only">Navigate to {link.name}</span>
                       </Link>
                     </div>
-                    {index < navLinks.length - 1 && (
-                      <span className="hidden md:inline bg-muted-foreground/40 size-0.5 rounded-full" />
-                    )}
                   </React.Fragment>
                 );
               })}
