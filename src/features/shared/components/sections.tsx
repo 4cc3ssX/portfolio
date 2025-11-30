@@ -1,16 +1,16 @@
 import dynamic from "next/dynamic";
-import { ExperienceWithCompany } from "@/features/experience/schemas/experiences";
-import { SkillWithTag } from "@/features/skills/schemas/skills";
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import Landing from "@/features/landing/components";
 import About from "@/features/about/components";
+import { ExperienceWithCompany } from "@/features/experience/types/experiences";
+import { SkillWithTag } from "@/features/skills/types/skills";
 
 const Experience = dynamic(() => import("@/features/experience/components"));
 const Skills = dynamic(() => import("@/features/skills/components"));
 const Contact = dynamic(() => import("@/features/contact/components"));
 
 interface Props {
-  me: UserWithLinks;
+  me: UserWithLinksAndAvatar;
   experiences: ExperienceWithCompany[];
   skills: SkillWithTag[];
 }

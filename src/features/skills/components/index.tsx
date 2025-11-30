@@ -1,4 +1,4 @@
-import { SkillWithTag } from "../schemas/skills";
+import { SkillWithTag } from "../types/skills";
 import { SkillGrid } from "./_components/skill-grid";
 
 interface Props {

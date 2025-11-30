@@ -29,24 +29,26 @@ export default async function BlogsPage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-12">Blog</h1>
 
         {blogs.length === 0 ? (
-          <BlurFade delay={0.2}>
-            <Empty>
-              <EmptyHeader>
-                <EmptyMedia variant="icon">
-                  <FileText />
-                </EmptyMedia>
-                <EmptyTitle>No Blog Posts Yet</EmptyTitle>
-                <EmptyDescription>
-                  There are no published blog posts at the moment. Check back soon for new articles and insights!
-                </EmptyDescription>
-              </EmptyHeader>
-            </Empty>
-          </BlurFade>
+          <Empty className="bg-muted/30">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <FileText />
+              </EmptyMedia>
+              <EmptyTitle>No Blog Posts Yet</EmptyTitle>
+              <EmptyDescription>
+                There are no published blog posts at the moment. Check back soon
+                for new articles and insights!
+              </EmptyDescription>
+            </EmptyHeader>
+          </Empty>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((blog, index) => (
               <BlurFade key={blog.id} delay={0.1 + index * 0.05}>
-                <Link href={`/blog/${blog.slug}`} className="group block h-full">
+                <Link
+                  href={`/blog/${blog.slug}`}
+                  className="group block h-full"
+                >
                   <article className="h-full flex flex-col rounded-lg border border-border overflow-hidden transition-all hover:shadow-lg hover:border-primary/50">
                     {blog.cover && (
                       <div className="relative w-full h-48 overflow-hidden bg-muted">

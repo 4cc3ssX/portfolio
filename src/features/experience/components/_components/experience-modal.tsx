@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ExperienceWithCompany } from "@/features/experience/schemas/experiences";
+import { ExperienceWithCompany } from "../../types/experiences";
 
 export interface Props {
   isOpen: boolean;

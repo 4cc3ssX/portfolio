@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { CompanyWithImageAndLink } from "@/features/experience/schemas/experiences";
 import { openURL } from "@/utils";
 import dayjs from "dayjs";
 import { motion } from "framer-motion";
@@ -7,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { isNil } from "lodash-es";
+import { CompanyWithImageAndLink } from "../../types/companies";
 
 export interface ExperienceCardProps
   extends React.ComponentProps<typeof motion.div> {

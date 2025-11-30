@@ -1,13 +1,13 @@
 import { ContactLinks } from "@/components/interface";
-import { ExperienceWithCompany } from "@/features/experience/schemas/experiences";
-import { SkillWithTag } from "@/features/skills/schemas/skills";
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { IntroductionToast } from "./introduction-toast";
 import { Background } from "./background";
 import { Sections } from "./sections";
+import { ExperienceWithCompany } from "@/features/experience/types/experiences";
+import { SkillWithTag } from "@/features/skills/types/skills";
 
 interface Props {
-  me: UserWithLinks;
+  me: UserWithLinksAndAvatar;
   experiences: ExperienceWithCompany[];
   skills: SkillWithTag[];
 }

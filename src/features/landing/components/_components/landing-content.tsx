@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import Link from "next/link";
 
 interface Props {
-  data: UserWithLinks;
+  data: UserWithLinksAndAvatar;
 }
 
 export function LandingContent({ data }: Props) {

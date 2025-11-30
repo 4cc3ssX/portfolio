@@ -1,6 +1,7 @@
 import { db } from "@/shared/db";
 import { links } from "../schemas/links";
 import { LinkWithoutUser } from "../types/links";
+import { UserWithLinksAndAvatar } from "../types/users";
 import { users } from "../schemas/users";
 import { images } from "@/features/shared/schemas/images";
 import { ImageSelect } from "@/features/shared/types/images";
@@ -17,7 +18,7 @@ const populateLinks = sql<LinkWithoutUser[]>`ARRAY_AGG(
   )
 )`;
 
-export const getMe = async () => {
+export const getMe = async (): Promise<UserWithLinksAndAvatar> => {
   const result = await db
     .select({
       id: users.id,

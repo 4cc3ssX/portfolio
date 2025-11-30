@@ -1,8 +1,8 @@
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { ContactContent } from "./_components/contact-content";
 
 interface Props {
-  user: UserWithLinks;
+  user: UserWithLinksAndAvatar;
 }
 
 export default function Contact({ user }: Props) {

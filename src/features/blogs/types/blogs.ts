@@ -4,6 +4,10 @@ import { ImageSelect } from "@/features/shared/types/images";
 export type BlogSelect = typeof blogs.$inferSelect;
 export type BlogInsert = typeof blogs.$inferInsert;
 
+export type BlogWithCover = Omit<BlogSelect, "coverId" | "authorId"> & {
+  cover: ImageSelect | null;
+};
+
 export type BlogWithAuthor = Omit<BlogSelect, "coverId" | "authorId"> & {
   cover: ImageSelect | null;
   author: {

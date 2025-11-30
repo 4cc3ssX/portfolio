@@ -1,9 +1,9 @@
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { AboutContent } from "./_components/about-content";
 import { NavigateButton } from "./_components/navigate-button";
 
 interface Props {
-  data: UserWithLinks;
+  data: UserWithLinksAndAvatar;
 }
 
 export default function About({ data }: Props) {

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ExperienceWithCompany } from "@/features/experience/schemas/experiences";
 import { ExperienceCard } from "./experience-card";
 import { ExperienceModal } from "./experience-modal";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import MotionWrapper from "@/features/shared/components/motion-wrapper";
+import { ExperienceWithCompany } from "../../types/experiences";
 
 interface Props {
   experiences: ExperienceWithCompany[];

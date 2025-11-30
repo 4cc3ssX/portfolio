@@ -1,16 +1,17 @@
 "use client";
 
-import { LinkType, LinkWithoutUser } from "@/features/users/schemas/links";
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { LinkType } from "@/features/users/schemas/links";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Fragment } from "react";
 import { Icon, IconName } from "../svgs";
 import { Mail } from "lucide-react";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
+import { LinkWithoutUser } from "@/features/users/types/links";
 
 interface Props {
-  data: UserWithLinks;
+  data: UserWithLinksAndAvatar;
 }
 
 export function ContactLinks({ data }: Props) {

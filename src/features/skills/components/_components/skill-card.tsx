@@ -1,10 +1,10 @@
 "use client";
 
 import { Icon, IconName } from "@/components/svgs";
-import { SkillWithTag } from "@/features/skills/schemas/skills";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Squircle } from "lucide-react";
+import { SkillWithTag } from "../../types/skills";
 
 export interface SkillCardProps {
   index: number;

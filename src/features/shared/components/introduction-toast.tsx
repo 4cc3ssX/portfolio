@@ -5,10 +5,10 @@ import { toast } from "sonner";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { INTRODUCTION_DURATION, INTRODUCTION_TIMEOUT } from "@/constants/toast";
 import { openURL } from "@/utils";
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 
 interface Props {
-  me: UserWithLinks;
+  me: UserWithLinksAndAvatar;
 }
 
 export function IntroductionToast({ me }: Props) {

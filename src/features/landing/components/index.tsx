@@ -1,9 +1,9 @@
-import { UserWithLinks } from "@/features/users/schemas/users";
+import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import MotionWrapper from "@/features/shared/components/motion-wrapper";
 import { LandingContent } from "./_components/landing-content";
 
 interface Props {
-  data: UserWithLinks;
+  data: UserWithLinksAndAvatar;
 }
 
 export default function Landing({ data }: Props) {

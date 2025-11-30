@@ -1,6 +1,6 @@
 import MotionWrapper from "@/features/shared/components/motion-wrapper";
-import { SkillWithTag } from "@/features/skills/schemas/skills";
 import { SkillCard } from "./skill-card";
+import { SkillWithTag } from "../../types/skills";
 
 interface Props {
   skills: SkillWithTag[];

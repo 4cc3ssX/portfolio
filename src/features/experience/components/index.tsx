@@ -1,4 +1,4 @@
-import { ExperienceWithCompany } from "../schemas/experiences";
+import { ExperienceWithCompany } from "../types/experiences";
 import { ExperienceList } from "./_components/experience-list";
 
 interface Props {
