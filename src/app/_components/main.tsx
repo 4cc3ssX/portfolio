@@ -4,7 +4,7 @@ import { SkillWithTag } from "@/shared/db/schema/skills";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
 import {
   IntroductionToast,
-  BackgroundParticles,
+  Background,
   Sections,
 } from "./main/_components";
 
@@ -21,7 +21,7 @@ export default function Main({ me, experiences, projects, skills }: Props) {
       <Header />
       <IntroductionToast me={me} />
       <ContactLinks data={me} />
-      <BackgroundParticles />
+      <Background />
       <Sections
         me={me}
         experiences={experiences}

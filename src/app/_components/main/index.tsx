@@ -1,8 +1,8 @@
-import { ContactLinks } from "@/components/interface";
+import { ContactLinks, Header } from "@/components/interface";
 import { ExperienceWithCompany, UserWithLinks } from "@/shared/db/schema";
 import { SkillWithTag } from "@/shared/db/schema/skills";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/actions/projects";
-import { IntroductionToast, BackgroundParticles, Sections } from "./_components";
+import { IntroductionToast, Background, Sections } from "./_components";
 
 interface Props {
   me: UserWithLinks;
@@ -14,10 +14,16 @@ interface Props {
 export default function Main({ me, experiences, projects, skills }: Props) {
   return (
     <main className="font-sans">
+      <Header />
       <IntroductionToast me={me} />
       <ContactLinks data={me} />
-      <BackgroundParticles />
-      <Sections me={me} experiences={experiences} projects={projects} skills={skills} />
+      <Background />
+      <Sections
+        me={me}
+        experiences={experiences}
+        projects={projects}
+        skills={skills}
+      />
     </main>
   );
 }

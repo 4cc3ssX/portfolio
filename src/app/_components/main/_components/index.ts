@@ -1,3 +1,3 @@
 export { IntroductionToast } from "./introduction-toast";
-export { BackgroundParticles } from "./background-particles";
+export { Background } from "./background";
 export { Sections } from "./sections";
