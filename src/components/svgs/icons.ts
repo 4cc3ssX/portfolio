@@ -1,5 +1,3 @@
-import { FC, SVGProps } from "react";
-
 import ApacheKafka from "./apachekafka.svg";
 import Express from "./express.svg";
 import MongoDB from "./mongodb.svg";
@@ -22,32 +20,10 @@ import Amazon from "./amazon.svg";
 import Docker from "./docker.svg";
 import Kubernetes from "./kubernetes.svg";
 import Terraform from "./terraform.svg";
+import Logo from "./logo.svg";
 
-export type IconName =
-  | "kafka"
-  | "expressjs"
-  | "mongodb"
-  | "postgresql"
-  | "supabase"
-  | "cplusplus"
-  | "firebase"
-  | "kotlin"
-  | "nestjs"
-  | "prisma"
-  | "swift"
-  | "drizzle"
-  | "github"
-  | "linkedin"
-  | "nextjs"
-  | "react"
-  | "typescript"
-  | "socketio"
-  | "aws"
-  | "docker"
-  | "kubernetes"
-  | "terraform";
-
-export const icons: Record<IconName, FC<SVGProps<SVGElement>>> = {
+export const icons = {
+  logo: Logo,
   kafka: ApacheKafka,
   expressjs: Express,
   mongodb: MongoDB,
@@ -71,3 +47,5 @@ export const icons: Record<IconName, FC<SVGProps<SVGElement>>> = {
   kubernetes: Kubernetes,
   terraform: Terraform,
 };
+
+export type IconName = keyof typeof icons;

@@ -5,19 +5,19 @@ export interface INavLink {
 
 export const navLinks: INavLink[] = [
   {
-    name: "About",
+    name: "about",
     path: "/#about",
   },
   {
-    name: "Experience",
+    name: "experience",
     path: "/#experience",
   },
   {
-    name: "Projects",
+    name: "projects",
     path: "/#projects",
   },
   {
-    name: "Skills",
+    name: "skills",
     path: "/#skills",
   },
 ];
