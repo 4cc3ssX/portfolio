@@ -1,0 +1,26 @@
+# Lefthook configuration for Next.js project
+# https://github.com/evilmartians/lefthook
+
+# Pre-commit: Run linting and formatting checks
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{js,ts,jsx,tsx,mjs}"
+      run: bunx eslint --max-warnings=0 {staged_files}
+      stage_fixed: true
+
+# Commit-msg: Validate commit message format
+commit-msg:
+  commands:
+    commitlint:
+      run: bunx commitlint --edit {1}
+
+# Pre-push: Run type checking and build verification before pushing
+pre-push:
+  parallel: false
+  commands:
+    type-check:
+      run: bunx tsc --noEmit
+    build:
+      run: bun run build

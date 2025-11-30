@@ -12,8 +12,7 @@
     "drizzle:migrate": "NODE_ENV=development drizzle-kit migrate",
     "drizzle:pull": "NODE_ENV=development drizzle-kit pull",
     "drizzle:check": "NODE_ENV=development drizzle-kit check",
-    "drizzle:studio": "NODE_ENV=development drizzle-kit studio",
-    "prepare": "husky"
+    "drizzle:studio": "NODE_ENV=development drizzle-kit studio"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.1",
@@ -70,7 +69,7 @@
     "eslint-config-next": "^16.0.5",
     "eslint-plugin-unused-imports": "^4.3.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
+    "lefthook": "^2.0.4",
     "release-it": "^19.0.4",
     "tsc-files": "^1.1.4"
   },
