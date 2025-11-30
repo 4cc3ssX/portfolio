@@ -19,7 +19,7 @@ interface Props {
 
 export function Sections({ me, experiences, projects, skills }: Props) {
   return (
-    <div className="w-screen h-dvh overflow-x-hidden overflow-y-scroll scroll-smooth">
+    <div className="w-screen h-svh overflow-x-hidden overflow-y-scroll scroll-smooth">
       <Landing data={me} />
       <About data={me} />
       <Experience data={experiences} />

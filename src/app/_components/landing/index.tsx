@@ -8,7 +8,7 @@ interface Props {
 
 export default function Landing({ data }: Props) {
   return (
-    <div id="landing" className="relative flex pt-14 min-h-dvh">
+    <div id="landing" className="relative flex pt-14 min-h-svh">
       <div className="flex flex-1 flex-col justify-center items-center">
         <MotionWrapper className="flex flex-col gap-y-4 w-full md:w-4/6 lg:w-7/12 px-5 sm:px-6">
           <LandingContent data={data} />

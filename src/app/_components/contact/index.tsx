@@ -7,7 +7,7 @@ interface Props {
 
 export default function Contact({ user }: Props) {
   return (
-    <div id="contact" className="relative flex pt-14 min-h-dvh">
+    <div id="contact" className="relative flex pt-14 min-h-svh">
       <div className="absolute left-0 right-0 bottom-5">
         <p className="text-xs text-hint text-center">
           Designed & Built by{" "}

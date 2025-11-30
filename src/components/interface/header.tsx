@@ -63,7 +63,7 @@ export const Header = ({}: Props) => {
           delay: 0.8,
         }}
         className={`${
-          isOpen ? "h-dvh" : "h-12"
+          isOpen ? "h-svh" : "h-12"
         } w-full relative md:w-auto md:h-10 md:border md:border-muted md:rounded-full bg-background/40 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-center items-center px-4 md:px-10 py-3 transition-all duration-200 ease-out`}
       >
         <Button
