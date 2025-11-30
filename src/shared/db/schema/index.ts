@@ -1,26 +1,10 @@
-import { companies } from "./companies";
-import { experiences } from "./experiences";
-import { images } from "./images";
-import { links } from "./links";
-import { projects } from "./projects";
-import { tags } from "./tags";
-import { users } from "./users";
-
-export const schema = {
-  users,
-  links,
-  projects,
-  tags,
-  experiences,
-  companies,
-  images,
-};
-
-export * from "./users";
-export * from "./links";
-export * from "./projects";
-export * from "./tags";
-export * from "./project-tags";
-export * from "./experiences";
-export * from "./companies";
-export * from "./images";
+// Re-export from features
+export { companies } from "@/features/experience/schemas/companies";
+export { experiences } from "@/features/experience/schemas/experiences";
+export { images } from "@/features/shared/schemas/images";
+export { links } from "@/features/users/schemas/links";
+export { projects, projectTags } from "@/features/projects/schemas/projects";
+export { tags } from "@/features/shared/schemas/tags";
+export { users } from "@/features/users/schemas/users";
+export { blogs } from "@/features/blogs/schemas/blogs";
+export { skills } from "@/features/skills/schemas/skills";

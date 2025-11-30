@@ -1,0 +1,1 @@
+ALTER TABLE "companies" ALTER COLUMN "link_id" DROP NOT NULL;

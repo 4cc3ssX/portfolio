@@ -1,6 +1,7 @@
 "use client";
 
-import { LinkType, LinkWithoutUser, UserWithLinks } from "@/shared/db/schema";
+import { LinkType, LinkWithoutUser } from "@/features/users/schemas/links";
+import { UserWithLinks } from "@/features/users/schemas/users";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Fragment } from "react";

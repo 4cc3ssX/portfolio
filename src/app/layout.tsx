@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import { configs } from "@/shared/configs/site";
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/interface";
+import { Header, ThemeProvider } from "@/components/interface";
 
 export const metadata: Metadata = {
   metadataBase: new URL(configs.url),
@@ -57,6 +57,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <Header />
           {children}
           <Toaster
             toastOptions={{

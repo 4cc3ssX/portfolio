@@ -1,5 +1,7 @@
 import "./env";
 
+console.log(process.env)
+
 export interface DatabaseConfig {
   host: string;
   port: number;

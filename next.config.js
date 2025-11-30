@@ -1,5 +1,8 @@
+const withMDX = require("@next/mdx")();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
@@ -39,7 +42,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "drive.usercontent.google.com",
+        hostname: "**",
         port: "",
         pathname: "/**",
       },
@@ -76,4 +79,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);

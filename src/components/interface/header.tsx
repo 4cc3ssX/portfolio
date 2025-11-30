@@ -109,7 +109,7 @@ export const Header = ({}: Props) => {
             } md:block`}
             onClick={() => setOpen(false)}
           >
-            <div className="flex flex-col md:flex-row items-center px-4 gap-4 sm:gap-5">
+            <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-5">
               {navLinks.map((link, index) => {
                 const isActive = link.path === path;
                 return (
