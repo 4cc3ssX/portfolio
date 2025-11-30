@@ -1,5 +1,5 @@
 import MotionWrapper from "@/app/_components/motion-wrapper";
-import { ContactButton } from "./contact-button";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   email: string;
@@ -18,13 +18,26 @@ export function ContactContent({ email }: Props) {
       </div>
       <div className="flex-none flex flex-col items-center">
         <p className="text-base leading-8 tracking-wide hyphens-auto text-center">
-          Feel free to reach out with any questions, project ideas, or just
-          to say hello. I value connections and will respond as promptly as
-          I can.
+          Feel free to reach out with any questions, project ideas, or just to
+          say hello. I value connections and will respond as promptly as I can.
         </p>
       </div>
       <div className="h-44 flex flex-col justify-center items-center">
-        <ContactButton email={email} />
+        <Button
+          variant="outline"
+          size="lg"
+          className="rounded-xl"
+          title={email}
+          asChild
+        >
+          <a
+            href={`mailto:${email}?subject=${encodeURIComponent(
+              "Collaboration Opportunity: Let's Create Something Amazing!"
+            )}`}
+          >
+            Say Hi!
+          </a>
+        </Button>
       </div>
     </MotionWrapper>
   );
