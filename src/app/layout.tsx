@@ -64,9 +64,8 @@ export default function RootLayout({
               className:
                 "bg-background/50 backdrop-blur-lg md:backdrop-blur-sm",
             }}
-            position="bottom-center"
-            duration={5000}
-            richColors
+            position="bottom-right"
+            duration={3000}
           />
         </ThemeProvider>
         <SpeedInsights />

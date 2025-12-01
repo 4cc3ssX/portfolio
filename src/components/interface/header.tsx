@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
-import { useSmallDevice } from "@/shared/hooks/use-small-device";
+import { useMediaQuery } from "@/shared/hooks/use-media-query";
 import { useNavigation } from "@/shared/hooks/use-navigation";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { Icon } from "../svgs";
@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 interface Props {}
 
 export const Header = ({}: Props) => {
-  const isSmallDevice = useSmallDevice();
+  const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
 
   const [isOpen, setOpen] = useState(false);
   const { path, navigate } = useNavigation();

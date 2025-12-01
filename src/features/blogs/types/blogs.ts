@@ -8,7 +8,7 @@ export type BlogWithCover = Omit<BlogSelect, "coverId" | "authorId"> & {
   cover: ImageSelect | null;
 };
 
-export type BlogWithAuthor = Omit<BlogSelect, "coverId" | "authorId"> & {
+export type BlogWithAuthorAndCover = Omit<BlogSelect, "coverId" | "authorId"> & {
   cover: ImageSelect | null;
   author: {
     id: string;

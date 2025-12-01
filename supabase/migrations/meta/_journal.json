@@ -22,6 +22,20 @@
       "when": 1764508565501,
       "tag": "20251130131605_bright_tempest",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1764559116786,
+      "tag": "20251201031836_spicy_mephisto",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1764559731726,
+      "tag": "20251201032851_left_forge",
+      "breakpoints": true
     }
   ]
 }

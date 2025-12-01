@@ -4,7 +4,7 @@ export const images = pgTable("images", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
   uri: text("uri").notNull(),
-  thumbnailUri: text("thumbnail_uri").notNull(),
+  thumbnailUri: text("thumbnail_uri"),
   blurHash: text("blur_hash").notNull(),
   metadata: json("metadata"),
   createdAt: timestamp("created_at").notNull().defaultNow(),

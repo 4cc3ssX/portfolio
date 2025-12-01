@@ -30,6 +30,7 @@ export function IntroductionToast({ me }: Props) {
             sendEvent(AnalyticsEvent.LETS_TALK);
           },
         },
+        position: "bottom-center",
         duration: INTRODUCTION_DURATION,
       });
     };
