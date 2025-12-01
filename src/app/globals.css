@@ -150,7 +150,9 @@ code[data-theme] span {
   counter-reset: line;
 }
 
-[data-rehype-pretty-code-fragment] code[data-line-numbers] > [data-line]::before {
+[data-rehype-pretty-code-fragment]
+  code[data-line-numbers]
+  > [data-line]::before {
   counter-increment: line;
   content: counter(line);
   @apply mr-4 inline-block w-4 text-right text-muted-foreground;
@@ -168,11 +170,15 @@ code[data-theme] span {
   @apply rounded bg-accent px-1;
 }
 
-[data-rehype-pretty-code-fragment] code[data-line-numbers-max-digits="2"] > [data-line]::before {
+[data-rehype-pretty-code-fragment]
+  code[data-line-numbers-max-digits="2"]
+  > [data-line]::before {
   @apply w-8;
 }
 
-[data-rehype-pretty-code-fragment] code[data-line-numbers-max-digits="3"] > [data-line]::before {
+[data-rehype-pretty-code-fragment]
+  code[data-line-numbers-max-digits="3"]
+  > [data-line]::before {
   @apply w-12;
 }
 

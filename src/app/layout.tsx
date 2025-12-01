@@ -6,6 +6,7 @@ import { configs } from "@/shared/configs/site";
 
 import "./globals.css";
 import { Header, ThemeProvider } from "@/components/interface";
+import { Background } from "@/features/shared/components/background";
 
 export const metadata: Metadata = {
   metadataBase: new URL(configs.url),
@@ -49,7 +50,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vercel.live" />
       </head>
-      <body className="antialiased">
+      <body className="antialiased min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -57,6 +58,7 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <Background />
           <Header />
           {children}
           <Toaster

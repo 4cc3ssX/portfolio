@@ -35,49 +35,82 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Link>
     ),
-    ul: ({ children }) => (
-      <ul className="list-disc list-inside mb-4 space-y-2 text-foreground/90">
+    ul: ({ children, ...props }) => (
+      <ul
+        className="text-foreground space-y-1 list-inside list-disc pl-0 marker:text-foreground/60"
+        {...props}
+      >
         {children}
       </ul>
     ),
-    ol: ({ children }) => (
-      <ol className="list-decimal list-inside mb-4 space-y-2 text-foreground/90">
+    ol: ({ children, ...props }) => (
+      <ol
+        className="text-foreground space-y-1 list-inside list-decimal pl-0"
+        {...props}
+      >
         {children}
       </ol>
     ),
-    li: ({ children }) => <li className="ml-4">{children}</li>,
+    li: ({ children, ...props }) => (
+      <li className="text-foreground pl-2 [&>ul>li]:pl-3 relative" {...props}>
+        {children}
+      </li>
+    ),
+    strong: ({ children, ...props }) => (
+      <strong className="text-foreground font-semibold" {...props}>
+        {children}
+      </strong>
+    ),
+    em: ({ children, ...props }) => (
+      <em className="text-neutral-200 italic" {...props}>
+        {children}
+      </em>
+    ),
     blockquote: ({ children }) => (
       <blockquote className="border-l-4 border-primary pl-4 italic my-4 text-foreground/80">
         {children}
       </blockquote>
     ),
-    code: ({ children }) => (
-      <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-foreground">
-        {children}
-      </code>
+    Image: (props) => {
+      const sourceLink = props["data-source"] || props.src;
+      const alt = props.alt || sourceLink;
+      return (
+        <div className="flex flex-col items-center justify-center gap-2.5">
+          <Image
+            {...(props as ImageProps)}
+            alt={alt}
+            className="rounded-lg w-full h-auto max-h-80 sm:max-w-lg sm:max-h-100 my-0!"
+            width={800}
+            height={400}
+          />
+          {sourceLink && (
+            <a
+              aria-label={alt}
+              href={sourceLink}
+              className="text-sm text-muted-foreground"
+            >
+              {alt}
+            </a>
+          )}
+        </div>
+      );
+    },
+    hr: () => (
+      <div className="flex items-center justify-center gap-6 my-10">
+        <div className="size-1 bg-foreground/50 rounded-full" />
+        <div className="size-1 bg-foreground/50 rounded-full" />
+        <div className="size-1 bg-foreground/50 rounded-full" />
+      </div>
     ),
-    pre: ({ children }) => (
-      <pre className="bg-muted p-4 rounded-lg overflow-x-auto mb-4">
-        {children}
-      </pre>
-    ),
-    img: (props) => (
-      <Image
-        {...(props as ImageProps)}
-        alt={props.alt || ""}
-        className="rounded-lg my-4"
-        width={800}
-        height={400}
-      />
-    ),
-    hr: () => <hr className="my-8 border-border" />,
     table: ({ children }) => (
-      <div className="overflow-x-auto my-4">
-        <table className="min-w-full divide-y divide-border">{children}</table>
+      <div className="overflow-x-auto bg-background rounded-lg border border-border my-10">
+        <table className="w-full text-base text-left rtl:text-right my-0!">
+          {children}
+        </table>
       </div>
     ),
     th: ({ children }) => (
-      <th className="px-4 py-2 text-left font-semibold bg-muted text-foreground">
+      <th className="px-4 py-2 text-left font-semibold bg-primary-foreground text-foreground border-b border-border">
         {children}
       </th>
     ),

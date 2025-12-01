@@ -1,11 +1,7 @@
 import { getBlogBySlug, getBlogs } from "@/features/blogs/actions/blogs";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import {
-  BlogDetailHeader,
-  BlogCoverImage,
-  BlogContent,
-} from "@/features/blogs/components";
+import { BlogDetailHeader, BlogContent } from "@/features/blogs/components";
 
 export const revalidate = 60;
 
@@ -54,11 +50,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <main className="font-sans min-h-screen pt-24 pb-14">
+    <main className="font-sans min-h-screen pt-30 pb-14">
       <div className="container mx-auto px-4">
         <article className="max-w-4xl mx-auto">
           <BlogDetailHeader blog={blog} />
-          {blog.cover && <BlogCoverImage cover={blog.cover} title={blog.title} />}
           <BlogContent content={blog.content} />
         </article>
       </div>
