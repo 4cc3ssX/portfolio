@@ -108,7 +108,7 @@ export function BlogCard({ blog, latest }: BlogCardProps) {
             </HoverCardTrigger>
             <BlogHoverCard blog={blog} />
           </HoverCard>
-          {latest && <Badge variant="default">Latest 🔥</Badge>}
+          {latest && <Badge variant="outline">Latest 🔥</Badge>}
         </div>
       </div>
     </div>
