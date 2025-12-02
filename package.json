@@ -50,6 +50,7 @@
     "postgres": "^3.4.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "recma-mdx-html-override": "^1.1.2",
     "rehype-pretty-code": "^0.14.1",
     "remark-gfm": "^4.0.1",
     "sanitize-html": "^2.17.0",

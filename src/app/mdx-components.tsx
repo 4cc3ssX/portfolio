@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
+import { isUrl } from "@/utils";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -71,9 +72,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </blockquote>
     ),
-    Image: (props) => {
-      const sourceLink = props["data-source"] || props.src;
-      const alt = props.alt || sourceLink;
+    img: (props) => {
+      const sourceLink = props["data-source"] || (isUrl(props.alt) ? props.alt : props.src);
+      const alt = props.alt || props.src || "Image";
+      
       return (
         <div className="flex flex-col items-center justify-center gap-2.5">
           <Image

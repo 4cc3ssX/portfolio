@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import type { Options } from "rehype-pretty-code";
 import remarkFgm from "remark-gfm";
+import recmaMdxHtmlOverride from "recma-mdx-html-override";
 
 interface BlogContentProps {
   content: string;
@@ -39,6 +40,7 @@ export function BlogContent({ content }: BlogContentProps) {
           mdxOptions: {
             remarkPlugins: [[remarkFgm, { strict: true, throwOnError: true }]],
             rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
+            recmaPlugins: [[recmaMdxHtmlOverride, { tags: ["img"] }]],
           },
         }}
         components={useMDXComponents({})}
