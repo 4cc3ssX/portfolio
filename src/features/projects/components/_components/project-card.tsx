@@ -8,7 +8,7 @@ export interface ProjectCardProps {
   project: ProjectWithLinkAndTagsWithGithubData;
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
+export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <ParallaxCard>
       <div className="flex flex-col gap-y-2 rounded-xl bg-linear-to-br from-secondary to-background p-4 sm:p-5">
@@ -76,4 +76,3 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   );
 };
 
-export default ProjectCard;

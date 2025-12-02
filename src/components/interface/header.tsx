@@ -54,7 +54,7 @@ export const Header = ({}: Props) => {
       }}
       className={`fixed inset-x-0 z-40 sm:px-8`}
     >
-      <nav className="max-w-full sm:max-w-7xl sm:mx-auto">
+      <nav className="max-w-full sm:max-w-5xl sm:mx-auto">
         <motion.div
           initial={{ borderColor: "hsl(0 0% 0%)" }}
           animate={{

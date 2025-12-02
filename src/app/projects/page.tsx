@@ -7,9 +7,11 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <main className="font-sans min-h-screen pt-24 pb-14">
+    <main className="font-sans min-h-screen pt-30 pb-14">
       <div className="container mx-auto px-4">
-        <ProjectList projects={projects} />
+        <div className="max-w-4xl mx-auto">
+          <ProjectList projects={projects} />
+        </div>
       </div>
     </main>
   );

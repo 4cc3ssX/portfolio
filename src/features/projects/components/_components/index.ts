@@ -1,4 +1,2 @@
-import ProjectCard from "./project-card";
-
-export { ProjectCard };
+export { ProjectCard } from "./project-card";
 export { ProjectList } from "./project-list";

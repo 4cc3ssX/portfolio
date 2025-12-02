@@ -1,5 +1,4 @@
-import MotionWrapper from "@/features/shared/components/motion-wrapper";
-import { ProjectCard } from ".";
+import { ProjectCard } from "./project-card";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/features/projects/actions/projects";
 
 interface Props {
@@ -8,7 +7,7 @@ interface Props {
 
 export function ProjectList({ projects }: Props) {
   return (
-    <MotionWrapper className="flex-1 md:flex-none flex flex-col gap-y-3 px-5 md:px-6">
+    <div className="flex-1 md:flex-none flex flex-col gap-y-3 px-5 md:px-6">
       <div className="flex flex-col gap-y-1">
         <h2 className="font-medium text-2xl sm:text-3xl">Projects</h2>
         <p className="text-sm text-hint">
@@ -25,6 +24,6 @@ export function ProjectList({ projects }: Props) {
           );
         })}
       </div>
-    </MotionWrapper>
+    </div>
   );
 }

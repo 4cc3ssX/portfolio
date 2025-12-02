@@ -29,15 +29,19 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
         <div className="flex flex-row items-center gap-x-1">
           {Array(skill.max)
             .fill(0)
-            .map((_, index) => (
-              <Squircle
-                key={`skill-rating-${index}`}
-                className={cn(
-                  skill.min > index ? "fill-primary" : "fill-muted"
-                )}
-                size={8}
-              />
-            ))}
+            .map((_, index) => {
+              const isLesser = skill.min > index;
+              return (
+                <Squircle
+                  key={`skill-rating-${index}`}
+                  className={cn(
+                    isLesser ? "fill-primary" : "fill-muted",
+                    !isLesser && "stroke-muted"
+                  )}
+                  size={8}
+                />
+              );
+            })}
         </div>
       </div>
     </motion.div>
