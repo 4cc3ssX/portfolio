@@ -102,7 +102,7 @@ export function BlogCard({ blog, latest }: BlogCardProps) {
       <div className="flex flex-row items-center gap-4">
         {blog.publishedAt && <BlogDate date={blog.publishedAt} />}
         <div className="flex-1 flex flex-row items-center gap-2.5">
-          <HoverCard openDelay={300}>
+          <HoverCard openDelay={500}>
             <HoverCardTrigger asChild>
               <BlogLink href={`/blog/${blog.slug}`} title={blog.title} />
             </HoverCardTrigger>
