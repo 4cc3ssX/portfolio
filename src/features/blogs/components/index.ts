@@ -1,5 +1,5 @@
 export { BlogCard } from "./_components/blog-card";
-export { BlogGrid } from "./_components/blog-grid";
+export { BlogList } from "./_components/blog-list";
 export { BlogHeader } from "./_components/blog-header";
 export { EmptyBlogs } from "./_components/empty-blogs";
 export { BlogDetailHeader } from "./_components/blog-detail-header";

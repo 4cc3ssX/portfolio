@@ -6,7 +6,7 @@ import { BlogSelect, BlogWithAuthorAndCover } from "../types/blogs";
 import { users } from "@/features/users/schemas/users";
 import { images } from "@/features/shared/schemas/images";
 import { ImageSelect } from "@/features/shared/types/images";
-import { eq, sql } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { cache } from "react";
 
 const populateCover = sql<ImageSelect | null>`CASE WHEN ${images.id} IS NOT NULL THEN JSONB_BUILD_OBJECT(
@@ -31,7 +31,9 @@ const populateAvatar = sql<ImageSelect | null>`CASE WHEN avatar_img.id IS NOT NU
     'updated_at', avatar_img.updated_at
 ) ELSE NULL END`;
 
-const populateAuthor = sql<BlogWithAuthorAndCover["author"]>`CASE WHEN ${users.id} IS NOT NULL THEN JSONB_BUILD_OBJECT(
+const populateAuthor = sql<
+  BlogWithAuthorAndCover["author"]
+>`CASE WHEN ${users.id} IS NOT NULL THEN JSONB_BUILD_OBJECT(
     'id', ${users.id},
     'name', ${users.name},
     'email', ${users.email},
@@ -40,9 +42,7 @@ const populateAuthor = sql<BlogWithAuthorAndCover["author"]>`CASE WHEN ${users.i
 
 export const getBlogs = cache(async (): Promise<BlogWithAuthorAndCover[]> => {
   try {
-    const avatarImg = db.$with("avatar_img").as(
-      db.select().from(images)
-    );
+    const avatarImg = db.$with("avatar_img").as(db.select().from(images));
 
     const data = await db
       .with(avatarImg)
@@ -65,7 +65,7 @@ export const getBlogs = cache(async (): Promise<BlogWithAuthorAndCover[]> => {
       .leftJoin(users, eq(blogs.authorId, users.id))
       .leftJoin(avatarImg, eq(users.avatarId, avatarImg.id))
       .where(eq(blogs.published, true))
-      .orderBy(blogs.createdAt);
+      .orderBy(desc(blogs.publishedAt));
 
     return data;
   } catch (error) {
@@ -77,9 +77,7 @@ export const getBlogs = cache(async (): Promise<BlogWithAuthorAndCover[]> => {
 export const getBlogBySlug = cache(
   async (slug: string): Promise<BlogWithAuthorAndCover | null> => {
     try {
-      const avatarImg = db.$with("avatar_img").as(
-        db.select().from(images)
-      );
+      const avatarImg = db.$with("avatar_img").as(db.select().from(images));
 
       const data = await db
         .with(avatarImg)

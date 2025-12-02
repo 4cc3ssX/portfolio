@@ -5,12 +5,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Share2, Link as LinkIcon, MoreHorizontal } from "lucide-react";
+import { Link as LinkIcon, MoreHorizontal } from "lucide-react";
 import { toast } from "sonner";
 import type { BlogWithAuthorAndCover } from "../../types/blogs";
 
@@ -37,19 +34,11 @@ export function BlogMenu({ blog }: BlogMenuProps) {
           <span className="sr-only">More options</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <Share2 className="mr-2 h-4 w-4" />
-            Share
-          </DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
-            <DropdownMenuItem onClick={handleCopyLink}>
-              <LinkIcon className="mr-2 h-4 w-4" />
-              Copy link
-            </DropdownMenuItem>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
+      <DropdownMenuContent align="start">
+        <DropdownMenuItem onClick={handleCopyLink}>
+          <LinkIcon className="size-3" />
+          Copy Link
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
