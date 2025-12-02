@@ -73,9 +73,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </blockquote>
     ),
     img: (props) => {
-      const sourceLink = props["data-source"] || (isUrl(props.alt) ? props.alt : props.src);
+      const sourceLink =
+        props["data-source"] || (isUrl(props.alt) ? props.alt : props.src);
       const alt = props.alt || props.src || "Image";
-      
+
       return (
         <div className="flex flex-col items-center justify-center gap-2.5">
           <Image
