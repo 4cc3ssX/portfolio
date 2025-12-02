@@ -33,7 +33,7 @@ function BlogDate({ date }: { date: Date }) {
       {new Date(date).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
-        day: "numeric",
+        day: "2-digit",
       })}
     </p>
   );
