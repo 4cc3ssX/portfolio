@@ -7,6 +7,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MDXContent } from "@/components/shared/mdx-content";
 
 interface BlogCardProps {
@@ -55,16 +56,20 @@ function BlogAuthor({ author }: BlogAuthorProps) {
 
   return (
     <div className="flex items-center gap-2 pt-2">
-      {author.avatar && (
-        <div className="relative w-6 h-6 rounded-full overflow-hidden">
+      <Avatar className="w-6 h-6">
+        <AvatarImage src={author.avatar?.uri} alt={author.name} asChild>
           <Image
-            src={author.avatar.uri}
+            src={author.avatar?.uri || ""}
             alt={author.name}
-            fill
-            className="object-cover"
+            width={24}
+            height={24}
+            className="aspect-square h-full w-full rounded-full object-cover"
           />
-        </div>
-      )}
+        </AvatarImage>
+        <AvatarFallback className="text-xs">
+          {author.name.charAt(0).toUpperCase()}
+        </AvatarFallback>
+      </Avatar>
       <p className="text-xs text-muted-foreground">{author.name}</p>
     </div>
   );
@@ -80,8 +85,9 @@ function BlogHoverCard({ blog }: BlogHoverCardProps) {
               src={blog.cover.uri}
               alt={blog.title}
               fill
-              objectFit="cover"
-              className="object-cover"
+              sizes="280px"
+              priority
+              className="w-full h-full object-cover"
             />
           </div>
         )}

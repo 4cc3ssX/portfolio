@@ -82,7 +82,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           <Image
             {...(props as ImageProps)}
             alt={alt}
-            objectFit="cover"
             className="rounded-lg w-full h-60 max-h-80 sm:h-70 sm:max-w-lg sm:max-h-80 my-0! object-cover"
             width={800}
             height={400}

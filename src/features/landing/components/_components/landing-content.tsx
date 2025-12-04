@@ -11,12 +11,14 @@ export function LandingContent({ data }: Props) {
 
   return (
     <>
-      <div className="flex flex-col gap-y-3">
-        <p className="text-sm md:text-base">Hi, I&apos;m {data.nickname}!</p>
+      <div className="flex flex-col gap-y-2">
+        <p className="text-sm md:text-base font-medium">
+          Hey, I&apos;m {data.nickname}!👋🏻
+        </p>
         <p className="font-bold text-4xl md:text-5xl">
           Building scalable systems that drive real-world impact.
         </p>
-        <p className="text-sm md:text-base">
+        <p className="text-sm md:text-base mt-1">
           A full-stack software engineer based in{" "}
           <a
             href="https://www.google.com/maps/place/Bangkok,+Thailand/@13.7465389,100.5365739,12z"
@@ -36,9 +38,13 @@ export function LandingContent({ data }: Props) {
         </Button>
         {resumeLink ? (
           <Button variant="link" asChild>
-            <a href={resumeLink.uri} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={resumeLink.uri}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Download Resume
-            </a>
+            </Link>
           </Button>
         ) : null}
       </div>

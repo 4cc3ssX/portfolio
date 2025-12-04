@@ -10,7 +10,7 @@ export function ContactContent({ email }: Props) {
     <MotionWrapper className="flex-1 flex flex-col justify-center gap-y-3 w-full sm:w-3/4 lg:w-7/12 px-5 md:px-6">
       <div className="flex flex-col items-center gap-1.5">
         <div>
-          <p className="font-medium text-center text-2xl sm:text-3xl">
+          <p className="font-semibold text-center text-3xl sm:text-3xl">
             What&apos;s Next?
           </p>
         </div>

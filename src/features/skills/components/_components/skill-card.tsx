@@ -25,7 +25,7 @@ export const SkillCard = ({ skill }: SkillCardProps) => {
         className="absolute bottom-2 right-2 size-6 z-10 fill-secondary/80"
       />
       <div className="w-full h-full flex flex-col justify-between gap-y-4 p-4 bg-linear-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl">
-        <p className="text-sm text-primary">{skill.tag.name}</p>
+        <p className="text-sm font-medium text-foreground">{skill.tag.name}</p>
         <div className="flex flex-row items-center gap-x-1">
           {Array(skill.max)
             .fill(0)
