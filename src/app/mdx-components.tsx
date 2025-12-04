@@ -100,7 +100,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     hr: () => (
-      <div className="flex items-center justify-center gap-6 my-10">
+      <div className="flex items-center justify-center gap-6 my-6 sm:my-8">
         <div className="size-1 bg-foreground/50 rounded-full" />
         <div className="size-1 bg-foreground/50 rounded-full" />
         <div className="size-1 bg-foreground/50 rounded-full" />
