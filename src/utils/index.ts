@@ -9,3 +9,13 @@ export const openURL = (url: string, external: boolean = false) => {
     window.location.href = url;
   }
 };
+
+export const isUrl = (str?: string) => {
+  if (!str) return false;
+  try {
+    new URL(str);
+    return true;
+  } catch {
+    return false;
+  }
+};

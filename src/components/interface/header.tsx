@@ -6,16 +6,17 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
-import { useSmallDevice } from "@/shared/hooks/use-small-device";
+import { useMediaQuery } from "@/shared/hooks/use-media-query";
 import { useNavigation } from "@/shared/hooks/use-navigation";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
-import { Icon } from "../svgs";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { AssetImages } from "@/assets/images";
 
 interface Props {}
 
 export const Header = ({}: Props) => {
-  const isSmallDevice = useSmallDevice();
+  const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
 
   const [isOpen, setOpen] = useState(false);
   const { path, navigate } = useNavigation();
@@ -54,7 +55,7 @@ export const Header = ({}: Props) => {
       }}
       className={`fixed inset-x-0 z-40 sm:px-8`}
     >
-      <nav className="max-w-full sm:max-w-7xl sm:mx-auto">
+      <nav className="max-w-full sm:max-w-5xl sm:mx-auto">
         <motion.div
           initial={{ borderColor: "hsl(0 0% 0%)" }}
           animate={{
@@ -66,19 +67,27 @@ export const Header = ({}: Props) => {
             delay: 0.8,
           }}
           className={cn(
-            isOpen ? "h-svh" : "h-13",
-            "w-full relative md:w-auto md:border md:border-muted md:rounded-4xl bg-background/40 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 py-2.5 transition-all duration-200 ease-out"
+            isOpen ? "h-screen" : "h-16",
+            "w-full relative sm:h-13 md:w-auto md:border md:border-muted md:rounded-4xl bg-background/40 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 py-2.5 transition-all duration-200 ease-out"
           )}
         >
-          <div className="flex flex-row justify-between items-center w-full md:w-auto">
+          <div
+            className={cn(
+              "mt-1 flex flex-row justify-between items-center w-full md:w-auto"
+            )}
+          >
             {/* Logo */}
             <Link
               href="/"
               onClick={() => onClickLink({ name: "Home", path: "/" })}
               className="flex items-center"
             >
-              <Icon
-                name="logo"
+              <Image
+                alt="Logo"
+                src={AssetImages.logo}
+                priority
+                width={32}
+                height={32}
                 className="size-8 sm:size-7 text-primary rounded-md"
               />
               <span className="sr-only">Go to home</span>
@@ -102,14 +111,15 @@ export const Header = ({}: Props) => {
             </Button>
           </div>
           <div
-            className={`${
-              isOpen
-                ? "flex-1 md:flex-none flex flex-col justify-center self-stretch"
-                : "hidden"
-            } md:block`}
+            className={cn(
+              !isOpen && "hidden",
+              "md:block",
+              isOpen &&
+                "flex-1 md:flex-none flex flex-col justify-center self-stretch"
+            )}
             onClick={() => setOpen(false)}
           >
-            <div className="flex flex-col md:flex-row items-center px-4 gap-4 sm:gap-5">
+            <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-5">
               {navLinks.map((link, index) => {
                 const isActive = link.path === path;
                 return (

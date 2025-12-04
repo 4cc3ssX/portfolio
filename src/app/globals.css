@@ -4,6 +4,7 @@ body {
 
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -116,4 +117,76 @@ body {
 
 * {
   border-color: theme(--color-border);
+}
+
+/* Theme switching for code syntax highlighting */
+code[data-theme],
+code[data-theme] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark code[data-theme],
+.dark code[data-theme] span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+/* Code block styles for rehype-pretty-code */
+[data-rehype-pretty-code-fragment] {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  @apply overflow-x-auto rounded-lg border bg-muted/30 px-4 py-3 text-sm;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid;
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-fragment] code[data-line-numbers] {
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-fragment]
+  code[data-line-numbers]
+  > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block w-4 text-right text-muted-foreground;
+}
+
+[data-rehype-pretty-code-fragment] [data-line] {
+  @apply border-l-2 border-l-transparent px-2;
+}
+
+[data-rehype-pretty-code-fragment] [data-highlighted-line] {
+  @apply border-l-primary bg-primary/10;
+}
+
+[data-rehype-pretty-code-fragment] [data-highlighted-chars] {
+  @apply rounded bg-accent px-1;
+}
+
+[data-rehype-pretty-code-fragment]
+  code[data-line-numbers-max-digits="2"]
+  > [data-line]::before {
+  @apply w-8;
+}
+
+[data-rehype-pretty-code-fragment]
+  code[data-line-numbers-max-digits="3"]
+  > [data-line]::before {
+  @apply w-12;
+}
+
+/* Title styling for code blocks */
+[data-rehype-pretty-code-title] {
+  @apply mt-4 rounded-t-lg border border-b-0 bg-muted/50 px-4 py-2 text-sm font-medium;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none;
 }

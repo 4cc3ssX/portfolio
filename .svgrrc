@@ -1,0 +1,11 @@
+{
+  "icon": true,
+  "typescript": true,
+  "replaceAttrValues": {
+    "#000": "{props.fill}",
+    "#000000": "{props.fill}",
+    "#fff": "{props.fill}",
+    "#ffffff": "{props.fill}",
+    "currentColor": "{props.fill}"
+  }
+}
