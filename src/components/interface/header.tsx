@@ -66,11 +66,15 @@ export const Header = ({}: Props) => {
             delay: 0.8,
           }}
           className={cn(
-            isOpen ? "h-svh" : "h-13",
-            "w-full relative md:w-auto md:border md:border-muted md:rounded-4xl bg-background/40 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 py-2.5 transition-all duration-200 ease-out"
+            isOpen ? "h-screen" : "h-16",
+            "w-full relative sm:h-13 md:w-auto md:border md:border-muted md:rounded-4xl bg-background/40 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 py-2.5 transition-all duration-200 ease-out"
           )}
         >
-          <div className="flex flex-row justify-between items-center w-full md:w-auto">
+          <div
+            className={cn(
+              "mt-1 flex flex-row justify-between items-center w-full md:w-auto"
+            )}
+          >
             {/* Logo */}
             <Link
               href="/"
@@ -102,11 +106,12 @@ export const Header = ({}: Props) => {
             </Button>
           </div>
           <div
-            className={`${
-              isOpen
-                ? "flex-1 md:flex-none flex flex-col justify-center self-stretch"
-                : "hidden"
-            } md:block`}
+            className={cn(
+              !isOpen && "hidden",
+              "md:block",
+              isOpen &&
+                "flex-1 md:flex-none flex flex-col justify-center self-stretch"
+            )}
             onClick={() => setOpen(false)}
           >
             <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-5">

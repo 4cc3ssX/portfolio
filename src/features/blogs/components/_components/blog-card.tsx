@@ -43,7 +43,7 @@ function BlogLink({ href, title }: BlogLinkProps) {
   return (
     <Link
       href={href}
-      className="text-foreground group-hover:text-foreground/80 transition-colors"
+      className="w-fit font-medium text-foreground group-hover:text-foreground/80 transition-colors"
     >
       {title}
     </Link>
@@ -80,6 +80,7 @@ function BlogHoverCard({ blog }: BlogHoverCardProps) {
               src={blog.cover.uri}
               alt={blog.title}
               fill
+              objectFit="cover"
               className="object-cover"
             />
           </div>
@@ -98,10 +99,11 @@ function BlogHoverCard({ blog }: BlogHoverCardProps) {
 
 export function BlogCard({ blog, latest }: BlogCardProps) {
   return (
-    <div className="group flex-1 snap-start max-w-3xl">
-      <div className="flex flex-row items-center gap-4">
+    <div className="group flex-1 snap-start">
+      <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-4">
         {blog.publishedAt && <BlogDate date={blog.publishedAt} />}
-        <div className="flex-1 flex flex-row items-center gap-2.5">
+        <div className="hidden sm:block w-4 h-0.5 bg-border mt-[0.5lh]" />
+        <div className="flex-1 flex flex-col sm:flex-row items-start flex-wrap gap-1 lg:gap-2">
           <HoverCard openDelay={500}>
             <HoverCardTrigger asChild>
               <BlogLink href={`/blog/${blog.slug}`} title={blog.title} />

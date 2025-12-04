@@ -82,7 +82,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           <Image
             {...(props as ImageProps)}
             alt={alt}
-            className="rounded-lg w-full h-auto max-h-80 sm:max-w-lg sm:max-h-100 my-0!"
+            objectFit="cover"
+            className="rounded-lg w-full h-60 max-h-80 sm:h-70 sm:max-w-lg sm:max-h-80 my-0! object-cover"
             width={800}
             height={400}
           />
@@ -90,7 +91,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             <a
               aria-label={alt}
               href={sourceLink}
-              className="text-sm text-muted-foreground"
+              className="text-sm text-muted-foreground text-center"
             >
               {alt}
             </a>
