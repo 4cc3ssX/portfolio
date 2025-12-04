@@ -9,8 +9,9 @@ import { Menu, X } from "lucide-react";
 import { useMediaQuery } from "@/shared/hooks/use-media-query";
 import { useNavigation } from "@/shared/hooks/use-navigation";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
-import { Icon } from "../svgs";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { AssetImages } from "@/assets/images";
 
 interface Props {}
 
@@ -81,8 +82,12 @@ export const Header = ({}: Props) => {
               onClick={() => onClickLink({ name: "Home", path: "/" })}
               className="flex items-center"
             >
-              <Icon
-                name="logo"
+              <Image
+                alt="Logo"
+                src={AssetImages.logo}
+                priority
+                width={32}
+                height={32}
                 className="size-8 sm:size-7 text-primary rounded-md"
               />
               <span className="sr-only">Go to home</span>

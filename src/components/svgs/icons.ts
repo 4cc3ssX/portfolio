@@ -20,10 +20,8 @@ import Amazon from "./amazon.svg";
 import Docker from "./docker.svg";
 import Kubernetes from "./kubernetes.svg";
 import Terraform from "./terraform.svg";
-import Logo from "./logo.svg";
 
 export const icons = {
-  logo: Logo,
   kafka: ApacheKafka,
   expressjs: Express,
   mongodb: MongoDB,
