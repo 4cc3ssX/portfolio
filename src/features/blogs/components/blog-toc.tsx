@@ -1,66 +1,20 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { useMemo } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { extractHeadings } from "@/utils/markdown";
+import { useScrollProgress } from "@/shared/hooks/use-scroll-progress";
+import { useActiveHeading } from "../hooks/use-active-heading";
 
 interface BlogTocProps {
   content: string;
 }
 
 export function BlogToc({ content }: BlogTocProps) {
-  const [activeId, setActiveId] = useState<string>("");
-  const scaleY = useMotionValue(0);
-
   const headings = useMemo(() => extractHeadings(content), [content]);
-
-  useEffect(() => {
-    const updateProgress = () => {
-      const article = document.getElementById("blog-content");
-      if (!article) return;
-
-      const rect = article.getBoundingClientRect();
-      const articleHeight = article.scrollHeight;
-      const windowHeight = window.innerHeight;
-      const scrolled = -rect.top;
-      const progress = Math.max(
-        0,
-        Math.min(1, scrolled / (articleHeight - windowHeight))
-      );
-      scaleY.set(progress);
-    };
-
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    updateProgress();
-
-    return () => window.removeEventListener("scroll", updateProgress);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveId(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, {
-      rootMargin: "0% 0% -80% 0%",
-    });
-
-    const headingElements = headings
-      .map((heading) => document.getElementById(heading.id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    headingElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      headingElements.forEach((el) => observer.unobserve(el));
-    };
-  }, [headings]);
+  const scaleY = useScrollProgress({ elementId: "blog-content" });
+  const activeId = useActiveHeading(headings);
 
   if (!headings.length) {
     return null;

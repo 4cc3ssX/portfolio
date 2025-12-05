@@ -9,7 +9,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => (
       <h1
         id={buildHeadingId(getTextContent(children))}
-        className="text-4xl font-bold mb-6 mt-8 text-foreground"
+        className="text-4xl font-bold mb-6 mt-8 text-foreground scroll-mt-40 snap-center"
       >
         {children}
       </h1>
@@ -17,7 +17,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: ({ children }) => (
       <h2
         id={buildHeadingId(getTextContent(children))}
-        className="text-3xl font-semibold mb-4 mt-6 text-foreground"
+        className="text-3xl font-semibold mb-4 mt-6 text-foreground scroll-mt-40 snap-center"
       >
         {children}
       </h2>
@@ -25,7 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: ({ children }) => (
       <h3
         id={buildHeadingId(getTextContent(children))}
-        className="text-2xl font-semibold mb-3 mt-5 text-foreground"
+        className="text-2xl font-semibold mb-3 mt-5 text-foreground scroll-mt-40 snap-center"
       >
         {children}
       </h3>
@@ -33,7 +33,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: ({ children }) => (
       <h4
         id={buildHeadingId(getTextContent(children))}
-        className="text-xl font-semibold mb-2 mt-4 text-foreground"
+        className="text-xl font-semibold mb-2 mt-4 text-foreground scroll-mt-40 snap-center"
       >
         {children}
       </h4>
