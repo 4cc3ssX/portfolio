@@ -11,7 +11,7 @@ export const sendEvent = <D extends Record<string, any>>(
   }
 
   if (process.env.NODE_ENV !== "production") {
-    console.log(
+    console.info(
       `[ Analytics ] Event Name: ${eventName} - Params: ${JSON.stringify(
         params
       )}`

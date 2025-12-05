@@ -1,5 +1,5 @@
 import { getProjects } from "@/features/projects/actions/projects";
-import { ProjectList } from "@/features/projects/components/project-list";
+import { ProjectList } from "@/features/projects/components";
 
 export const revalidate = 60;
 

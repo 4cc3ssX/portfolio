@@ -19,7 +19,7 @@ const eslintConfig = defineConfig([
   },
   {
     rules: {
-      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "no-console": ["warn", { allow: ["info", "warn", "error"] }],
       "no-unused-vars": "off",
       "unused-imports/no-unused-imports": "warn",
     },
