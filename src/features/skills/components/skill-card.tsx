@@ -4,7 +4,7 @@ import { Icon, IconName } from "@/components/svgs";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Squircle } from "lucide-react";
-import { SkillWithTag } from "../../types/skills";
+import { SkillWithTag } from "../types/skills";
 
 export interface SkillCardProps {
   index: number;
