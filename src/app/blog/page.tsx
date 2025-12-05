@@ -19,7 +19,7 @@ export default async function BlogsPage() {
 
   return (
     <main className="font-sans min-h-screen pt-30 pb-14">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 sm:px-8">
         <div className="max-w-4xl mx-auto">
           <BlogHeader />
           {blogs.length === 0 ? <EmptyBlogs /> : <BlogList blogs={blogs} />}

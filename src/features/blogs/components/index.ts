@@ -1,8 +1,9 @@
-export { BlogCard } from "./_components/blog-card";
-export { BlogList } from "./_components/blog-list";
-export { BlogHeader } from "./_components/blog-header";
-export { EmptyBlogs } from "./_components/empty-blogs";
-export { BlogDetailHeader } from "./_components/blog-detail-header";
-export { BlogAuthorInfo } from "./_components/blog-author-info";
-export { BlogCoverImage } from "./_components/blog-cover-image";
-export { BlogContent } from "./_components/blog-content";
+export { BlogCard } from "./blog-card";
+export { BlogList } from "./blog-list";
+export { BlogHeader } from "./blog-header";
+export { EmptyBlogs } from "./empty-blogs";
+export { BlogDetailHeader } from "./blog-detail-header";
+export { BlogAuthorInfo } from "./blog-author-info";
+export { BlogCoverImage } from "./blog-cover-image";
+export { BlogContent } from "./blog-content";
+export { BlogToc } from "./blog-toc";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BlogWithAuthorAndCover } from "../../types/blogs";
+import { BlogWithAuthorAndCover } from "../types/blogs";
 import { Badge } from "@/components/ui/badge";
 import {
   HoverCard,

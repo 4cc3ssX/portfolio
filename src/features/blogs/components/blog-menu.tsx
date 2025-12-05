@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Link as LinkIcon, MoreHorizontal } from "lucide-react";
 import { toast } from "sonner";
-import type { BlogWithAuthorAndCover } from "../../types/blogs";
+import type { BlogWithAuthorAndCover } from "../types/blogs";
 
 interface BlogMenuProps {
   blog: BlogWithAuthorAndCover;

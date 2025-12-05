@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import type { BlogWithAuthorAndCover } from "../../types/blogs";
+import type { BlogWithAuthorAndCover } from "../types/blogs";
 
 interface BlogAuthorInfoProps {
   author: BlogWithAuthorAndCover["author"];

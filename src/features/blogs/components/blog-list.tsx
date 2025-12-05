@@ -1,5 +1,5 @@
 import { BlogCard } from "./blog-card";
-import { BlogWithAuthorAndCover } from "../../types/blogs";
+import { BlogWithAuthorAndCover } from "../types/blogs";
 
 interface BlogListProps {
   blogs: BlogWithAuthorAndCover[];

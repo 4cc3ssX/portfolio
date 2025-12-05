@@ -1,6 +1,6 @@
 import { BlogMenu } from "./blog-menu";
 import { BlogAuthorInfo } from "./blog-author-info";
-import type { BlogWithAuthorAndCover } from "../../types/blogs";
+import type { BlogWithAuthorAndCover } from "../types/blogs";
 
 interface BlogDetailHeaderProps {
   blog: BlogWithAuthorAndCover;

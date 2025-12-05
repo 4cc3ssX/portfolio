@@ -6,7 +6,7 @@ interface BlogContentProps {
 
 export function BlogContent({ content }: BlogContentProps) {
   return (
-    <div className="prose prose-lg dark:prose-invert max-w-none">
+    <div id="blog-content" className="prose prose-lg dark:prose-invert max-w-none">
       <MDXContent source={content} />
     </div>
   );
