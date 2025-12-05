@@ -50,7 +50,7 @@ export function useActiveHeading(headings: Heading[]) {
     // Set activation point at 20% from top of viewport instead of middle (50%)
     // This allows headings to activate earlier as you scroll, providing better UX
     // since users typically read content starting from the top portion of the screen
-    const activationPoint = window.innerHeight * 0.2;
+    const activationPoint = window.innerHeight * 0.3;
 
     // When near bottom of page, activate the last heading to ensure it gets highlighted
     // even if user can't scroll it to the middle of the screen
