@@ -1,11 +1,11 @@
 import { UserWithLinksAndAvatar } from "@/features/users/types/users";
-import { ContactContent } from "./_components/contact-content";
+import { ContactContent } from "./contact-content";
 
 interface Props {
   user: UserWithLinksAndAvatar;
 }
 
-export default function Contact({ user }: Props) {
+export function Contact({ user }: Props) {
   return (
     <div id="contact" className="relative flex pt-14 min-h-svh">
       <div className="absolute left-0 right-0 bottom-5">

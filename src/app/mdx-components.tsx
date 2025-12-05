@@ -2,26 +2,39 @@ import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import { isUrl } from "@/utils";
+import { buildHeadingId, getTextContent } from "@/utils/markdown";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mb-6 mt-8 text-foreground">
+      <h1
+        id={buildHeadingId(getTextContent(children))}
+        className="text-4xl font-bold mb-6 mt-8 text-foreground"
+      >
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-semibold mb-4 mt-6 text-foreground">
+      <h2
+        id={buildHeadingId(getTextContent(children))}
+        className="text-3xl font-semibold mb-4 mt-6 text-foreground"
+      >
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-semibold mb-3 mt-5 text-foreground">
+      <h3
+        id={buildHeadingId(getTextContent(children))}
+        className="text-2xl font-semibold mb-3 mt-5 text-foreground"
+      >
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-xl font-semibold mb-2 mt-4 text-foreground">
+      <h4
+        id={buildHeadingId(getTextContent(children))}
+        className="text-xl font-semibold mb-2 mt-4 text-foreground"
+      >
         {children}
       </h4>
     ),

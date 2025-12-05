@@ -9,8 +9,8 @@ export function ProjectList({ projects }: Props) {
   return (
     <div className="flex-1 md:flex-none flex flex-col gap-y-3 px-5 md:px-6">
       <div className="flex flex-col gap-y-1">
-        <h2 className="font-medium text-2xl sm:text-3xl">Projects</h2>
-        <p className="text-sm text-hint">
+        <h2 className="font-bold text-2xl sm:text-3xl">Projects</h2>
+        <p className="text-sm text-muted-foreground">
           A curated selection of my open-source contributions and public work.
         </p>
       </div>

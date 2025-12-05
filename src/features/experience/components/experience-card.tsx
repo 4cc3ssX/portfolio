@@ -6,7 +6,7 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { isNil } from "lodash-es";
-import { CompanyWithImageAndLink } from "../../types/companies";
+import { CompanyWithImageAndLink } from "../types/companies";
 
 export interface ExperienceCardProps
   extends React.ComponentProps<typeof motion.div> {

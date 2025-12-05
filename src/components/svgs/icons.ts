@@ -1,3 +1,9 @@
+import GitHub from "./github.svg";
+import LinkedIn from "./linkedin.svg";
+import BlueSky from "./bluesky.svg";
+import X from "./x.svg";
+
+// Technologies
 import ApacheKafka from "./apachekafka.svg";
 import Express from "./express.svg";
 import MongoDB from "./mongodb.svg";
@@ -10,8 +16,6 @@ import NestJS from "./nestjs.svg";
 import Prisma from "./prisma.svg";
 import Swift from "./swift.svg";
 import Drizzle from "./drizzle.svg";
-import GitHub from "./github.svg";
-import LinkedIn from "./linkedin.svg";
 import NextJS from "./nextdotjs.svg";
 import React from "./react.svg";
 import TypeScript from "./typescript.svg";
@@ -22,6 +26,13 @@ import Kubernetes from "./kubernetes.svg";
 import Terraform from "./terraform.svg";
 
 export const icons = {
+  // Socials
+  github: GitHub,
+  linkedin: LinkedIn,
+  bluesky: BlueSky,
+  x: X,
+
+  // Technologies
   kafka: ApacheKafka,
   expressjs: Express,
   mongodb: MongoDB,
@@ -34,8 +45,6 @@ export const icons = {
   prisma: Prisma,
   swift: Swift,
   drizzle: Drizzle,
-  github: GitHub,
-  linkedin: LinkedIn,
   nextjs: NextJS,
   react: React,
   typescript: TypeScript,

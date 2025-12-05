@@ -1,12 +1,12 @@
 import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import MotionWrapper from "@/features/shared/components/motion-wrapper";
-import { LandingContent } from "./_components/landing-content";
+import { LandingContent } from "./landing-content";
 
 interface Props {
   data: UserWithLinksAndAvatar;
 }
 
-export default function Landing({ data }: Props) {
+export function Landing({ data }: Props) {
   return (
     <div id="landing" className="relative flex pt-14 min-h-svh">
       <div className="flex flex-1 flex-col justify-center items-center">

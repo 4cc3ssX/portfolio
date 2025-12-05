@@ -5,7 +5,7 @@ import { ExperienceCard } from "./experience-card";
 import { ExperienceModal } from "./experience-modal";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import MotionWrapper from "@/features/shared/components/motion-wrapper";
-import { ExperienceWithCompany } from "../../types/experiences";
+import { ExperienceWithCompany } from "../types/experiences";
 
 interface Props {
   experiences: ExperienceWithCompany[];
@@ -36,7 +36,7 @@ export function ExperienceList({ experiences }: Props) {
     <>
       <MotionWrapper className="flex-1 md:flex-none flex flex-col gap-y-3 w-full sm:w-3/4 md:w-4/6 lg:w-7/12 xl:w-1/2 h-auto md:min-h-[75%] px-5 md:px-6">
         <div className="flex flex-col gap-y-1">
-          <h2 className="font-medium text-2xl sm:text-3xl">Experience</h2>
+          <h2 className="font-bold text-2xl sm:text-3xl">Experience</h2>
         </div>
         <div className="mt-2 flex flex-col gap-2">
           {experiences.map((exp, index, items) => (
