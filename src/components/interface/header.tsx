@@ -12,6 +12,7 @@ import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { AssetImages } from "@/assets/images";
+import { usePathname } from "next/navigation";
 
 interface Props {}
 
@@ -19,6 +20,7 @@ export const Header = ({}: Props) => {
   const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
 
   const [isOpen, setOpen] = useState(false);
+  const pathname = usePathname();
   const { path, navigate } = useNavigation();
 
   const onClickLink = (link: INavLink) => {
@@ -31,10 +33,12 @@ export const Header = ({}: Props) => {
   };
 
   useEffect(() => {
-    const initialPath = "/" + window.location.hash;
-    if (initialPath !== "/") {
-      navigate(initialPath);
+    const initialPath = pathname + window.location.hash;
+    if (!initialPath.includes("#")) {
+      return;
     }
+
+    navigate(initialPath);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
