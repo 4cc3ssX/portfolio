@@ -76,12 +76,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const sourceLink =
         props["data-source"] || (isUrl(props.alt) ? props.alt : props.src);
       const alt = props.alt || props.src || "Image";
+      const priority = props["data-priority"] === "true";
 
       return (
         <div className="flex flex-col items-center justify-center gap-2.5">
           <Image
             {...(props as ImageProps)}
             alt={alt}
+            priority={priority}
             className="rounded-lg w-full h-60 max-h-80 sm:h-70 sm:max-w-lg sm:max-h-80 my-0! object-cover"
             width={800}
             height={400}
