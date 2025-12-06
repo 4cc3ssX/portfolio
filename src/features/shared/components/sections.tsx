@@ -59,14 +59,14 @@ export function Sections({ me, experiences, skills }: Props) {
 
       {/* Contact */}
       <div id="contact" className="relative flex pt-14 min-h-svh">
-        <div className="absolute left-0 right-0 bottom-5">
-          <p className="text-xs text-hint text-center">
+        <div className="absolute inset-x-0 bottom-0 p-5">
+          <p className="text-xs text-muted-foreground text-center">
             Designed & Built by{" "}
-            <span className="font-medium">{me.nickname} 🚀</span>
+            <span className="font-semibold">{me.nickname} 🚀</span>
           </p>
         </div>
         <div className="flex flex-1 flex-col justify-center items-center">
-          <ContactContent email={me.email} />
+          <ContactContent user={me} />
         </div>
       </div>
     </div>

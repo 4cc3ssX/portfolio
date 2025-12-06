@@ -46,7 +46,7 @@ export function AboutContent({ data }: Props) {
           what&apos;s possible in software engineering.
         </p>
         <div className="flex flex-col gap-3">
-          <p className="font-medium text-muted-foreground">Find me on:</p>
+          <p className="font-medium text-foreground">Find me on:</p>
           <div className="flex items-center gap-4">
             {socials.map((link) => {
               const shouldUseStrokeColor = ["x"].includes(

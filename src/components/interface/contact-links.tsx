@@ -9,13 +9,18 @@ import { Mail } from "lucide-react";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { LinkWithoutUser } from "@/features/users/types/links";
+import { cn } from "@/lib/utils";
 
 interface Props {
   data: UserWithLinksAndAvatar;
 }
 
 export function ContactLinks({ data }: Props) {
-  const socials = data.links.filter((link) => link.type === LinkType.SOCIAL);
+  const socials = data.links.filter(
+    (link) =>
+      link.type === LinkType.SOCIAL &&
+      ["github", "linkedin"].includes(link.name.toLowerCase())
+  );
 
   const handleEmailClick = () => {
     sendEvent(AnalyticsEvent.SEND_EMAIL);
@@ -53,6 +58,8 @@ export function ContactLinks({ data }: Props) {
       </Link>
       <div className="w-0.5 h-1.5 rounded-full bg-muted" />
       {socials.map((link, index) => {
+        const shouldUseStrokeColor = ["x"].includes(link.name.toLowerCase());
+
         return (
           <Fragment key={link.id}>
             <Link
@@ -64,7 +71,10 @@ export function ContactLinks({ data }: Props) {
             >
               <Icon
                 name={link.name.toLowerCase() as IconName}
-                className="size-4 fill-white"
+                className={cn(
+                  "size-4",
+                  shouldUseStrokeColor ? "stroke-white" : "fill-white"
+                )}
               />
               <span className="sr-only">Open {link.name} in new tab</span>
             </Link>
