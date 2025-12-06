@@ -16,7 +16,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
 
   return (
     <header className="mb-8">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4">{blog.title}</h1>
+      <h1 className="text-3xl sm:text-4xl xl:text-5xl font-bold mb-4">{blog.title}</h1>
 
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-sm">
