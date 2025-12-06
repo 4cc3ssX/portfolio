@@ -72,7 +72,7 @@ export const Header = ({}: Props) => {
           }}
           className={cn(
             isOpen ? "h-screen" : "h-16",
-            "w-full relative sm:h-13 md:w-auto md:border md:border-muted md:rounded-4xl bg-background/40 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 py-2.5 transition-all duration-200 ease-out"
+            "w-full relative sm:h-13 md:w-auto md:border md:border-muted md:rounded-4xl bg-background/20 backdrop-blur-lg md:backdrop-blur-sm flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 py-2.5 transition-all duration-200 ease-out"
           )}
         >
           <div

@@ -31,7 +31,7 @@ export function BlogToc({ content }: BlogTocProps) {
         }}
       >
         <motion.div
-          className="absolute inset-0 origin-top bg-foreground transition"
+          className="absolute inset-0 origin-top bg-foreground"
           style={{ scaleY }}
         />
       </div>
@@ -46,7 +46,7 @@ export function BlogToc({ content }: BlogTocProps) {
           <li
             key={heading.id}
             className={`relative mt-3 first:mt-0 ${
-              heading.level === 3 ? "ml-4" : ""
+              heading.level === 3 ? "ml-3" : ""
             }`}
           >
             <Link

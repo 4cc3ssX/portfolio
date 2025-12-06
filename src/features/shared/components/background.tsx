@@ -11,5 +11,5 @@ const BGPattern = dynamic(
 );
 
 export function Background() {
-  return <BGPattern variant="dots" mask="fade-center"  />;
+  return <BGPattern variant="dots" mask="none"  />;
 }

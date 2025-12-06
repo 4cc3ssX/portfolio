@@ -25,7 +25,7 @@ interface Props {
 
 export function Sections({ me, experiences, skills }: Props) {
   return (
-    <div className="w-screen h-svh overflow-x-hidden overflow-y-scroll scroll-smooth snap-y">
+    <div className="w-screen h-svh overflow-x-hidden overflow-y-scroll scroll-smooth">
       {/* Landing */}
       <div id="landing" className="relative flex pt-14 min-h-svh">
         <div className="flex flex-1 flex-col justify-center items-center">
@@ -36,7 +36,7 @@ export function Sections({ me, experiences, skills }: Props) {
       </div>
 
       {/* About */}
-      <div id="about" className="relative flex pt-14 min-h-svh snap-center">
+      <div id="about" className="relative flex pt-14 min-h-svh">
         <div className="flex-1 flex flex-col justify-start sm:justify-center items-center">
           <AboutContent data={me} />
         </div>
@@ -44,21 +44,21 @@ export function Sections({ me, experiences, skills }: Props) {
       </div>
 
       {/* Experience */}
-      <div id="experience" className="flex pt-14 min-h-svh snap-center">
+      <div id="experience" className="flex pt-14 min-h-svh">
         <div className="flex-1 flex flex-col justify-center items-center">
           <ExperienceList experiences={experiences} />
         </div>
       </div>
 
       {/* Skills */}
-      <div id="skills" className="flex pt-14 min-h-svh snap-center">
+      <div id="skills" className="flex pt-14 min-h-svh">
         <div className="flex-1 flex flex-col justify-center items-center">
           <SkillGrid skills={skills} />
         </div>
       </div>
 
       {/* Contact */}
-      <div id="contact" className="relative flex pt-14 min-h-svh snap-center">
+      <div id="contact" className="relative flex pt-14 min-h-svh">
         <div className="absolute left-0 right-0 bottom-5">
           <p className="text-xs text-hint text-center">
             Designed & Built by{" "}
