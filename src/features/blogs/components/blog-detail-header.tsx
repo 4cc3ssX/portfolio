@@ -1,4 +1,3 @@
-import { BlogMenu } from "./blog-menu";
 import { BlogAuthorInfo } from "./blog-author-info";
 import type { BlogWithAuthorAndCover } from "../types/blogs";
 
@@ -28,7 +27,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
           <span className="size-0.5 bg-muted-foreground rounded-full" />
           <time className="text-muted-foreground">{formattedDate}</time>
         </div>
-        <BlogMenu blog={blog} />
+        {/* <BlogMenu blog={blog} /> */}
       </div>
     </header>
   );

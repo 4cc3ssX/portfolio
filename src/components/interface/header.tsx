@@ -115,7 +115,7 @@ export const Header = ({}: Props) => {
             )}
             onClick={() => setOpen(false)}
           >
-            <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-5">
+            <div className="flex flex-col md:flex-row items-center gap-4">
               {navLinks.map((link, index) => {
                 const isActive = link.path === path;
                 return (

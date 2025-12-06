@@ -1,12 +1,20 @@
+import "./globals.css";
+
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import { Metadata } from "next";
 import { configs } from "@/shared/configs/site";
+import { Noto_Sans } from "next/font/google";
 
-import "./globals.css";
 import { Header, ThemeProvider } from "@/components/interface";
 import { Background } from "@/features/shared/components/background";
+
+const notoSans = Noto_Sans({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-noto-sans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(configs.url),
@@ -50,7 +58,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vercel.live" />
       </head>
-      <body className="antialiased min-h-screen">
+      <body className={`${notoSans.variable} antialiased min-h-screen font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

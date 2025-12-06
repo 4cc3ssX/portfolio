@@ -137,6 +137,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </td>
     ),
+    pre: ({ children }) => (
+      <pre className="overflow-x-auto bg-background/80 rounded-lg">
+        {children}
+      </pre>
+    ),
     ...components,
   };
 }
