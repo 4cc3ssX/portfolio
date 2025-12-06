@@ -1,19 +1,40 @@
 "use client";
 
 import { navLinks } from "@/data/nav-links";
-import { handleNavigate } from "@/utils";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
-export const useNavigation = () => {
-  const [path, setPath] = useState<string>("");
+interface UseNavigationOptions {
+  scrollOnMount?: boolean;
+}
 
-  const navigate = (path: string | (typeof navLinks)[number]["name"]) => {
-    const pathToNavigate =
-      navLinks.find((link) => link.name.toLowerCase() === path)?.path || path;
+export const useNavigation = ({
+  scrollOnMount = false,
+}: UseNavigationOptions = {}) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [path, setPath] = useState<string>(pathname);
 
-    handleNavigate(pathToNavigate);
-    setPath(pathToNavigate);
-  };
+  const navigate = useCallback(
+    (path: string | (typeof navLinks)[number]["name"]) => {
+      router.push(path);
+      setPath(path);
+    },
+    [router]
+  );
+
+  useEffect(() => {
+    const pathWithHash = pathname + window.location.hash;
+    if (!pathWithHash.includes("#") || !scrollOnMount) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      navigate(pathWithHash);
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
+  }, [navigate, pathname, scrollOnMount]);
 
   return {
     path,

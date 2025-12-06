@@ -2,8 +2,7 @@
 
 import { INavLink, navLinks } from "@/data/nav-links";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { useMediaQuery } from "@/shared/hooks/use-media-query";
@@ -12,7 +11,9 @@ import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { AssetImages } from "@/assets/images";
-import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const Link = dynamic(() => import("next/link"), { ssr: false });
 
 interface Props {}
 
@@ -20,8 +21,9 @@ export const Header = ({}: Props) => {
   const isSmallDevice = useMediaQuery("only screen and (max-width: 600px)");
 
   const [isOpen, setOpen] = useState(false);
-  const pathname = usePathname();
-  const { path, navigate } = useNavigation();
+  const { path, navigate } = useNavigation({
+    scrollOnMount: true,
+  });
 
   const onClickLink = (link: INavLink) => {
     navigate(link.path);
@@ -31,16 +33,6 @@ export const Header = ({}: Props) => {
       name: link.name,
     });
   };
-
-  useEffect(() => {
-    const initialPath = pathname + window.location.hash;
-    if (!initialPath.includes("#")) {
-      return;
-    }
-
-    navigate(initialPath);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <motion.header
