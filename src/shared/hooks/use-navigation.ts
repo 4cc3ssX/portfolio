@@ -17,7 +17,12 @@ export const useNavigation = ({
 
   const navigate = useCallback(
     (path: string | (typeof navLinks)[number]["name"]) => {
-      router.push(path);
+      if (path === "/") {
+        window.location.href = "/";
+      } else {
+        router.push(path);
+      }
+
       setPath(path);
     },
     [router]
