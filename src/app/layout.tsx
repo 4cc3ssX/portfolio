@@ -1,14 +1,22 @@
 import "./globals.css";
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
-import { Toaster } from "@/components/ui/sonner";
+import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import { configs } from "@/shared/configs/site";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/interface";
 import { Navbar } from "@/components/layout";
+
+const Toaster = dynamic(() =>
+  import("@/components/ui/sonner").then((mod) => mod.Toaster)
+);
+const SpeedInsights = dynamic(() =>
+  import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights)
+);
+const Analytics = dynamic(() =>
+  import("@vercel/analytics/react").then((mod) => mod.Analytics)
+);
 
 const inter = Inter({
   subsets: ["latin"],

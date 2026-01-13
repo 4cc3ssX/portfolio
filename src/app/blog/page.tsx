@@ -1,10 +1,16 @@
+import dynamic from "next/dynamic";
 import { getBlogs } from "@/features/blogs/actions/blogs";
 import { getMe } from "@/features/users/actions/users";
-import { BlogsSection } from "@/features/blogs/components/blogs-section";
 import { Footer } from "@/components/layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FadeIn } from "@/components/ui/animated-text";
 import type { Metadata } from "next";
+
+const BlogsSection = dynamic(() =>
+  import("@/features/blogs/components/blogs-section").then(
+    (mod) => mod.BlogsSection
+  )
+);
 
 export const revalidate = 60;
 
