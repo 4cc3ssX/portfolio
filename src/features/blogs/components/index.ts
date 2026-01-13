@@ -1,9 +1,3 @@
-export { BlogCard } from "./blog-card";
-export { BlogList } from "./blog-list";
-export { BlogHeader } from "./blog-header";
-export { EmptyBlogs } from "./empty-blogs";
 export { BlogDetailHeader } from "./blog-detail-header";
-export { BlogAuthorInfo } from "./blog-author-info";
-export { BlogCoverImage } from "./blog-cover-image";
 export { BlogContent } from "./blog-content";
-export { BlogToc } from "./blog-toc";
+export { BlogsSection } from "./blogs-section";

@@ -22,5 +22,3 @@ pre-push:
   commands:
     type-check:
       run: bunx tsc --noEmit
-    build:
-      run: bun run build

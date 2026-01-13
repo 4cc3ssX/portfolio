@@ -24,6 +24,7 @@ import Amazon from "./amazon.svg";
 import Docker from "./docker.svg";
 import Kubernetes from "./kubernetes.svg";
 import Terraform from "./terraform.svg";
+import N8n from "./n8n.svg";
 
 export const icons = {
   // Socials
@@ -53,6 +54,7 @@ export const icons = {
   docker: Docker,
   kubernetes: Kubernetes,
   terraform: Terraform,
+  n8n: N8n
 };
 
 export type IconName = keyof typeof icons;

@@ -12,6 +12,7 @@ export type BlogWithAuthorAndCover = Omit<BlogSelect, "coverId" | "authorId"> & 
   cover: ImageSelect | null;
   author: {
     id: string;
+    title: string | null;
     name: string;
     email: string;
     avatar: ImageSelect | null;

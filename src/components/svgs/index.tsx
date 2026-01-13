@@ -12,7 +12,7 @@ export const Icon = ({ name, size, width, height, ...rest }: IconProps) => {
   const IconComponent = icons[name];
 
   if (!IconComponent) {
-    console.debug(`Icon ${name} not found`);
+    // Icon not found, return null silently
     return null;
   }
 

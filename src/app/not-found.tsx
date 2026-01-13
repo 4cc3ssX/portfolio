@@ -1,18 +1,27 @@
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="h-svh flex flex-col items-center justify-center gap-4">
-      <div className="flex flex-row items-center gap-3">
-        <h1 className="text-2xl font-bold">404</h1>
-        <Separator orientation="vertical" />
-        <h2 className="text-sm font-normal">This page could not be found.</h2>
+    <div className="flex min-h-screen flex-col items-center justify-center px-6">
+      <div className="text-center">
+        <p className="text-sm font-medium text-muted-foreground">404</p>
+        <h1 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
+          Page not found
+        </h1>
+        <p className="mt-4 text-muted-foreground">
+          Sorry, we couldn&apos;t find the page you&apos;re looking for.
+        </p>
+        <div className="mt-8">
+          <Button asChild variant="outline" className="rounded-full">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to home
+            </Link>
+          </Button>
+        </div>
       </div>
-      <Link href="/" className="text-sm">
-        Return Home
-        <span className="sr-only">Navigate to home</span>
-      </Link>
     </div>
   );
 }

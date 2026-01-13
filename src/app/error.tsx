@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { RefreshCw, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function Error({
@@ -12,36 +13,46 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center px-5">
-      <div className="flex flex-col items-center gap-6 text-center max-w-md">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-6xl font-bold">Oops!</h1>
-          <h2 className="text-2xl font-semibold text-muted-foreground">
-            Something went wrong
-          </h2>
+    <div className="flex min-h-screen flex-col items-center justify-center px-6">
+      <div className="text-center">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+          <span className="text-2xl">⚠️</span>
         </div>
-
-        <p className="text-muted-foreground">
-          An unexpected error occurred. Don&apos;t worry, it&apos;s not your
-          fault.
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
+          Something went wrong
+        </h1>
+        <p className="mt-4 max-w-md text-muted-foreground">
+          An unexpected error occurred. Don&apos;t worry, it&apos;s not your fault.
         </p>
 
         {process.env.NODE_ENV === "development" && error.message && (
-          <div className="w-full p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-            <p className="text-sm text-destructive font-mono break-all">
+          <div className="mx-auto mt-6 max-w-md rounded-lg border border-destructive/20 bg-destructive/5 p-4">
+            <p className="break-all font-mono text-sm text-destructive">
               {error.message}
             </p>
           </div>
         )}
 
-        <Button variant="link" asChild>
-          <Link href="/">Go home</Link>
-        </Button>
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Button
+            onClick={reset}
+            variant="outline"
+            className="rounded-full"
+          >
+            <RefreshCw className="mr-2 h-4 w-4" />
+            Try again
+          </Button>
+          <Button asChild variant="ghost" className="rounded-full">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Go home
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

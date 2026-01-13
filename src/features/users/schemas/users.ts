@@ -5,6 +5,7 @@ export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
   nickname: text("nickname").notNull(),
+  title: text("title"),
   email: text("email").notNull(),
   avatarId: uuid("avatar_id").references(() => images.id, {
     onUpdate: "cascade",

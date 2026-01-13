@@ -1,4 +1,7 @@
-import { BlogAuthorInfo } from "./blog-author-info";
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 import type { BlogWithAuthorAndCover } from "../types/blogs";
 
 interface BlogDetailHeaderProps {
@@ -15,20 +18,71 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
   });
 
   return (
-    <header className="mb-8">
-      <h1 className="text-3xl sm:text-4xl xl:text-5xl font-bold mb-4">{blog.title}</h1>
+    <header>
+      {/* Meta info */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground/50"
+      >
+        <time>{formattedDate}</time>
+        <span className="h-0.5 w-0.5 rounded-full bg-muted-foreground/30" />
+        <span>{blog.readingTime} min read</span>
+      </motion.div>
 
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2 text-sm">
-          <BlogAuthorInfo author={blog.author} />
-          <span className="text-muted-foreground">
-            {blog.readingTime}min read
-          </span>
-          <span className="size-0.5 bg-muted-foreground rounded-full" />
-          <time className="text-muted-foreground">{formattedDate}</time>
-        </div>
-        {/* <BlogMenu blog={blog} /> */}
-      </div>
+      {/* Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
+      >
+        {blog.title}
+      </motion.h1>
+
+      {/* Description */}
+      {blog.description && (
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 text-sm leading-relaxed text-muted-foreground/70"
+        >
+          {blog.description}
+        </motion.p>
+      )}
+
+      {/* Author */}
+      {blog.author && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 flex items-center gap-3"
+        >
+          {blog.author.avatar?.uri && (
+            <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/[0.08]">
+              <Image
+                src={blog.author.avatar.uri}
+                alt={blog.author.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
+          <div className="flex flex-col">
+            <span className="text-sm font-medium text-foreground/90">
+              {blog.author.name}
+            </span>
+            {blog.author.title && (
+              <span className="text-xs text-muted-foreground/50">
+                {blog.author.title}
+              </span>
+            )}
+          </div>
+        </motion.div>
+      )}
     </header>
   );
 }

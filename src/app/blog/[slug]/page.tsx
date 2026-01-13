@@ -1,9 +1,9 @@
 import { getBlogBySlug, getBlogs } from "@/features/blogs/actions/blogs";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { BlogDetailHeader, BlogContent, BlogToc } from "@/features/blogs/components";
+import { BlogDetailHeader, BlogContent } from "@/features/blogs/components";
 
-export const revalidate = 60;
+export const revalidate = 1800;
 
 interface BlogPageProps {
   params: Promise<{
@@ -50,22 +50,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <main className="font-sans min-h-screen pt-30 pb-14">
-      <div className="container mx-auto px-6 sm:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
-            <article className="max-w-4xl">
-              <BlogDetailHeader blog={blog} />
-              <BlogContent content={blog.content} />
-            </article>
-            <aside className="hidden lg:block">
-              <div className="sticky top-24">
-                <h2 className="text-sm font-semibold mb-4">On this page</h2>
-                <BlogToc content={blog.content} />
-              </div>
-            </aside>
-          </div>
+    <main className="min-h-screen">
+      {/* Hero section with title */}
+      <div className="relative border-b border-white/[0.06]">
+        {/* Subtle gradient background */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.02] via-transparent to-transparent" />
+        <div className="relative mx-auto max-w-2xl px-6 pb-10 pt-28 md:px-8">
+          <BlogDetailHeader blog={blog} />
         </div>
+      </div>
+
+      {/* Content */}
+      <div className="mx-auto max-w-2xl px-6 py-10 md:px-8">
+        <BlogContent content={blog.content} />
       </div>
     </main>
   );
