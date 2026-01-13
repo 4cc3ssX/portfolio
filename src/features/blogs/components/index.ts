@@ -7,3 +7,4 @@ export { BlogAuthorInfo } from "./blog-author-info";
 export { BlogCoverImage } from "./blog-cover-image";
 export { BlogContent } from "./blog-content";
 export { BlogToc } from "./blog-toc";
+export { BlogsSection } from "./blogs-section";

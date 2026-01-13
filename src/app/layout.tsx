@@ -5,15 +5,19 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import { Metadata } from "next";
 import { configs } from "@/shared/configs/site";
-import { Noto_Sans } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
-import { Header, ThemeProvider } from "@/components/interface";
-import { Background } from "@/features/shared/components/background";
+import { ThemeProvider } from "@/components/interface";
+import { Navbar } from "@/components/layout";
 
-const notoSans = Noto_Sans({
-  weight: ["400", "500", "600", "700"],
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-noto-sans",
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -58,21 +62,20 @@ export default function RootLayout({
         <link rel="preconnect" href="https://vercel.live" />
         <link rel="dns-prefetch" href="https://vercel.live" />
       </head>
-      <body className={`${notoSans.variable} antialiased min-h-screen font-sans`}>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} min-h-screen bg-background font-sans antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          forcedTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Background />
-          <Header />
+          <Navbar />
           {children}
           <Toaster
             toastOptions={{
-              className:
-                "bg-background/50 backdrop-blur-lg md:backdrop-blur-sm",
+              className: "bg-card border-border",
             }}
             position="bottom-right"
             duration={3000}

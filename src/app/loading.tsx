@@ -5,41 +5,31 @@ import { motion } from "framer-motion";
 export default function Loading() {
   return (
     <motion.div
-      className="fixed inset-0 bg-background/70 flex flex-col items-center justify-center z-50"
-      initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-      animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
-      exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
     >
-      <div className="flex flex-col items-center gap-2">
-        <motion.p
-          className="text-base"
-          animate={{ opacity: [0.4, 0.7, 1] }}
-          transition={{
-            repeat: Infinity,
-            repeatType: "reverse",
-            duration: 1.5,
-            ease: "easeInOut",
-          }}
+      <div className="flex flex-col items-center gap-4">
+        {/* Logo Animation */}
+        <motion.div
+          className="relative h-12 w-12"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         >
-          Getting ready...
+          <div className="absolute inset-0 rounded-full border-2 border-border" />
+          <div className="absolute inset-0 rounded-full border-2 border-t-foreground" />
+        </motion.div>
+
+        <motion.p
+          className="text-sm text-muted-foreground"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          Loading...
         </motion.p>
-        <div className="relative w-48 h-0.5 rounded-full bg-secondary overflow-hidden">
-          <motion.div
-            className="absolute inset-y-0 left-0 right-0 bg-foreground rounded-full"
-            initial={{ width: "0%" }}
-            animate={{
-              width: ["0%", "70%", "100%"],
-              x: ["0%", "45%", "100%"],
-            }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 1.2,
-              ease: "linear",
-            }}
-          />
-        </div>
       </div>
     </motion.div>
   );

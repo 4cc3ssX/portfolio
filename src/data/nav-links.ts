@@ -13,10 +13,6 @@ export const navLinks: INavLink[] = [
     path: "/#experience",
   },
   {
-    name: "skills",
-    path: "/#skills",
-  },
-  {
     name: "projects",
     path: "/projects",
   },

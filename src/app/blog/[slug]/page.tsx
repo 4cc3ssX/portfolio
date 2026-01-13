@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BlogDetailHeader, BlogContent, BlogToc } from "@/features/blogs/components";
 
-export const revalidate = 60;
+export const revalidate = 1800;
 
 interface BlogPageProps {
   params: Promise<{

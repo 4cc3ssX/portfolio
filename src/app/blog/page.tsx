@@ -1,30 +1,41 @@
 import { getBlogs } from "@/features/blogs/actions/blogs";
-import {
-  BlogHeader,
-  BlogList,
-  EmptyBlogs,
-} from "@/features/blogs/components";
+import { getMe } from "@/features/users/actions/users";
+import { BlogsSection } from "@/features/blogs/components/blogs-section";
+import { Footer } from "@/components/layout";
+import { Section, SectionHeader } from "@/components/ui/section";
+import { FadeIn } from "@/components/ui/animated-text";
 import type { Metadata } from "next";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Blogs",
+  title: "Blog",
   description:
     "Read my latest thoughts, tutorials, and insights on software development.",
 };
 
 export default async function BlogsPage() {
-  const blogs = await getBlogs();
+  const [blogs, me] = await Promise.all([getBlogs(), getMe()]);
 
   return (
-    <main className="font-sans min-h-screen pt-30 pb-14">
-      <div className="container mx-auto px-6 sm:px-8">
-        <div className="max-w-4xl mx-auto">
-          <BlogHeader />
-          {blogs.length === 0 ? <EmptyBlogs /> : <BlogList blogs={blogs} />}
-        </div>
-      </div>
+    <main className="relative min-h-screen pt-20">
+      {blogs.length === 0 ? (
+        <Section>
+          <FadeIn>
+            <SectionHeader
+              label="Blog"
+              title="Coming soon"
+              description="I'm working on some great content. Check back soon!"
+            />
+          </FadeIn>
+          <div className="flex min-h-[300px] items-center justify-center rounded-xl border border-dashed border-border">
+            <p className="text-muted-foreground">No posts yet</p>
+          </div>
+        </Section>
+      ) : (
+        <BlogsSection blogs={blogs} showAll />
+      )}
+      <Footer user={me} />
     </main>
   );
 }
