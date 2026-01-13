@@ -1,12 +1,19 @@
+import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import { getProjects } from "@/features/projects/actions/projects";
 import { getMe } from "@/features/users/actions/users";
-import { ProjectsSection } from "@/features/projects/components/projects-section";
 import { Footer } from "@/components/layout";
+
+const ProjectsSection = dynamic(() =>
+  import("@/features/projects/components/projects-section").then(
+    (mod) => mod.ProjectsSection
+  )
+);
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "A curated selection of my open-source contributions and public work.",
+  description:
+    "A curated selection of my open-source contributions and public work.",
 };
 
 export const revalidate = 600;

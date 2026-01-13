@@ -1,7 +1,18 @@
+import dynamic from "next/dynamic";
 import { getBlogBySlug, getBlogs } from "@/features/blogs/actions/blogs";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { BlogDetailHeader, BlogContent } from "@/features/blogs/components";
+
+const BlogDetailHeader = dynamic(() =>
+  import("@/features/blogs/components/blog-detail-header").then(
+    (mod) => mod.BlogDetailHeader
+  )
+);
+const BlogContent = dynamic(() =>
+  import("@/features/blogs/components/blog-content").then(
+    (mod) => mod.BlogContent
+  )
+);
 
 export const revalidate = 1800;
 
