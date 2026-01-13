@@ -59,7 +59,7 @@ export function Marquee({
       <div
         className={cn(
           "flex shrink-0 items-center justify-around gap-(--gap)",
-          "animate-marquee",
+          "animate-marquee will-change-transform",
           isReversed && "[direction:reverse]"
         )}
         style={{
@@ -72,7 +72,7 @@ export function Marquee({
       <div
         className={cn(
           "flex shrink-0 items-center justify-around gap-(--gap)",
-          "animate-marquee",
+          "animate-marquee will-change-transform",
           isReversed && "[direction:reverse]"
         )}
         aria-hidden

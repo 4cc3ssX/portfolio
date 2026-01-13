@@ -34,7 +34,7 @@ function BlogCard({
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "group relative flex h-full flex-col border border-white/[0.06] bg-white/[0.01] transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]",
+        "group relative flex h-full flex-col border border-white/[0.06] bg-white/[0.01] will-change-transform transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]",
         featured && "md:col-span-2"
       )}
     >
@@ -57,7 +57,7 @@ function BlogCard({
               src={blog.cover.uri}
               alt={blog.title}
               fill
-              className="object-cover transition-all duration-500 group-hover:scale-105"
+              className="object-cover transition-all duration-500 will-change-transform group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80" />
           </div>
