@@ -118,8 +118,8 @@ export function Hero({ user }: HeroProps) {
         >
           {[
             { value: "5+", label: "Years" },
-            { value: "20+", label: "Projects" },
-            { value: "10+", label: "Open Source" },
+            { value: "15+", label: "Projects" },
+            { value: "20+", label: "Open Source" },
           ].map((stat, index) => (
             <div key={stat.label} className="text-center">
               <motion.p
