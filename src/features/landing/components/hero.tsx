@@ -17,7 +17,7 @@ export function Hero({ user }: HeroProps) {
     <section className="relative flex min-h-dvh items-center justify-center overflow-hidden">
       {/* Background grid pattern */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
-      
+
       {/* Gradient orbs */}
       <div className="pointer-events-none absolute left-1/4 top-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-white/[0.03] to-transparent blur-3xl" />
       <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 bg-gradient-to-tl from-white/[0.02] to-transparent blur-3xl" />
@@ -31,7 +31,8 @@ export function Hero({ user }: HeroProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="will-change-transform"
         >
           <span className="inline-flex items-center gap-2 border border-white/[0.08] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-widest text-muted-foreground backdrop-blur-sm">
             <span className="relative flex h-1.5 w-1.5">
@@ -44,18 +45,14 @@ export function Hero({ user }: HeroProps) {
 
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8"
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          className="mt-8 will-change-transform"
         >
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="block text-foreground">
-              Building software
-            </span>
-            <span className="block text-foreground/50">
-              that scales
-            </span>
+            <span className="block text-foreground">Building software</span>
+            <span className="block text-foreground/50">that scales</span>
           </h1>
         </motion.div>
 
@@ -63,11 +60,12 @@ export function Hero({ user }: HeroProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8"
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          className="mt-8 will-change-transform"
         >
           <p className="text-base font-medium tracking-wide text-foreground/80 sm:text-lg">
-            {user.nickname} <span className="text-foreground/30">·</span> Software Engineer
+            {user.nickname} <span className="text-foreground/30">·</span>{" "}
+            Software Engineer
           </p>
           <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground/60 sm:text-base">
             {user.message}
@@ -78,8 +76,8 @@ export function Hero({ user }: HeroProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="mt-10 flex flex-col items-center justify-center gap-3 will-change-transform sm:flex-row"
         >
           <Button
             asChild
@@ -100,7 +98,11 @@ export function Hero({ user }: HeroProps) {
               size="lg"
               className="group border-white/[0.1] bg-transparent px-8 py-6 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/[0.02]"
             >
-              <Link href={resumeLink.uri} target="_blank" rel="noopener noreferrer">
+              <Link
+                href={resumeLink.uri}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span className="text-sm font-medium uppercase tracking-wider">
                   Resume
                 </span>
@@ -111,10 +113,10 @@ export function Hero({ user }: HeroProps) {
 
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 flex items-center justify-center gap-10 sm:gap-16"
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+          className="mt-12 flex items-center justify-center gap-10 will-change-transform sm:gap-16"
         >
           {[
             { value: "5+", label: "Years" },
@@ -148,7 +150,7 @@ export function Hero({ user }: HeroProps) {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1.5"
+          className="flex flex-col items-center gap-1.5 will-change-transform"
         >
           <span className="text-[9px] uppercase tracking-widest text-muted-foreground/40">
             Scroll

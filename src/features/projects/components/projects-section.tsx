@@ -25,7 +25,7 @@ function ProjectCard({
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative border border-white/[0.06] bg-white/[0.01] transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
+      className="group relative border border-white/[0.06] bg-white/[0.01] will-change-transform transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
     >
       {/* Corner accents */}
       <div className="absolute left-0 top-0 h-4 w-px bg-white/20 transition-all duration-300 group-hover:h-6 group-hover:bg-white/40" />
