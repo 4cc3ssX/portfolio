@@ -5,20 +5,30 @@ import { Marquee } from "@/components/ui/marquee";
 import { FadeIn } from "@/components/ui/animated-text";
 import { cn } from "@/lib/utils";
 import { SkillWithTag } from "@/features/skills/types/skills";
+import { Icon, IconName, icons } from "@/components/svgs";
 
 interface SkillsSectionProps {
   skills: SkillWithTag[];
 }
 
 function SkillBadge({ skill }: { skill: SkillWithTag }) {
+  // Check if we have an icon for this skill (using term as key)
+  const iconKey = skill.tag.term.toLowerCase() as IconName;
+  const hasIcon = iconKey in icons;
+
   return (
     <div
       className={cn(
-        "flex items-center gap-2 border border-white/[0.08] bg-white/[0.02] px-4 py-2",
-        "transition-all duration-300 hover:border-white/15 hover:bg-white/[0.04]"
+        "group flex items-center gap-3 border border-white/[0.06] bg-white/[0.01] px-5 py-3",
+        "transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
       )}
     >
-      <span className="whitespace-nowrap text-sm text-foreground/70 transition-colors hover:text-foreground">
+      {hasIcon && (
+        <div className="flex h-5 w-5 items-center justify-center text-muted-foreground/60 transition-colors duration-300 group-hover:text-foreground/80">
+          <Icon name={iconKey} size={20} className="fill-current" />
+        </div>
+      )}
+      <span className="whitespace-nowrap text-sm font-medium text-muted-foreground/70 transition-colors duration-300 group-hover:text-foreground/90">
         {skill.tag.name}
       </span>
     </div>
@@ -44,17 +54,21 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
       <div className="space-y-3">
         {/* First Row - Left to Right */}
-        <Marquee pauseOnHover duration={50} gap={12} fadeSize={120}>
-          {firstRow.map((skill) => (
-            <SkillBadge key={skill.id} skill={skill} />
-          ))}
+        <Marquee direction="right" pauseOnHover duration={50} gap={12} fadeSize={120}>
+          <div className="flex gap-3 ml-3">
+            {firstRow.map((skill) => (
+              <SkillBadge key={skill.id} skill={skill} />
+            ))}
+          </div>
         </Marquee>
 
         {/* Second Row - Right to Left */}
-        <Marquee pauseOnHover reverse duration={50} gap={12} fadeSize={120}>
-          {secondRow.map((skill) => (
-            <SkillBadge key={skill.id} skill={skill} />
-          ))}
+        <Marquee direction="left" pauseOnHover duration={50} gap={12} fadeSize={120}>
+          <div className="flex gap-3 ml-3">
+            {secondRow.map((skill) => (
+              <SkillBadge key={skill.id} skill={skill} />
+            ))}
+          </div>
         </Marquee>
       </div>
     </Section>

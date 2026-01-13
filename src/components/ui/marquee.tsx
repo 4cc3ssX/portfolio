@@ -7,6 +7,7 @@ interface MarqueeProps {
   children: ReactNode;
   className?: string;
   pauseOnHover?: boolean;
+  direction?: "left" | "right";
   reverse?: boolean;
   duration?: number;
   gap?: number;
@@ -18,12 +19,15 @@ export function Marquee({
   children,
   className,
   pauseOnHover = false,
+  direction = "left",
   reverse = false,
   duration = 40,
   gap = 16,
   fade = true,
   fadeSize = 100,
 }: MarqueeProps) {
+  // Support both direction prop and legacy reverse prop
+  const isReversed = direction === "right" || reverse;
   return (
     <div
       className={cn(
@@ -39,7 +43,7 @@ export function Marquee({
       {/* Left fade gradient */}
       {fade && (
         <div
-          className="pointer-events-none absolute left-0 top-0 z-10 h-full bg-gradient-to-r from-background to-transparent"
+          className="pointer-events-none absolute left-0 top-0 z-10 h-full bg-linear-to-r from-background to-transparent"
           style={{ width: `${fadeSize}px` }}
         />
       )}
@@ -47,16 +51,16 @@ export function Marquee({
       {/* Right fade gradient */}
       {fade && (
         <div
-          className="pointer-events-none absolute right-0 top-0 z-10 h-full bg-gradient-to-l from-background to-transparent"
+          className="pointer-events-none absolute right-0 top-0 z-10 h-full bg-linear-to-l from-background to-transparent"
           style={{ width: `${fadeSize}px` }}
         />
       )}
 
       <div
         className={cn(
-          "flex shrink-0 items-center justify-around gap-[var(--gap)]",
+          "flex shrink-0 items-center justify-around gap-(--gap)",
           "animate-marquee",
-          reverse && "[animation-direction:reverse]"
+          isReversed && "[direction:reverse]"
         )}
         style={{
           animationPlayState: "var(--play-state, running)",
@@ -67,9 +71,9 @@ export function Marquee({
       </div>
       <div
         className={cn(
-          "flex shrink-0 items-center justify-around gap-[var(--gap)]",
+          "flex shrink-0 items-center justify-around gap-(--gap)",
           "animate-marquee",
-          reverse && "[animation-direction:reverse]"
+          isReversed && "[direction:reverse]"
         )}
         aria-hidden
         style={{
