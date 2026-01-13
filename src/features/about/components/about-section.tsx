@@ -53,11 +53,12 @@ export function AboutSection({ user }: AboutSectionProps) {
               label="About"
               title="Building the future, one line at a time"
               description="I'm a passionate software engineer who loves turning complex problems into elegant solutions."
+              className="mb-8!"
             />
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="space-y-5 text-muted-foreground/80 leading-relaxed">
+            <div className="space-y-4 text-muted-foreground/80 leading-relaxed">
               <p>
                 With over 5 years of experience in software development, I specialize
                 in building scalable, event-driven systems using modern technologies.

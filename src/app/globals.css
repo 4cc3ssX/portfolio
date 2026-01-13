@@ -246,15 +246,15 @@ code[data-theme] span {
 
 /* Code block styles for rehype-pretty-code */
 [data-rehype-pretty-code-fragment] {
-  @apply relative;
+  @apply relative my-6;
 }
 
 [data-rehype-pretty-code-fragment] pre {
-  @apply overflow-x-auto rounded-lg border bg-muted/30 px-4 py-3 text-sm;
+  @apply overflow-x-auto rounded border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-[13px];
 }
 
 [data-rehype-pretty-code-fragment] code {
-  @apply grid;
+  @apply grid font-mono;
   counter-reset: line;
 }
 
@@ -267,7 +267,7 @@ code[data-theme] span {
   > [data-line]::before {
   counter-increment: line;
   content: counter(line);
-  @apply mr-4 inline-block w-4 text-right text-muted-foreground;
+  @apply mr-4 inline-block w-4 text-right text-muted-foreground/40;
 }
 
 [data-rehype-pretty-code-fragment] [data-line] {
@@ -275,23 +275,23 @@ code[data-theme] span {
 }
 
 [data-rehype-pretty-code-fragment] [data-highlighted-line] {
-  @apply border-l-primary bg-primary/10;
+  @apply border-l-foreground/50 bg-white/[0.04];
 }
 
 [data-rehype-pretty-code-fragment] [data-highlighted-chars] {
-  @apply rounded bg-accent px-1;
+  @apply rounded bg-white/[0.08] px-1;
 }
 
 [data-rehype-pretty-code-fragment]
   code[data-line-numbers-max-digits="2"]
   > [data-line]::before {
-  @apply w-8;
+  @apply w-6;
 }
 
 [data-rehype-pretty-code-fragment]
   code[data-line-numbers-max-digits="3"]
   > [data-line]::before {
-  @apply w-12;
+  @apply w-8;
 }
 
 /* Title styling for code blocks */

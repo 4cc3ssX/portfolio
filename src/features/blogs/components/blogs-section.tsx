@@ -138,7 +138,7 @@ export function BlogsSection({ blogs, showAll = false }: BlogsSectionProps) {
       </FadeIn>
 
       <StaggerContainer
-        className="grid gap-4 md:grid-cols-2"
+        className="grid gap-4 md:grid-cols-3"
         staggerDelay={0.1}
       >
         {displayedBlogs.map((blog, index) => (

@@ -22,6 +22,7 @@ export const getMe = async (): Promise<UserWithLinksAndAvatar> => {
   const result = await db
     .select({
       id: users.id,
+      title: users.title,
       name: users.name,
       nickname: users.nickname,
       email: users.email,

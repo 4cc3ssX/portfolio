@@ -35,6 +35,7 @@ const populateAuthor = sql<
   BlogWithAuthorAndCover["author"]
 >`CASE WHEN ${users.id} IS NOT NULL THEN JSONB_BUILD_OBJECT(
     'id', ${users.id},
+    'title', ${users.title},
     'name', ${users.name},
     'email', ${users.email},
     'avatar', ${populateAvatar}
