@@ -19,7 +19,7 @@ export default async function Image() {
     (
       <div
         style={{
-          background: "#0a0a0a",
+          background: "#09090b",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -27,24 +27,89 @@ export default async function Image() {
           fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
-        {/* Gradient overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)",
-          }}
-        />
-
         {/* Grid pattern */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+              "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
             backgroundSize: "64px 64px",
+          }}
+        />
+
+        {/* Subtle gradient orb */}
+        <div
+          style={{
+            position: "absolute",
+            left: "20%",
+            top: "30%",
+            width: "500px",
+            height: "500px",
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+
+        {/* Top gradient line */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "1px",
+            background:
+              "linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent)",
+          }}
+        />
+
+        {/* Corner accents - Top Left */}
+        <div
+          style={{
+            position: "absolute",
+            left: "60px",
+            top: "60px",
+            width: "1px",
+            height: "40px",
+            background:
+              "linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: "60px",
+            top: "60px",
+            width: "40px",
+            height: "1px",
+            background:
+              "linear-gradient(to right, rgba(255,255,255,0.3), transparent)",
+          }}
+        />
+
+        {/* Corner accents - Bottom Right */}
+        <div
+          style={{
+            position: "absolute",
+            right: "60px",
+            bottom: "60px",
+            width: "1px",
+            height: "40px",
+            background:
+              "linear-gradient(to top, rgba(255,255,255,0.3), transparent)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            right: "60px",
+            bottom: "60px",
+            width: "40px",
+            height: "1px",
+            background:
+              "linear-gradient(to left, rgba(255,255,255,0.3), transparent)",
           }}
         />
 
@@ -53,129 +118,226 @@ export default async function Image() {
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "center",
             width: "100%",
             height: "100%",
-            padding: "80px",
+            padding: "80px 100px",
           }}
         >
-          {/* Header */}
+          {/* Status badge */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "12px",
+              gap: "10px",
+              marginBottom: "40px",
             }}
           >
             <div
               style={{
-                width: "20px",
-                height: "6px",
-                borderRadius: "4px",
-                background: "#3b82f6",
-                boxShadow: "0 0 20px rgba(59, 130, 246, 0.6)",
-              }}
-            />
-            <span
-              style={{
-                fontSize: "24px",
-                color: "rgba(255,255,255,0.7)",
-                fontWeight: "500",
-                letterSpacing: "0.05em",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "8px 16px",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(255,255,255,0.02)",
               }}
             >
-              PORTFOLIO
-            </span>
+              <div
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  background: "#22c55e",
+                  boxShadow: "0 0 12px rgba(34, 197, 94, 0.6)",
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.5)",
+                  fontWeight: "500",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Available for work
+              </span>
+            </div>
           </div>
 
-          {/* Main content */}
+          {/* Main heading */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "24px",
+              gap: "8px",
+              marginBottom: "32px",
             }}
           >
             <h1
               style={{
-                fontSize: "96px",
-                fontWeight: "700",
+                fontSize: "72px",
+                fontWeight: "600",
                 color: "white",
                 margin: 0,
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
               }}
             >
-              {configs.name}
+              Building software
             </h1>
-
-            <div
+            <h1
               style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "16px",
+                fontSize: "72px",
+                fontWeight: "600",
+                color: "rgba(255,255,255,0.5)",
+                margin: 0,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
               }}
             >
-              <p
-                style={{
-                  fontSize: "42px",
-                  color: "rgba(255,255,255,0.9)",
-                  margin: 0,
-                  fontWeight: "600",
-                }}
-              >
-                Software Engineer
-              </p>
-
-              <p
-                style={{
-                  fontSize: "28px",
-                  color: "rgba(255,255,255,0.6)",
-                  margin: 0,
-                  maxWidth: "900px",
-                  lineHeight: 1.5,
-                }}
-              >
-                Building scalable, event-driven systems with NestJS, Next.js,
-                React Native, and AWS
-              </p>
-            </div>
+              that scales
+            </h1>
           </div>
 
-          {/* Footer */}
+          {/* Name & role */}
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
+              gap: "12px",
+              marginBottom: "48px",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                gap: "20px",
-                fontSize: "20px",
-                color: "rgba(255,255,255,0.5)",
-              }}
-            >
-              <span>NestJS</span>
-              <span>•</span>
-              <span>Next.js</span>
-              <span>•</span>
-              <span>React Native</span>
-              <span>•</span>
-              <span>AWS</span>
-            </div>
-
             <span
               style={{
                 fontSize: "20px",
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(255,255,255,0.8)",
+                fontWeight: "500",
               }}
             >
-              ryamjs.dev
+              {configs.name}
+            </span>
+            <span
+              style={{
+                fontSize: "20px",
+                color: "rgba(255,255,255,0.3)",
+              }}
+            >
+              ·
+            </span>
+            <span
+              style={{
+                fontSize: "20px",
+                color: "rgba(255,255,255,0.8)",
+                fontWeight: "500",
+              }}
+            >
+              Software Engineer
             </span>
           </div>
+
+          {/* Stats */}
+          <div
+            style={{
+              display: "flex",
+              gap: "60px",
+            }}
+          >
+            {[
+              { value: "5+", label: "Years" },
+              { value: "15+", label: "Projects" },
+              { value: "20+", label: "Open Source" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "32px",
+                    fontWeight: "600",
+                    color: "white",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {stat.value}
+                </span>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    fontWeight: "500",
+                    color: "rgba(255,255,255,0.4)",
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    marginTop: "4px",
+                  }}
+                >
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right side decorative element */}
+        <div
+          style={{
+            position: "absolute",
+            right: "100px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "4px",
+          }}
+        >
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              style={{
+                width: "2px",
+                height: i === 2 ? "40px" : "20px",
+                background:
+                  i === 2
+                    ? "rgba(255,255,255,0.4)"
+                    : "rgba(255,255,255,0.15)",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Bottom URL */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "60px",
+            right: "100px",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <div
+            style={{
+              width: "20px",
+              height: "1px",
+              background: "rgba(255,255,255,0.3)",
+            }}
+          />
+          <span
+            style={{
+              fontSize: "14px",
+              color: "rgba(255,255,255,0.4)",
+              letterSpacing: "0.05em",
+            }}
+          >
+            ryamjs.dev
+          </span>
         </div>
       </div>
     ),

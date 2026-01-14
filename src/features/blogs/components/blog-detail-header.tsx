@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { BlogWithAuthorAndCover } from "../types/blogs";
+import { MotionWrapper } from "@/features/shared";
 
 interface BlogDetailHeaderProps {
   blog: BlogWithAuthorAndCover;
@@ -20,7 +21,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
   return (
     <header>
       {/* Meta info */}
-      <motion.div
+      <MotionWrapper
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -29,7 +30,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
         <time>{formattedDate}</time>
         <span className="h-0.5 w-0.5 rounded-full bg-muted-foreground/30" />
         <span>{blog.readingTime} min read</span>
-      </motion.div>
+      </MotionWrapper>
 
       {/* Title */}
       <motion.h1
@@ -55,7 +56,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
 
       {/* Author */}
       {blog.author && (
-        <motion.div
+        <MotionWrapper
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -81,7 +82,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
               </span>
             )}
           </div>
-        </motion.div>
+        </MotionWrapper>
       )}
     </header>
   );

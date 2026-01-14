@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useMotionValue } from "framer-motion";
+import { useMotionValue } from "motion/react";
 
 interface UseScrollProgressOptions {
   elementId: string;

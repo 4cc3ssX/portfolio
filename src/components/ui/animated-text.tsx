@@ -1,7 +1,8 @@
 "use client";
 
+import { MotionWrapper } from "@/features/shared";
 import { cn } from "@/lib/utils";
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "motion/react";
 import { ReactNode } from "react";
 
 interface AnimatedTextProps {
@@ -95,7 +96,7 @@ export function FadeIn({
   };
 
   return (
-    <motion.div
+    <MotionWrapper
       className={className}
       initial={{
         opacity: 0,
@@ -116,7 +117,7 @@ export function FadeIn({
       }}
     >
       {children}
-    </motion.div>
+    </MotionWrapper>
   );
 }
 
@@ -134,7 +135,7 @@ export function StaggerContainer({
   staggerDelay = 0.1,
 }: StaggerContainerProps) {
   return (
-    <motion.div
+    <MotionWrapper
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -150,7 +151,7 @@ export function StaggerContainer({
       }}
     >
       {children}
-    </motion.div>
+    </MotionWrapper>
   );
 }
 
@@ -162,7 +163,7 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <motion.div
+    <MotionWrapper
       className={className}
       variants={{
         hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
@@ -175,6 +176,6 @@ export function StaggerItem({
       }}
     >
       {children}
-    </motion.div>
+    </MotionWrapper>
   );
 }

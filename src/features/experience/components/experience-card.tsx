@@ -1,125 +1,97 @@
-import { cn } from "@/lib/utils";
-import { openURL } from "@/utils";
-import dayjs from "dayjs";
-import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { isNil } from "lodash-es";
-import { CompanyWithImageAndLink } from "../types/companies";
+import dayjs from "dayjs";
+import { ArrowUpRight } from "lucide-react";
+import { MotionWrapper } from "@/features/shared";
 
-export interface ExperienceCardProps
-  extends React.ComponentProps<typeof motion.div> {
-  index?: number;
-  total?: number;
-  active: boolean;
-  company: CompanyWithImageAndLink;
-  position?: string;
-  start: string;
-  end: string | null;
-  className?: string;
+interface Company {
+  name: string;
+  uri: string | null;
+  image: {
+    uri: string;
+  } | null;
 }
 
-export const ExperienceCard = ({
-  index,
-  total,
-  active,
-  company,
-  position,
-  start,
-  end,
-  className,
-  ...rest
-}: ExperienceCardProps) => {
-  const isValidValues = !isNil(index) && !isNil(total);
+interface ExperienceCardProps {
+  id: string;
+  position: string;
+  company: Company;
+  startedAt: string | Date;
+  endedAt: string | Date | null;
+  isActive: boolean;
+  description: string | string[] | null;
+}
 
-  const opacity = isValidValues ? 1 - index / (total * 1.5) : 1;
-  const scale = isValidValues ? 1 - index / (total * 16) : 1;
+export function ExperienceCard({
+  position,
+  company,
+  startedAt,
+  endedAt,
+  isActive,
+  description,
+}: ExperienceCardProps) {
   return (
-    <motion.div
-      layout
-      layoutId={`experience-${company.id}`}
-      exit={{ opacity: 0 }}
-      transition={{
-        default: { ease: "linear" },
-        layout: {
-          duration: 0.3,
-          ease: "easeInOut",
-        },
-      }}
-      whileHover={{
-        opacity: 1,
-        scale: index && index > 0 ? scale + 0.02 : 1,
-      }}
-      style={{ opacity, scale }}
-      className="relative p-px cursor-pointer"
-      {...rest}
+    <MotionWrapper
+      whileHover={{ x: 4 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative"
     >
-      {isValidValues && active ? (
-        <div className="absolute inset-0 bg-linear-to-br from-neutral-600/70 to-background rounded-xl -z-10" />
-      ) : null}
-      <div
-        className={cn(
-          "flex flex-row items-center gap-x-3",
-          className,
-          isValidValues &&
-            active &&
-            "bg-linear-to-br from-secondary to-background backdrop-blur-lg md:backdrop-blur-sm rounded-xl"
-        )}
-      >
-        <div className="hidden md:block border border-muted rounded-full p-0.5">
-          <Image
-            placeholder={company.image.blurHash as any}
-            src={company.image.uri}
-            alt={`${company.name} logo`}
-            width={32}
-            height={32}
-            className="object-center rounded-full"
-          />
-        </div>
-        <div className="flex-2 flex flex-col gap-y-0.5">
-          <div className="flex flex-row items-center gap-x-1.5">
-            {company.uri ? (
-              <Link
-                href={company.uri ?? "#"}
-                target="_blank"
-                className="font-medium text-lg hover:underline underline-offset-2"
-              >
-                {company.name}
-                <span className="sr-only">Open {company.name} in new tab</span>
-              </Link>
-            ) : (
-              <p className="font-medium text-lg cursor-not-allowed">
-                {company.name}
-              </p>
-            )}
-            {company.uri ? (
-              <button
-                title={`${company.name}`}
-                onClick={() => openURL(company.uri!, true)}
-              >
-                <ExternalLink size={18} />
-              </button>
-            ) : null}
+      {/* Timeline Dot */}
+      <div className="absolute left-0 top-6 z-10 h-2 w-2 -translate-x-1/2 border border-white/40 bg-background transition-colors duration-300 group-hover:border-white/80 group-hover:bg-white/20 md:left-8" />
+
+      {/* Content Card */}
+      <div className="ml-6 md:ml-16">
+        <div className="border border-white/[0.06] bg-white/[0.01] p-6 transition-all duration-300 group-hover:border-white/[0.12] group-hover:bg-white/[0.03]">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-4">
+              {company.image?.uri && (
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/[0.08] bg-white/[0.02]">
+                  <Image
+                    src={company.image.uri}
+                    alt={company.name}
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 object-contain"
+                  />
+                </div>
+              )}
+              <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="font-medium tracking-tight">{position}</h3>
+                  {isActive && (
+                    <span className="inline-flex items-center border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-emerald-400">
+                      Current
+                    </span>
+                  )}
+                </div>
+                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <Link
+                    href={company.uri || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {company.name}
+                    <ArrowUpRight className="h-3 w-3 opacity-50" />
+                  </Link>
+                  <span className="text-muted-foreground/30">•</span>
+                  <span className="text-xs text-muted-foreground/60">
+                    {dayjs(startedAt).format("MMM YYYY")} —{" "}
+                    {isActive ? "Present" : dayjs(endedAt).format("MMM YYYY")}
+                  </span>
+                </div>
+                {description && (
+                  <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground/70">
+                    {Array.isArray(description)
+                      ? description.join(" ")
+                      : description}
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
-          {position ? (
-            <p className="text-sm text-muted-foreground">{position}</p>
-          ) : null}
-        </div>
-        <div className="flex flex-row items-center justify-end flex-wrap gap-1.5">
-          <p className="text-xs md:text-sm text-muted-foreground text-left">
-            {dayjs(start).format("MMM YYYY")}
-          </p>
-          <span className="w-2 h-px bg-muted-foreground" />
-          <p
-            className={`text-xs md:text-sm ${
-              active ? "text-primary" : "text-muted-foreground"
-            } text-right`}
-          >
-            {active && !end ? "Present" : dayjs(end).format("MMM YYYY")}
-          </p>
         </div>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
-};
+}

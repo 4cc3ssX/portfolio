@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import dayjs from "dayjs";
 import { ArrowUpRight, Star, GitFork } from "lucide-react";
@@ -8,6 +5,7 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/animated-text";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/features/projects/actions/projects";
+import { MotionWrapper } from "@/features/shared";
 
 interface ProjectsSectionProps {
   projects: ProjectWithLinkAndTagsWithGithubData[];
@@ -22,7 +20,7 @@ function ProjectCard({
   index: number;
 }) {
   return (
-    <motion.div
+    <MotionWrapper
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className="group relative border border-white/[0.06] bg-white/[0.01] will-change-transform transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
@@ -100,8 +98,13 @@ function ProjectCard({
           )}
         </div>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
+}
+
+interface ProjectsSectionProps {
+  projects: ProjectWithLinkAndTagsWithGithubData[];
+  showAll?: boolean;
 }
 
 export function ProjectsSection({

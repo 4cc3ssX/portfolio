@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ import { INavLink, navLinks } from "@/data/nav-links";
 import { useNavigation } from "@/shared/hooks/use-navigation";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { AssetImages } from "@/assets/images";
+import { MotionWrapper } from "@/features/shared";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,8 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
+    <MotionWrapper
+      as="header"
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -91,7 +93,7 @@ export function Navbar() {
         >
           <AnimatePresence mode="wait">
             {isOpen ? (
-              <motion.div
+              <MotionWrapper
                 key="close"
                 initial={{ opacity: 0, rotate: -90 }}
                 animate={{ opacity: 1, rotate: 0 }}
@@ -99,9 +101,9 @@ export function Navbar() {
                 transition={{ duration: 0.15 }}
               >
                 <X className="h-4 w-4" />
-              </motion.div>
+              </MotionWrapper>
             ) : (
-              <motion.div
+              <MotionWrapper
                 key="menu"
                 initial={{ opacity: 0, rotate: 90 }}
                 animate={{ opacity: 1, rotate: 0 }}
@@ -109,7 +111,7 @@ export function Navbar() {
                 transition={{ duration: 0.15 }}
               >
                 <Menu className="h-4 w-4" />
-              </motion.div>
+              </MotionWrapper>
             )}
           </AnimatePresence>
         </Button>
@@ -118,7 +120,7 @@ export function Navbar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <MotionWrapper
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -129,7 +131,7 @@ export function Navbar() {
               {navLinks.map((link, index) => {
                 const isActive = link.path === path;
                 return (
-                  <motion.div
+                  <MotionWrapper
                     key={link.path}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -148,13 +150,13 @@ export function Navbar() {
                     >
                       {link.name}
                     </Link>
-                  </motion.div>
+                  </MotionWrapper>
                 );
               })}
             </nav>
-          </motion.div>
+          </MotionWrapper>
         )}
       </AnimatePresence>
-    </motion.header>
+    </MotionWrapper>
   );
 }

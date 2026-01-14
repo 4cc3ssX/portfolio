@@ -8,11 +8,7 @@ declare global {
       NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: string;
       NEXT_PUBLIC_FIREBASE_APP_ID: string;
 
-      DATABASE_HOST: string;
-      DATABASE_PORT: string;
-      DATABASE_USER: string;
-      DATABASE_PASSWORD: string;
-      DATABASE_NAME: string;
+      DATABASE_URL: string;
 
       GITHUB_TOKEN: string;
     }
