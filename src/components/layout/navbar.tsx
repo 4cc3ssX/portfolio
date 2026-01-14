@@ -93,7 +93,7 @@ export function Navbar() {
         >
           <AnimatePresence mode="wait">
             {isOpen ? (
-              <MotionWrapper
+              <motion.div
                 key="close"
                 initial={{ opacity: 0, rotate: -90 }}
                 animate={{ opacity: 1, rotate: 0 }}
@@ -101,9 +101,9 @@ export function Navbar() {
                 transition={{ duration: 0.15 }}
               >
                 <X className="h-4 w-4" />
-              </MotionWrapper>
+              </motion.div>
             ) : (
-              <MotionWrapper
+              <motion.div
                 key="menu"
                 initial={{ opacity: 0, rotate: 90 }}
                 animate={{ opacity: 1, rotate: 0 }}
@@ -111,7 +111,7 @@ export function Navbar() {
                 transition={{ duration: 0.15 }}
               >
                 <Menu className="h-4 w-4" />
-              </MotionWrapper>
+              </motion.div>
             )}
           </AnimatePresence>
         </Button>
@@ -120,7 +120,7 @@ export function Navbar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <MotionWrapper
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -131,7 +131,7 @@ export function Navbar() {
               {navLinks.map((link, index) => {
                 const isActive = link.path === path;
                 return (
-                  <MotionWrapper
+                  <motion.div
                     key={link.path}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -150,11 +150,11 @@ export function Navbar() {
                     >
                       {link.name}
                     </Link>
-                  </MotionWrapper>
+                  </motion.div>
                 );
               })}
             </nav>
-          </MotionWrapper>
+          </motion.div>
         )}
       </AnimatePresence>
     </MotionWrapper>
