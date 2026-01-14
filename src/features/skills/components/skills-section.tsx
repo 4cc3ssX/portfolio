@@ -1,3 +1,5 @@
+"use client"
+
 import { Section } from "@/components/ui/section";
 import { Marquee } from "@/components/ui/marquee";
 import { FadeIn } from "@/components/ui/animated-text";
