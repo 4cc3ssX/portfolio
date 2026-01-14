@@ -15,15 +15,16 @@ export function Footer({ user }: FooterProps) {
   return (
     <footer className="border-t border-white/[0.04] py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row sm:gap-4 md:px-8">
-        {/* Copyright */}
         <p className="text-xs text-muted-foreground/40">
-          © {currentYear} {user.nickname}
+          Designed &amp; Built by {user.nickname} © {currentYear}
         </p>
 
         {/* Social Links */}
         <div className="flex items-center gap-3">
           {socials.map((link) => {
-            const shouldUseStrokeColor = ["x"].includes(link.name.toLowerCase());
+            const shouldUseStrokeColor = ["x"].includes(
+              link.name.toLowerCase()
+            );
 
             return (
               <Link
