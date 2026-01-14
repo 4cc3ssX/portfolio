@@ -32,8 +32,8 @@ export function Navbar() {
       as="header"
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 bottom-auto z-50"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed inset-0 bottom-auto z-50 will-change-transform"
     >
       {/* Desktop Navigation */}
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6 md:h-16">
@@ -99,6 +99,7 @@ export function Navbar() {
                 animate={{ opacity: 1, rotate: 0 }}
                 exit={{ opacity: 0, rotate: 90 }}
                 transition={{ duration: 0.15 }}
+                className="will-change-transform"
               >
                 <X className="h-4 w-4" />
               </motion.div>
@@ -109,6 +110,7 @@ export function Navbar() {
                 animate={{ opacity: 1, rotate: 0 }}
                 exit={{ opacity: 0, rotate: -90 }}
                 transition={{ duration: 0.15 }}
+                className="will-change-transform"
               >
                 <Menu className="h-4 w-4" />
               </motion.div>
@@ -137,6 +139,7 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ delay: index * 0.05, duration: 0.2 }}
+                    className="will-change-transform"
                   >
                     <Link
                       href={link.path}

@@ -24,7 +24,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
       <MotionWrapper
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="mb-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground/50"
       >
         <time>{formattedDate}</time>
@@ -36,7 +36,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
         className="text-2xl font-medium tracking-tight text-foreground sm:text-3xl"
       >
         {blog.title}
@@ -47,8 +47,8 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4 text-sm leading-relaxed text-muted-foreground/70"
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="mt-4 text-sm leading-relaxed text-muted-foreground/70 will-change-transform"
         >
           {blog.description}
         </motion.p>
@@ -59,8 +59,8 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
         <MotionWrapper
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 flex items-center gap-3"
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          className="mt-6 flex items-center gap-3 will-change-transform"
         >
           {blog.author.avatar?.uri && (
             <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/[0.08]">
