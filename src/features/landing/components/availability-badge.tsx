@@ -1,3 +1,5 @@
+"use client";
+
 import { MotionWrapper } from "@/features/shared";
 
 export function AvailabilityBadge() {
