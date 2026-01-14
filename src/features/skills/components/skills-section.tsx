@@ -1,5 +1,3 @@
-"use client";
-
 import { Section } from "@/components/ui/section";
 import { Marquee } from "@/components/ui/marquee";
 import { FadeIn } from "@/components/ui/animated-text";
@@ -42,7 +40,11 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   const secondRow = skills.slice(midPoint);
 
   return (
-    <Section id="skills" container={false} className="overflow-hidden py-20 md:py-24">
+    <Section
+      id="skills"
+      container={false}
+      className="overflow-hidden py-20 md:py-24"
+    >
       <FadeIn className="mb-10 px-6 text-center md:px-8">
         <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground/50">
           Skills
@@ -54,7 +56,13 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
       <div className="space-y-3">
         {/* First Row - Left to Right */}
-        <Marquee direction="right" pauseOnHover duration={50} gap={12} fadeSize={120}>
+        <Marquee
+          direction="right"
+          pauseOnHover
+          duration={50}
+          gap={12}
+          fadeSize={120}
+        >
           <div className="flex gap-3 ml-3">
             {firstRow.map((skill) => (
               <SkillBadge key={skill.id} skill={skill} />
@@ -63,7 +71,13 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
         </Marquee>
 
         {/* Second Row - Right to Left */}
-        <Marquee direction="left" pauseOnHover duration={50} gap={12} fadeSize={120}>
+        <Marquee
+          direction="left"
+          pauseOnHover
+          duration={50}
+          gap={12}
+          fadeSize={120}
+        >
           <div className="flex gap-3 ml-3">
             {secondRow.map((skill) => (
               <SkillBadge key={skill.id} skill={skill} />

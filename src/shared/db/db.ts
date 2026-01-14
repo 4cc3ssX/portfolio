@@ -1,18 +1,10 @@
 import "server-only";
 
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
-import { dbConfigs } from "@/shared/configs/db";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
 
-// Disable prefetch as it is not supported for "Transaction" pool mode
-export const client = postgres({
-  host: dbConfigs.host,
-  port: dbConfigs.port,
-  user: dbConfigs.user,
-  password: dbConfigs.password,
-  database: dbConfigs.name,
-
-  prepare: false,
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
 });
 
-export const db = drizzle(client);
+export const db = drizzle({ client: pool });

@@ -1,10 +1,10 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { UserWithLinksAndAvatar } from "@/features/users/types/users";
+import { AvailabilityBadge } from "./availability-badge";
+import { HeroHeading } from "./hero-heading";
+import { HeroIntro } from "./hero-intro";
+import { HeroCTAButtons } from "./hero-cta-buttons";
+import { HeroStats } from "./hero-stats";
+import { ScrollIndicator } from "./scroll-indicator";
 
 interface HeroProps {
   user: UserWithLinksAndAvatar;
@@ -27,137 +27,14 @@ export function Hero({ user }: HeroProps) {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="will-change-transform"
-        >
-          <span className="inline-flex items-center gap-2 border border-white/[0.08] bg-white/[0.02] px-4 py-2 text-xs font-medium uppercase tracking-widest text-muted-foreground backdrop-blur-sm">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 bg-emerald-500" />
-            </span>
-            Available for work
-          </span>
-        </motion.div>
-
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="mt-8 will-change-transform"
-        >
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="block text-foreground">Building software</span>
-            <span className="block text-foreground/50">that scales</span>
-          </h1>
-        </motion.div>
-
-        {/* Intro */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="mt-8 will-change-transform"
-        >
-          <p className="text-base font-medium tracking-wide text-foreground/80 sm:text-lg">
-            {user.nickname} <span className="text-foreground/30">·</span>{" "}
-            Software Engineer
-          </p>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground/60 sm:text-base">
-            {user.message}
-          </p>
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 will-change-transform sm:flex-row"
-        >
-          <Button
-            asChild
-            size="lg"
-            className="group relative overflow-hidden bg-foreground px-8 py-6 text-background transition-all hover:bg-foreground/90"
-          >
-            <Link href="/projects">
-              <span className="relative z-10 flex items-center gap-2 text-sm font-medium uppercase tracking-wider">
-                View Work
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </Link>
-          </Button>
-          {resumeLink && (
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="group border-white/[0.1] bg-transparent px-8 py-6 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/[0.02]"
-            >
-              <Link
-                href={resumeLink.uri}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-sm font-medium uppercase tracking-wider">
-                  Resume
-                </span>
-              </Link>
-            </Button>
-          )}
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-          className="mt-12 flex items-center justify-center gap-10 will-change-transform sm:gap-16"
-        >
-          {[
-            { value: "5+", label: "Years" },
-            { value: "15+", label: "Projects" },
-            { value: "20+", label: "Open Source" },
-          ].map((stat, index) => (
-            <div key={stat.label} className="text-center">
-              <motion.p
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
-              >
-                {stat.value}
-              </motion.p>
-              <p className="mt-1 text-[10px] font-medium uppercase tracking-widest text-muted-foreground/50">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
+        <AvailabilityBadge />
+        <HeroHeading />
+        <HeroIntro nickname={user.nickname} message={user.message} />
+        <HeroCTAButtons resumeLink={resumeLink?.uri} />
+        <HeroStats />
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1.5 will-change-transform"
-        >
-          <span className="text-[9px] uppercase tracking-widest text-muted-foreground/40">
-            Scroll
-          </span>
-          <div className="h-6 w-px bg-gradient-to-b from-muted-foreground/40 to-transparent" />
-        </motion.div>
-      </motion.div>
+      <ScrollIndicator />
 
       {/* Corner accents */}
       <div className="pointer-events-none absolute left-6 top-24 h-20 w-px bg-gradient-to-b from-white/10 to-transparent" />

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
@@ -10,6 +7,7 @@ import { Icon, IconName } from "@/components/svgs";
 import { cn } from "@/lib/utils";
 import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { LinkType } from "@/features/users/schemas/links";
+import { MotionWrapper } from "@/features/shared";
 
 interface ContactSectionProps {
   user: UserWithLinksAndAvatar;
@@ -24,7 +22,7 @@ export function ContactSection({ user }: ContactSectionProps) {
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-px w-1/2 bg-gradient-to-r from-white/20 to-transparent" />
       <div className="pointer-events-none absolute right-1/2 top-0 h-px w-1/2 bg-gradient-to-l from-white/20 to-transparent" />
-      
+
       {/* Gradient orb */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-white/[0.02] to-transparent blur-3xl" />
 
@@ -63,7 +61,9 @@ export function ContactSection({ user }: ContactSectionProps) {
                 )}`}
               >
                 <Mail className="mr-2 h-4 w-4" />
-                <span className="text-sm font-medium uppercase tracking-wider">Send Email</span>
+                <span className="text-sm font-medium uppercase tracking-wider">
+                  Send Email
+                </span>
                 <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </Button>
@@ -82,7 +82,7 @@ export function ContactSection({ user }: ContactSectionProps) {
                 );
 
                 return (
-                  <motion.div
+                  <MotionWrapper
                     key={link.id}
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -97,7 +97,7 @@ export function ContactSection({ user }: ContactSectionProps) {
                       {/* Corner accents */}
                       <div className="absolute left-0 top-0 h-2 w-px bg-white/20 transition-all duration-300 group-hover:h-3 group-hover:bg-white/40" />
                       <div className="absolute left-0 top-0 h-px w-2 bg-white/20 transition-all duration-300 group-hover:w-3 group-hover:bg-white/40" />
-                      
+
                       <Icon
                         name={link.name.toLowerCase() as IconName}
                         className={cn(
@@ -109,7 +109,7 @@ export function ContactSection({ user }: ContactSectionProps) {
                       />
                       <span className="sr-only">{link.name}</span>
                     </Link>
-                  </motion.div>
+                  </MotionWrapper>
                 );
               })}
             </div>
