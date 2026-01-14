@@ -33,7 +33,7 @@ export function ExperienceCard({
   return (
     <MotionWrapper
       whileHover={{ x: 4 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className="group relative"
     >
       {/* Timeline Dot */}

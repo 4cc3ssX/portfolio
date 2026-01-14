@@ -85,7 +85,7 @@ export function ContactSection({ user }: ContactSectionProps) {
                   <MotionWrapper
                     key={link.id}
                     whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     <Link
                       href={link.uri}

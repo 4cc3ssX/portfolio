@@ -32,7 +32,7 @@ function BlogCard({
   return (
     <motion.article
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
         "group relative flex h-full flex-col border border-white/[0.06] bg-white/[0.01] will-change-transform transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]",
         featured && "md:col-span-2"

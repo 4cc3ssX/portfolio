@@ -44,7 +44,7 @@ export function AboutHighlights({
         <StaggerItem key={item.label}>
           <MotionWrapper
             whileHover={{ y: -4 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="group relative h-full border border-white/[0.08] bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.04]"
           >
             {/* Corner accents */}
