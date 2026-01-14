@@ -9,8 +9,6 @@ interface MotionWrapperProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
   className?: string;
   animation?: AnimationType;
-  delay?: number;
-  duration?: number;
   as?: keyof typeof motion;
 }
 
@@ -41,20 +39,16 @@ export default function MotionWrapper({
   children,
   className = "",
   animation = "fade",
-  delay = 0,
-  duration = 0.4,
   as = "div",
+  ...motionProps
 }: MotionWrapperProps) {
   const MotionComponent = motion[as] as typeof motion.div;
 
   return (
     <MotionComponent
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
       variants={animations[animation]}
-      transition={{ duration, delay, ease: "easeOut" }}
       className={className}
+      {...motionProps}
     >
       {children}
     </MotionComponent>
