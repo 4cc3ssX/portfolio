@@ -1,6 +1,5 @@
 {
   "icon": true,
-  "typescript": true,
   "replaceAttrValues": {
     "currentColor": "{props.fill}"
   }

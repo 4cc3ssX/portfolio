@@ -1,8 +1,8 @@
 import createMDX from "@next/mdx";
-import rehypePrettyCode from "rehype-pretty-code";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactCompiler: true,
   transpilePackages: ["next-mdx-remote"],
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   webpack(config) {
@@ -23,15 +23,7 @@ const nextConfig = {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: [
-          {
-            loader: "@svgr/webpack",
-            options: {
-              typescript: true,
-              ext: "tsx",
-            },
-          },
-        ],
+        use: ["@svgr/webpack"],
       }
     );
 
@@ -75,9 +67,6 @@ const nextConfig = {
       ".svg",
     ],
   },
-  experimental: {
-    turbopackTreeShaking: true,
-  },
 };
 
 /** @type {import('rehype-pretty-code').Options} */
@@ -87,26 +76,13 @@ const options = {
     light: "github-light",
   },
   keepBackground: false,
-  onVisitLine(node) {
-    // Prevent lines from collapsing in `display: grid` mode, and allow empty
-    // lines to be copy/pasted
-    if (node.children.length === 0) {
-      node.children = [{ type: "text", value: " " }];
-    }
-  },
-  onVisitHighlightedLine(node) {
-    node.properties.className?.push("line--highlighted");
-  },
-  onVisitHighlightedChars(node) {
-    node.properties.className = ["word--highlighted"];
-  },
 };
 
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: [["remark-gfm", { strict: true, throwOnError: true }]],
-    rehypePlugins: [[rehypePrettyCode, options]],
+    rehypePlugins: [["rehype-pretty-code", options]],
   },
 });
 
