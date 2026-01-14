@@ -11,7 +11,7 @@ export function HeroIntro({ nickname, message }: HeroIntroProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-      className="mt-8 will-change-transform"
+      className="mt-8"
     >
       <p className="text-base font-medium tracking-wide text-foreground/80 sm:text-lg">
         {nickname} <span className="text-foreground/30">·</span> Software

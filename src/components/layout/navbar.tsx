@@ -33,7 +33,7 @@ export function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed inset-0 bottom-auto z-50 will-change-transform"
+      className="fixed inset-0 bottom-auto z-50"
     >
       {/* Desktop Navigation */}
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6 md:h-16">
@@ -90,27 +90,26 @@ export function Navbar() {
           className="relative z-50 h-8 w-8 md:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             {isOpen ? (
               <motion.div
                 key="close"
-                initial={{ opacity: 0, rotate: -90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: 90 }}
-                transition={{ duration: 0.15 }}
-                className="will-change-transform"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.1 }}
               >
                 <X className="h-4 w-4" />
               </motion.div>
             ) : (
               <motion.div
                 key="menu"
-                initial={{ opacity: 0, rotate: 90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -90 }}
-                transition={{ duration: 0.15 }}
-                className="will-change-transform"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.1 }}
               >
                 <Menu className="h-4 w-4" />
               </motion.div>
@@ -126,8 +125,8 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm md:hidden"
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-40 bg-background md:hidden"
           >
             <nav className="flex h-full flex-col items-center justify-center gap-8">
               {navLinks.map((link, index) => {
@@ -135,11 +134,10 @@ export function Navbar() {
                 return (
                   <motion.div
                     key={link.path}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ delay: index * 0.05, duration: 0.2 }}
-                    className="will-change-transform"
+                    exit={{ opacity: 0 }}
+                    transition={{ delay: index * 0.03, duration: 0.15 }}
                   >
                     <Link
                       href={link.path}

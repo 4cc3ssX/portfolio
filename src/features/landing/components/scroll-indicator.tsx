@@ -11,7 +11,7 @@ export function ScrollIndicator() {
       <MotionWrapper
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="flex flex-col items-center gap-1.5 will-change-transform"
+        className="flex flex-col items-center gap-1.5"
       >
         <span className="text-[9px] uppercase tracking-widest text-muted-foreground/40">
           Scroll

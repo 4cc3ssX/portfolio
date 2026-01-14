@@ -13,7 +13,7 @@ export function HeroCTAButtons({ resumeLink }: HeroCTAButtonsProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-      className="mt-10 flex flex-col items-center justify-center gap-3 will-change-transform sm:flex-row"
+      className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
     >
       <Button
         asChild
@@ -32,7 +32,7 @@ export function HeroCTAButtons({ resumeLink }: HeroCTAButtonsProps) {
           asChild
           variant="outline"
           size="lg"
-          className="group border-white/[0.1] bg-transparent px-8 py-6 backdrop-blur-sm transition-all hover:border-white/20 hover:bg-white/[0.02]"
+          className="group border-white/[0.1] bg-transparent px-8 py-6 transition-all hover:border-white/20 hover:bg-white/[0.02]"
         >
           <Link href={resumeLink} target="_blank" rel="noopener noreferrer">
             <span className="text-sm font-medium uppercase tracking-wider">

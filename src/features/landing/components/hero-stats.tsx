@@ -24,7 +24,7 @@ export function HeroStats({ stats = defaultStats }: HeroStatsProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-      className="mt-12 flex items-center justify-center gap-10 will-change-transform sm:gap-16"
+      className="mt-12 flex items-center justify-center gap-10 sm:gap-16"
     >
       {stats.map((stat, index) => (
         <div key={stat.label} className="text-center">

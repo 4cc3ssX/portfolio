@@ -48,7 +48,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-4 text-sm leading-relaxed text-muted-foreground/70 will-change-transform"
+          className="mt-4 text-sm leading-relaxed text-muted-foreground/70"
         >
           {blog.description}
         </motion.p>
@@ -60,7 +60,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="mt-6 flex items-center gap-3 will-change-transform"
+          className="mt-6 flex items-center gap-3"
         >
           {blog.author.avatar?.uri && (
             <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/[0.08]">

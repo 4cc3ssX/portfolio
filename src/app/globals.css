@@ -199,11 +199,16 @@
   border-color: theme(--color-border);
 }
 
-/* Smooth scrolling */
+/* Base scrolling behavior */
 html,
 body {
-  scroll-behavior: smooth;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+/* Enable smooth scroll only for anchor navigation */
+html:focus-within {
+  scroll-behavior: smooth;
 }
 
 /* Selection color */
@@ -301,4 +306,13 @@ code[data-theme] span {
 
 [data-rehype-pretty-code-title] + pre {
   @apply mt-0 rounded-t-none;
+}
+
+/* Hide scrollbars for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

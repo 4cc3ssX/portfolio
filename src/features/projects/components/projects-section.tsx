@@ -25,13 +25,13 @@ function ProjectCard({
     <MotionWrapper
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="group relative border border-white/[0.06] bg-white/[0.01] will-change-transform transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
+      className="group relative border border-white/[0.06] bg-white/[0.01] transition-colors duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
     >
-      {/* Corner accents */}
-      <div className="absolute left-0 top-0 h-4 w-px bg-white/20 transition-all duration-300 group-hover:h-6 group-hover:bg-white/40" />
-      <div className="absolute left-0 top-0 h-px w-4 bg-white/20 transition-all duration-300 group-hover:w-6 group-hover:bg-white/40" />
-      <div className="absolute bottom-0 right-0 h-4 w-px bg-white/20 transition-all duration-300 group-hover:h-6 group-hover:bg-white/40" />
-      <div className="absolute bottom-0 right-0 h-px w-4 bg-white/20 transition-all duration-300 group-hover:w-6 group-hover:bg-white/40" />
+      {/* Corner accents - use transform scale instead of height/width to avoid layout thrashing */}
+      <div className="absolute left-0 top-0 h-6 w-px origin-top scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+      <div className="absolute left-0 top-0 h-px w-6 origin-left scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
+      <div className="absolute bottom-0 right-0 h-6 w-px origin-bottom scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+      <div className="absolute bottom-0 right-0 h-px w-6 origin-right scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
 
       {/* Content */}
       <div className="p-4 sm:p-6">
@@ -118,7 +118,7 @@ export function ProjectsSection({
   return (
     <Section id="projects" className="relative overflow-hidden">
       {/* Background accent */}
-      <div className="pointer-events-none absolute -right-48 top-0 h-96 w-96 bg-gradient-to-bl from-white/[0.02] to-transparent blur-3xl" />
+      <div className="pointer-events-none absolute -right-48 top-0 hidden h-96 w-96 bg-gradient-to-bl from-white/[0.02] to-transparent blur-xl md:block md:blur-3xl" />
       
       <FadeIn>
         <div className="flex items-end justify-between">

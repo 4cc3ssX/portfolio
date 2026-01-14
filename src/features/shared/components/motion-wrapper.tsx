@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { HTMLMotionProps, motion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 
@@ -48,7 +47,7 @@ export default function MotionWrapper({
   return (
     <MotionComponent
       variants={animations[animation]}
-      className={cn("will-change-transform", className)}
+      className={className}
       {...motionProps}
     >
       {children}

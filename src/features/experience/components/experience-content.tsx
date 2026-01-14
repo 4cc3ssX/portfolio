@@ -28,7 +28,7 @@ export function ExperienceContent({ experiences }: ExperienceContentProps) {
   return (
     <Section id="experience" className="relative">
       {/* Background accent */}
-      <div className="pointer-events-none absolute left-0 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-white/[0.02] to-transparent blur-3xl" />
+      <div className="pointer-events-none absolute left-0 top-1/2 hidden h-96 w-96 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-white/[0.02] to-transparent blur-xl md:block md:blur-3xl" />
 
       <FadeIn>
         <SectionHeader
