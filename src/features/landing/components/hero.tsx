@@ -19,8 +19,8 @@ export function Hero({ user }: HeroProps) {
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
       {/* Gradient orbs */}
-      <div className="pointer-events-none absolute left-1/4 top-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-white/[0.03] to-transparent blur-3xl" />
-      <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 bg-gradient-to-tl from-white/[0.02] to-transparent blur-3xl" />
+      <div className="pointer-events-none absolute left-1/4 top-1/4 hidden h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-white/[0.03] to-transparent blur-xl md:block md:blur-3xl" />
+      <div className="pointer-events-none absolute bottom-1/4 right-1/4 hidden h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 bg-gradient-to-tl from-white/[0.02] to-transparent blur-xl md:block md:blur-3xl" />
 
       {/* Top gradient line */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -36,9 +36,9 @@ export function Hero({ user }: HeroProps) {
 
       <ScrollIndicator />
 
-      {/* Corner accents */}
-      <div className="pointer-events-none absolute left-6 top-24 h-20 w-px bg-gradient-to-b from-white/10 to-transparent" />
-      <div className="pointer-events-none absolute right-6 top-24 h-20 w-px bg-gradient-to-b from-white/10 to-transparent" />
+      {/* Corner accents - hidden on mobile */}
+      <div className="pointer-events-none absolute left-6 top-24 hidden h-20 w-px bg-gradient-to-b from-white/10 to-transparent md:block" />
+      <div className="pointer-events-none absolute right-6 top-24 hidden h-20 w-px bg-gradient-to-b from-white/10 to-transparent md:block" />
     </section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface MarqueeProps {
   children: ReactNode;
@@ -26,10 +26,28 @@ export function Marquee({
   fade = true,
   fadeSize = 100,
 }: MarqueeProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  
   // Support both direction prop and legacy reverse prop
   const isReversed = direction === "right" || reverse;
+
+  // Pause animation when not visible for performance
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       className={cn(
         "group relative flex overflow-hidden",
         pauseOnHover && "[--play-state:running] hover:[--play-state:paused]",
@@ -59,11 +77,11 @@ export function Marquee({
       <div
         className={cn(
           "flex shrink-0 items-center justify-around gap-(--gap)",
-          "animate-marquee will-change-transform",
+          "animate-marquee",
           isReversed && "[direction:reverse]"
         )}
         style={{
-          animationPlayState: "var(--play-state, running)",
+          animationPlayState: isVisible ? "var(--play-state, running)" : "paused",
           animationDuration: "var(--duration)",
         }}
       >
@@ -72,12 +90,12 @@ export function Marquee({
       <div
         className={cn(
           "flex shrink-0 items-center justify-around gap-(--gap)",
-          "animate-marquee will-change-transform",
+          "animate-marquee",
           isReversed && "[direction:reverse]"
         )}
         aria-hidden
         style={{
-          animationPlayState: "var(--play-state, running)",
+          animationPlayState: isVisible ? "var(--play-state, running)" : "paused",
           animationDuration: "var(--duration)",
         }}
       >

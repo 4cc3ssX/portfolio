@@ -34,7 +34,7 @@ const wordVariants: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.4,
-      ease: "easeInOut",
+      ease: [0.25, 0.46, 0.45, 0.94],
     },
   },
 };
@@ -97,23 +97,21 @@ export function FadeIn({
 
   return (
     <MotionWrapper
-      className={cn("will-change-transform", className)}
+      className={className}
       initial={{
         opacity: 0,
-        filter: "blur(4px)",
         ...directions[direction],
       }}
       whileInView={{
         opacity: 1,
-        filter: "blur(0px)",
         x: 0,
         y: 0,
       }}
-      viewport={{ once, margin: "-100px" }}
+      viewport={{ once, margin: "-50px" }}
       transition={{
         duration,
         delay,
-        ease: "easeInOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       }}
     >
       {children}
@@ -166,12 +164,11 @@ export function StaggerItem({
     <MotionWrapper
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+        hidden: { opacity: 0, y: 20 },
         visible: {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
-          transition: { duration: 0.5, ease: "easeInOut" },
+          transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
         },
       }}
     >

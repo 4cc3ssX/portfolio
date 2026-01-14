@@ -34,15 +34,15 @@ function BlogCard({
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={cn(
-        "group relative flex h-full flex-col border border-white/[0.06] bg-white/[0.01] will-change-transform transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]",
+        "group relative flex h-full flex-col border border-white/[0.06] bg-white/[0.01] transition-colors duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]",
         featured && "md:col-span-2"
       )}
     >
-      {/* Corner accents */}
-      <div className="absolute left-0 top-0 h-4 w-px bg-white/20 transition-all duration-300 group-hover:h-6 group-hover:bg-white/40" />
-      <div className="absolute left-0 top-0 h-px w-4 bg-white/20 transition-all duration-300 group-hover:w-6 group-hover:bg-white/40" />
-      <div className="absolute bottom-0 right-0 h-4 w-px bg-white/20 transition-all duration-300 group-hover:h-6 group-hover:bg-white/40" />
-      <div className="absolute bottom-0 right-0 h-px w-4 bg-white/20 transition-all duration-300 group-hover:w-6 group-hover:bg-white/40" />
+      {/* Corner accents - use transform scale for performance */}
+      <div className="absolute left-0 top-0 h-6 w-px origin-top scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+      <div className="absolute left-0 top-0 h-px w-6 origin-left scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
+      <div className="absolute bottom-0 right-0 h-6 w-px origin-bottom scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+      <div className="absolute bottom-0 right-0 h-px w-6 origin-right scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
 
       {/* Article number */}
       <div className="absolute right-4 top-4 z-10 text-[10px] font-medium uppercase tracking-widest text-muted-foreground/40">
@@ -57,7 +57,7 @@ function BlogCard({
               src={blog.cover.uri}
               alt={blog.title}
               fill
-              className="object-cover transition-all duration-500 will-change-transform group-hover:scale-105"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80" />
           </div>

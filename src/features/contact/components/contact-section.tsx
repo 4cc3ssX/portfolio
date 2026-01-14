@@ -25,8 +25,8 @@ export function ContactSection({ user }: ContactSectionProps) {
       <div className="pointer-events-none absolute left-1/2 top-0 h-px w-1/2 bg-gradient-to-r from-white/20 to-transparent" />
       <div className="pointer-events-none absolute right-1/2 top-0 h-px w-1/2 bg-gradient-to-l from-white/20 to-transparent" />
 
-      {/* Gradient orb */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-white/[0.02] to-transparent blur-3xl" />
+      {/* Gradient orb  */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-white/[0.02] to-transparent blur-xl md:block md:blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-2xl text-center">
         <FadeIn>
@@ -94,11 +94,11 @@ export function ContactSection({ user }: ContactSectionProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       title={link.name}
-                      className="group relative flex h-12 w-12 items-center justify-center border border-white/[0.08] bg-white/[0.02] transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]"
+                      className="group relative flex h-12 w-12 items-center justify-center border border-white/[0.08] bg-white/[0.02] transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05]"
                     >
-                      {/* Corner accents */}
-                      <div className="absolute left-0 top-0 h-2 w-px bg-white/20 transition-all duration-300 group-hover:h-3 group-hover:bg-white/40" />
-                      <div className="absolute left-0 top-0 h-px w-2 bg-white/20 transition-all duration-300 group-hover:w-3 group-hover:bg-white/40" />
+                      {/* Corner accents - use transform scale for better performance */}
+                      <div className="absolute left-0 top-0 h-3 w-px origin-top scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+                      <div className="absolute left-0 top-0 h-px w-3 origin-left scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
 
                       <Icon
                         name={link.name.toLowerCase() as IconName}
@@ -119,9 +119,9 @@ export function ContactSection({ user }: ContactSectionProps) {
         </FadeIn>
       </div>
 
-      {/* Bottom corner accents */}
-      <div className="pointer-events-none absolute bottom-6 left-6 h-20 w-px bg-gradient-to-t from-white/10 to-transparent" />
-      <div className="pointer-events-none absolute bottom-6 right-6 h-20 w-px bg-gradient-to-t from-white/10 to-transparent" />
+      {/* Bottom corner accents - hidden on mobile */}
+      <div className="pointer-events-none absolute bottom-6 left-6 hidden h-20 w-px bg-gradient-to-t from-white/10 to-transparent md:block" />
+      <div className="pointer-events-none absolute bottom-6 right-6 hidden h-20 w-px bg-gradient-to-t from-white/10 to-transparent md:block" />
     </Section>
   );
 }
