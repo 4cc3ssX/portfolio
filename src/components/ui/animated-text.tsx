@@ -100,12 +100,10 @@ export function FadeIn({
       className={cn("will-change-transform", className)}
       initial={{
         opacity: 0,
-        filter: "blur(4px)",
         ...directions[direction],
       }}
       whileInView={{
         opacity: 1,
-        filter: "blur(0px)",
         x: 0,
         y: 0,
       }}
