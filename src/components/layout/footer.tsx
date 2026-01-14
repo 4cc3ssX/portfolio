@@ -16,7 +16,7 @@ export function Footer({ user }: FooterProps) {
     <footer className="border-t border-white/[0.04] py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row sm:gap-4 md:px-8">
         <p className="text-xs text-muted-foreground/40">
-          Designed &amp; Built by {user.nickname} © {currentYear}
+          Designed &amp; Built by {user.nickname}
         </p>
 
         {/* Social Links */}
