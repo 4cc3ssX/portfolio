@@ -53,7 +53,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
             const isActive = link.path === path;
             return (
@@ -62,18 +62,18 @@ export function Navbar() {
                 href={link.path}
                 onClick={() => onClickLink(link)}
                 className={cn(
-                  "relative text-sm transition-colors",
+                  "relative px-4 py-2 text-sm font-medium tracking-wide transition-colors",
                   isActive
                     ? "text-foreground"
-                    : "text-muted-foreground/60 hover:text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.name}
                 {isActive && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 h-px w-full bg-foreground"
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    className="absolute inset-x-2 -bottom-0.5 h-px bg-foreground"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </Link>

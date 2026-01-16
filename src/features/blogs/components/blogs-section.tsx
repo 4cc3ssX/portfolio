@@ -5,7 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Calendar, User } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/animated-text";
+import {
+  FadeIn,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/animated-text";
 import { BlogWithAuthorAndCover } from "@/features/blogs/types/blogs";
 import { cn } from "@/lib/utils";
 
@@ -17,11 +21,11 @@ interface BlogsSectionProps {
 function BlogCard({
   blog,
   featured = false,
-  index,
+  nth,
 }: {
   blog: BlogWithAuthorAndCover;
   featured?: boolean;
-  index: number;
+  nth?: number;
 }) {
   const formattedDate = new Date(blog.createdAt).toLocaleDateString("en-US", {
     year: "numeric",
@@ -45,9 +49,11 @@ function BlogCard({
       <div className="absolute bottom-0 right-0 h-px w-6 origin-right scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
 
       {/* Article number */}
-      <div className="absolute right-4 top-4 z-10 text-[10px] font-medium uppercase tracking-widest text-muted-foreground/40">
-        {String(index + 1).padStart(2, "0")}
-      </div>
+      {nth && (
+        <div className="absolute right-4 top-4 z-10 text-[10px] font-medium uppercase tracking-widest text-muted-foreground/40">
+          {String(nth).padStart(2, "0")}
+        </div>
+      )}
 
       <Link href={`/blog/${blog.slug}`} className="flex h-full flex-col">
         {/* Cover Image */}
@@ -117,7 +123,7 @@ export function BlogsSection({ blogs, showAll = false }: BlogsSectionProps) {
     <Section id="blog" className="relative">
       {/* Background accent */}
       <div className="pointer-events-none absolute left-0 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-white/[0.02] to-transparent blur-3xl" />
-      
+
       <FadeIn>
         <div className="flex items-end justify-between">
           <SectionHeader
@@ -143,7 +149,11 @@ export function BlogsSection({ blogs, showAll = false }: BlogsSectionProps) {
       >
         {displayedBlogs.map((blog, index) => (
           <StaggerItem key={blog.slug}>
-            <BlogCard blog={blog} featured={index === 0 && !showAll} index={index} />
+            <BlogCard
+              blog={blog}
+              featured={index === 0 && !showAll}
+              nth={displayedBlogs.length - index}
+            />
           </StaggerItem>
         ))}
       </StaggerContainer>
