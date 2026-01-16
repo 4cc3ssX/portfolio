@@ -7,7 +7,7 @@ import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/animated-text";
 import { ProjectWithLinkAndTagsWithGithubData } from "@/features/projects/actions/projects";
-import { MotionWrapper } from "@/features/shared";
+import { motion } from "motion/react";
 
 interface ProjectsSectionProps {
   projects: ProjectWithLinkAndTagsWithGithubData[];
@@ -22,7 +22,7 @@ function ProjectCard({
   index: number;
 }) {
   return (
-    <MotionWrapper
+    <motion.div
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className="group relative border border-white/[0.06] bg-white/[0.01] transition-colors duration-300 hover:border-white/[0.12] hover:bg-white/[0.03]"
@@ -100,7 +100,7 @@ function ProjectCard({
           )}
         </div>
       </div>
-    </MotionWrapper>
+    </motion.div>
   );
 }
 

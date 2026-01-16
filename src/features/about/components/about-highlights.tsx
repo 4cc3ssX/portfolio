@@ -1,6 +1,5 @@
 import { LucideIcon, MapPin, Calendar, Code2, Coffee } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/animated-text";
-import { MotionWrapper } from "@/features/shared";
 
 interface Highlight {
   icon: LucideIcon;
@@ -42,11 +41,7 @@ export function AboutHighlights({
     <StaggerContainer className="grid grid-cols-2 gap-3" staggerDelay={0.1}>
       {highlights.map((item) => (
         <StaggerItem key={item.label}>
-          <MotionWrapper
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="group relative h-full border border-white/[0.08] bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.04]"
-          >
+          <div className="group relative h-full border border-white/[0.08] bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.04]">
             {/* Corner accents */}
             <div className="absolute left-0 top-0 h-3 w-px bg-white/20 transition-all duration-300 group-hover:h-5 group-hover:bg-white/40" />
             <div className="absolute left-0 top-0 h-px w-3 bg-white/20 transition-all duration-300 group-hover:w-5 group-hover:bg-white/40" />
@@ -58,7 +53,7 @@ export function AboutHighlights({
               {item.label}
             </p>
             <p className="mt-1 font-medium tracking-tight">{item.value}</p>
-          </MotionWrapper>
+          </div>
         </StaggerItem>
       ))}
     </StaggerContainer>

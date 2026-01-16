@@ -9,7 +9,7 @@ import { Icon, IconName } from "@/components/svgs";
 import { cn } from "@/lib/utils";
 import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { LinkType } from "@/features/users/schemas/links";
-import { MotionWrapper } from "@/features/shared";
+import { motion } from "motion/react";
 
 interface ContactSectionProps {
   user: UserWithLinksAndAvatar;
@@ -84,7 +84,7 @@ export function ContactSection({ user }: ContactSectionProps) {
                 );
 
                 return (
-                  <MotionWrapper
+                  <motion.div
                     key={link.id}
                     whileHover={{ y: -4 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
@@ -111,7 +111,7 @@ export function ContactSection({ user }: ContactSectionProps) {
                       />
                       <span className="sr-only">{link.name}</span>
                     </Link>
-                  </MotionWrapper>
+                  </motion.div>
                 );
               })}
             </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MotionWrapper } from "@/features/shared";
 
 interface Stat {
   value: string;
@@ -20,7 +19,7 @@ const defaultStats: Stat[] = [
 
 export function HeroStats({ stats = defaultStats }: HeroStatsProps) {
   return (
-    <MotionWrapper
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
@@ -41,6 +40,6 @@ export function HeroStats({ stats = defaultStats }: HeroStatsProps) {
           </p>
         </div>
       ))}
-    </MotionWrapper>
+    </motion.div>
   );
 }

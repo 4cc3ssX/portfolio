@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "motion/react";
-import { MotionWrapper } from "@/features/shared";
 
 export default function Loading() {
   return (
-    <MotionWrapper
+    <motion.div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -58,7 +57,7 @@ export default function Loading() {
 
         {/* Loading text */}
         <div className="flex flex-col items-center gap-3">
-          <MotionWrapper
+          <motion.div
             className="flex gap-1"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +78,7 @@ export default function Loading() {
                 {letter}
               </motion.span>
             ))}
-          </MotionWrapper>
+          </motion.div>
 
           {/* Progress line */}
           <div className="relative h-px w-24 overflow-hidden bg-white/10">
@@ -101,6 +100,6 @@ export default function Loading() {
       <div className="pointer-events-none absolute left-6 top-6 h-px w-12 bg-gradient-to-r from-white/20 to-transparent" />
       <div className="pointer-events-none absolute bottom-6 right-6 h-12 w-px bg-gradient-to-t from-white/20 to-transparent" />
       <div className="pointer-events-none absolute bottom-6 right-6 h-px w-12 bg-gradient-to-l from-white/20 to-transparent" />
-    </MotionWrapper>
+    </motion.div>
   );
 }
