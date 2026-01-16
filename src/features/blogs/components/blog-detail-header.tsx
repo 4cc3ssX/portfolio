@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import type { BlogWithAuthorAndCover } from "../types/blogs";
-import { MotionWrapper } from "@/features/shared";
 
 interface BlogDetailHeaderProps {
   blog: BlogWithAuthorAndCover;
@@ -21,7 +20,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
   return (
     <header>
       {/* Meta info */}
-      <MotionWrapper
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -30,7 +29,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
         <time>{formattedDate}</time>
         <span className="h-0.5 w-0.5 rounded-full bg-muted-foreground/30" />
         <span>{blog.readingTime} min read</span>
-      </MotionWrapper>
+      </motion.div>
 
       {/* Title */}
       <motion.h1
@@ -56,7 +55,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
 
       {/* Author */}
       {blog.author && (
-        <MotionWrapper
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -82,7 +81,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
               </span>
             )}
           </div>
-        </MotionWrapper>
+        </motion.div>
       )}
     </header>
   );

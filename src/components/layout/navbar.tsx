@@ -11,7 +11,6 @@ import { INavLink, navLinks } from "@/data/nav-links";
 import { useNavigation } from "@/shared/hooks/use-navigation";
 import { AnalyticsEvent, sendEvent } from "@/shared/firebase";
 import { AssetImages } from "@/assets/images";
-import { MotionWrapper } from "@/features/shared";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,8 +27,7 @@ export function Navbar() {
   };
 
   return (
-    <MotionWrapper
-      as="header"
+    <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -158,6 +156,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </MotionWrapper>
+    </motion.header>
   );
 }
