@@ -203,12 +203,6 @@
 html,
 body {
   overflow-x: hidden;
-  overscroll-behavior-y: none;
-}
-
-/* Enable smooth scroll only for anchor navigation */
-html:focus-within {
-  scroll-behavior: smooth;
 }
 
 /* Selection color */
