@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { anyone, authenticated, trashOrAdminDestroy } from "@/access";
+import { anyone, authenticated, canDelete } from "@/access";
 
 /**
  * Files live in Vercel Blob — the storage plugin sets `disableLocalStorage`.
@@ -18,7 +18,7 @@ export const Media: CollectionConfig = {
     read: anyone,
     create: authenticated,
     update: authenticated,
-    delete: trashOrAdminDestroy,
+    delete: canDelete,
   },
   upload: {
     mimeTypes: ["image/*"],

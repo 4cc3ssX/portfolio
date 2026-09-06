@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { adminFieldAccess, anyone, authenticated, isAuthenticated } from "@/access";
+import { adminFieldAccess, authenticated, isAuthenticated } from "@/access";
 
 /**
  * Admin login *and* the post-author identity. Public site copy (slogan, hero,
@@ -15,7 +15,12 @@ export const Users: CollectionConfig = {
     group: "Settings",
   },
   access: {
-    read: anyone,
+    // Not public: this is an auth collection, so `read: anyone` would expose
+    // every editor's login email and roles on /api/users. The frontend never
+    // needs it — author bylines are resolved server-side through the Local
+    // API (which bypasses access control), and the public contact address
+    // comes from siteSettings.profile.email.
+    read: authenticated,
     create: authenticated,
     update: authenticated,
     delete: authenticated,

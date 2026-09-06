@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { anyone, authenticated, trashOrAdminDestroy } from "@/access";
+import { anyone, authenticated, canDelete } from "@/access";
 import { revalidateHome } from "@/hooks/revalidate";
 
 export const Experiences: CollectionConfig = {
@@ -14,7 +14,7 @@ export const Experiences: CollectionConfig = {
     read: anyone,
     create: authenticated,
     update: authenticated,
-    delete: trashOrAdminDestroy,
+    delete: canDelete,
   },
   defaultSort: "-startedAt",
   hooks: { afterChange: [revalidateHome], afterDelete: [revalidateHome] },

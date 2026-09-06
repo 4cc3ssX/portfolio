@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { anyone, authenticated, trashOrAdminDestroy } from "@/access";
+import { anyone, authenticated, canDelete } from "@/access";
 import { slugField } from "@/fields/slug";
 import { seoField } from "@/fields/seo";
 import { revalidateProject } from "@/hooks/revalidate";
@@ -22,7 +22,7 @@ export const Projects: CollectionConfig = {
     read: anyone,
     create: authenticated,
     update: authenticated,
-    delete: trashOrAdminDestroy,
+    delete: canDelete,
   },
   defaultSort: "-startedAt",
   hooks: { afterChange: [revalidateProject], afterDelete: [revalidateProject] },

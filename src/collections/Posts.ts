@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { authenticated, publishedOrAuthenticated, trashOrAdminDestroy } from "@/access";
+import { authenticated, publishedOrAuthenticated, canDelete } from "@/access";
 import { slugField } from "@/fields/slug";
 import { seoField } from "@/fields/seo";
 import { revalidatePost } from "@/hooks/revalidate";
@@ -47,7 +47,7 @@ export const Posts: CollectionConfig = {
     read: publishedOrAuthenticated,
     create: authenticated,
     update: authenticated,
-    delete: trashOrAdminDestroy,
+    delete: canDelete,
   },
   hooks: {
     beforeChange: [computeReadingTime],

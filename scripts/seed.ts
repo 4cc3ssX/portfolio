@@ -61,6 +61,7 @@ const safeName = (name: string) => name.replace(/[^\w.-]+/g, "-").toLowerCase();
  */
 async function seedMedia(payload: Payload, legacy: Awaited<ReturnType<typeof loadLegacy>>) {
   const fallbacks: string[] = [];
+  let kept = 0;
 
   for (const image of legacy.images) {
     let buffer = PLACEHOLDER_PNG;
@@ -82,40 +83,54 @@ async function seedMedia(payload: Payload, legacy: Awaited<ReturnType<typeof loa
       console.warn(`  ! fetch failed for ${image.name}: ${(error as Error).message}`);
     }
 
-    if (!ok) fallbacks.push(image.name);
-
-    const data = {
-      alt: image.name,
-      blurDataURL: image.blur_hash || null,
-      legacyUri: ok ? null : image.uri,
-    };
-    const file = { data: buffer, mimetype, name: filename, size: buffer.length };
 
     const existing = await payload
       .findByID({ collection: "media", id: image.id, depth: 0, overrideAccess: true })
       .catch(() => null);
 
     if (existing) {
+      // A document that already holds a real file is left alone: re-uploading
+      // identical bytes makes Payload mint a deduplicated filename
+      // (foo.png -> foo-1.png), which changes the public URL on every run.
+      // Only a placeholder (legacyUri set, i.e. an earlier download failed)
+      // is worth retrying.
+      if (!existing.legacyUri) {
+        kept += 1;
+        continue;
+      }
+      if (!ok) {
+        console.warn(`  ! ${image.name} still undownloadable; keeping the external URL`);
+        fallbacks.push(image.name);
+        continue;
+      }
       await payload.update({
         collection: "media",
         id: image.id,
-        data,
-        file,
+        data: { alt: image.name, blurDataURL: image.blur_hash || null, legacyUri: null },
+        file: { data: buffer, mimetype, name: filename, size: buffer.length },
         overrideAccess: true,
         context: ctx,
       });
+      console.info(`  + recovered ${image.name} (previous run had failed)`);
     } else {
       await payload.create({
         collection: "media",
-        data: { id: image.id, ...data },
-        file,
+        data: {
+          id: image.id,
+          alt: image.name,
+          blurDataURL: image.blur_hash || null,
+          legacyUri: ok ? null : image.uri,
+        },
+        file: { data: buffer, mimetype, name: filename, size: buffer.length },
         overrideAccess: true,
         context: ctx,
       });
     }
   }
 
-  console.info(`  media: ${legacy.images.length} (${fallbacks.length} kept as external URLs)`);
+  console.info(
+    `  media: ${legacy.images.length} (${kept} unchanged, ${fallbacks.length} external URLs)`
+  );
   if (fallbacks.length) {
     console.warn(`  ! re-upload by hand in /admin: ${fallbacks.join(", ")}`);
   }

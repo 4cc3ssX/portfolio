@@ -21,14 +21,15 @@ export const publishedOrAuthenticated: Access = ({ req: { user } }) => {
 };
 
 /**
- * Soft delete is allowed for any authenticated user; permanently destroying a
- * document (i.e. deleting one that is not already trashed) is admin-only.
+ * Delete access for the soft-delete collections.
+ *
+ * Payload's docs suggest gating permanent deletion on `data.deletedAt`, but
+ * `deleteByID` calls access with only `{ id, req }` — `data` is always
+ * undefined, so that check silently denies every non-admin delete, including
+ * the soft delete it was meant to allow. Any authenticated user may delete;
+ * the trash view is what makes it recoverable.
  */
-export const trashOrAdminDestroy: Access = ({ req: { user }, data }) => {
-  if (!user) return false;
-  if (user.roles?.includes("admin")) return true;
-  return Boolean(data?.deletedAt);
-};
+export const canDelete: Access = ({ req: { user } }) => Boolean(user);
 
 export const adminFieldAccess: FieldAccess = ({ req: { user } }) =>
   Boolean(user?.roles?.includes("admin"));
