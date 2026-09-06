@@ -7,7 +7,7 @@ pre-commit:
   commands:
     eslint:
       glob: "*.{js,ts,jsx,tsx,mjs}"
-      run: bunx eslint --max-warnings=0 {staged_files}
+      run: bunx eslint --max-warnings=0 --no-warn-ignored {staged_files}
       stage_fixed: true
 
 # Commit-msg: Validate commit message format

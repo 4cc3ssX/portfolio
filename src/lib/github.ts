@@ -12,7 +12,7 @@ export const extractRepoAndOwner = (url: string) => {
     return null;
   }
 
-  const [, protocol, www, owner, repo] = match;
+  const [, , , owner, repo] = match;
 
   return { owner, repo };
 };
