@@ -6,6 +6,10 @@ export const anyone: Access = () => true;
 /** Any authenticated user may write. Single-author site: logged in == trusted. */
 export const authenticated: Access = ({ req: { user } }) => Boolean(user);
 
+/** Same rule, but typed for slots that accept only a boolean (e.g. admin.access). */
+export const isAuthenticated = ({ req: { user } }: { req: { user: unknown } }): boolean =>
+  Boolean(user);
+
 /**
  * Public callers only ever see published documents; authenticated editors see
  * everything. Returning a `where` clause (rather than false) is what lets the

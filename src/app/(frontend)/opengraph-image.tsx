@@ -1,8 +1,11 @@
 import { ImageResponse } from "next/og";
+import { getSiteSettings } from "@/lib/content";
 import { configs } from "@/shared/configs/site";
 
-// Route segment config
-export const runtime = "edge";
+// Node runtime, not edge: the card now reads its copy from Payload, and the
+// Edge Runtime is deprecated in Next 16. Previously every value below was
+// hardcoded and silently drifted from the site content.
+export const runtime = "nodejs";
 
 // Image metadata
 export const alt = `${configs.name} - Software Engineer`;
@@ -15,6 +18,9 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image() {
+  const settings = await getSiteSettings();
+  const { hero, stats, profile } = settings;
+
   return new ImageResponse(
     (
       <div
@@ -184,7 +190,7 @@ export default async function Image() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Building software
+              {hero.headingLine1}
             </h1>
             <h1
               style={{
@@ -196,7 +202,7 @@ export default async function Image() {
                 letterSpacing: "-0.02em",
               }}
             >
-              that scales
+              {hero.headingLine2}
             </h1>
           </div>
 
@@ -216,7 +222,7 @@ export default async function Image() {
                 fontWeight: "500",
               }}
             >
-              {configs.name}
+              {profile.nickname}
             </span>
             <span
               style={{
@@ -233,7 +239,7 @@ export default async function Image() {
                 fontWeight: "500",
               }}
             >
-              Software Engineer
+              {profile.title}
             </span>
           </div>
 
@@ -244,13 +250,9 @@ export default async function Image() {
               gap: "60px",
             }}
           >
-            {[
-              { value: "5+", label: "Years" },
-              { value: "15+", label: "Projects" },
-              { value: "20+", label: "Open Source" },
-            ].map((stat) => (
+            {(stats ?? []).map((stat) => (
               <div
-                key={stat.label}
+                key={stat.id ?? stat.label}
                 style={{
                   display: "flex",
                   flexDirection: "column",

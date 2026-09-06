@@ -62,6 +62,10 @@ export default buildConfig({
     pool: {
       // DDL must not run through Supabase's transaction pooler (:6543), so
       // migrations point at the session pooler via DATABASE_URL_DIRECT.
+      //
+      // No `prepare` option exists on this adapter (drizzle's node-postgres
+      // driver does not use prepared statements unless asked), so pgbouncer
+      // compatibility comes from `?pgbouncer=true` on the connection string.
       connectionString: process.env.DATABASE_URL_DIRECT || process.env.DATABASE_URL,
     },
     // Keeps every Payload table out of `public`, where the legacy Drizzle
@@ -70,8 +74,6 @@ export default buildConfig({
     // Default is ON in development, which would auto-sync schema against
     // whatever DATABASE_URL points at. Migrations only.
     push: false,
-    // pgbouncer in transaction mode cannot hold prepared statements.
-    prepare: false,
     idType: "uuid",
     allowIDOnCreate: true,
     migrationDir: path.resolve(dirname, "migrations"),

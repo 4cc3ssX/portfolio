@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
-import { getBlogs } from "@/features/blogs/actions/blogs";
-import { getMe } from "@/features/users/actions/users";
+import { getBlogs, getMe } from "@/lib/content";
 import { Footer } from "@/components/layout";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { FadeIn } from "@/components/ui/animated-text";

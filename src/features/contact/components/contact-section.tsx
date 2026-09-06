@@ -7,16 +7,15 @@ import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/animated-text";
 import { Icon, IconName } from "@/components/svgs";
 import { cn } from "@/lib/utils";
-import { UserWithLinksAndAvatar } from "@/features/users/types/users";
-import { LinkType } from "@/features/users/schemas/links";
 import { motion } from "motion/react";
+import type { UserView } from "@/types/content";
 
 interface ContactSectionProps {
-  user: UserWithLinksAndAvatar;
+  user: UserView;
 }
 
 export function ContactSection({ user }: ContactSectionProps) {
-  const socials = user.links.filter((link) => link.type === LinkType.SOCIAL);
+  const socials = user.links.filter((link) => link.type === "social");
 
   return (
     <Section id="contact" className="relative overflow-hidden">

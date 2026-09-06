@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { adminFieldAccess, anyone, authenticated } from "@/access";
+import { adminFieldAccess, anyone, authenticated, isAuthenticated } from "@/access";
 
 /**
  * Admin login *and* the post-author identity. Public site copy (slogan, hero,
@@ -19,7 +19,7 @@ export const Users: CollectionConfig = {
     create: authenticated,
     update: authenticated,
     delete: authenticated,
-    admin: authenticated,
+    admin: isAuthenticated,
   },
   fields: [
     { name: "name", type: "text", required: true },

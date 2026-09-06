@@ -1,13 +1,13 @@
-import { UserWithLinksAndAvatar } from "@/features/users/types/users";
 import { AvailabilityBadge } from "./availability-badge";
 import { HeroHeading } from "./hero-heading";
 import { HeroIntro } from "./hero-intro";
 import { HeroCTAButtons } from "./hero-cta-buttons";
 import { HeroStats } from "./hero-stats";
 import { ScrollIndicator } from "./scroll-indicator";
+import type { UserView } from "@/types/content";
 
 interface HeroProps {
-  user: UserWithLinksAndAvatar;
+  user: UserView;
 }
 
 export function Hero({ user }: HeroProps) {

@@ -1,10 +1,24 @@
+import type { MetadataRoute } from "next";
+import { getBlogs, getNavigation } from "@/lib/content";
 import { configs } from "@/shared/configs/site";
-import { getBlogs } from "@/features/blogs/actions/blogs";
-import { MetadataRoute } from "next";
 
+/**
+ * Static entries come from the navigation global rather than a hardcoded list,
+ * which is what previously advertised /skills — a route that does not exist and
+ * returned 404 to every crawler that followed it.
+ */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogs = await getBlogs();
-  
+  const [blogs, navigation] = await Promise.all([getBlogs(), getNavigation()]);
+
+  const navUrls = (navigation.header ?? [])
+    .filter((item) => item.includeInSitemap && item.href?.startsWith("/"))
+    .map((item) => ({
+      url: `${configs.url}${item.href}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: item.priority ?? 0.8,
+    }));
+
   const blogUrls = blogs.map((blog) => ({
     url: `${configs.url}/blog/${blog.slug}`,
     lastModified: new Date(blog.updatedAt),
@@ -19,24 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 1,
     },
-    {
-      url: `${configs.url}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${configs.url}/skills`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${configs.url}/blog`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
+    ...navUrls,
     ...blogUrls,
   ];
 }

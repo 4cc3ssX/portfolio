@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import type { BlogWithAuthorAndCover } from "../types/blogs";
+import type { PostView } from "@/types/content";
 
 interface BlogDetailHeaderProps {
-  blog: BlogWithAuthorAndCover;
+  blog: PostView;
 }
 
 export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
   const formattedDate = new Date(
-    blog.publishedAt || blog.createdAt
+    blog.publishedAt
   ).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",

@@ -10,11 +10,11 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/ui/animated-text";
-import { BlogWithAuthorAndCover } from "@/features/blogs/types/blogs";
 import { cn } from "@/lib/utils";
+import type { PostView } from "@/types/content";
 
 interface BlogsSectionProps {
-  blogs: BlogWithAuthorAndCover[];
+  blogs: PostView[];
   showAll?: boolean;
 }
 
@@ -23,11 +23,11 @@ function BlogCard({
   featured = false,
   nth,
 }: {
-  blog: BlogWithAuthorAndCover;
+  blog: PostView;
   featured?: boolean;
   nth?: number;
 }) {
-  const formattedDate = new Date(blog.createdAt).toLocaleDateString("en-US", {
+  const formattedDate = new Date(blog.publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",

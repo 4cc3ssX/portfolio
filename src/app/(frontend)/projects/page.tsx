@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
+import { getMe, getProjects } from "@/lib/content";
 import { Metadata } from "next";
-import { getProjects } from "@/features/projects/actions/projects";
-import { getMe } from "@/features/users/actions/users";
 import { Footer } from "@/components/layout";
 
 const ProjectsSection = dynamic(() =>

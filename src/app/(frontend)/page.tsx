@@ -1,8 +1,4 @@
-import { getMe } from "@/features/users/actions/users";
-import { getExperiences } from "@/features/experience/actions/experiences";
-import { getSkills } from "@/features/skills/actions/skills";
-import { getProjects } from "@/features/projects/actions/projects";
-
+import { getExperiences, getMe, getProjects, getSkills } from "@/lib/content";
 import { Hero } from "@/features/landing/components/hero";
 import { SectionDivider } from "@/components/ui/section";
 import { AboutSection } from "@/features/about/components";
