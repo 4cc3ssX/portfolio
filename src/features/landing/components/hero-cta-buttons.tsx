@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { MotionWrapper } from "@/features/shared";
 
 interface HeroCTAButtonsProps {
-  resumeLink?: string;
+  resumeLink?: string | null;
+  primaryLabel?: string | null;
+  primaryHref?: string | null;
+  secondaryLabel?: string | null;
 }
 
-export function HeroCTAButtons({ resumeLink }: HeroCTAButtonsProps) {
+export function HeroCTAButtons({
+  resumeLink,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+}: HeroCTAButtonsProps) {
   return (
     <MotionWrapper
       initial={{ opacity: 0, y: 20 }}
@@ -20,9 +28,9 @@ export function HeroCTAButtons({ resumeLink }: HeroCTAButtonsProps) {
         size="lg"
         className="group relative overflow-hidden bg-foreground px-8 py-6 text-background transition-all hover:bg-foreground/90"
       >
-        <Link href="/projects">
+        <Link href={primaryHref || "/projects"}>
           <span className="relative z-10 flex items-center gap-2 text-sm font-medium uppercase tracking-wider">
-            View Work
+            {primaryLabel || "View Work"}
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </span>
         </Link>
@@ -36,7 +44,7 @@ export function HeroCTAButtons({ resumeLink }: HeroCTAButtonsProps) {
         >
           <Link href={resumeLink} target="_blank" rel="noopener noreferrer">
             <span className="text-sm font-medium uppercase tracking-wider">
-              Resume
+              {secondaryLabel || "Resume"}
             </span>
           </Link>
         </Button>

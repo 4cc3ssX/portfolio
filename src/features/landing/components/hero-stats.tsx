@@ -2,22 +2,15 @@
 
 import { motion } from "motion/react";
 
-interface Stat {
-  value: string;
-  label: string;
-}
+import type { StatView } from "@/types/content";
 
 interface HeroStatsProps {
-  stats?: Stat[];
+  stats: StatView[];
 }
 
-const defaultStats: Stat[] = [
-  { value: "5+", label: "Years" },
-  { value: "15+", label: "Projects" },
-  { value: "20+", label: "Open Source" },
-];
+export function HeroStats({ stats }: HeroStatsProps) {
+  if (stats.length === 0) return null;
 
-export function HeroStats({ stats = defaultStats }: HeroStatsProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

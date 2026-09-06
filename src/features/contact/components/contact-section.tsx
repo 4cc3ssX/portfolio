@@ -37,15 +37,14 @@ export function ContactSection({ user }: ContactSectionProps) {
         <FadeIn delay={0.1}>
           <h2 className="mt-6 text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
             <span className="bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent">
-              Let&apos;s work together
+              {user.contact.heading}
             </span>
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <p className="mx-auto mt-6 max-w-md text-base leading-relaxed text-muted-foreground/70">
-            Have a project in mind or just want to chat? I&apos;m always open to
-            discussing new opportunities and ideas.
+            {user.contact.body}
           </p>
         </FadeIn>
 
@@ -63,7 +62,7 @@ export function ContactSection({ user }: ContactSectionProps) {
               >
                 <Mail className="mr-2 h-4 w-4" />
                 <span className="text-sm font-medium uppercase tracking-wider">
-                  Send Email
+                  {user.contact.ctaLabel || "Send Email"}
                 </span>
                 <ArrowUpRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>

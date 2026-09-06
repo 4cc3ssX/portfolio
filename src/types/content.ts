@@ -31,16 +31,52 @@ export interface LinkView {
   uri: string;
 }
 
+export interface StatView {
+  value: string;
+  label: string;
+}
+
+export interface FactView {
+  label: string;
+  value: string;
+}
+
+/**
+ * The site owner plus all the editable page copy that used to be hardcoded
+ * across the hero, about, contact and footer components.
+ */
 export interface UserView {
   id: string;
   name: string;
   nickname: string;
   title: string | null;
   email: string;
+  location: string | null;
   slogan: string;
   message: string;
+  resumeUrl: string | null;
   avatar: ImageView | null;
   links: LinkView[];
+  hero: {
+    eyebrow: string | null;
+    headingLine1: string;
+    headingLine2: string | null;
+    primaryCtaLabel: string | null;
+    primaryCtaHref: string | null;
+    secondaryCtaLabel: string | null;
+  };
+  stats: StatView[];
+  about: {
+    heading: string;
+    body: string;
+    quickFacts: FactView[];
+  };
+  contact: {
+    heading: string;
+    body: string;
+    ctaLabel: string | null;
+  };
+  footerText: string | null;
 }
 
 export interface CompanyView {

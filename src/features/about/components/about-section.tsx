@@ -10,5 +10,13 @@ export function AboutSection({ user }: AboutSectionProps) {
     .filter((link) => link.type === "social")
     .map(({ id, name, uri }) => ({ id, name, uri }));
 
-  return <AboutContent socials={socials} />;
+  return (
+    <AboutContent
+      socials={socials}
+      heading={user.about.heading}
+      body={user.about.body}
+      slogan={user.slogan}
+      quickFacts={user.about.quickFacts}
+    />
+  );
 }

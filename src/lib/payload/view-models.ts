@@ -47,16 +47,19 @@ export const toImageView = (value: Rel<Media>): ImageView | null => {
 };
 
 export const toUserView = (settings: SiteSetting): UserView => {
-  const profile = settings.profile;
+  const { profile, hero, about, contact } = settings;
+
   return {
     id: "site-settings",
     name: profile.name,
     nickname: profile.nickname,
     title: profile.title,
     email: profile.email,
+    location: profile.location ?? null,
     // `slogan` is the SEO one-liner; `message` is the hero body copy.
     slogan: settings.seo.defaultDescription,
-    message: settings.hero.body,
+    message: hero.body,
+    resumeUrl: profile.resumeUrl ?? null,
     avatar: toImageView(profile.avatar),
     links: (settings.socialLinks ?? []).map((link, index) => ({
       id: link.id ?? `social-${index}`,
@@ -64,6 +67,32 @@ export const toUserView = (settings: SiteSetting): UserView => {
       type: "social" as const,
       uri: link.url ?? "",
     })),
+    hero: {
+      eyebrow: hero.eyebrow ?? null,
+      headingLine1: hero.headingLine1,
+      headingLine2: hero.headingLine2 ?? null,
+      primaryCtaLabel: hero.primaryCtaLabel ?? null,
+      primaryCtaHref: hero.primaryCtaHref ?? null,
+      secondaryCtaLabel: hero.secondaryCtaLabel ?? null,
+    },
+    stats: (settings.stats ?? []).map((stat) => ({
+      value: stat.value,
+      label: stat.label,
+    })),
+    about: {
+      heading: about.heading,
+      body: about.body,
+      quickFacts: (about.quickFacts ?? []).map((fact) => ({
+        label: fact.label,
+        value: fact.value,
+      })),
+    },
+    contact: {
+      heading: contact.heading,
+      body: contact.body,
+      ctaLabel: contact.ctaLabel ?? null,
+    },
+    footerText: settings.footerText ?? null,
   };
 };
 

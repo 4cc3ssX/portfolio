@@ -11,8 +11,6 @@ interface HeroProps {
 }
 
 export function Hero({ user }: HeroProps) {
-  const resumeLink = user.links.find((link) => link.name.match(/resume/i));
-
   return (
     <section className="relative flex min-h-dvh items-center justify-center overflow-hidden">
       {/* Background grid pattern */}
@@ -28,10 +26,22 @@ export function Hero({ user }: HeroProps) {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <AvailabilityBadge />
-        <HeroHeading />
-        <HeroIntro nickname={user.nickname} message={user.message} />
-        <HeroCTAButtons resumeLink={resumeLink?.uri} />
-        <HeroStats />
+        <HeroHeading
+          line1={user.hero.headingLine1}
+          line2={user.hero.headingLine2}
+        />
+        <HeroIntro
+          nickname={user.nickname}
+          title={user.title}
+          message={user.message}
+        />
+        <HeroCTAButtons
+          resumeLink={user.resumeUrl}
+          primaryLabel={user.hero.primaryCtaLabel}
+          primaryHref={user.hero.primaryCtaHref}
+          secondaryLabel={user.hero.secondaryCtaLabel}
+        />
+        <HeroStats stats={user.stats} />
       </div>
 
       <ScrollIndicator />
