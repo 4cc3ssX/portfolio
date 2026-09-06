@@ -65,6 +65,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
             <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/[0.08]">
               <Image
                 src={blog.author.avatar.uri}
+                unoptimized={blog.author.avatar.unoptimized}
                 alt={blog.author.name}
                 fill
                 className="object-cover"

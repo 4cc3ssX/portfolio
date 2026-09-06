@@ -1,26 +1,9 @@
 import { StaggerContainer, StaggerItem } from "@/components/ui/animated-text";
 import { ExperienceCard } from "./experience-card";
-
-interface Company {
-  name: string;
-  uri: string | null;
-  image: {
-    uri: string;
-  } | null;
-}
-
-interface Experience {
-  id: string;
-  position: string;
-  company: Company;
-  startedAt: string | Date;
-  endedAt: string | Date | null;
-  isActive: boolean;
-  description: string | string[] | null;
-}
+import type { ExperienceView } from "@/types/content";
 
 interface ExperienceTimelineProps {
-  experiences: Experience[];
+  experiences: ExperienceView[];
 }
 
 export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {

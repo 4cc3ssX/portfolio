@@ -34,7 +34,15 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
-  if (!blog) return { title: "Blog Not Found" };
+  if (!blog) {
+    // Next 16 answers `notFound()` with a 200 and the not-found body (a soft
+    // 404) rather than a 404 status — reproducible on the deployed site too,
+    // and on a bare page with no custom not-found.tsx. Until that is fixed
+    // upstream, `noindex` is what actually keeps unknown and unpublished
+    // slugs out of the index; without it Google treats each one as a thin
+    // duplicate page.
+    return { title: "Blog Not Found", robots: { index: false, follow: false } };
+  }
 
   const url = `${configs.url}/blog/${blog.slug}`;
   const title = blog.title;

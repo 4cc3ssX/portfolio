@@ -61,6 +61,7 @@ function BlogCard({
           <div className="relative aspect-[2/1] overflow-hidden bg-white/[0.02]">
             <Image
               src={blog.cover.uri}
+              unoptimized={blog.cover.unoptimized}
               alt={blog.title}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"

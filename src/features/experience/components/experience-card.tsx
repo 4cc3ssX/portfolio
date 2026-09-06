@@ -3,19 +3,12 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import { ArrowUpRight } from "lucide-react";
 import { MotionWrapper } from "@/features/shared";
-
-interface Company {
-  name: string;
-  uri: string | null;
-  image: {
-    uri: string;
-  } | null;
-}
+import type { CompanyView } from "@/types/content";
 
 interface ExperienceCardProps {
   id: string;
   position: string;
-  company: Company;
+  company: CompanyView;
   startedAt: string | Date;
   endedAt: string | Date | null;
   isActive: boolean;
@@ -48,6 +41,7 @@ export function ExperienceCard({
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/[0.08] bg-white/[0.02]">
                   <Image
                     src={company.image.uri}
+                    unoptimized={company.image.unoptimized}
                     alt={company.name}
                     width={24}
                     height={24}

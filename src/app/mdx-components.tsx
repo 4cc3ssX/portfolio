@@ -3,6 +3,7 @@ import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import { isUrl } from "@/utils";
 import { buildHeadingId, getTextContent } from "@/utils/markdown";
+import { isAnimatedSrc } from "@/utils/images";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -95,6 +96,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         props["data-source"] || (isUrl(props.alt) ? props.alt : props.src);
       const alt = props.alt || props.src || "Image";
       const priority = props["data-priority"] === "true";
+      // sharp reads only the first frame, so routing an animated image through
+      // the Next optimizer turns it into a still. Every GIF on this blog is a
+      // reaction GIF whose whole point is that it moves.
+      const unoptimized = isAnimatedSrc(props.src);
 
       return (
         <figure className="my-5">
@@ -103,7 +108,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               {...(props as ImageProps)}
               alt={alt}
               priority={priority}
-              className="w-full h-auto max-h-72 object-cover"
+              unoptimized={unoptimized}
+              className="w-full h-auto max-h-72 object-contain"
               width={680}
               height={380}
             />
