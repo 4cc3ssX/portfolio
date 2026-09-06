@@ -7,6 +7,14 @@ import { computeReadingTime } from "@/hooks/reading-time";
 import { queueScheduledPublish } from "@/hooks/schedule-publish";
 
 /**
+ * Live Preview and the Preview button both go through /api/preview, which
+ * checks the shared secret *and* a valid Payload session before enabling
+ * draft mode — a leaked preview URL alone exposes nothing.
+ */
+const previewUrl = (slug: string) =>
+  `${process.env.NEXT_PUBLIC_SERVER_URL}/api/preview?secret=${process.env.PAYLOAD_PREVIEW_SECRET}&slug=${encodeURIComponent(slug)}&collection=posts`;
+
+/**
  * Blog posts. `content` is **markdown**, not Lexical — the existing MDX render
  * pipeline (remark-gfm + rehype-pretty-code + the `img` override that makes
  * GIFs work) consumes the raw string unchanged. See MarkdownEditor.
@@ -19,11 +27,14 @@ export const Posts: CollectionConfig = {
     defaultColumns: ["title", "series", "publishedAt", "_status"],
     group: "Content",
     livePreview: {
-      url: ({ data }) =>
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/preview?secret=${process.env.PAYLOAD_PREVIEW_SECRET}&slug=${data?.slug ?? ""}&collection=posts`,
+      url: ({ data }) => previewUrl(String(data?.slug ?? "")),
+      breakpoints: [
+        { label: "Mobile", name: "mobile", width: 390, height: 844 },
+        { label: "Tablet", name: "tablet", width: 768, height: 1024 },
+        { label: "Desktop", name: "desktop", width: 1440, height: 900 },
+      ],
     },
-    preview: (doc) =>
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/preview?secret=${process.env.PAYLOAD_PREVIEW_SECRET}&slug=${doc?.slug}&collection=posts`,
+    preview: (doc) => previewUrl(String(doc?.slug ?? "")),
   },
   versions: {
     drafts: {

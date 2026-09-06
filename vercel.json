@@ -15,7 +15,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "DENY"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "X-XSS-Protection",
@@ -24,8 +24,22 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self'"
         }
       ]
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/payload-jobs/handle-schedules?queue=nightly",
+      "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/payload-jobs/run?queue=default",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
