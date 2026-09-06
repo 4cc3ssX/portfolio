@@ -25,6 +25,9 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const isVercelBlobConfigured = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 
+/** Set by the `payload:migrate` and `seed` scripts. See the pool comment. */
+const useDirectConnection = process.env.PAYLOAD_DIRECT_CONNECTION === "true";
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -53,13 +56,21 @@ export default buildConfig({
 
   db: postgresAdapter({
     pool: {
-      // DDL must not run through Supabase's transaction pooler (:6543), so
-      // migrations point at the session pooler via DATABASE_URL_DIRECT.
+      // Runtime traffic goes through the transaction pooler (:6543); only DDL
+      // and bulk seeding use the session pooler (:5432) via
+      // DATABASE_URL_DIRECT.
+      //
+      // The flag matters: both variables are set in production, so a plain
+      // `DIRECT || URL` fallback would silently route *every* request through
+      // the session pooler, which allows far fewer concurrent connections and
+      // would exhaust them under serverless concurrency.
       //
       // No `prepare` option exists on this adapter (drizzle's node-postgres
       // driver does not use prepared statements unless asked), so pgbouncer
       // compatibility comes from `?pgbouncer=true` on the connection string.
-      connectionString: process.env.DATABASE_URL_DIRECT || process.env.DATABASE_URL,
+      connectionString: useDirectConnection
+        ? (process.env.DATABASE_URL_DIRECT ?? process.env.DATABASE_URL)
+        : process.env.DATABASE_URL,
     },
     // Keeps every Payload table out of `public`, where the legacy Drizzle
     // schema still lives and still serves production during the migration.

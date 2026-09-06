@@ -84,11 +84,13 @@ permanently removed. The frontend queries with `trash: false`.
 
 ## Known issues
 
-- **Next 16 answers `notFound()` with HTTP 200** and the not-found body instead
-  of a 404. Reproducible on a bare page with no custom `not-found.tsx`, and on
-  the deployed site before this migration, so it is not caused by the two root
-  layouts. Unknown and unpublished slugs are marked `robots: noindex, nofollow`,
-  which is what actually keeps them out of the search index while the status
-  code is wrong. Revisit when Next fixes it.
+- **Do not add a root `loading.tsx`.** A `loading.tsx` above a route makes Next
+  start streaming the response before the page finishes loading data, and the
+  HTTP status cannot change once streaming has begun — so `notFound()` renders
+  the not-found body under a **200**. That soft 404 is read by search engines as
+  a thin duplicate page rather than a removal signal, and it applied to every
+  unknown or unpublished slug on the old site. Removing
+  `src/app/(frontend)/loading.tsx` restored real 404s. If a loading state is
+  wanted, scope it to a specific route that does not call `notFound()`.
 - `reactCompiler` is off. It has not been validated against Payload's admin
   bundle; re-enable once `/admin` is confirmed clean.

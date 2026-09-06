@@ -34,13 +34,11 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
   const { slug } = await params;
   const blog = await getBlogBySlug(slug);
 
+  // Belt and braces: the route already answers 404 for an unknown slug, and
+  // Next injects its own noindex when notFound() fires. This keeps the signal
+  // explicit if a loading.tsx is ever reintroduced above this route — that is
+  // what previously turned every 404 into a soft 404 (see docs/cms.md).
   if (!blog) {
-    // Next 16 answers `notFound()` with a 200 and the not-found body (a soft
-    // 404) rather than a 404 status — reproducible on the deployed site too,
-    // and on a bare page with no custom not-found.tsx. Until that is fixed
-    // upstream, `noindex` is what actually keeps unknown and unpublished
-    // slugs out of the index; without it Google treats each one as a thin
-    // duplicate page.
     return { title: "Blog Not Found", robots: { index: false, follow: false } };
   }
 
