@@ -52,9 +52,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Link>
     ),
+    // The dash marker is scoped to `ul` via a group class rather than applied
+    // on every `li`. Applied unconditionally it also landed on ordered items,
+    // which render a decimal marker of their own — so `1.` items came out as
+    // "1. – text". Flagged in review on #6 and still present until now.
     ul: ({ children, ...props }) => (
       <ul
-        className="mb-4 space-y-1.5 list-none pl-0"
+        className="mdx-ul mb-4 space-y-1.5 list-none pl-0 [&>li]:pl-5 [&>li]:relative [&>li]:before:content-['–'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-muted-foreground/40"
         {...props}
       >
         {children}
@@ -69,8 +73,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </ol>
     ),
     li: ({ children, ...props }) => (
-      <li 
-        className="text-sm text-muted-foreground/80 leading-relaxed pl-5 relative before:content-['–'] before:absolute before:left-0 before:text-muted-foreground/40" 
+      <li
+        className="text-sm text-muted-foreground/80 leading-relaxed"
         {...props}
       >
         {children}

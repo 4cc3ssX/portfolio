@@ -2,6 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 import { draftMode } from "next/headers";
+import type { Where } from "payload";
 import type { Post } from "@/payload-types";
 import { getPayloadClient } from "./client";
 
@@ -14,12 +15,27 @@ const isDraftMode = async () => {
   }
 };
 
+/**
+ * Only posts that are published *and* whose publishedAt has passed.
+ *
+ * The date check is what actually makes scheduling work: the publishPost job
+ * runs on a Vercel cron, and on the Hobby tier that is daily at best, so a
+ * post must not become visible early just because someone hit Publish with a
+ * future date. ISR (60s on /blog) surfaces it within a minute of the date.
+ */
+const publishedFilter = (): Where => ({
+  and: [
+    { _status: { equals: "published" } },
+    { publishedAt: { less_than_equal: new Date().toISOString() } },
+  ],
+});
+
 /** Published posts, newest first. Drafts are never included. */
 export const getPosts = cache(async (): Promise<Post[]> => {
   const payload = await getPayloadClient();
   const { docs } = await payload.find({
     collection: "posts",
-    where: { _status: { equals: "published" } },
+    where: publishedFilter(),
     sort: "-publishedAt",
     depth: 2,
     limit: 200,
@@ -40,7 +56,7 @@ export const getPostBySlug = cache(async (slug: string): Promise<Post | null> =>
     collection: "posts",
     where: draft
       ? { slug: { equals: slug } }
-      : { and: [{ slug: { equals: slug } }, { _status: { equals: "published" } }] },
+      : { and: [{ slug: { equals: slug } }, publishedFilter()] },
     draft,
     depth: 2,
     limit: 1,
@@ -56,9 +72,7 @@ export const getSeriesPosts = cache(async (seriesId: string): Promise<Post[]> =>
   const payload = await getPayloadClient();
   const { docs } = await payload.find({
     collection: "posts",
-    where: {
-      and: [{ series: { equals: seriesId } }, { _status: { equals: "published" } }],
-    },
+    where: { and: [{ series: { equals: seriesId } }, publishedFilter()] },
     sort: "partNumber",
     depth: 0,
     limit: 100,
