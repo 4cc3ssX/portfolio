@@ -2,10 +2,11 @@ import { MotionWrapper } from "@/features/shared";
 
 interface HeroIntroProps {
   nickname: string | null;
+  title: string | null;
   message: string | null;
 }
 
-export function HeroIntro({ nickname, message }: HeroIntroProps) {
+export function HeroIntro({ nickname, title, message }: HeroIntroProps) {
   return (
     <MotionWrapper
       initial={{ opacity: 0, y: 20 }}
@@ -14,8 +15,7 @@ export function HeroIntro({ nickname, message }: HeroIntroProps) {
       className="mt-8"
     >
       <p className="text-base font-medium tracking-wide text-foreground/80 sm:text-lg">
-        {nickname} <span className="text-foreground/30">·</span> Software
-        Engineer
+        {nickname} <span className="text-foreground/30">·</span> {title}
       </p>
       {message && (
         <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground/60 sm:text-base">

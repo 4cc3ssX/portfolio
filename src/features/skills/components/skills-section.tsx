@@ -4,14 +4,14 @@ import { Section } from "@/components/ui/section";
 import { Marquee } from "@/components/ui/marquee";
 import { FadeIn } from "@/components/ui/animated-text";
 import { cn } from "@/lib/utils";
-import { SkillWithTag } from "@/features/skills/types/skills";
 import { Icon, IconName, icons } from "@/components/svgs";
+import type { SkillView } from "@/types/content";
 
 interface SkillsSectionProps {
-  skills: SkillWithTag[];
+  skills: SkillView[];
 }
 
-function SkillBadge({ skill }: { skill: SkillWithTag }) {
+function SkillBadge({ skill }: { skill: SkillView }) {
   // Check if we have an icon for this skill (using term as key)
   const iconKey = skill.tag.term.toLowerCase() as IconName;
   const hasIcon = iconKey in icons;

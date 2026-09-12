@@ -3,6 +3,7 @@ import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import { isUrl } from "@/utils";
 import { buildHeadingId, getTextContent } from "@/utils/markdown";
+import { isAnimatedSrc } from "@/utils/images";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -51,9 +52,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Link>
     ),
+    // The dash marker is scoped to `ul` via a group class rather than applied
+    // on every `li`. Applied unconditionally it also landed on ordered items,
+    // which render a decimal marker of their own — so `1.` items came out as
+    // "1. – text". Flagged in review on #6 and still present until now.
     ul: ({ children, ...props }) => (
       <ul
-        className="mb-4 space-y-1.5 list-none pl-0"
+        className="mdx-ul mb-4 space-y-1.5 list-none pl-0 [&>li]:pl-5 [&>li]:relative [&>li]:before:content-['–'] [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:text-muted-foreground/40"
         {...props}
       >
         {children}
@@ -68,8 +73,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </ol>
     ),
     li: ({ children, ...props }) => (
-      <li 
-        className="text-sm text-muted-foreground/80 leading-relaxed pl-5 relative before:content-['–'] before:absolute before:left-0 before:text-muted-foreground/40" 
+      <li
+        className="text-sm text-muted-foreground/80 leading-relaxed"
         {...props}
       >
         {children}
@@ -95,6 +100,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         props["data-source"] || (isUrl(props.alt) ? props.alt : props.src);
       const alt = props.alt || props.src || "Image";
       const priority = props["data-priority"] === "true";
+      // sharp reads only the first frame, so routing an animated image through
+      // the Next optimizer turns it into a still. Every GIF on this blog is a
+      // reaction GIF whose whole point is that it moves.
+      const unoptimized = isAnimatedSrc(props.src);
 
       return (
         <figure className="my-5">
@@ -103,7 +112,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               {...(props as ImageProps)}
               alt={alt}
               priority={priority}
-              className="w-full h-auto max-h-72 object-cover"
+              unoptimized={unoptimized}
+              className="w-full h-auto max-h-72 object-contain"
               width={680}
               height={380}
             />

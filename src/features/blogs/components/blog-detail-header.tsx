@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import type { BlogWithAuthorAndCover } from "../types/blogs";
+import type { PostView } from "@/types/content";
 
 interface BlogDetailHeaderProps {
-  blog: BlogWithAuthorAndCover;
+  blog: PostView;
 }
 
 export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
   const formattedDate = new Date(
-    blog.publishedAt || blog.createdAt
+    blog.publishedAt
   ).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -65,6 +65,7 @@ export function BlogDetailHeader({ blog }: BlogDetailHeaderProps) {
             <div className="relative h-8 w-8 overflow-hidden rounded-full border border-white/[0.08]">
               <Image
                 src={blog.author.avatar.uri}
+                unoptimized={blog.author.avatar.unoptimized}
                 alt={blog.author.name}
                 fill
                 className="object-cover"

@@ -1,11 +1,24 @@
-import "server-only";
-
 import { Octokit } from "@octokit/rest";
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+let client: Octokit | null | undefined;
 
-if (!GITHUB_TOKEN) {
-  throw new Error("GITHUB_TOKEN is not set");
-}
+/**
+ * Lazily constructed so a missing GITHUB_TOKEN degrades to "no star counts"
+ * instead of throwing at module load — which used to break `next build` in any
+ * environment without the token, and blocks the Payload CLI from loading the
+ * config at all.
+ *
+ * Returns null when unconfigured; callers must handle it.
+ */
+export const getOctokit = (): Octokit | null => {
+  if (client !== undefined) return client;
 
-export const octokit = new Octokit({ auth: GITHUB_TOKEN });
+  const token = process.env.GITHUB_TOKEN;
+  client = token ? new Octokit({ auth: token }) : null;
+
+  if (!client) {
+    console.warn("[github] GITHUB_TOKEN is not set; repository stats are disabled");
+  }
+
+  return client;
+};

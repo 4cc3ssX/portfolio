@@ -1,10 +1,10 @@
 "use client";
 
-import { ExperienceWithCompany } from "@/features/experience/types/experiences";
 import { ExperienceContent } from "./experience-content";
+import type { ExperienceView } from "@/types/content";
 
 interface ExperienceSectionProps {
-  experiences: ExperienceWithCompany[];
+  experiences: ExperienceView[];
 }
 
 export function ExperienceSection({ experiences }: ExperienceSectionProps) {

@@ -1,0 +1,138 @@
+.markdown-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--base);
+
+  &__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    border: 1px solid var(--theme-elevation-150);
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+    background: var(--theme-elevation-50);
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+  }
+
+  &__btn {
+    min-width: 30px;
+    height: 28px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--theme-elevation-700);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--theme-elevation-150);
+      color: var(--theme-elevation-1000);
+    }
+
+    &--wide {
+      font-family: var(--font-body);
+      white-space: nowrap;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    min-height: 480px;
+    padding: 12px 14px;
+    border: 1px solid var(--theme-elevation-150);
+    border-radius: 0 0 3px 3px;
+    background: var(--theme-input-bg);
+    color: var(--theme-elevation-800);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    resize: vertical;
+    tab-size: 2;
+
+    &:focus {
+      outline: 0;
+      border-color: var(--theme-elevation-400);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 6px;
+    color: var(--theme-elevation-500);
+    font-size: 12px;
+  }
+
+  &__error {
+    padding-top: 4px;
+    color: var(--theme-error-500);
+    font-size: 12px;
+  }
+
+  &__dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--theme-elevation-150);
+    border-bottom: 0;
+    background: var(--theme-elevation-50);
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--theme-elevation-700);
+
+      span {
+        color: var(--theme-elevation-500);
+      }
+    }
+
+    input {
+      padding: 7px 9px;
+      border: 1px solid var(--theme-elevation-150);
+      border-radius: 3px;
+      background: var(--theme-input-bg);
+      color: var(--theme-elevation-800);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+  }
+
+  &__dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+
+    button {
+      padding: 6px 14px;
+      border: 1px solid var(--theme-elevation-150);
+      border-radius: 3px;
+      background: var(--theme-elevation-0);
+      color: var(--theme-elevation-800);
+      font-size: 12px;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      &:last-child:not(:disabled) {
+        background: var(--theme-elevation-800);
+        color: var(--theme-elevation-0);
+      }
+    }
+  }
+}
