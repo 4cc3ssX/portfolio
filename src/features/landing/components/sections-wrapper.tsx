@@ -2,10 +2,7 @@
 
 import { Suspense, lazy } from "react";
 import { SectionDivider } from "@/components/ui/section";
-import type { UserWithLinksAndAvatar } from "@/features/users/types/users";
-import { ExperienceWithCompany } from "@/features/experience/types/experiences";
-import { SkillWithTag } from "@/features/skills/types/skills";
-import { ProjectWithLinkAndTagsWithGithubData } from "@/features/projects/actions/projects";
+import type { ExperienceView, ProjectView, SkillView, UserView } from "@/types/content";
 
 // Use lazy loading with Suspense for better loading experience
 const ExperienceSection = lazy(() =>
@@ -48,10 +45,10 @@ function SectionSkeleton() {
 }
 
 interface SectionsWrapperProps {
-  user: UserWithLinksAndAvatar;
-  experiences: ExperienceWithCompany[];
-  skills: SkillWithTag[];
-  projects: ProjectWithLinkAndTagsWithGithubData[];
+  user: UserView;
+  experiences: ExperienceView[];
+  skills: SkillView[];
+  projects: ProjectView[];
 }
 
 export function SectionsWrapper({

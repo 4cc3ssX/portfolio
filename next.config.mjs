@@ -1,9 +1,13 @@
 import createMDX from "@next/mdx";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactCompiler: true,
+  // Disabled while Payload's admin bundle is in play; the React Compiler has
+  // not been validated against it. Re-enable once /admin is confirmed clean.
+  reactCompiler: false,
   transpilePackages: ["next-mdx-remote"],
+  serverExternalPackages: ["sharp"],
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   webpack(config) {
     // Grab the existing rule that handles SVG imports
@@ -86,4 +90,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default withPayload(withMDX(nextConfig), { devBundleServerPackages: false });

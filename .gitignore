@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Payload
+/media
+
+# Legacy export: real production content, regenerate with `bun run export:legacy`
+/data/legacy

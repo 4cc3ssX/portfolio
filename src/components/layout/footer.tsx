@@ -1,22 +1,21 @@
 import Link from "next/link";
 import { Icon, IconName } from "@/components/svgs";
 import { cn } from "@/lib/utils";
-import { UserWithLinksAndAvatar } from "@/features/users/types/users";
-import { LinkType } from "@/features/users/schemas/links";
+import type { UserView } from "@/types/content";
 
 interface FooterProps {
-  user: UserWithLinksAndAvatar;
+  user: UserView;
 }
 
 export function Footer({ user }: FooterProps) {
   const currentYear = new Date().getFullYear();
-  const socials = user.links.filter((link) => link.type === LinkType.SOCIAL);
+  const socials = user.links.filter((link) => link.type === "social");
 
   return (
     <footer className="border-t border-white/[0.04] py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row sm:gap-4 md:px-8">
         <p className="text-xs text-muted-foreground/40">
-          Designed &amp; Built by {user.nickname}
+          {user.footerText || `Designed & Built by ${user.nickname}`}
         </p>
 
         {/* Social Links */}

@@ -1,6 +1,11 @@
 import { MotionWrapper } from "@/features/shared";
 
-export function HeroHeading() {
+interface HeroHeadingProps {
+  line1: string;
+  line2: string | null;
+}
+
+export function HeroHeading({ line1, line2 }: HeroHeadingProps) {
   return (
     <MotionWrapper
       initial={{ opacity: 0, y: 24 }}
@@ -9,8 +14,8 @@ export function HeroHeading() {
       className="mt-8"
     >
       <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-        <span className="block text-foreground">Building software</span>
-        <span className="block text-foreground/50">that scales</span>
+        <span className="block text-foreground">{line1}</span>
+        {line2 && <span className="block text-foreground/50">{line2}</span>}
       </h1>
     </MotionWrapper>
   );

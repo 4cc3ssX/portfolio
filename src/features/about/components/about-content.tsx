@@ -2,6 +2,7 @@ import { FadeIn } from "@/components/ui/animated-text";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { AboutSocialLinks } from "./about-social-links";
 import { AboutHighlights } from "./about-highlights";
+import type { FactView } from "@/types/content";
 
 interface SocialLink {
   id: string;
@@ -11,9 +12,19 @@ interface SocialLink {
 
 interface AboutContentProps {
   socials: SocialLink[];
+  heading: string;
+  body: string;
+  slogan: string;
+  quickFacts: FactView[];
 }
 
-export function AboutContent({ socials }: AboutContentProps) {
+export function AboutContent({
+  socials,
+  heading,
+  body,
+  slogan,
+  quickFacts,
+}: AboutContentProps) {
   return (
     <Section id="about" className="relative">
       {/* Subtle background accent */}
@@ -25,28 +36,17 @@ export function AboutContent({ socials }: AboutContentProps) {
           <FadeIn>
             <SectionHeader
               label="About"
-              title="Building the future, one line at a time"
-              description="I'm a passionate software engineer who loves turning complex problems into elegant solutions."
+              title={heading}
+              description={slogan}
               className="mb-8!"
             />
           </FadeIn>
 
           <FadeIn delay={0.1}>
             <div className="space-y-4 leading-relaxed text-muted-foreground/80">
-              <p>
-                With over 5 years of experience in software development, I
-                specialize in building scalable, event-driven systems using
-                modern technologies. My expertise spans across the full stack,
-                from crafting pixel-perfect UIs to architecting robust backend
-                services.
-              </p>
-              <p>
-                I&apos;m particularly passionate about clean architecture,
-                developer experience, and creating systems that not only work
-                but are a joy to maintain and scale. When I&apos;m not coding,
-                you&apos;ll find me contributing to open source or exploring new
-                technologies.
-              </p>
+              {body.split(/\n{2,}/).map((paragraph) => (
+                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+              ))}
             </div>
           </FadeIn>
 
@@ -54,7 +54,7 @@ export function AboutContent({ socials }: AboutContentProps) {
         </div>
 
         {/* Right Column - Bento Grid */}
-        <AboutHighlights />
+        <AboutHighlights highlights={quickFacts} />
       </div>
     </Section>
   );

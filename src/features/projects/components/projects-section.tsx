@@ -6,11 +6,11 @@ import { ArrowUpRight, Star, GitFork } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/animated-text";
-import { ProjectWithLinkAndTagsWithGithubData } from "@/features/projects/actions/projects";
 import { motion } from "motion/react";
+import type { ProjectView } from "@/types/content";
 
 interface ProjectsSectionProps {
-  projects: ProjectWithLinkAndTagsWithGithubData[];
+  projects: ProjectView[];
   showAll?: boolean;
 }
 
@@ -18,7 +18,7 @@ function ProjectCard({
   project,
   index,
 }: {
-  project: ProjectWithLinkAndTagsWithGithubData;
+  project: ProjectView;
   index: number;
 }) {
   return (
@@ -105,7 +105,7 @@ function ProjectCard({
 }
 
 interface ProjectsSectionProps {
-  projects: ProjectWithLinkAndTagsWithGithubData[];
+  projects: ProjectView[];
   showAll?: boolean;
 }
 
