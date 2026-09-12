@@ -15,7 +15,7 @@
     "payload:migrate": "PAYLOAD_DIRECT_CONNECTION=true bun scripts/ensure-schema.ts && PAYLOAD_DIRECT_CONNECTION=true payload migrate",
     "payload:migrate:create": "PAYLOAD_DIRECT_CONNECTION=true payload migrate:create",
     "export:legacy": "bun --env-file=.env.local scripts/export-legacy.ts",
-    "seed": "PAYLOAD_DIRECT_CONNECTION=true node --import tsx scripts/seed.ts",
+    "seed": "PAYLOAD_DIRECT_CONNECTION=true node --import tsx --env-file=.env.local scripts/seed.ts",
     "test": "bun test",
     "db:ensure-schema": "bun scripts/ensure-schema.ts"
   },
