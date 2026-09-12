@@ -7,7 +7,7 @@ technologies, and the home page copy — is editable there.
 ## Local development
 
 ```bash
-supabase start                 # local Postgres on :54322
+supabase start                 # local Postgres on :54422
 bun run db:ensure-schema       # creates the `payload` schema
 bun run payload:migrate        # applies src/migrations
 bun run export:legacy          # dumps the old Supabase tables (needs prod DATABASE_URL)
@@ -20,8 +20,8 @@ precedence over `.env.local` in development, so a local run can never reach
 production. It is gitignored; create it with:
 
 ```
-DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:54322/postgres
-DATABASE_URL_DIRECT=postgresql://postgres:postgres@127.0.0.1:54322/postgres
+DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:54422/postgres
+DATABASE_URL_DIRECT=postgresql://postgres:postgres@127.0.0.1:54422/postgres
 PAYLOAD_SECRET=<any 32+ chars>
 NEXT_PUBLIC_SERVER_URL=http://localhost:3000
 PAYLOAD_PREVIEW_SECRET=<any>

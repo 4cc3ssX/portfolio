@@ -2,7 +2,7 @@ export const configs = {
   url:
     process.env.NODE_ENV === "production"
       ? `https://ryamjs.dev`
-      : `http://localhost:3000`,
+      : process.env.NEXT_PUBLIC_SERVER_URL ?? `http://localhost:3000`,
   name: "Ryam",
   title: "Ryam - Software Engineer",
   description:
