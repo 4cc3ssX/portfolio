@@ -11,7 +11,9 @@ import config from "../src/payload.config";
 import { loadLegacy } from "./seed/legacy";
 import { TECH_CATEGORY, linkKind, splitSeriesPart, stripSeriesFooter } from "./seed/taxonomy";
 
-const ctx = { disableRevalidate: true };
+/** Fresh per call: the cloud-storage plugin caches file state on the context
+ * object, so sharing one object across creates silently skips uploads. */
+const ctx = () => ({ disableRevalidate: true });
 const SERIES_ID = "00000000-0000-4000-8000-000000000001";
 
 type Payload = Awaited<ReturnType<typeof getPayload>>;
@@ -30,14 +32,14 @@ async function upsert<T extends CollectionSlug>(
       id,
       data,
       overrideAccess: true,
-      context: ctx,
+      context: ctx(),
     } as Parameters<typeof payload.update>[0]);
   } catch {
     return await payload.create({
       collection,
       data: { id, ...data },
       overrideAccess: true,
-      context: ctx,
+      context: ctx(),
     } as Parameters<typeof payload.create>[0]);
   }
 }
@@ -109,7 +111,7 @@ async function seedMedia(payload: Payload, legacy: Awaited<ReturnType<typeof loa
         data: { alt: image.name, blurDataURL: image.blur_hash || null, legacyUri: null },
         file: { data: buffer, mimetype, name: filename, size: buffer.length },
         overrideAccess: true,
-        context: ctx,
+        context: ctx(),
       });
       console.info(`  + recovered ${image.name} (previous run had failed)`);
     } else {
@@ -123,7 +125,7 @@ async function seedMedia(payload: Payload, legacy: Awaited<ReturnType<typeof loa
         },
         file: { data: buffer, mimetype, name: filename, size: buffer.length },
         overrideAccess: true,
-        context: ctx,
+        context: ctx(),
       });
     }
   }
@@ -163,13 +165,13 @@ async function main() {
   };
 
   if (existingUser) {
-    await payload.update({ collection: "users", id: legacyUser.id, data: userData, overrideAccess: true, context: ctx });
+    await payload.update({ collection: "users", id: legacyUser.id, data: userData, overrideAccess: true, context: ctx() });
   } else {
     await payload.create({
       collection: "users",
       data: { id: legacyUser.id, email: adminEmail, password: adminPassword, ...userData },
       overrideAccess: true,
-      context: ctx,
+      context: ctx(),
     });
   }
   console.info(`  users: 1 (${adminEmail})`);
@@ -271,7 +273,7 @@ async function main() {
   await payload.updateGlobal({
     slug: "site-settings",
     overrideAccess: true,
-    context: ctx,
+    context: ctx(),
     data: {
       profile: {
         name: legacyUser.name,
@@ -337,7 +339,7 @@ async function main() {
   await payload.updateGlobal({
     slug: "navigation",
     overrideAccess: true,
-    context: ctx,
+    context: ctx(),
     data: {
       header: [
         { label: "about", href: "/#about", includeInSitemap: false },
