@@ -195,7 +195,6 @@ async function main() {
   for (const company of legacy.companies) {
     await upsert(payload, "companies", company.id, {
       name: company.name,
-      logo: company.image_id,
       website: company.link_id ? (linkById.get(company.link_id)?.uri ?? null) : null,
     });
   }
@@ -206,7 +205,6 @@ async function main() {
     await upsert(payload, "experiences", exp.id, {
       position: exp.position,
       company: exp.company_id,
-      highlights: exp.description.map((text) => ({ text })),
       startedAt: exp.started_at,
       // Legacy `ended_at` defaults to now(), so a current role is
       // indistinguishable from one that ended today. `is_active` is the truth.

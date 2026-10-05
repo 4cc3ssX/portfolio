@@ -21,14 +21,6 @@ export const Experiences: CollectionConfig = {
   fields: [
     { name: "position", type: "text", required: true },
     { name: "company", type: "relationship", relationTo: "companies", required: true },
-    {
-      name: "highlights",
-      type: "array",
-      minRows: 1,
-      labels: { singular: "Highlight", plural: "Highlights" },
-      admin: { description: "One bullet per row. Was a Postgres text[] column." },
-      fields: [{ name: "text", type: "textarea", required: true }],
-    },
     { name: "startedAt", type: "date", required: true, admin: { date: { pickerAppearance: "monthOnly" } } },
     {
       name: "endedAt",

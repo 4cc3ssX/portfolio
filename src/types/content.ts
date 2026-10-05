@@ -82,14 +82,12 @@ export interface UserView {
 export interface CompanyView {
   id: string;
   name: string;
-  image: ImageView | null;
   uri: string | null;
 }
 
 export interface ExperienceView {
   id: string;
   position: string;
-  description: string[];
   startedAt: string;
   endedAt: string | null;
   isActive: boolean;

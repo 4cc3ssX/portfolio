@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 import { ArrowUpRight } from "lucide-react";
@@ -7,21 +6,21 @@ import type { CompanyView } from "@/types/content";
 
 interface ExperienceCardProps {
   id: string;
+  index: number;
   position: string;
   company: CompanyView;
   startedAt: string | Date;
   endedAt: string | Date | null;
   isActive: boolean;
-  description: string | string[] | null;
 }
 
 export function ExperienceCard({
+  index,
   position,
   company,
   startedAt,
   endedAt,
   isActive,
-  description,
 }: ExperienceCardProps) {
   return (
     <MotionWrapper
@@ -34,55 +33,41 @@ export function ExperienceCard({
 
       {/* Content Card */}
       <div className="ml-6 md:ml-16">
-        <div className="border border-white/[0.06] bg-white/[0.01] p-6 transition-all duration-300 group-hover:border-white/[0.12] group-hover:bg-white/[0.03]">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-start gap-4">
-              {company.image?.uri && (
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/[0.08] bg-white/[0.02]">
-                  <Image
-                    src={company.image.uri}
-                    unoptimized={company.image.unoptimized}
-                    alt={company.name}
-                    width={24}
-                    height={24}
-                    className="h-6 w-6 object-contain"
-                  />
-                </div>
-              )}
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-3">
-                  <h3 className="font-medium tracking-tight">{position}</h3>
-                  {isActive && (
-                    <span className="inline-flex items-center border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-emerald-400">
-                      Current
-                    </span>
-                  )}
-                </div>
-                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <Link
-                    href={company.uri || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {company.name}
-                    <ArrowUpRight className="h-3 w-3 opacity-50" />
-                  </Link>
-                  <span className="text-muted-foreground/30">•</span>
-                  <span className="text-xs text-muted-foreground/60">
-                    {dayjs(startedAt).format("MMM YYYY")} —{" "}
-                    {isActive ? "Present" : dayjs(endedAt).format("MMM YYYY")}
-                  </span>
-                </div>
-                {description && (
-                  <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground/70">
-                    {Array.isArray(description)
-                      ? description.join(" ")
-                      : description}
-                  </p>
-                )}
-              </div>
-            </div>
+        <div className="relative border border-white/[0.06] bg-white/[0.01] p-6 transition-colors duration-300 group-hover:border-white/[0.12] group-hover:bg-white/[0.03]">
+          {/* Corner accents - scale transforms avoid layout thrashing */}
+          <div className="absolute left-0 top-0 h-6 w-px origin-top scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+          <div className="absolute left-0 top-0 h-px w-6 origin-left scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
+          <div className="absolute bottom-0 right-0 h-6 w-px origin-bottom scale-y-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-y-100 group-hover:bg-white/40" />
+          <div className="absolute bottom-0 right-0 h-px w-6 origin-right scale-x-[0.67] bg-white/20 transition-transform duration-300 group-hover:scale-x-100 group-hover:bg-white/40" />
+
+          <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground/40">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <h3 className="font-medium tracking-tight">{position}</h3>
+            {isActive && (
+              <span className="inline-flex items-center border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-emerald-400">
+                Current
+              </span>
+            )}
+          </div>
+
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+            <Link
+              href={company.uri || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {company.name}
+              <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </Link>
+            <span className="text-muted-foreground/30">•</span>
+            <span className="text-xs text-muted-foreground/60">
+              {dayjs(startedAt).format("MMM YYYY")} —{" "}
+              {isActive ? "Present" : dayjs(endedAt).format("MMM YYYY")}
+            </span>
           </div>
         </div>
       </div>

@@ -409,15 +409,6 @@ export interface Experience {
   id: string;
   position: string;
   company: string | Company;
-  /**
-   * One bullet per row. Was a Postgres text[] column.
-   */
-  highlights?:
-    | {
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
   startedAt: string;
   /**
    * Leave blank for a current role.
@@ -436,7 +427,6 @@ export interface Experience {
 export interface Company {
   id: string;
   name: string;
-  logo?: (string | null) | Media;
   website?: string | null;
   location?: string | null;
   updatedAt: string;
@@ -754,12 +744,6 @@ export interface TechnologiesSelect<T extends boolean = true> {
 export interface ExperiencesSelect<T extends boolean = true> {
   position?: T;
   company?: T;
-  highlights?:
-    | T
-    | {
-        text?: T;
-        id?: T;
-      };
   startedAt?: T;
   endedAt?: T;
   isCurrent?: T;
@@ -774,7 +758,6 @@ export interface ExperiencesSelect<T extends boolean = true> {
  */
 export interface CompaniesSelect<T extends boolean = true> {
   name?: T;
-  logo?: T;
   website?: T;
   location?: T;
   updatedAt?: T;
