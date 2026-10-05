@@ -195,7 +195,6 @@ async function main() {
   for (const company of legacy.companies) {
     await upsert(payload, "companies", company.id, {
       name: company.name,
-      logo: company.image_id,
       website: company.link_id ? (linkById.get(company.link_id)?.uri ?? null) : null,
     });
   }

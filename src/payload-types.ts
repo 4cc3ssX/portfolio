@@ -436,7 +436,6 @@ export interface Experience {
 export interface Company {
   id: string;
   name: string;
-  logo?: (string | null) | Media;
   website?: string | null;
   location?: string | null;
   updatedAt: string;
@@ -774,7 +773,6 @@ export interface ExperiencesSelect<T extends boolean = true> {
  */
 export interface CompaniesSelect<T extends boolean = true> {
   name?: T;
-  logo?: T;
   website?: T;
   location?: T;
   updatedAt?: T;

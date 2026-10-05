@@ -101,7 +101,6 @@ const toCompanyView = (value: Rel<Company>): CompanyView => {
   return {
     id: company?.id ?? "",
     name: company?.name ?? "",
-    image: toImageView(company?.logo),
     uri: company?.website ?? null,
   };
 };

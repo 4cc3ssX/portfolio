@@ -7,7 +7,6 @@ export const Companies: CollectionConfig = {
   access: { read: anyone, create: authenticated, update: authenticated, delete: authenticated },
   fields: [
     { name: "name", type: "text", required: true },
-    { name: "logo", type: "upload", relationTo: "media" },
     { name: "website", type: "text" },
     { name: "location", type: "text" },
   ],
