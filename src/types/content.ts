@@ -88,7 +88,6 @@ export interface CompanyView {
 export interface ExperienceView {
   id: string;
   position: string;
-  description: string[];
   startedAt: string;
   endedAt: string | null;
   isActive: boolean;

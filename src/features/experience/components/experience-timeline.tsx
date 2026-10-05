@@ -13,9 +13,9 @@ export function ExperienceTimeline({ experiences }: ExperienceTimelineProps) {
       <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent md:left-8" />
 
       <div className="space-y-2">
-        {experiences.map((exp) => (
+        {experiences.map((exp, index) => (
           <StaggerItem key={exp.id}>
-            <ExperienceCard {...exp} />
+            <ExperienceCard {...exp} index={index} />
           </StaggerItem>
         ))}
       </div>

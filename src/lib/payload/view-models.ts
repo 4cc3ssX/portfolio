@@ -108,7 +108,6 @@ const toCompanyView = (value: Rel<Company>): CompanyView => {
 export const toExperienceView = (experience: Experience): ExperienceView => ({
   id: experience.id,
   position: experience.position,
-  description: (experience.highlights ?? []).map((h) => h.text ?? "").filter(Boolean),
   startedAt: experience.startedAt,
   endedAt: experience.isCurrent ? null : (experience.endedAt ?? null),
   isActive: Boolean(experience.isCurrent),
